@@ -1,0 +1,1 @@
+ -DREADLINE=off -DPAPILO=off -DZIMPL=off -DIPOPT=off -DSANITIZE_UNDEFINED=on -DLPS=cpx -DCPLEX_DIR=/software/opt-sw/cplex -DSYM=snauty

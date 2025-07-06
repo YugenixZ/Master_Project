@@ -1,0 +1,1 @@
+/usr/bin/cc -g "CMakeFiles/unittest-bugs-lowerbound.dir/src/bugs/lowerbound.c.o" -o bugs/unittest-bugs-lowerbound  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build/lib /usr/lib/x86_64-linux-gnu/libcriterion.so ../../lib/libscip.so.9.2.2.0 -lm 

@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/brachistochrone.dir/src/brachistochrone.c.o -o ../../../bin/examples/brachistochrone  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build/lib ../../../lib/libscip.so.9.2.2.0 -lm 

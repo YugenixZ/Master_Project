@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wno-psabi -g CMakeFiles/sudoku.dir/src/sudoku_main.cpp.o -o ../../../bin/examples/sudoku  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build/lib ../../../lib/libscip.so.9.2.2.0 

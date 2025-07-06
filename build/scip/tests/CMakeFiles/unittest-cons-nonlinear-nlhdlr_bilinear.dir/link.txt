@@ -1,0 +1,1 @@
+/usr/bin/cc -g "CMakeFiles/unittest-cons-nonlinear-nlhdlr_bilinear.dir/src/cons/nonlinear/nlhdlr_bilinear.c.o" -o cons/nonlinear/unittest-cons-nonlinear-nlhdlr_bilinear  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build/lib /usr/lib/x86_64-linux-gnu/libcriterion.so ../../lib/libscip.so.9.2.2.0 -lm 

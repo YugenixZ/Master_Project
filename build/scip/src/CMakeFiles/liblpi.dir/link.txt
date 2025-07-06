@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -g -shared -Wl,-soname,liblpi.so -o ../../lib/liblpi.so CMakeFiles/liblpi.dir/lpi/lpi_cpx.c.o CMakeFiles/liblpi.dir/scip/bitencode.c.o CMakeFiles/liblpi.dir/blockmemshell/memory.c.o CMakeFiles/liblpi.dir/scip/message.c.o 

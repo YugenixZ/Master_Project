@@ -1,0 +1,1 @@
+/usr/bin/cc -g "CMakeFiles/unittest-sepa-interminor.dir/src/sepa/interminor.c.o" -o sepa/unittest-sepa-interminor  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build/lib /usr/lib/x86_64-linux-gnu/libcriterion.so ../../lib/libscip.so.9.2.2.0 -lm 

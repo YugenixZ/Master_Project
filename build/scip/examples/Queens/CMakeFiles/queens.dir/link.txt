@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wno-psabi -g CMakeFiles/queens.dir/src/queens.cpp.o CMakeFiles/queens.dir/src/queens_main.cpp.o -o ../../../bin/examples/queens  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build/lib ../../../lib/libscip.so.9.2.2.0 

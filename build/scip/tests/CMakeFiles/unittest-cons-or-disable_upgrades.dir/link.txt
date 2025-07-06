@@ -1,0 +1,1 @@
+/usr/bin/cc -g "CMakeFiles/unittest-cons-or-disable_upgrades.dir/src/cons/or/disable_upgrades.c.o" -o cons/or/unittest-cons-or-disable_upgrades  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build/lib /usr/lib/x86_64-linux-gnu/libcriterion.so ../../lib/libscip.so.9.2.2.0 -lm 

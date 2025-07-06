@@ -1,0 +1,17 @@
+#ifndef __SPXCONFIG_H__
+#define __SPXCONFIG_H__
+
+#define SOPLEX_BUILD_TYPE "Debug"
+#define SOPLEX_VERSION_MAJOR 7
+#define SOPLEX_VERSION_MINOR 1
+#define SOPLEX_VERSION_PATCH 4
+#define SOPLEX_VERSION_SUB 0
+#define SOPLEX_WITH_BOOST
+/* #undef SOPLEX_WITH_CPPMPF */
+/* #undef SOPLEX_WITH_FLOAT128 */
+#define SOPLEX_WITH_GMP
+#define SOPLEX_WITH_MPFR
+/* #undef SOPLEX_WITH_PAPILO */
+#define SOPLEX_WITH_ZLIB
+
+#endif
