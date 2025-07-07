@@ -883,7 +883,7 @@ vector<Submodel_sols> submodel_solve(
                pA[j] += p_solution[ A.transpose().col_indices[i]] *  A.transpose().values[i];
                qA[j] += q_solution[ A.transpose().col_indices[i]] *  A.transpose().values[i];
             }
-         }                                    
+         }                  
          // Check if both pi and pi0 are all zero
          if (notallzero(pi_solution)) {
             if (!SCIPisFeasZero(scip, s_L_solution) || !SCIPisFeasZero(scip, s_R_solution)) {
