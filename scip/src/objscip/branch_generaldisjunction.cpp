@@ -204,7 +204,7 @@ SCIP_Real createTestModel_2(const CSRMatrix A, const vector<SCIP_Real>& b, const
       return 1e+20; // Return a large value if not optimal
    }
 }
-/* Create the small submodel for testing small zl + 1e-04*/
+/* Create the small submodel for testing system (4)*/
 static
 SubmodelVars submodelsmall_create(
        SCIP* scip,
@@ -421,6 +421,7 @@ SubmodelVars submodelsmall_create(
 
 
 }  
+
 static
 int getMagnitudeBase(int x) {
     x = std::abs(x);
