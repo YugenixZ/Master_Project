@@ -471,7 +471,7 @@ SubmodelVars submodelsmall_create(
       }
    }
 
-   retcode = SCIPreadParams(model_sub_s, "/scratch/htc/yzhou/exp_scipmip/settings/default2.set");
+   retcode = SCIPreadParams(model_sub_s, "/scratch/htc/yzhou/exp_scipmip/settings/default1.set");
    if (retcode != SCIP_OKAY) {
       SCIPprintError(retcode);
       SCIPfree(&model_sub_s);
@@ -726,11 +726,6 @@ SubmodelVars submodel_create(
         SCIP_Real delta,
         SCIP_Real zl
 ){          
-   // SCIP_Real delta_scaled = compute_scaled_delta(b, zl, delta, 10000.0);
-   // SCIP_Real delta_scaled_minus = compute_scaled_delta(b, zl, delta - 1, 10000.0);    
-   // pair<SCIP_Real, SCIP_Real> scaled_deltas = computeScaledDelta(b, zl, delta);
-   SCIP_Real delta_scaled = 0.05;
-   SCIP_Real delta_scaled_minus = delta_scaled -  1;  
    // Create the submodel
    size_t m = b.size();
    size_t n = c.size();
@@ -758,6 +753,52 @@ SubmodelVars submodel_create(
 
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
+
+ 
+   // SCIP_Real max_coef = 0.0;
+   // for (int i = 0; i < m; ++i) {
+   //    max_coef = std::max(max_coef, std::abs(b[i]));
+   // }
+   // max_coef = max(zl, max_coef) / 100;
+   // // Scale coefficients like b[i] and z_l and 1 (coef of pi0) based on the maximum coefficient in b
+   // vector<SCIP_Real> b_copy = b;
+   // for (int i = 0; i < m; ++i) {
+   //    b_copy[i] /= max_coef;
+   // }
+   // SCIP_Real zl_scaled = zl / max_coef;
+   // SCIP_Real one_scaled = 1.0 / max_coef;
+   // // Chose the delta correspond to the minimum value in b_copy and zl 
+   // // Find the minimum absolute value among b_copy and zl, then divide by 2
+   // // Find the minimum absolute nonzero value among b_copy and zl
+   // SCIP_Real min_b_abs = std::numeric_limits<SCIP_Real>::max();
+   // for (const auto& val : b_copy) {
+   //    if (std::abs(val) > 1e-12 && std::abs(val) < min_b_abs) {
+   //       min_b_abs = std::abs(val);
+   //    }
+   // }
+   // // If all elements are zero, fallback to |zl|
+   // if (min_b_abs == std::numeric_limits<SCIP_Real>::max()) {
+   //    min_b_abs = std::abs(zl);
+   // }
+   // SCIP_Real min_coef_est = std::min(min_b_abs, std::abs(zl));
+   // SCIP_Real feastol;
+   // SCIP_RETCODE feastol_retcode = SCIPgetRealParam(scip, "numerics/feastol", &feastol);
+   // if (feastol_retcode != SCIP_OKAY) {
+   //    SCIPprintError(feastol_retcode);
+   //    SCIPfree(&model_sub);
+   //    return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
+   // }
+
+   SCIP_Real delta_scaled = 0.2;
+   SCIP_Real delta_scaled_minus = delta_scaled - 1;
+   // if (min_coef_est > 0){
+   //    delta_scaled = feastol + 0.5 * min_coef_est;
+   //    delta_scaled_minus = delta_scaled - one_scaled;
+   //    if (delta_scaled <= feastol){
+   //       delta_scaled = 1.1 * feastol;
+   //       delta_scaled_minus = delta_scaled - one_scaled;
+   //    }
+   // }
 
    // Define vector variables
    vector<SCIP_VAR *> p(m);
@@ -874,7 +915,8 @@ SubmodelVars submodel_create(
       SCIP_CALL_ABORT(SCIPreleaseCons(model_sub, &cons));
    }
 
-   {
+   {  
+
       SCIP_CONS* cons;
       SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(model_sub, &cons, "cons_qb", 0, nullptr, nullptr, delta_scaled_minus, SCIPinfinity(model_sub)));
       for (int i = 0; i < m; ++i) {
@@ -915,12 +957,12 @@ SubmodelVars submodel_create(
    SCIP_LPSOLSTAT status_LP = SCIPgetLPSolstat(scip);
    if (status_LP == SCIP_LPSOLSTAT_OPTIMAL) {
       vector<SCIP_Real> x_star(n);
-      SCIP_Real epsilon = 1e-4;
+      SCIP_Real epsilon = 1e-05;
       SCIP_COL **lp_cols = SCIPgetLPCols(scip);
       for (size_t j = 0; j < n; ++j) {
          x_star[j] = SCIPgetSolVal(scip, nullptr, SCIPcolGetVar(lp_cols[j]));
       }
-
+      
       // if (!check_Ax_geq_b(A, b, x_star)) {
       //    std::cout << "Warning: Some constraints are violated by x_star!" << std::endl;
       // }
@@ -929,6 +971,7 @@ SubmodelVars submodel_create(
          SCIP_CONS *cons;
          SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(model_sub, &cons, "cons_pi0_lower", 0, nullptr, nullptr, epsilon, SCIPinfinity(model_sub)));
          for (int i = 0; i < n; ++i) {
+
             SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub, cons, pi_plus[i], x_star[i]));
             SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub, cons, pi_minus[i], -x_star[i]));
          }
@@ -943,9 +986,9 @@ SubmodelVars submodel_create(
          SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(model_sub, &cons, "cons_pi0_upper", 0, nullptr, nullptr, -SCIPinfinity(model_sub), 1 - epsilon));
          for (int i = 0; i < n; ++i) {
             SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub, cons, pi_plus[i], x_star[i]));
-            SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub, cons, pi_minus[i], -x_star[i]));
+            SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub, cons, pi_minus[i], -x_star[i] ));
          }
-         SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub, cons, pi0, -1.0));
+         SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub, cons, pi0, -1.0 ));
          SCIP_CALL_ABORT(SCIPaddCons(model_sub, cons));
          SCIP_CALL_ABORT(SCIPreleaseCons(model_sub, &cons));
       }
@@ -964,15 +1007,15 @@ SubmodelVars submodel_create(
       SCIPfree(&model_sub);
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
-   // SCIPsetRealParam(model_sub, "numerics/feastol", 1e-9);       
+   // SCIPsetRealParam(model_sub, "numerics/feastol", 1e-7);       
    // SCIPsetRealParam(model_sub, "numerics/epsilon", 1e-10);        
    // SCIPsetRealParam(model_sub, "numerics/dualfeastol", 1e-8);     
-   // SCIPsetRealParam(model_sub, "numerics/sumepsilon", 1e-9);      
+   // SCIPsetRealParam(model_sub, "numerics/sumepsilon", 1e-7);      
+
+   // std::ostringstream fname;
+   // fname << "/scratch/htc/yzhou/exp_scipmip/instances/submodel_" << std::setprecision(8) << zl << ".lp";
+   // SCIP_CALL_ABORT(SCIPwriteOrigProblem(model_sub, fname.str().c_str(), "lp", FALSE));
    SCIPsetMessagehdlrQuiet(model_sub, TRUE);
-   std::ostringstream fname;
-   fname << "/scratch/htc/yzhou/exp_scipmip/instances/submodel_" << std::setprecision(8) << zl << ".lp";
-   SCIP_CALL_ABORT(SCIPwriteOrigProblem(model_sub, fname.str().c_str(), "lp", FALSE));
-  
    return SubmodelVars{model_sub, p, s_L, q, s_R, pi_plus, pi_minus, pi0};
 }
 
@@ -1201,6 +1244,15 @@ vector<Submodel_sols> submodel_solve(
                qA[j] += q_solution[ A.transpose().col_indices[i]] *  A.transpose().values[i];
             }
          }
+         // Test if pi0 < pi x^* < pi0 + 1
+         SCIP_Col** lp_Col = SCIPgetLPCols(scip);
+         vector<SCIP_Real> x_star(n);
+         for (int j = 0; j < n; ++j) {
+            x_star[j] = SCIPgetSolVal(scip, nullptr, SCIPcolGetVar(lp_Col[j]));  
+         }
+         if (!check_Ax_geq_b(A, b, x_star)) {
+            std::cout << "Warning: Some constraints are violated by x_star!" << std::endl;
+         }
          // // Print all the solution value
          // for (int i = 0; i < n; ++i) {
          //    cout << "pi_plus[" << i << "] = " << pi_plus_solution[i] << endl;
@@ -1214,6 +1266,7 @@ vector<Submodel_sols> submodel_solve(
          // cout << "s_L = " << s_L_solution << endl;
          // cout << "s_R = " << s_R_solution << endl;
          // cout << "pi0 = " << pi0_solution << endl;
+
          // Check if both pi and pi0 are all zero
          if (notallzero(pi_solution)) {
             if (!SCIPisFeasZero(scip, s_L_solution) || !SCIPisFeasZero(scip, s_R_solution)) {
@@ -1245,38 +1298,38 @@ vector<Submodel_sols> submodel_solve(
                cout << "Test side left submodel: " << test_side_left_submodel << ", pi0 solution value: " << std::setprecision(10) << pi0_solution << endl;
                cout << "Test side right submodel: " << test_side_right_submodel << ", pi0 solution value: " << std::setprecision(10) << -(pi0_solution + 1) << endl;
                zl_high = zl;
-               // feasible_zl.push(zl);
-               // best_pi_solutions.push(pi_solution);
-               // best_pi0_solutions.push(pi0_solution);
-               // Status_l.push("infeasible");
-               // Status_r.push("infeasible");
-               // estL_list.push(1e+20);
-               // estR_list.push(1e+20);
-               // if (feasible_zl.size() > 1) {
-               //    feasible_zl.pop();
-               //    best_pi_solutions.pop();
-               //    best_pi0_solutions.pop();
-               //    Status_l.pop();
-               //    Status_r.pop();
-               //    estL_list.pop();
-               //    estR_list.pop();
+               feasible_zl.push(zl);
+               best_pi_solutions.push(pi_solution);
+               best_pi0_solutions.push(pi0_solution);
+               Status_l.push("infeasible");
+               Status_r.push("infeasible");
+               estL_list.push(1e+20);
+               estR_list.push(1e+20);
+               if (feasible_zl.size() > 1) {
+                  feasible_zl.pop();
+                  best_pi_solutions.pop();
+                  best_pi0_solutions.pop();
+                  Status_l.pop();
+                  Status_r.pop();
+                  estL_list.pop();
+                  estR_list.pop();
+               }
+               continue;
+               // Submodel_sols result = {zl, pi_solution, pi0_solution, 1e+20, 1e+20, "infeasible", "infeasible"};
+               // SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_L);
+               // SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_R);
+               // SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi0);
+               // for (int i = 0; i < m; ++i) {
+               //    SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.p[i]);
+               //    SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.q[i]);
                // }
-
-               Submodel_sols result = {zl, pi_solution, pi0_solution, 1e+20, 1e+20, "infeasible", "infeasible"};
-               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_L);
-               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_R);
-               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi0);
-               for (int i = 0; i < m; ++i) {
-                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.p[i]);
-                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.q[i]);
-               }
-               for (int i = 0; i < n; ++i) {
-                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi_minus[i]);
-                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi_plus[i]);
-               }
-               SCIPfree(&submodel_datas.model_sub);
-               final_results.push_back(result);
-               return final_results;
+               // for (int i = 0; i < n; ++i) {
+               //    SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi_minus[i]);
+               //    SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi_plus[i]);
+               // }
+               // SCIPfree(&submodel_datas.model_sub);
+               // final_results.push_back(result);
+               // return final_results;
             }
             // Check if the solution is feasible for the general disjunction
             pair<SCIP_Status, SCIP_Real> model_ck_l_info = ckmodel_create("check_model_left", A, b, c, m, n, pi_solution, pi0_solution, "pi0");
@@ -1603,13 +1656,12 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       cout << "A and b are scaled!"<< endl;
       size_t m = b.size();
       size_t n = c.size();
-//      testSubmodelCreate();
       // CSRMatrix At_test = A.transpose();
       // check_transpose(A, At_test);
       SCIP_LPSOLSTAT status_LP = SCIPgetLPSolstat(scip);
       if (status_LP == SCIP_LPSOLSTAT_OPTIMAL) {
          vector<SCIP_Real> x_star(n);
-         SCIP_Real epsilon = 1e-4;
+         SCIP_Real epsilon = 1e-5;
          SCIP_COL **cols = SCIPgetLPCols(scip);
          for (int j = 0; j < n; ++j) {
             x_star[j] = SCIPgetSolVal(scip, nullptr, SCIPcolGetVar(cols[j]));
