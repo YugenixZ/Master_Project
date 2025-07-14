@@ -957,7 +957,7 @@ SubmodelVars submodel_create(
    SCIP_LPSOLSTAT status_LP = SCIPgetLPSolstat(scip);
    if (status_LP == SCIP_LPSOLSTAT_OPTIMAL) {
       vector<SCIP_Real> x_star(n);
-      SCIP_Real epsilon = 1e-05;
+      SCIP_Real epsilon = 1e-04;
       SCIP_COL **lp_cols = SCIPgetLPCols(scip);
       for (size_t j = 0; j < n; ++j) {
          x_star[j] = SCIPgetSolVal(scip, nullptr, SCIPcolGetVar(lp_cols[j]));
@@ -1199,6 +1199,7 @@ vector<Submodel_sols> submodel_solve(
       // }
       if (retcode != SCIP_OKAY) {
          std::cerr << "Error solving submodel with curr zl: " << zl << std::endl;
+         zl_high = zl;
          continue;
 
       }
