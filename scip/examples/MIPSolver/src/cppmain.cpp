@@ -196,7 +196,6 @@ int main(
 )
 {
    SCIP_RETCODE retcode;
-
    retcode = runSCIP(argc, argv);
    if( retcode != SCIP_OKAY )
    {

@@ -789,7 +789,7 @@ SubmodelVars submodel_create(
    //    return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    // }
 
-   SCIP_Real delta_scaled = 0.2;
+   SCIP_Real delta_scaled = 0.1;
    SCIP_Real delta_scaled_minus = delta_scaled - 1;
    // if (min_coef_est > 0){
    //    delta_scaled = feastol + 0.5 * min_coef_est;
@@ -1007,6 +1007,13 @@ SubmodelVars submodel_create(
       SCIPfree(&model_sub);
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
+
+   retcode = SCIPsetEmphasis(model_sub, SCIP_PARAMEMPHASIS_NUMERICS, TRUE);
+   if (retcode != SCIP_OKAY) {
+      SCIPprintError(retcode);
+      SCIPfree(&model_sub);
+      return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
+   }
    // SCIPsetRealParam(model_sub, "numerics/feastol", 1e-7);       
    // SCIPsetRealParam(model_sub, "numerics/epsilon", 1e-10);        
    // SCIPsetRealParam(model_sub, "numerics/dualfeastol", 1e-8);     
@@ -1190,13 +1197,6 @@ vector<Submodel_sols> submodel_solve(
       SCIP_Real zl = (zl_high + zl_low) / 2;
       SubmodelVars submodel_datas = submodel_create(scip, A, b, c, M, k, delta, zl);
       SCIP_RETCODE retcode = SCIPsolve(submodel_datas.model_sub);
-      // if (retcode != SCIP_OKAY) {
-      //    std::cerr << "Error solving submodel: " << std::endl;
-      //    Submodel_sols result = {SCIP_INVALID, {}, {}, NULL, NULL, "NULL", "NULL"};
-      //    final_results.push_back(result);
-
-      //    return final_results;
-      // }
       if (retcode != SCIP_OKAY) {
          std::cerr << "Error solving submodel with curr zl: " << zl << std::endl;
          zl_high = zl;
@@ -1254,19 +1254,6 @@ vector<Submodel_sols> submodel_solve(
          if (!check_Ax_geq_b(A, b, x_star)) {
             std::cout << "Warning: Some constraints are violated by x_star!" << std::endl;
          }
-         // // Print all the solution value
-         // for (int i = 0; i < n; ++i) {
-         //    cout << "pi_plus[" << i << "] = " << pi_plus_solution[i] << endl;
-         //    cout << "pi_minus[" << i << "] = " << pi_minus_solution[i] << endl;
-         //    cout << "pi[" << i << "] = " << pi_solution[i] << endl;
-         // }
-         // for (int i = 0; i < m; ++i) {
-         //    cout << "p[" << i << "] = " << p_solution[i] << endl;
-         //    cout << "q[" << i << "] = " << q_solution[i] << endl;
-         // }
-         // cout << "s_L = " << s_L_solution << endl;
-         // cout << "s_R = " << s_R_solution << endl;
-         // cout << "pi0 = " << pi0_solution << endl;
 
          // Check if both pi and pi0 are all zero
          if (notallzero(pi_solution)) {
@@ -1275,29 +1262,33 @@ vector<Submodel_sols> submodel_solve(
             } 
             else{
                cout<< "Both s_L and s_R are zero, DEBUG" << endl;
-               SubmodelVars submodel_test = submodelsmall_create(scip, A, b, c, M, k, delta, zl);
-               if (SCIPgetStatus(submodel_test.model_sub) != SCIP_STATUS_OPTIMAL){
-                  cout << "Submodel test is infeasible, DEBUG" << endl;
-               } else{
-                  cout << "Submodel test is optimal, DEBUG"<< endl;
-                  SCIP_Sol *submodel_test_sol = SCIPgetBestSol(submodel_test.model_sub);
-                  vector<int> pi_solution_test(n);
-                  int pi0_solution_test; 
-                  for (int i = 0; i < n; ++i) {
-                     pi_solution_test[i] = round(SCIPgetSolVal(submodel_test.model_sub, submodel_test_sol, submodel_test.pi_plus[i]) - SCIPgetSolVal(submodel_test.model_sub, submodel_test_sol, submodel_test.pi_minus[i]));
-                     assert(SCIPisFeasIntegral(submodel_test.model_sub, pi_solution_test[i]));
-                  }
-                  pi0_solution_test = round(SCIPgetSolVal(submodel_test.model_sub, submodel_test_sol, submodel_test.pi0));
-                  assert(SCIPisFeasIntegral(submodel_test.model_sub, pi0_solution_test));
-                  SCIP_Real test_side_left = createTestModel_2(A, b, c, pi_solution_test, pi0_solution_test, zl, TRUE);
-                  SCIP_Real test_side_right = createTestModel_2(A, b, c, pi_solution_test, pi0_solution_test, zl, FALSE);
-                  cout << "Test side left: " << test_side_left << ", pi0_test solution value: " << std::setprecision(10) << pi0_solution_test << endl;
-                  cout << "Test side right: " << test_side_right << ", pi0_test solution value: " << std::setprecision(10) <<-(pi0_solution_test + 1) << endl;
-               }
-               SCIP_Real test_side_left_submodel = createTestModel_2(A, b, c, pi_solution, pi0_solution, zl, TRUE);
-               SCIP_Real test_side_right_submodel = createTestModel_2(A, b, c, pi_solution, pi0_solution, zl, FALSE);
-               cout << "Test side left submodel: " << test_side_left_submodel << ", pi0 solution value: " << std::setprecision(10) << pi0_solution << endl;
-               cout << "Test side right submodel: " << test_side_right_submodel << ", pi0 solution value: " << std::setprecision(10) << -(pi0_solution + 1) << endl;
+               // std::ostringstream fname;
+               // fname << "/scratch/htc/yzhou/exp_scipmip/instances/submodel_node"
+               //       << SCIPnodeGetNumber(SCIPgetCurrentNode(scip)) << "_zl_" << std::setprecision(8) << zl << ".lp";
+               // SCIP_CALL_ABORT(SCIPwriteOrigProblem(submodel_datas.model_sub, fname.str().c_str(), "lp", FALSE));
+               // SubmodelVars submodel_test = submodelsmall_create(scip, A, b, c, M, k, delta, zl);
+               // if (SCIPgetStatus(submodel_test.model_sub) != SCIP_STATUS_OPTIMAL){
+               //    cout << "Submodel test is infeasible, DEBUG" << endl;
+               // } else{
+               //    cout << "Submodel test is optimal, DEBUG"<< endl;
+               //    SCIP_Sol *submodel_test_sol = SCIPgetBestSol(submodel_test.model_sub);
+               //    vector<int> pi_solution_test(n);
+               //    int pi0_solution_test; 
+               //    for (int i = 0; i < n; ++i) {
+               //       pi_solution_test[i] = round(SCIPgetSolVal(submodel_test.model_sub, submodel_test_sol, submodel_test.pi_plus[i]) - SCIPgetSolVal(submodel_test.model_sub, submodel_test_sol, submodel_test.pi_minus[i]));
+               //       assert(SCIPisFeasIntegral(submodel_test.model_sub, pi_solution_test[i]));
+               //    }
+               //    pi0_solution_test = round(SCIPgetSolVal(submodel_test.model_sub, submodel_test_sol, submodel_test.pi0));
+               //    assert(SCIPisFeasIntegral(submodel_test.model_sub, pi0_solution_test));
+               //    SCIP_Real test_side_left = createTestModel_2(A, b, c, pi_solution_test, pi0_solution_test, zl, TRUE);
+               //    SCIP_Real test_side_right = createTestModel_2(A, b, c, pi_solution_test, pi0_solution_test, zl, FALSE);
+               //    cout << "Test side left: " << test_side_left << ", pi0_test solution value: " << std::setprecision(10) << pi0_solution_test << endl;
+               //    cout << "Test side right: " << test_side_right << ", pi0_test solution value: " << std::setprecision(10) <<-(pi0_solution_test + 1) << endl;
+               // }
+               // SCIP_Real test_side_left_submodel = createTestModel_2(A, b, c, pi_solution, pi0_solution, zl, TRUE);
+               // SCIP_Real test_side_right_submodel = createTestModel_2(A, b, c, pi_solution, pi0_solution, zl, FALSE);
+               // cout << "Test side left submodel: " << test_side_left_submodel << ", pi0 solution value: " << std::setprecision(10) << pi0_solution << endl;
+               // cout << "Test side right submodel: " << test_side_right_submodel << ", pi0 solution value: " << std::setprecision(10) << -(pi0_solution + 1) << endl;
                zl_high = zl;
                feasible_zl.push(zl);
                best_pi_solutions.push(pi_solution);
@@ -1653,8 +1644,8 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       std::vector<SCIP_Real> b = LP_data.b;
       std::vector<SCIP_Real> c = LP_data.c;
 
-      scale_csr_rows(A, b);
-      cout << "A and b are scaled!"<< endl;
+      // scale_csr_rows(A, b);
+      // cout << "A and b are scaled!"<< endl;
       size_t m = b.size();
       size_t n = c.size();
       // CSRMatrix At_test = A.transpose();
@@ -1664,14 +1655,14 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
          vector<SCIP_Real> x_star(n);
          SCIP_Real epsilon = 1e-5;
          SCIP_COL **cols = SCIPgetLPCols(scip);
-         for (int j = 0; j < n; ++j) {
+         for (size_t j = 0; j < n; ++j) {
             x_star[j] = SCIPgetSolVal(scip, nullptr, SCIPcolGetVar(cols[j]));
          }
-         size_t x_star_size = x_star.size();
+         // size_t x_star_size = x_star.size();
          // Test if Ax >= b
-         for (int i = 0; i < m; ++i) {
+         for (size_t i = 0; i < m; ++i) {
             SCIP_Real Ax = 0;
-            for (int j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
+            for (size_t j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
                Ax += A.values[j] * x_star[A.col_indices[j]];
             }
             if (Ax < b[i] - epsilon) {
@@ -1681,7 +1672,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
             }
          }
          SCIP_Real CX = 0;
-         for (int i = 0; i < n; ++i) {
+         for (size_t i = 0; i < n; ++i) {
             SCIP_VAR* var = SCIPcolGetVar(cols[i]);
             if (SCIPvarIsActive(var)) {
                CX += c[i] * x_star[i];
