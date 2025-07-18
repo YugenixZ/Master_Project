@@ -1218,6 +1218,7 @@ vector<Submodel_sols> submodel_solve(
       return final_results;
    } 
    else {
+      cout << "Preck submodel is infeasible, continue branching" << endl;
       SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi0);
       for (int i = 0; i < m; ++i) {
          SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.p[i]);
@@ -1299,6 +1300,18 @@ vector<Submodel_sols> submodel_solve(
             } 
             else{
                cout<< "Both s_L and s_R are zero, DEBUG" << endl;
+               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_L);
+               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_R);
+               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi0);
+               for (int i = 0; i < m; ++i) {
+                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.p[i]);
+                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.q[i]);
+               }
+               for (int i = 0; i < n; ++i) {
+                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi_minus[i]);
+                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi_plus[i]);
+               }
+               SCIPfree(&submodel_datas.model_sub);
                zl_high = zl;
                continue;
                // std::ostringstream fname;
@@ -1469,18 +1482,18 @@ vector<Submodel_sols> submodel_solve(
                       SCIP_CALL_ABORT(SCIPaddVar(lp_left, var));
                       lp_vars_left[i] = var;
                     }
-
-                    // Add constraints Ax >= b
-                    for (int i = 0; i < m; ++i) {
+                    // Add pi x <= pi0
+                    {
                      SCIP_CONS* cons;
-                     SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(lp_left, &cons, ("cons_" + std::to_string(i)).c_str(), 0, nullptr, nullptr, b[i], SCIPinfinity(lp_left)));
-                     for (int j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
-                     SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_left, cons, lp_vars_left[A.col_indices[j]], A.values[j]));
+                     SCIP_CALL_ABORT(SCIPcreateConsLinear(lp_left, &cons, "disj_left", 0, nullptr, nullptr, -SCIPinfinity(lp_left), pi0_solution,
+                     TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE));
+                     for (int i = 0; i < n; ++i) {
+                     if (std::abs(pi_solution[i]) > 1e-6)
+                        SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_left, cons, lp_vars_left[i], pi_solution[i]));
                      }
                      SCIP_CALL_ABORT(SCIPaddCons(lp_left, cons));
                      SCIP_CALL_ABORT(SCIPreleaseCons(lp_left, &cons));
                     }
-
                     // Add pi x <= pi0
                     {
                      SCIP_CONS* cons;
@@ -1542,12 +1555,12 @@ vector<Submodel_sols> submodel_solve(
                     // Add pi x >= pi0 + 1
                     {
                      SCIP_CONS* cons;
-                     int pi0_plus = final_results[0].pi0_solution + 1;
+                     int pi0_plus = pi0_solution + 1;
                      SCIP_CALL_ABORT(SCIPcreateConsLinear(lp_right, &cons, "disj_right", 0, nullptr, nullptr, pi0_plus, SCIPinfinity(lp_right),
                   TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE));
                      for (int i = 0; i < n; ++i) {
-                     if (std::abs(final_results[0].pi_solution[i]) > 1e-6)
-                        SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_right, cons, lp_vars_right[i], final_results[0].pi_solution[i]));
+                     if (std::abs(pi_solution[i]) > 1e-6)
+                        SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_right, cons, lp_vars_right[i], pi_solution[i]));
                      }
                      SCIP_CALL_ABORT(SCIPaddCons(lp_right, cons));
                      SCIP_CALL_ABORT(SCIPreleaseCons(lp_right, &cons));
