@@ -1193,6 +1193,44 @@ vector<Submodel_sols> submodel_solve(
    queue<string> Status_r;
    vector<Submodel_sols> final_results;
 
+   // Simple check on system (4)
+
+   SubmodelVars preck_submodel = submodelsmall_create(scip, A, b, c, M, k, delta, zl_low);
+   SCIP_RETCODE retcode = SCIPsolve(preck_submodel.model_sub);
+   if (retcode != SCIP_OKAY) {
+      std::cerr << "Error solving preck submodel !" << std::endl;
+   }
+   if (SCIPgetStatus(preck_submodel.model_sub) == SCIP_STATUS_OPTIMAL) {
+      cout << "Preck submodel is solved to optimality" << endl;
+      cout << "No branching possible in this node" << endl;
+      SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi0);
+      for (int i = 0; i < m; ++i) {
+         SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.p[i]);
+         SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.q[i]);
+      }
+      for (int i = 0; i < n; ++i) {
+         SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi_plus[i]);
+         SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi_minus[i]);
+      }
+      SCIPfree(&preck_submodel.model_sub);
+      Submodel_sols result = {zl_low, {}, {}, 1e+20, 1e+20, "infeasible", "infeasible"};
+      final_results.push_back(result);
+      return final_results;
+   } 
+   else {
+      SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi0);
+      for (int i = 0; i < m; ++i) {
+         SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.p[i]);
+         SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.q[i]);
+      }
+      for (int i = 0; i < n; ++i) {
+         SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi_plus[i]);
+         SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi_minus[i]);
+      }
+      SCIPfree(&preck_submodel.model_sub);
+   }
+
+
    while (abs(zl_high - zl_low) > 1e-6){
       SCIP_Real zl = (zl_high + zl_low) / 2;
       SubmodelVars submodel_datas = submodel_create(scip, A, b, c, M, k, delta, zl);
@@ -1201,12 +1239,11 @@ vector<Submodel_sols> submodel_solve(
          std::cerr << "Error solving submodel with curr zl: " << zl << std::endl;
          zl_high = zl;
          continue;
-
       }
       if (SCIPgetStatus(submodel_datas.model_sub) == SCIP_STATUS_OPTIMAL) {
          // Retrieve the solutions
          cout << "Submodel solved with current zl: " << zl << endl;
-         SCIP_Sol *submodel_sol = SCIPgetBestSol(submodel_datas.model_sub); // pi0_solution
+         SCIP_Sol *submodel_sol = SCIPgetBestSol(submodel_datas.model_sub); 
          vector<SCIP_Real> pi_plus_solution(n);
          vector<SCIP_Real> pi_minus_solution(n);
          vector<int> pi_solution(n);
@@ -1262,6 +1299,8 @@ vector<Submodel_sols> submodel_solve(
             } 
             else{
                cout<< "Both s_L and s_R are zero, DEBUG" << endl;
+               zl_high = zl;
+               continue;
                // std::ostringstream fname;
                // fname << "/scratch/htc/yzhou/exp_scipmip/instances/submodel_node"
                //       << SCIPnodeGetNumber(SCIPgetCurrentNode(scip)) << "_zl_" << std::setprecision(8) << zl << ".lp";
@@ -1289,24 +1328,24 @@ vector<Submodel_sols> submodel_solve(
                // SCIP_Real test_side_right_submodel = createTestModel_2(A, b, c, pi_solution, pi0_solution, zl, FALSE);
                // cout << "Test side left submodel: " << test_side_left_submodel << ", pi0 solution value: " << std::setprecision(10) << pi0_solution << endl;
                // cout << "Test side right submodel: " << test_side_right_submodel << ", pi0 solution value: " << std::setprecision(10) << -(pi0_solution + 1) << endl;
-               zl_high = zl;
-               feasible_zl.push(zl);
-               best_pi_solutions.push(pi_solution);
-               best_pi0_solutions.push(pi0_solution);
-               Status_l.push("infeasible");
-               Status_r.push("infeasible");
-               estL_list.push(1e+20);
-               estR_list.push(1e+20);
-               if (feasible_zl.size() > 1) {
-                  feasible_zl.pop();
-                  best_pi_solutions.pop();
-                  best_pi0_solutions.pop();
-                  Status_l.pop();
-                  Status_r.pop();
-                  estL_list.pop();
-                  estR_list.pop();
-               }
-               continue;
+
+               // feasible_zl.push(zl);
+               // best_pi_solutions.push(pi_solution);
+               // best_pi0_solutions.push(pi0_solution);
+               // Status_l.push("infeasible");
+               // Status_r.push("infeasible");
+               // estL_list.push(1e+20);
+               // estR_list.push(1e+20);
+               // if (feasible_zl.size() > 1) {
+               //    feasible_zl.pop();
+               //    best_pi_solutions.pop();
+               //    best_pi0_solutions.pop();
+               //    Status_l.pop();
+               //    Status_r.pop();
+               //    estL_list.pop();
+               //    estR_list.pop();
+               // }
+
                // Submodel_sols result = {zl, pi_solution, pi0_solution, 1e+20, 1e+20, "infeasible", "infeasible"};
                // SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_L);
                // SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_R);
@@ -1401,7 +1440,141 @@ vector<Submodel_sols> submodel_solve(
                zl_high = zl;
                continue;
             } 
+            else if (result_l.first == "obj_val less than Best_zl" && result_r.first == "obj_val less than Best_zl") {
+               cout << "Both sides have objective value less than Best_zl, DEBUG" << endl;
+                  // Write out two LPs: one with pi x <= pi0, one with pi x >= pi0 + 1
+               SCIP_Node* curr_Node = SCIPgetCurrentNode(scip);
+                  // 1. LP with pi x <= pi0
+                  {
+                    std::ostringstream fname_left;
+                    fname_left << "/scratch/htc/yzhou/exp_scipmip/instances/lp_with_disjunction_left_node"
+                      << SCIPnodeGetNumber(curr_Node) << "_zl_" << std::setprecision(8) << zl << ".lp";
 
+                    SCIP* lp_left = nullptr;
+                    SCIP_CALL_ABORT(SCIPcreate(&lp_left));
+                    SCIP_CALL_ABORT(SCIPincludeDefaultPlugins(lp_left));
+                    SCIP_CALL_ABORT(SCIPcreateProbBasic(lp_left, "lp_with_disjunction_left"));
+
+                    std::vector<SCIP_VAR*> lp_vars_left(n);
+                    // Declare and initialize vars_lp for bounds
+                    std::vector<SCIP_VAR*> vars_lp(n);
+                    SCIP_COL** cols_lp = SCIPgetLPCols(scip);
+                    for (int i = 0; i < n; ++i) {
+                      vars_lp[i] = SCIPcolGetVar(cols_lp[i]);
+                    }
+                    for (int i = 0; i < n; ++i) {
+                      SCIP_VAR* var;
+                      SCIP_CALL_ABORT(SCIPcreateVarBasic(lp_left, &var, ("x_" + std::to_string(i)).c_str(),
+                        SCIPvarGetLbLocal(vars_lp[i]), SCIPvarGetUbLocal(vars_lp[i]), c[i], SCIP_VARTYPE_CONTINUOUS));
+                      SCIP_CALL_ABORT(SCIPaddVar(lp_left, var));
+                      lp_vars_left[i] = var;
+                    }
+
+                    // Add constraints Ax >= b
+                    for (int i = 0; i < m; ++i) {
+                     SCIP_CONS* cons;
+                     SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(lp_left, &cons, ("cons_" + std::to_string(i)).c_str(), 0, nullptr, nullptr, b[i], SCIPinfinity(lp_left)));
+                     for (int j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
+                     SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_left, cons, lp_vars_left[A.col_indices[j]], A.values[j]));
+                     }
+                     SCIP_CALL_ABORT(SCIPaddCons(lp_left, cons));
+                     SCIP_CALL_ABORT(SCIPreleaseCons(lp_left, &cons));
+                    }
+
+                    // Add pi x <= pi0
+                    {
+                     SCIP_CONS* cons;
+                     SCIP_CALL_ABORT(SCIPcreateConsLinear(lp_left, &cons, "disj_left", 0, nullptr, nullptr, -SCIPinfinity(lp_left), final_results[0].pi0_solution,
+                     TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE));
+                     for (int i = 0; i < n; ++i) {
+                     if (std::abs(final_results[0].pi_solution[i]) > 1e-6)
+                        SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_left, cons, lp_vars_left[i], final_results[0].pi_solution[i]));
+                     }
+                     SCIP_CALL_ABORT(SCIPaddCons(lp_left, cons));
+                     SCIP_CALL_ABORT(SCIPreleaseCons(lp_left, &cons));
+                    }
+
+                    SCIP_CALL_ABORT(SCIPwriteOrigProblem(lp_left, fname_left.str().c_str(), "lp", FALSE));
+
+                    for (int i = 0; i < n; ++i){
+                     SCIP_CALL_ABORT(SCIPreleaseVar(lp_left, &lp_vars_left[i]));
+                    }
+                    SCIP_CALL_ABORT(SCIPfree(&lp_left));
+                  }
+
+                  // 2. LP with pi x >= pi0 + 1
+                  {
+                    std::ostringstream fname_right;
+                    fname_right << "/scratch/htc/yzhou/exp_scipmip/instances/lp_with_disjunction_right_node"
+                      << SCIPnodeGetNumber(curr_Node) << "_zl_" << std::setprecision(8) << zl << ".lp";
+
+                    SCIP* lp_right = nullptr;
+                    SCIP_CALL_ABORT(SCIPcreate(&lp_right));
+                    SCIP_CALL_ABORT(SCIPincludeDefaultPlugins(lp_right));
+                    SCIP_CALL_ABORT(SCIPcreateProbBasic(lp_right, "lp_with_disjunction_right"));
+
+                    std::vector<SCIP_VAR*> lp_vars_right(n);
+                    // Declare and initialize vars_lp for bounds
+                    std::vector<SCIP_VAR*> vars_lp(n);
+                    SCIP_COL** cols_lp = SCIPgetLPCols(scip);
+                    for (int i = 0; i < n; ++i) {
+                     vars_lp[i] = SCIPcolGetVar(cols_lp[i]);
+                    }
+                    for (int i = 0; i < n; ++i) {
+                     SCIP_VAR* var;
+                     SCIP_CALL_ABORT(SCIPcreateVarBasic(lp_right, &var, ("x_" + std::to_string(i)).c_str(),
+                     SCIPvarGetLbLocal(vars_lp[i]), SCIPvarGetUbLocal(vars_lp[i]), c[i], SCIP_VARTYPE_CONTINUOUS));
+                     SCIP_CALL_ABORT(SCIPaddVar(lp_right, var));
+                     lp_vars_right[i] = var;
+                    }
+
+                    // Add constraints Ax >= b
+                    for (int i = 0; i < m; ++i) {
+                     SCIP_CONS* cons;
+                     SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(lp_right, &cons, ("cons_" + std::to_string(i)).c_str(), 0, nullptr, nullptr, b[i], SCIPinfinity(lp_right)));
+                     for (int j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
+                     SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_right, cons, lp_vars_right[A.col_indices[j]], A.values[j]));
+                     }
+                     SCIP_CALL_ABORT(SCIPaddCons(lp_right, cons));
+                     SCIP_CALL_ABORT(SCIPreleaseCons(lp_right, &cons));
+                    }
+
+                    // Add pi x >= pi0 + 1
+                    {
+                     SCIP_CONS* cons;
+                     int pi0_plus = final_results[0].pi0_solution + 1;
+                     SCIP_CALL_ABORT(SCIPcreateConsLinear(lp_right, &cons, "disj_right", 0, nullptr, nullptr, pi0_plus, SCIPinfinity(lp_right),
+                  TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE));
+                     for (int i = 0; i < n; ++i) {
+                     if (std::abs(final_results[0].pi_solution[i]) > 1e-6)
+                        SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_right, cons, lp_vars_right[i], final_results[0].pi_solution[i]));
+                     }
+                     SCIP_CALL_ABORT(SCIPaddCons(lp_right, cons));
+                     SCIP_CALL_ABORT(SCIPreleaseCons(lp_right, &cons));
+                    }
+
+                    SCIP_CALL_ABORT(SCIPwriteOrigProblem(lp_right, fname_right.str().c_str(), "lp", FALSE));
+
+                    for (int i = 0; i < n; ++i){
+                     SCIP_CALL_ABORT(SCIPreleaseVar(lp_right, &lp_vars_right[i]));
+                    }
+                    SCIP_CALL_ABORT(SCIPfree(&lp_right));
+                  }
+               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_L);
+               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_R);
+               SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi0);
+               for (int i = 0; i < m; ++i) {
+                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.p[i]);
+                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.q[i]);
+               }
+               for (int i = 0; i < n; ++i) {
+                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi_minus[i]);
+                  SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.pi_plus[i]);
+               }
+               SCIPfree(&submodel_datas.model_sub);
+               zl_high = zl;
+               continue;
+            }
             else {
                SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_L);
                SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_R);
