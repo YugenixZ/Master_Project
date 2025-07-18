@@ -1,0 +1,7 @@
+# SCIP version 9.1.0
+
+# priority of branching rule <allfullstrong>
+# [type: int, advanced: FALSE, range: [-536870912,536870911], default: -1000]
+branching/allfullstrong/priority = 10000000
+
+display/verblevel = 5

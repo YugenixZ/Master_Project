@@ -1,0 +1,6 @@
+# SCIP version 9.2.2
+
+branching/multaggr/priority = 100000000
+
+display/verblevel = 5
+

@@ -1235,8 +1235,9 @@ vector<Submodel_sols> submodel_solve(
    while (abs(zl_high - zl_low) > 1e-6){
       SCIP_Real zl = (zl_high + zl_low) / 2;
       SubmodelVars submodel_datas = submodel_create(scip, A, b, c, M, k, delta, zl);
-      SCIP_RETCODE retcode = SCIPsolve(submodel_datas.model_sub);
-      if (retcode != SCIP_OKAY) {
+
+      SCIP_RETCODE retcode1 = SCIPsolve(submodel_datas.model_sub);
+      if (retcode1 != SCIP_OKAY) {
          std::cerr << "Error solving submodel with curr zl: " << zl << std::endl;
          zl_high = zl;
          continue;
@@ -1829,56 +1830,57 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       CSRMatrix A = LP_data.A;
       std::vector<SCIP_Real> b = LP_data.b;
       std::vector<SCIP_Real> c = LP_data.c;
-
-      // scale_csr_rows(A, b);
-      // cout << "A and b are scaled!"<< endl;
       size_t m = b.size();
       size_t n = c.size();
+      
+      // scale_csr_rows(A, b);
+      // cout << "A and b are scaled!"<< endl;
+
       // CSRMatrix At_test = A.transpose();
       // check_transpose(A, At_test);
-      SCIP_LPSOLSTAT status_LP = SCIPgetLPSolstat(scip);
-      if (status_LP == SCIP_LPSOLSTAT_OPTIMAL) {
-         vector<SCIP_Real> x_star(n);
-         SCIP_Real epsilon = 1e-5;
-         SCIP_COL **cols = SCIPgetLPCols(scip);
-         for (size_t j = 0; j < n; ++j) {
-            x_star[j] = SCIPgetSolVal(scip, nullptr, SCIPcolGetVar(cols[j]));
-         }
-         // size_t x_star_size = x_star.size();
-         // Test if Ax >= b
-         for (size_t i = 0; i < m; ++i) {
-            SCIP_Real Ax = 0;
-            for (size_t j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
-               Ax += A.values[j] * x_star[A.col_indices[j]];
-            }
-            if (Ax < b[i] - epsilon) {
-               std::cout << "Infeasible solution: Ax < b" << std::endl;
-               std::cout << "Ax: " << Ax << ", b: " << b[i] << std::endl;  
-               std::cout << "Row index: " << i << std::endl;
-            }
-         }
-         SCIP_Real CX = 0;
-         for (size_t i = 0; i < n; ++i) {
-            SCIP_VAR* var = SCIPcolGetVar(cols[i]);
-            if (SCIPvarIsActive(var)) {
-               CX += c[i] * x_star[i];
-            }
-            else{
-               std::cout << "Variable " << i << " is not active." << std::endl;
-            }
-         }
-         std::cout << "Objective value: " << CX << std::endl;
-      } else {
-         std::cout << "Infeasible solution: LP not solved to optimality" << std::endl;
-      }
+      // SCIP_LPSOLSTAT status_LP = SCIPgetLPSolstat(scip);
+      // if (status_LP == SCIP_LPSOLSTAT_OPTIMAL) {
+      //    vector<SCIP_Real> x_star(n);
+      //    SCIP_Real epsilon = 1e-5;
+      //    SCIP_COL **cols = SCIPgetLPCols(scip);
+      //    for (size_t j = 0; j < n; ++j) {
+      //       x_star[j] = SCIPgetSolVal(scip, nullptr, SCIPcolGetVar(cols[j]));
+      //    }
+      //    // size_t x_star_size = x_star.size();
+      //    // Test if Ax >= b
+      //    for (size_t i = 0; i < m; ++i) {
+      //       SCIP_Real Ax = 0;
+      //       for (size_t j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
+      //          Ax += A.values[j] * x_star[A.col_indices[j]];
+      //       }
+      //       if (Ax < b[i] - epsilon) {
+      //          std::cout << "Infeasible solution: Ax < b" << std::endl;
+      //          std::cout << "Ax: " << Ax << ", b: " << b[i] << std::endl;  
+      //          std::cout << "Row index: " << i << std::endl;
+      //       }
+      //    }
+      //    SCIP_Real CX = 0;
+      //    for (size_t i = 0; i < n; ++i) {
+      //       SCIP_VAR* var = SCIPcolGetVar(cols[i]);
+      //       if (SCIPvarIsActive(var)) {
+      //          CX += c[i] * x_star[i];
+      //       }
+      //       else{
+      //          std::cout << "Variable " << i << " is not active." << std::endl;
+      //       }
+      //    }
+      //    std::cout << "Objective value: " << CX << std::endl;
+      // } else {
+      //    std::cout << "Infeasible solution: LP not solved to optimality" << std::endl;
+      // }
+   
+      // SCIP_Real LP_obj = SCIPgetLPObjval(scip);
+      // SCIP_Real Primalsol = createTestModel(A, b, c); 
+      // cout << "LP objective: " << LP_obj << endl;
+      // cout << "Primal solution: " << Primalsol << endl;
 
-      
-      SCIP_Real LP_obj = SCIPgetLPObjval(scip);
       SCIP_Real node_lowerbound = SCIPgetNodeLowerbound(scip, curr_Node);
-      SCIP_Real Primalsol = createTestModel(A, b, c); 
-      SCIP_Real node_ub = SCIPgetPrimalbound(scip);      
-      cout << "LP objective: " << LP_obj << endl;
-      cout << "Primal solution: " << Primalsol << endl;
+      SCIP_Real node_ub = SCIPgetPrimalbound(scip);     
       cout << "Node lower bound: " << node_lowerbound << endl; 
       cout << "Node upper bound: " << node_ub << endl;
       

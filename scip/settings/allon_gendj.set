@@ -1,0 +1,9 @@
+# SCIP version 9.2.2
+
+
+# priority of branching rule <general_disjunction>
+# [type: int, advanced: FALSE, range: [-536870912,536870911], default: 10]
+branching/general_disjunction/priority = 10000000
+  
+display/verblevel = 5
+
