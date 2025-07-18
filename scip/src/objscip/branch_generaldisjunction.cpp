@@ -1495,18 +1495,6 @@ vector<Submodel_sols> submodel_solve(
                      SCIP_CALL_ABORT(SCIPaddCons(lp_left, cons));
                      SCIP_CALL_ABORT(SCIPreleaseCons(lp_left, &cons));
                     }
-                    // Add pi x <= pi0
-                    {
-                     SCIP_CONS* cons;
-                     SCIP_CALL_ABORT(SCIPcreateConsLinear(lp_left, &cons, "disj_left", 0, nullptr, nullptr, -SCIPinfinity(lp_left), final_results[0].pi0_solution,
-                     TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE));
-                     for (int i = 0; i < n; ++i) {
-                     if (std::abs(final_results[0].pi_solution[i]) > 1e-6)
-                        SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_left, cons, lp_vars_left[i], final_results[0].pi_solution[i]));
-                     }
-                     SCIP_CALL_ABORT(SCIPaddCons(lp_left, cons));
-                     SCIP_CALL_ABORT(SCIPreleaseCons(lp_left, &cons));
-                    }
 
                     SCIP_CALL_ABORT(SCIPwriteOrigProblem(lp_left, fname_left.str().c_str(), "lp", FALSE));
 
@@ -1558,7 +1546,7 @@ vector<Submodel_sols> submodel_solve(
                      SCIP_CONS* cons;
                      int pi0_plus = pi0_solution + 1;
                      SCIP_CALL_ABORT(SCIPcreateConsLinear(lp_right, &cons, "disj_right", 0, nullptr, nullptr, pi0_plus, SCIPinfinity(lp_right),
-                  TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE));
+                     TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE));
                      for (int i = 0; i < n; ++i) {
                      if (std::abs(pi_solution[i]) > 1e-6)
                         SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_right, cons, lp_vars_right[i], pi_solution[i]));
