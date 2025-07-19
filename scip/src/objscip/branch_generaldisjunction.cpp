@@ -1483,6 +1483,20 @@ vector<Submodel_sols> submodel_solve(
                       SCIP_CALL_ABORT(SCIPaddVar(lp_left, var));
                       lp_vars_left[i] = var;
                     }
+                    // Add constraints Ax >= b
+                    {
+
+                     for (int i = 0; i < m; ++i) {
+                        SCIP_CONS* cons;
+                        SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(lp_left, &cons, ("cons_" + std::to_string(i)).c_str(), 0, nullptr, nullptr, b[i], SCIPinfinity(lp_left)));
+                        for (int j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
+                           SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_left, cons, lp_vars_left[A.col_indices[j]], A.values[j]));
+                        }
+                        SCIP_CALL_ABORT(SCIPaddCons(lp_left, cons));
+                        SCIP_CALL_ABORT(SCIPreleaseCons(lp_left, &cons));
+
+                    }
+
                     // Add pi x <= pi0
                     {
                      SCIP_CONS* cons;
@@ -1535,7 +1549,7 @@ vector<Submodel_sols> submodel_solve(
                      SCIP_CONS* cons;
                      SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(lp_right, &cons, ("cons_" + std::to_string(i)).c_str(), 0, nullptr, nullptr, b[i], SCIPinfinity(lp_right)));
                      for (int j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
-                     SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_right, cons, lp_vars_right[A.col_indices[j]], A.values[j]));
+                        SCIP_CALL_ABORT(SCIPaddCoefLinear(lp_right, cons, lp_vars_right[A.col_indices[j]], A.values[j]));
                      }
                      SCIP_CALL_ABORT(SCIPaddCons(lp_right, cons));
                      SCIP_CALL_ABORT(SCIPreleaseCons(lp_right, &cons));
