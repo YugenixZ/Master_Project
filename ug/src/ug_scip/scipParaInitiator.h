@@ -147,6 +147,8 @@ public:
        ********************/
       if( !paraParams->getBoolParamValue(UG::Quiet) )
       {
+         SCIP_STAGE stage = SCIPgetStage(scip);
+         std::cout << "SCIP stage: " << stage << std::endl;
          SCIP_CALL_ABORT( SCIPprintStatistics(scip, NULL) );    // output statistics (only for problem info)
       }
       if( scip )
