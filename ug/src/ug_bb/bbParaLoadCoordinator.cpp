@@ -55,6 +55,7 @@
 #include "bbParaLoadCoordinator.h"
 #include "bbParaNode.h"
 #include "bbParaNodesMerger.h"
+#include "../ug_scip/scipParaInitiator.h"
 
 using namespace UG;
 
@@ -580,10 +581,12 @@ BbParaLoadCoordinator::~BbParaLoadCoordinator(
          if( dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool) )     // paraSolverPool may not be always BbParaSolverPoolForMinimization
          {
             bbParaInitiator->setNumberOfNodesSolved( std::max(1ULL, dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getTotalNodesSolved()) );
+            bbParaInitiator->setNumberOfFairNodes( std::max(1ULL, dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getTotalFairNodesSolved()) );
          }
          else
          {
             bbParaInitiator->setNumberOfNodesSolved(1ULL);   // always set 1 : no meaning
+            bbParaInitiator->setNumberOfFairNodes(1ULL);   // always set 1 : no meaning
          }
          bbParaInitiator->setDualBound(paraNodePool->getBestDualBoundValue());
          lcts.externalGlobalBestDualBoundValue = bbParaInitiator->convertToExternalValue(paraNodePool->getBestDualBoundValue());
@@ -595,10 +598,12 @@ BbParaLoadCoordinator::~BbParaLoadCoordinator(
             if( ( interruptedFromControlTerminal || hardTimeLimitIsReached || memoryLimitIsReached || givenGapIsReached ) && paraRacingSolverPool )
             {
                bbParaInitiator->setNumberOfNodesSolved(dynamic_cast<BbParaRacingSolverPool *>(paraRacingSolverPool)->getNnodesSolvedInBestSolver());
+               bbParaInitiator->setNumberOfFairNodes(dynamic_cast<BbParaRacingSolverPool *>(paraRacingSolverPool)->getNFairnodesSolvedInBestSolver());
             }
             else
             {
                bbParaInitiator->setNumberOfNodesSolved(nSolvedRacingTermination);
+               bbParaInitiator->setNumberOfFairNodes(nFairnodesnumber);
             }
             if( lcts.globalBestDualBoundValue < minmalDualBoundNormalTermSolvers )
             {
@@ -625,10 +630,12 @@ BbParaLoadCoordinator::~BbParaLoadCoordinator(
                if( dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool) )     // paraSolverPool may not be always BbParaSolverPoolForMinimization
                {
                   bbParaInitiator->setNumberOfNodesSolved( std::max(1ULL, dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getTotalNodesSolved()) );
+                  bbParaInitiator->setNumberOfFairNodes( std::max(1ULL, dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getTotalFairNodesSolved()) );
                }
                else
                {
                   bbParaInitiator->setNumberOfNodesSolved(1ULL);   // always set 1 : no meaning
+                  bbParaInitiator->setNumberOfFairNodes(1ULL);   // always set 1 : no meaning
                }
 
                if( bbParaInitiator->getGlobalBestIncumbentSolution() && allCompInfeasibleAfterSolution && (!givenGapIsReached) )
@@ -675,6 +682,7 @@ BbParaLoadCoordinator::~BbParaLoadCoordinator(
                   {
                      bbParaInitiator->setDualBound(lcts.globalBestDualBoundValue);
                      bbParaInitiator->setNumberOfNodesSolved(  dynamic_cast<BbParaRacingSolverPool *>(paraRacingSolverPool)->getNnodesSolvedInBestSolver() );
+                     bbParaInitiator->setNumberOfFairNodes( dynamic_cast<BbParaRacingSolverPool *>(paraRacingSolverPool)->getNFairnodesSolvedInBestSolver() );
                   }
                   else
                   {
@@ -686,10 +694,12 @@ BbParaLoadCoordinator::~BbParaLoadCoordinator(
                   if( dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool) )     // paraSolverPool may not be always BbParaSolverPoolForMinimization
                   {
                      bbParaInitiator->setNumberOfNodesSolved( std::max(1ULL, dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNnodesSolvedInSolvers()) );
+                     bbParaInitiator->setNumberOfFairNodes( std::max(1ULL, dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getTotalFairNodesSolved()) );
                   }
                   else
                   {
                      bbParaInitiator->setNumberOfNodesSolved(1ULL);   // always set 1 : no meaning
+                     bbParaInitiator->setNumberOfFairNodes(1ULL);   // always set 1 : no meaning
                   }
                   bbParaInitiator->setDualBound(lcts.globalBestDualBoundValue);
                }
@@ -1979,6 +1989,7 @@ BbParaLoadCoordinator::processTagCompletionOfCalculation(
             }
          }
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+         dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
       }
       // std::cout << "Rank" << source
       //     << ", lcts.best = " << lcts.externalGlobalBestDualBoundValue
@@ -2183,7 +2194,7 @@ BbParaLoadCoordinator::processTagCompletionOfCalculation(
                source << " is terminated in racing stage #########" << std::endl;
       }
       nSolvedRacingTermination = calcState->getNSolved();
-
+      nFairnodesnumber = calcState->getNFairnodes();
       if( !EPSEQ( calcState->getDualBoundValue(), -DBL_MAX, bbParaInitiator->getEpsilon() ) &&
             EPSEQ( minmalDualBoundNormalTermSolvers, DBL_MAX, bbParaInitiator->getEpsilon() ) )
       {
@@ -3827,6 +3838,9 @@ BbParaLoadCoordinator::outputTabularSolvingStatus(
             *osTabularSolvingStatus << std::setw(12) << std::right << dynamic_cast<BbParaRacingSolverPool *>(paraRacingSolverPool)->getNnodesLeftInBestSolver();
          }
 
+         // For racing phase, fair nodes information may not be available yet, so display placeholder
+         *osTabularSolvingStatus << std::setw(12) << std::right << "-";
+
          *osTabularSolvingStatus << std::setw(10) << std::right << paraRacingSolverPool->getNumActiveSolvers();
          if( bbParaInitiator->getGlobalBestIncumbentSolution() )
          {
@@ -3869,6 +3883,7 @@ BbParaLoadCoordinator::outputTabularSolvingStatus(
          {
             *osTabularSolvingStatus << std::setw(15) << std::right << nSolvedRacingTermination;
             *osTabularSolvingStatus << std::setw(12) << std::right << 0;
+            *osTabularSolvingStatus << std::setw(12) << std::right << "-";  // Fair nodes placeholder
             *osTabularSolvingStatus << std::setw(10) << std::right << 0;
             if( bbParaInitiator->getGlobalBestIncumbentSolution() )
             {
@@ -3895,6 +3910,7 @@ BbParaLoadCoordinator::outputTabularSolvingStatus(
          {
             *osTabularSolvingStatus << std::setw(15) << std::right << nSolvedInInterruptedRacingSolvers;
             *osTabularSolvingStatus << std::setw(12) << std::right << nTasksLeftInInterruptedRacingSolvers;
+            *osTabularSolvingStatus << std::setw(12) << std::right << nFairnodesnumber;  // Fair nodes placeholder
             *osTabularSolvingStatus << std::setw(10) << std::right << 0;
             if( bbParaInitiator->getGlobalBestIncumbentSolution() )
             {
@@ -3944,6 +3960,10 @@ BbParaLoadCoordinator::outputTabularSolvingStatus(
          *osTabularSolvingStatus << std::setw(12) << std::right << ( dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNnodesInSolvers()
                + paraNodePool->getNumOfNodes() );
       }
+      
+      // Output fair nodes count
+      *osTabularSolvingStatus << std::setw(12) << std::right << dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getTotalFairNodesSolved();
+      
       *osTabularSolvingStatus << std::setw(10) << std::right << paraSolverPool->getNumActiveSolvers();
       if( bbParaInitiator->getGlobalBestIncumbentSolution() )
       {
@@ -6221,6 +6241,7 @@ BbParaLoadCoordinator::processRacingRampUpTagCompletionOfCalculation(
             )
       {
          nSolvedRacingTermination = calcState->getNSolved();
+         nFairnodesnumber = calcState->getNFairnodes();
          if( !EPSEQ( calcState->getDualBoundValue(), -DBL_MAX, bbParaInitiator->getEpsilon() ) &&
                EPSEQ( minmalDualBoundNormalTermSolvers, DBL_MAX, bbParaInitiator->getEpsilon() ) )
          {

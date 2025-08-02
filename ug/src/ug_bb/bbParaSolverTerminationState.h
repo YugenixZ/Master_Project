@@ -58,6 +58,7 @@ protected:
    /// Counters related to this ParaSolver
    ///-------------------------------------
    int          totalNSolved;                        ///< accumulated number of nodes solved in this ParaSolver
+   int          totalNFairNodes;                     ///< accumulated number of fair nodes solved in this ParaSolver
    int          minNSolved;                          ///< minimum number of subtree nodes rooted from ParaNode
    int          maxNSolved;                          ///< maximum number of subtree nodes rooted from ParaNode
    int          totalNSent;                          ///< accumulated number of nodes sent from this ParaSolver
@@ -92,6 +93,7 @@ public:
          )
          : ParaSolverTerminationState(),
            totalNSolved(-1),
+           totalNFairNodes(-1),
            minNSolved(-1),
            maxNSolved(-1),
            totalNSent(-1),
@@ -127,6 +129,7 @@ public:
                                                              ///< 3: racing-ramp up
          int          inRank,                                ///< rank of this solver
          int          inTotalNSolved,                        ///< accumulated number of nodes solved in this ParaSolver
+         int          inTotalNFairNodes,                     ///< accumulated number of fair nodes solved in this ParaSolver
          int          inMinNSolved,                          ///< minimum number of subtree nodes rooted from ParaNode
          int          inMaxNSolved,                          ///< maximum number of subtree nodes rooted from ParaNode
          int          inTotalNSent,                          ///< accumulated number of nodes sent from this ParaSolver
@@ -163,6 +166,7 @@ public:
                                       inRunningTime, inIdleTimeToFirstParaNode, inIdleTimeBetweenParaNodes, inIddleTimeAfterLastParaNode,
                                       inIdleTimeToWaitNotificationId, inIdleTimeToWaitAckCompletion, inIdleTimeToWaitToken, inDetTime),
            totalNSolved(inTotalNSolved),
+           totalNFairNodes(inTotalNFairNodes),
            minNSolved(inMinNSolved),
            maxNSolved(inMaxNSolved),
            totalNSent(inTotalNSent),

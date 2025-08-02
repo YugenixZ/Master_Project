@@ -47,7 +47,7 @@ BbParaCalculationStateMpi::createDatatype(
       )
 {
 
-   const int nBlocks = 22;
+   const int nBlocks = 23;
 
    MPI_Datatype datatype;
 
@@ -181,6 +181,12 @@ BbParaCalculationStateMpi::createDatatype(
    displacements[21] = address - startAddress;
 
    MPI_CALL(
+      MPI_Get_address( &nFairNodesSolved, &address )
+   );
+   displacements[22] = address - startAddress;
+   types[22] = MPI_LONG_LONG;
+
+   MPI_CALL(
          MPI_Type_create_struct(nBlocks, blockLengths, displacements, types, &datatype)
          );
 
@@ -236,4 +242,7 @@ BbParaCalculationStateMpi::receive(
    MPI_CALL(
       MPI_Type_free( &datatype )
    );
+   
+   // Update base class nfairnodes field with the received nFairNodesSolved value
+   nfairnodes = static_cast<int>(nFairNodesSolved);
 }

@@ -77,6 +77,7 @@ public:
                                                               ///< 3: racing-ramp up
          int          inRank,                                 ///< rank of this solver
          int          inTotalNSolved,                         ///< accumulated number of nodes solved in this ParaSolver
+         int          inTotalNFairNodes,                      ///< accumulated number of fair nodes solved in this ParaSolver
          int          inMinNSolved,                           ///< minimum number of subtree nodes rooted from ParaNode
          int          inMaxNSolved,                           ///< maximum number of subtree nodes rooted from ParaNode
          int          inTotalNSent,                           ///< accumulated number of nodes sent from this ParaSolver
@@ -113,6 +114,7 @@ public:
            inInterrupted,
            inRank,
            inTotalNSolved,
+           inTotalNFairNodes,
            inMinNSolved,
            inMaxNSolved,
            inTotalNSent,

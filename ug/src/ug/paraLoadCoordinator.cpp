@@ -94,6 +94,7 @@ ParaLoadCoordinator::ParaLoadCoordinator(
         racingWinnerParams(0),
         racingTermination(false),
         nSolvedRacingTermination(0),
+        nFairnodesnumber(0),
         nTerminated(0),
         paraTimer(inParaTimer),
         paraDetTimer(inParaDetTimer),

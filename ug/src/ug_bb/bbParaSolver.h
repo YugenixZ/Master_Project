@@ -95,11 +95,12 @@ protected:
    int          nSolved;                              ///< number of nodes solved, that is, number of subtree nodes rooted from ParaNode
    int          nSent;                                ///< number of ParaNodes sent from this subtree rooted from the current ParaNode
    int          nSolvedWithNoPreprocesses;            ///< number of nodes solved when it is solved with no preprocesses
-
+   long long    nfairnodes;                           ///< number of fair nodes processed by this solver
    ///
    ///  Counters related to this BbParaSolver
    ///
    int          totalNSolved;                         ///< accumulated number of nodes solved in this BbParaSolver
+   int          totalNFairNodes;                      ///< accumulated number of fair nodes processed by this BbParaSolver
    int          minNSolved;                           ///< minimum number of subtree nodes rooted from ParaNode
    int          maxNSolved;                           ///< maximum number of subtree nodes rooted from ParaNode
    int          nTransferredLocalCutsFromSolver;      ///< number of local cuts transferred from this Solver
@@ -507,6 +508,12 @@ protected:
    /// @return the number of nodes solved
    ///
    virtual long long getNNodesSolved(
+         ) = 0;
+   ///
+   /// get number of fair nodes 
+   /// @return the number of fair nodes
+   ///
+   virtual long long getNFairnodesNum(
          ) = 0;
 
    ///

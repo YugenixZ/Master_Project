@@ -1640,6 +1640,45 @@ ScipParaSolver::getNNodesSolved(
    }
 }
 
+long long 
+ScipParaSolver::getNFairnodesNum()
+{
+   if( SCIPgetStage(scip) == SCIP_STAGE_SOLVING || SCIPgetStage(scip) == SCIP_STAGE_SOLVED )
+   {
+      // Calculate fair nodes using branching rule statistics
+      SCIP_Branchrule** branchrule = SCIPgetBranchrules(scip);
+      int nBranchrules = SCIPgetNBranchrules(scip);
+      long long nDomreductions = 0;  // Domain reductions from strong branching
+      long long nCutoffs = 0;        // Cutoffs from strong branching
+      
+      for( int i = 0; i < nBranchrules; ++i )
+      {
+         nDomreductions += SCIPbranchruleGetNDomredsFound(branchrule[i]);
+         nCutoffs += SCIPbranchruleGetNCutoffs(branchrule[i]);
+      }
+      
+      long long eta = SCIPgetNTotalNodes(scip);  // nodes processed
+      long long nu = nCutoffs;                   // cutoffs from branching
+      long long xi = nDomreductions;             // domain reductions
+      
+      // Fair nodes formula: F = η + 2ν + 2ξ
+      long long fairNodes = eta + 2 * nu + 2 * xi;
+      
+      return fairNodes;
+   }
+   else
+   {
+      if( SCIPgetStage(scip) >= SCIP_STAGE_PRESOLVING && SCIPgetStage(scip) <= SCIP_STAGE_INITSOLVE )
+      {
+         return 1;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+}
+
 int
 ScipParaSolver::getNNodesLeft(
       )
@@ -2489,6 +2528,7 @@ ScipParaSolver::~ScipParaSolver(
           interrupted,
           paraComm->getRank(),
           totalNSolved,
+          totalNFairNodes,
           minNSolved,
           maxNSolved,
           totalNSent,

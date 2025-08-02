@@ -1359,6 +1359,7 @@ protected:
    std::size_t                          nLimitCollectingModeSolvers; ///< limit number of Solvers that can be in collecting mode
    unsigned long long                   nNodesSolvedInSolvers;       ///< number of nodes solved in current running Solvers
    unsigned long long                   nTotalNodesSolved;           ///< number of nodes solved : updated at termination of subtree computation
+   unsigned long long                   nTotalFairNodesSolved;       ///< number of fair nodes solved : updated at termination of subtree computation
    unsigned long long                   nNodesInSolvers;             ///< number of nodes in all Solvers
    bool                                 collectingMode;              ///< indicate that this system is in collecting mode or not
    bool                                 breakingFirstSubtree;        ///< breaking the first subtree
@@ -1407,6 +1408,7 @@ public:
            nCollectingModeSolvers(0),
            nNodesSolvedInSolvers(0),
            nTotalNodesSolved(0),
+           nTotalFairNodesSolved(0),
            nNodesInSolvers(0),  // rampUpPhase(false),
            collectingMode(false),
            breakingFirstSubtree(false),
@@ -1471,6 +1473,7 @@ public:
            nCollectingModeSolvers(0),
            nNodesSolvedInSolvers(0),
            nTotalNodesSolved(0),
+           nTotalFairNodesSolved(0),
            nNodesInSolvers(0),  // rampUpPhase(false),
            collectingMode(false),
            breakingFirstSubtree(false),
@@ -1671,6 +1674,15 @@ public:
    }
 
    ///
+   /// get number of fair nodes solved in all Solvers: updated at termination of subtree computation
+   ///
+   virtual unsigned long long getTotalFairNodesSolved(
+         )
+   {
+      return nTotalFairNodesSolved;
+   }
+
+   ///
    /// add number of nodes solved in all Solvers
    ///
    virtual void addTotalNodesSolved(
@@ -1678,6 +1690,16 @@ public:
          )
    {
       nTotalNodesSolved += num;
+   }
+
+   ///
+   /// add number of fair nodes solved in all Solvers
+   ///
+   virtual void addTotalFairNodesSolved(
+         unsigned long long num       ///< number of fair nodes solved
+         )
+   {
+      nTotalFairNodesSolved += num;
    }
 
    ///
@@ -2418,6 +2440,7 @@ protected:
    int                       nEvaluationStage;         ///< number of Solvers that are in evaluation stage
    long long                 nNodesSolvedInBestSolver; ///< number of nodes solved in the best Solver
    long long                 nNodesInBestSolver;       ///< number of nodes in the best Solver
+   long long                 nFairNodesSolvedInBestSolver; ///< number of fair nodes solved in the best Solver
    size_t                    nActiveSolvers;           ///< number of active Solvers
    size_t                    nInactiveSolvers;         ///< number of inactive Solvers
    double                    bestDualBound;            ///< current best dual bound value
@@ -2694,6 +2717,15 @@ public:
       return nNodesSolvedInBestSolver;
    }
 
+   ///
+   /// get number of nodes solved in the best Solver
+   /// @return number of nodes solved in the best Solver
+   ///
+   virtual long long getNFairnodesSolvedInBestSolver(
+         )
+   {
+      return nFairNodesSolvedInBestSolver;
+   }
    ///
    /// get number of nodes left in the best Solver
    /// @return number of nodes left in the best Solver

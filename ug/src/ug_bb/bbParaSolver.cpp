@@ -81,7 +81,9 @@ BbParaSolver::BbParaSolver(
       nSolved(0),
       nSent(0),
       nSolvedWithNoPreprocesses(0),
+      nfairnodes(0),
       totalNSolved(0),
+      totalNFairNodes(0),
       minNSolved(INT_MAX),
       maxNSolved(INT_MIN),
       nTransferredLocalCutsFromSolver(0),
@@ -188,6 +190,7 @@ BbParaSolver::sendSolverTerminationState(
           interrupted,
           paraComm->getRank(),
           totalNSolved,
+          totalNFairNodes,
           minNSolved,
           maxNSolved,
           totalNSent,
@@ -924,7 +927,7 @@ BbParaSolver::run(
       previousIdleTimeToWaitToken = idleTimeToWaitToken;
 
       nSolved += getNNodesSolved();       // In case of self-split, the number of nodes solved needs to be added for root node
-
+      nfairnodes += getNFairnodesNum();
       if( paraParams->getBoolParamValue(CheckEffectOfRootNodePreprocesses) && nSolved == 1)
       {
          solveToCheckEffectOfRootNodePreprocesses();
@@ -1413,7 +1416,8 @@ BbParaSolver::sendCompletionOfCalculation(
          nSimplexIterRoot, averageSimplexIter,
          nTransferredLocalCuts, minTransferredLocalCuts, maxTransferredLocalCuts,
          nTransferredBendersCuts, minTransferredBendersCuts, maxTransferredBendersCuts,
-         getNRestarts(), minIisum, maxIisum, minNii, maxNii, solverDualBound, nSelfSplitNodesLeft ));
+         getNRestarts(), minIisum, maxIisum, minNii, maxNii, solverDualBound, nSelfSplitNodesLeft, nfairnodes ));
+   
    paraCalculationState->send(paraComm, 0, tag);
    delete paraCalculationState;
 
@@ -1429,6 +1433,7 @@ BbParaSolver::sendCompletionOfCalculation(
       maxNSolved = nSolved;
    }
    totalNSolved += nSolved;
+   totalNFairNodes += nfairnodes;
 
    totalNSent += nSent;
    totalNImprovedIncumbent += nImprovedIncumbent;
@@ -1469,6 +1474,7 @@ BbParaSolver::sendCompletionOfCalculation(
    }
 
    nSolved = 0;
+   nfairnodes = 0;
    nSent = 0;
    nImprovedIncumbent = 0;
    nSolvedWithNoPreprocesses = 0;
@@ -1509,6 +1515,7 @@ BbParaSolver::sendCompletionOfCalculation(
             3,    /** interupted flag == 3 means the information for racing ramp-up */
             paraComm->getRank(),
             totalNSolved,
+            totalNFairNodes,
             minNSolved,
             maxNSolved,
             totalNSent,
@@ -1549,6 +1556,7 @@ BbParaSolver::sendCompletionOfCalculation(
          minNSolved = INT_MAX;
          maxNSolved = INT_MIN;
          totalNSolved = 0;
+         totalNFairNodes = 0;
          totalNSent = 0;
          totalNImprovedIncumbent = 0;
 //         if( newNode )
@@ -1580,6 +1588,7 @@ BbParaSolver::sendCompletionOfCalculation(
     		2,    /** interupted flag == 2 means the information for checkpoint */
          paraComm->getRank(),
          totalNSolved,
+         totalNFairNodes,
          minNSolved,
          maxNSolved,
          totalNSent,
@@ -1652,7 +1661,7 @@ BbParaSolver::sendCompletionOfCalculationWithoutSolving(
          0, 0.0,
          0, 0, 0,
          0, 0, 0,
-         0, 0, 0, 0, 0, dualBound, nSelfSplitNodesLeft ));
+         0, 0, 0, 0, 0, dualBound, nSelfSplitNodesLeft, totalNFairNodes ));
    paraCalculationState->send(paraComm, 0, tag);
    delete paraCalculationState;
 
@@ -1671,6 +1680,7 @@ BbParaSolver::sendCompletionOfCalculationWithoutSolving(
       2,    /** interupted flag == 2 means the information for checkpoint */
       paraComm->getRank(),
       totalNSolved,
+      totalNFairNodes,
       minNSolved,
       maxNSolved,
       totalNSent,

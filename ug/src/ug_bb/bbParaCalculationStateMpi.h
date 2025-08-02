@@ -92,13 +92,14 @@ public:
          int    inMinNii,                     ///< minimum number of integer infeasibility
          int    inMaxNii,                     ///< maximum number of integer infeasibility
          double inDualBound,                  ///< final dual Bound value
-         int    inNSelfSplitNodesLeft         ///< number of self-split nodes left
+         int    inNSelfSplitNodesLeft,        ///< number of self-split nodes left
+         long long inNFairNodesSolved         ///< number of fair nodes solved
          )
          : BbParaCalculationState(inCompTime,inRootTime, inNSolved, inNSent,inNImprovedIncumbent,inTerminationState,inNSolvedWithNoPreprocesses,
                inNSimplexIterRoot, inAverageSimplexIter,
                inNTransferredLocalCuts, inMinTransferredLocalCuts, inMaxTransferredLocalCuts,
                inNTransferredBendersCuts, inMinTransferredBendersCuts, inMaxTransferredBendersCuts,
-               inNRestarts, inMinIisum, inMaxIisum, inMinNii, inMaxNii, inDualBound, inNSelfSplitNodesLeft )
+               inNRestarts, inMinIisum, inMaxIisum, inMinNii, inMaxNii, inDualBound, inNSelfSplitNodesLeft, inNFairNodesSolved )
    {
    }
 

@@ -241,6 +241,7 @@ public:
                                                             ///<                                                  2: checkpoint, 3: racing-ramp up
                int    rank,                                 ///< rank of this solver
                int    totalNSolved,                         ///< accumulated number of nodes solved in this ParaSolver
+               int    totalNFairNodes,                      ///< accumulated number of fair nodes solved in this ParaSolver
                int    minNSolved,                           ///< minimum number of subtree nodes rooted from ParaNode
                int    maxNSolved,                           ///< maximum number of subtree nodes rooted from ParaNode
                int    totalNSent,                           ///< accumulated number of nodes sent from this ParaSolver

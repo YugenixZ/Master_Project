@@ -130,8 +130,8 @@ protected:
    /// racing termination information
    ///
    bool               racingTermination;                          ///< racing termination flag, true: if a racing solver solved the problem
-   int                nSolvedRacingTermination;                   ///< number of tasks solved at the racing termination solver
-
+   int                nSolvedRacingTermination;                   ///< number of tasks solved at the racing termination solver 
+   int                nFairnodesnumber;                           ///< number of fair nodes solved at the racing termination solver
    ///
    /// counter to check if all solvers are terminated or not
    ///

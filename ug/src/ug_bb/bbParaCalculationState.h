@@ -71,6 +71,7 @@ protected:
    int    maxNii;                     ///< maximum number of integer infeasibility
    double dualBound;                  ///< final dual bound value
    int    nSelfSplitNodesLeft;        ///< number of self-split nodes left
+   long long nFairNodesSolved;        ///< number of fair nodes solved
 public:
 
    ///
@@ -126,9 +127,10 @@ public:
          int    inMinNii,                     ///< minimum number of integer infeasibility
          int    inMaxNii,                     ///< maximum number of integer infeasibility
          double inDualBound,                  ///< final dual Bound value
-         int    inNSelfSplitNodesLeft         ///< number of self-split nodes left
+         int    inNSelfSplitNodesLeft,        ///< number of self-split nodes left
+         long long inNFairNodesSolved         ///< number of fair nodes solved
          )
-         : ParaCalculationState(inCompTime, inNSolved, inTerminationState),
+         : ParaCalculationState(inCompTime, inNSolved, static_cast<int>(inNFairNodesSolved), inTerminationState),
            rootTime(inRootTime),
            nSent(inNSent),
            nImprovedIncumbent(inNImprovedIncumbent),
@@ -147,7 +149,8 @@ public:
            minNii(inMinNii),
            maxNii(inMaxNii),
            dualBound(inDualBound),
-           nSelfSplitNodesLeft(inNSelfSplitNodesLeft)
+           nSelfSplitNodesLeft(inNSelfSplitNodesLeft),
+           nFairNodesSolved(inNFairNodesSolved)
    {
    }
 
@@ -256,6 +259,16 @@ public:
          )
    {
       return nSelfSplitNodesLeft;
+   }
+
+   ///
+   /// getter of the number of fair nodes solved
+   /// @return the number of fair nodes solved
+   ///
+   long long getNFairNodesSolved(
+         )
+   {
+      return nFairNodesSolved;
    }
 
    ///

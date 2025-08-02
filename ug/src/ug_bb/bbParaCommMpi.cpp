@@ -132,7 +132,8 @@ BbParaCommMpi::createParaCalculationState(
                int    minNii,                     ///< minimum number of integer infeasibility
                int    maxNii,                     ///< maximum number of integer infeasibility
                double dualBound,                  ///< final dual bound value
-               int    nSelfSplitNodesLeft         ///< number of self-split nodes left
+               int    nSelfSplitNodesLeft,        ///< number of self-split nodes left
+               long long nFairNodesSolved         ///< number of fair nodes solved
            )
 {
    return new BbParaCalculationStateMpi(
@@ -157,7 +158,8 @@ BbParaCommMpi::createParaCalculationState(
                   minNii,
                   maxNii,
                   dualBound,
-                  nSelfSplitNodesLeft
+                  nSelfSplitNodesLeft,
+                  nFairNodesSolved
               );
 }
 
@@ -239,6 +241,7 @@ BbParaCommMpi::createParaSolverTerminationState(
                                                   ///<                                                  2: checkpoint, 3: racing-ramp up
                int    rank,                       ///< rank of this solver */
                int    totalNSolved,               ///< accumulated number of nodes solved in this ParaSolver
+               int    totalNFairNodes,            ///< accumulated number of fair nodes solved in this ParaSolver
                int    minNSolved,                 ///< minimum number of subtree nodes rooted from ParaNode
                int    maxNSolved,                 ///< maximum number of subtree nodes rooted from ParaNode
                int    totalNSent,                 ///< accumulated number of nodes sent from this ParaSolver
@@ -276,6 +279,7 @@ BbParaCommMpi::createParaSolverTerminationState(
                  interrupted,
                  rank,
                  totalNSolved,
+                 totalNFairNodes,
                  minNSolved,
                  maxNSolved,
                  totalNSent,

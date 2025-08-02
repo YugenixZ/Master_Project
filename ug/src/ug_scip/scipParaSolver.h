@@ -150,6 +150,7 @@ protected:
    virtual void freeSubproblem();
    virtual void solve();
    long long getNNodesSolved();
+   long long getNFairnodesNum();
    int getNNodesLeft();
    double getDualBoundValue();
    void reinitialize();
@@ -200,7 +201,7 @@ public:
    int getOriginalPriority(){
       return originalPriority;
    }
-
+   
    void saveOriginalPriority(){
       int numnodesels = SCIPgetNNodesels( scip );
       SCIP_NODESEL** nodesels = SCIPgetNodesels( scip );

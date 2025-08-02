@@ -53,6 +53,7 @@ class ParaCalculationState
 protected:
    double compTime;                   ///< computation time of this ParaTask
    int    nSolved;                    ///< the number of tasks solved
+   int    nfairnodes;                ///< the number of fair nodes solved  
    int    terminationState;           ///< indicate whether if this computation is terminationState or not. 0: no, 1: terminationState
                                       ///< meaning can be defined in derived class
 public:
@@ -64,6 +65,7 @@ public:
          )
          : compTime(0.0),
            nSolved(-1),
+           nfairnodes(-1),
            terminationState(-1)
    {
    }
@@ -74,10 +76,12 @@ public:
    ParaCalculationState(
          double inCompTime,                   ///< computation time of this ParaTask
          int    inNSolved,                     ///< the number of tasks solved
+         int    inNFairnodes,                  ///< the number of fair nodes solved
          int    inTerminationState            ///< indicate whether if this computation is terminationState or not. 0: no, 1: terminationState
          )
          : compTime(inCompTime),
            nSolved(inNSolved),
+           nfairnodes(inNFairnodes),
            terminationState(inTerminationState)
    {
    }
@@ -110,6 +114,16 @@ public:
          )
    {
       return nSolved;
+   }
+
+   ///
+   /// geeter of the number of tasks solved in a subproblem
+   /// @return the number of tasks
+   ///
+   int getNFairnodes(
+         )
+   {
+      return nfairnodes;
    }
 
    ///

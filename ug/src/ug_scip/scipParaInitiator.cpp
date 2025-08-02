@@ -2286,6 +2286,14 @@ ScipParaInitiator::setNumberOfNodesSolved(
 {
    nSolved = n;
 }
+/** set number of fair nodes solved */
+void
+ScipParaInitiator::setNumberOfFairNodesSolved(
+      long long n
+      )
+{
+   nfairnodes = n;
+}
 
 /** set final dual bound  */
 void
@@ -2358,6 +2366,8 @@ ScipParaInitiator::outputFinalSolverStatistics(
    *os << "  presolving       : " << SCIPgetPresolvingTime(scip) << " (included in solving)" << std::endl;
    *os << "B&B Tree           :" << std::endl;
    *os << "  nodes (total)    : " << nSolved << std::endl;
+   *os << "  nodes (solved)   : " << SCIPgetNNodes(scip) << std::endl;
+   *os << "  fairnodes        : " << nfairnodes << std::endl;
    *os << "Solution           :" << std::endl;
    *os << "  Solutions found  : " << SCIPgetNSols(scip) << std::endl;
    SCIP_Real primalbound = SCIPinfinity(scip);
