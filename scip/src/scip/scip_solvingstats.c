@@ -98,6 +98,8 @@
 #include "scip/sol.h"
 #include "scip/stat.h"
 #include "scip/struct_mem.h"
+
+
 #include "scip/struct_primal.h"
 #include "scip/struct_prob.h"
 #include "scip/struct_scip.h"
@@ -109,6 +111,10 @@
 #include "scip/var.h"
 #include <string.h>
 
+/* Forward declarations for GeneralDisjunction branching rule functions */
+extern SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPs(SCIP* scip);
+extern SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPNodes(SCIP* scip);
+extern SCIP_Longint SCIPbranchruleGeneralDisjunctionGetProbingLPs(SCIP* scip);
 /** gets number of branch and bound runs performed, including the current run
  *
  *  @return the number of branch and bound runs performed, including the current run

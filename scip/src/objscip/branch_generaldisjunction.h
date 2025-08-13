@@ -118,7 +118,10 @@ SCIP_EXPORT
 SCIP_RETCODE SCIPincludeBranchruleGeneralDisjunction(
         SCIP*                 scip                /**< SCIP data structure */
 );
-
+SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPNodes(SCIP* scip);
+SCIP_Longint SCIPbranchruleGeneralDisjunctionGetProbingLPs(SCIP* scip);
+SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPs(SCIP* scip);
+void SCIPbranchruleGeneralDisjunctionResetCounters(void);
 /**@addtogroup BRANCHINGRULES
  *
  * @{

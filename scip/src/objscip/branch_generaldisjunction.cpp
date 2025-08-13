@@ -69,166 +69,30 @@ extern "C" {
  * Data structures
  */
 /** branching rule data */
+static SCIP_Longint g_total_milp_nodes = 0;      // Fair nodes from MILP solving
+static SCIP_Longint g_total_probing_lps = 0;     // Probing LP solves
+static SCIP_Longint g_total_milps = 0;           // MILP solves (submodels)
+
 class BranchruleGeneralDisjunction : public scip::ObjBranchrule {
 public:
-    int M = 1;
-    int k = 5;
-    SCIP_Real base_delta = 1e-4;
+   int M = 1;
+   int k = 5;
+   SCIP_Real base_delta = 1e-4;
+   const double TIME_LIMIT_SECONDS = 1000.0;
 
-    explicit BranchruleGeneralDisjunction(SCIP* scip)
-            : ObjBranchrule(scip, scip_name_, scip_desc_, scip_priority_, scip_maxdepth_, scip_maxbounddist_) {}
-    virtual SCIP_DECL_BRANCHEXECLP(scip_execlp);
+   explicit BranchruleGeneralDisjunction(SCIP* scip)
+         : ObjBranchrule(scip, scip_name_, scip_desc_, scip_priority_, scip_maxdepth_, scip_maxbounddist_) {}
+   virtual SCIP_DECL_BRANCHEXECLP(scip_execlp);
 
-};/*
+};
+
+/*
  * Local methods
  */
-
-
 
  /* 
  * Methods for testing
  */
-static
-SCIP_Real createTestModel(const CSRMatrix A, const vector<SCIP_Real>& b, const vector<SCIP_Real>& c) {
-   SCIP* model_test = nullptr;
-   SCIP_CALL_ABORT(SCIPcreate(&model_test));
-   SCIP_CALL_ABORT(SCIPincludeDefaultPlugins(model_test));
-   SCIP_CALL_ABORT(SCIPcreateProbBasic(model_test, "test_model"));
-   SCIP_CALL_ABORT(SCIPreadParams(model_test, "/scratch/htc/yzhou/exp_scipmip/settings/default1.set"));
-   int n = c.size();
-   int m = b.size();
-   vector<SCIP_VAR*> vars(n);
-
-   // Create variables
-   for (int i = 0; i < n; ++i) {
-      SCIP_VAR* var;
-      SCIP_RETCODE retcode = SCIPcreateVarBasic(model_test, &var, ("x_" + to_string(i)).c_str(), -SCIPinfinity(model_test), SCIPinfinity(model_test), c[i], SCIP_VARTYPE_CONTINUOUS);
-      if (retcode != SCIP_OKAY) {
-         cerr << "Error creating variable x_" << i << endl;
-         for (int j = 0; j < i; ++j) {
-            SCIPreleaseVar(model_test, &vars[j]);
-         }
-         SCIPfree(&model_test);
-         return 1e+20; // Return a large value if variable creation fails
-      }
-      SCIP_CALL_ABORT(SCIPaddVar(model_test, var));
-      // SCIP_CALL_ABORT(SCIPcreateVarBasic(model_test, &var, ("x_" + to_string(i)).c_str(), -SCIPinfinity(model_test), SCIPinfinity(model_test), c[i], SCIP_VARTYPE_CONTINUOUS));
-      // SCIP_CALL_ABORT(SCIPaddVar(model_test, var));
-      vars[i] = var;
-   }
-
-   // Add constraints Ax >= b
-   for (int i = 0; i < m; ++i) {
-      SCIP_CONS* cons;
-      SCIP_RETCODE retcode = SCIPcreateConsBasicLinear(model_test, &cons, ("cons_" + to_string(i)).c_str(), 0, nullptr, nullptr, b[i], SCIPinfinity(model_test));
-      if (retcode != SCIP_OKAY) {
-         cerr << "Error creating constraint cons_" << i << endl;
-         for (int j = 0; j < n; ++j) {
-            SCIPreleaseVar(model_test, &vars[j]);
-         }
-         SCIPfree(&model_test);
-         return 1e+20;
-      }
-      for (int j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
-         SCIP_CALL_ABORT(SCIPaddCoefLinear(model_test, cons, vars[A.col_indices[j]], A.values[j]));
-      }
-      SCIP_CALL_ABORT(SCIPaddCons(model_test, cons));
-      SCIP_CALL_ABORT(SCIPreleaseCons(model_test, &cons));
-   }
-
-   // Set objective function
-   SCIP_CALL_ABORT(SCIPsetObjsense(model_test, SCIP_OBJSENSE_MINIMIZE));
-   SCIPsetMessagehdlrQuiet(model_test, TRUE);
-   SCIP_RETCODE retcode = SCIPsolve(model_test);
-   if (retcode != SCIP_OKAY) {
-      cerr << "Error solving model_test" << endl;
-      for (int j = 0; j < n; ++j) {
-         SCIPreleaseVar(model_test, &vars[j]);
-      }  
-      SCIPfree(&model_test);
-      return 1e+20;
-   }
-   SCIP_Status status = SCIPgetStatus(model_test);
-   if (status == SCIP_STATUS_OPTIMAL) {
-      SCIP_Real sol_primal = SCIPgetPrimalbound(model_test);
-      for (int i = 0; i < n; ++i) {
-         SCIP_CALL_ABORT(SCIPreleaseVar(model_test, &vars[i]));
-      }
-      SCIPfree(&model_test);
-      return sol_primal;
-   } else {
-      for (int i = 0; i < n; ++i) {
-         SCIP_CALL_ABORT(SCIPreleaseVar(model_test, &vars[i]));
-      }
-      SCIPfree(&model_test);
-      return 1e+20; // Return a large value if not optimal
-   }
-}
-
-/*
-* Create system (2) for testing
-*/
-static
-SCIP_Real createTestModel_2(const CSRMatrix A, const vector<SCIP_Real>& b, const vector<SCIP_Real>& c,
-                            const vector<SCIP_Real>& pi_solution, SCIP_Real pi0_solution, bool is_left) {
-   SCIP* model_test = nullptr;
-   SCIP_CALL_ABORT(SCIPcreate(&model_test));
-   SCIP_CALL_ABORT(SCIPincludeDefaultPlugins(model_test));
-   SCIP_CALL_ABORT(SCIPcreateProbBasic(model_test, "test_model_2"));
-   SCIP_CALL_ABORT(SCIPreadParams(model_test, "/scratch/htc/yzhou/exp_scipmip/settings/default1.set"));
-   size_t n = c.size();
-   size_t m = b.size();
-   vector<SCIP_VAR*> vars(n);
-
-   // Create variables
-   if (is_left){
-      for (size_t i = 0; i < n; ++i) {
-         SCIP_VAR* var;
-         SCIP_CALL_ABORT(SCIPcreateVarBasic(model_test, &var, ("x_" + to_string(i)).c_str(), -SCIPinfinity(model_test), SCIPinfinity(model_test), pi_solution[i], SCIP_VARTYPE_CONTINUOUS));
-         SCIP_CALL_ABORT(SCIPaddVar(model_test, var));
-         vars[i] = var;
-      }
-   } else {
-      for (size_t i = 0; i < n; ++i) {
-         SCIP_VAR* var;
-         SCIP_CALL_ABORT(SCIPcreateVarBasic(model_test, &var, ("x_" + to_string(i)).c_str(), -SCIPinfinity(model_test), SCIPinfinity(model_test), -pi_solution[i], SCIP_VARTYPE_CONTINUOUS));
-         SCIP_CALL_ABORT(SCIPaddVar(model_test, var));
-         vars[i] = var;
-      }
-   }
-
-   // Add constraints Ax >= b
-   for (size_t i = 0; i < m; ++i) {
-      SCIP_CONS* cons;
-      SCIP_CALL_ABORT(SCIPcreateConsBasicLinear(model_test, &cons, ("cons_" + to_string(i)).c_str(), 0, nullptr, nullptr, b[i], SCIPinfinity(model_test)));
-      for (int j = A.row_ptr[i]; j < A.row_ptr[i + 1]; ++j) {
-         SCIP_CALL_ABORT(SCIPaddCoefLinear(model_test, cons, vars[A.col_indices[j]], A.values[j]));
-      }
-      SCIP_CALL_ABORT(SCIPaddCons(model_test, cons));
-      SCIP_CALL_ABORT(SCIPreleaseCons(model_test, &cons));
-   }
-
-   // Set objective function
-   SCIP_CALL_ABORT(SCIPsetObjsense(model_test, SCIP_OBJSENSE_MINIMIZE));
-   SCIPsetMessagehdlrQuiet(model_test, TRUE);
-
-   SCIP_CALL_ABORT(SCIPsolve(model_test));
-   SCIP_Status status = SCIPgetStatus(model_test);
-   if (status == SCIP_STATUS_OPTIMAL) {
-      SCIP_Real sol_primal = SCIPgetPrimalbound(model_test);
-      for (size_t i = 0; i < n; ++i) {
-         SCIP_CALL_ABORT(SCIPreleaseVar(model_test, &vars[i]));
-      }
-      SCIPfree(&model_test);
-      return sol_primal;
-   } else {
-      for (size_t i = 0; i < n; ++i) {
-         SCIP_CALL_ABORT(SCIPreleaseVar(model_test, &vars[i]));
-      }
-      SCIPfree(&model_test);
-      return 1e+20; // Return a large value if not optimal
-   }
-}  
 
 /* Create the small submodel for testing system (4)*/
 static
@@ -241,7 +105,8 @@ SubmodelVars submodelsmall_create(
        int k,
        SCIP_Real delta,
        SCIP_Real zl,
-       SCIP_Real matrix_range
+       SCIP_Real matrix_range,
+       SCIP_Real time_limit
 ){
    SCIP_Real delta_scaled = 0.1;
    SCIP_Real delta_scaled_minus = delta_scaled - 1;
@@ -436,15 +301,18 @@ SubmodelVars submodelsmall_create(
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
 
-   retcode = SCIPsetRealParam(model_sub_s, "limits/time", 1000);
+   retcode = SCIPsetRealParam(model_sub_s, "limits/time", time_limit);
    if (retcode != SCIP_OKAY) {
       SCIPprintError(retcode);
       SCIPfree(&model_sub_s);
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
    SCIPsetMessagehdlrQuiet(model_sub_s, TRUE);
+
    if (matrix_range < 1e-8){
       matrix_range = 1e-8;
+   } else if (matrix_range > 1e-6) {
+      matrix_range = 1e-6;
    }
    SCIPsetRealParam(model_sub_s, "numerics/feastol", matrix_range);
    SCIPsetRealParam(model_sub_s, "numerics/sumepsilon", matrix_range);
@@ -510,6 +378,7 @@ MatrixData getConstraintMatrix(SCIP* scip) {
       SCIP_COL **lp_cols = SCIPgetLPCols(scip);
 
       for (size_t j = 0; j < LP_data.c.size(); ++j) {
+         
          x_star[j] = SCIPgetSolVal(scip, nullptr, SCIPcolGetVar(lp_cols[j]));
       }
    }
@@ -612,7 +481,8 @@ SubmodelVars submodel_create(
         int k,
         SCIP_Real delta,
         SCIP_Real zl,
-        SCIP_Real matrix_range
+        SCIP_Real matrix_range,
+        SCIP_Real time_limit
 ){
    // Create the submodel 
    size_t m = b.size();
@@ -846,7 +716,7 @@ SubmodelVars submodel_create(
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
 
-   retcode = SCIPsetRealParam(model_sub, "limits/time", 1000);
+   retcode = SCIPsetRealParam(model_sub, "limits/time", time_limit);
    if (retcode != SCIP_OKAY) {
       SCIPprintError(retcode);
       SCIPfree(&model_sub);
@@ -871,146 +741,6 @@ SubmodelVars submodel_create(
    return SubmodelVars{model_sub, p, s_L, q, s_R, pi_plus, pi_minus, pi0};
 }
 
-// /* Create the CK model for the resulting solution from sub model*/
-// static
-// pair<SCIP_Status, SCIP_Real> ckmodel_create(
-//         const string& name,
-//         CSRMatrix A,
-//         vector<SCIP_Real> b,
-//         vector<SCIP_Real> c,
-//         int m,
-//         int n,
-//         vector<int> pi_solution,
-//         int pi0_solution,
-//         const string& condition
-// ) {
-//    SCIP* model_ck;
-//    SCIP_RETCODE retcode;
-//    vector<SCIP_VAR*> x(n);
-
-
-//    retcode = SCIPcreate(&model_ck);
-//    if (retcode != SCIP_OKAY) {
-//       SCIPprintError(retcode);
-//       return {SCIP_STATUS_INFEASIBLE,1e+20};
-//    }
-
-//    retcode = SCIPincludeDefaultPlugins(model_ck);
-//    if (retcode != SCIP_OKAY) {
-//       SCIPprintError(retcode);
-//       SCIPfree(&model_ck);
-//       return {SCIP_STATUS_INFEASIBLE,1e+20};
-//    }
-
-//    retcode = SCIPcreateProbBasic(model_ck, name.c_str());
-//    if (retcode != SCIP_OKAY) {
-//       SCIPprintError(retcode);
-//       return {SCIP_STATUS_INFEASIBLE,1e+20};
-//    }
-//    SCIPreadParams(model_ck, "/scratch/htc/yzhou/exp_scipmip/settings/default1.set");
-//    for (int i = 0; i < n; ++i) {
-//       SCIP_VAR * var;
-//       SCIPcreateVarBasic(model_ck, &var, ("x_" + to_string(i)).c_str(), -SCIPinfinity(model_ck), SCIPinfinity(model_ck), c[i], SCIP_VARTYPE_CONTINUOUS);
-//       SCIPaddVar(model_ck, var);
-//       x[i] = var;
-//    }
-
-//    for (int j = 0; j < m; ++j) {
-//       SCIP_CONS * cons;
-//       SCIPcreateConsBasicLinear(model_ck, &cons, ("cons_" + to_string(j)).c_str(), 0, NULL, NULL, b[j], SCIPinfinity(model_ck));
-//       for (int i = A.row_ptr[j]; i < A.row_ptr[j + 1]; ++i) {
-//          SCIPaddCoefLinear(model_ck, cons, x[A.col_indices[i]], A.values[i]);
-//       }
-//       SCIPaddCons(model_ck, cons);
-//       SCIPreleaseCons(model_ck, &cons);
-//    }
-
-//    if (condition == "pi0") {
-//       SCIP_CONS* cons;
-//       SCIPcreateConsLinear(model_ck, &cons, "cons_pi0", 0, nullptr, nullptr, -SCIPinfinity(model_ck), pi0_solution, 
-//          TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE);
-//       for (int i = 0; i < n; ++i) {
-//          if( SCIPisFeasZero(model_ck, pi_solution[i]) ) {
-//             continue;
-//          }
-//          SCIPaddCoefLinear(model_ck, cons, x[i], pi_solution[i]);
-//       }
-//       SCIPaddCons(model_ck, cons);
-//       SCIPreleaseCons(model_ck, &cons);
-//    }
-//    else if (condition == "pi0+1") {
-//       SCIP_CONS* cons;
-//       int pi0_plus = pi0_solution + 1;
-//       SCIPcreateConsLinear(model_ck, &cons, "cons_pi0_plus_1", 0, NULL, NULL, pi0_plus, SCIPinfinity(model_ck),
-//        TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE);
-//       for (int i = 0; i < n; ++i) {
-//          if( SCIPisFeasZero(model_ck, pi_solution[i]) ) {
-//             continue;
-//          }
-//          SCIPaddCoefLinear(model_ck, cons, x[i], pi_solution[i]);
-//       }
-//       SCIPaddCons(model_ck, cons);
-//       SCIPreleaseCons(model_ck, &cons);
-//    }
-
-//    SCIPsetObjsense(model_ck, SCIP_OBJSENSE_MINIMIZE);
-//    SCIPsetMessagehdlrQuiet(model_ck, TRUE);
-//    SCIPsolve(model_ck);
-//    SCIP_Status status = SCIPgetStatus(model_ck);
-//    if (status == SCIP_STATUS_OPTIMAL) {
-//       SCIP_Real sol_primal = SCIPgetPrimalbound(model_ck);
-//       for (int i = 0; i < n; ++i) {
-//          SCIPreleaseVar(model_ck, &x[i]);
-//       }
-//       SCIPfree(&model_ck);
-//       return {status, sol_primal};
-//    }
-//    else {
-//       for (int i = 0; i < n; ++i) {
-//          SCIPreleaseVar(model_ck, &x[i]);
-//       }
-//       SCIPfree(&model_ck);
-//       return {status, 1e+20};
-//    }
-// };
-
-// /* Method for checking feasibility of the solution from check model*/
-// static
-// pair<string, SCIP_Real> check_feasibility(
-//         SCIP_Status sol_status,
-//         SCIP_Real sol_val,
-//         SCIP_Real Best_zl,
-//         SCIP_Real node_ub
-// )
-// {
-//    string status;
-//    SCIP_Real est;
-//    if (sol_status == SCIP_STATUS_OPTIMAL) {
-//       if (sol_val - node_ub > 1e-6) {
-//          status = "infeasible";  
-//          est = 1e+20;
-//       } 
-//       else{
-//          if (sol_val - Best_zl > 1e-6) {
-//             status = "updated_zl";
-//             //Retrieve the objective value of the solution.
-//             est = sol_val;
-//          } else {
-//             status = "obj_val less than Best_zl";
-//             est = sol_val;
-//             return {status, est};
-//          }
-//       }
-//    }
-//    else {
-//       status = "ckmodel infeasible";
-//       est = 1e+20;
-//       return {status, est};
-//    }
-//    return {status, est};
-// }
-
-
 /* Main function for solving sub-model*/
 static
 vector<Submodel_sols> submodel_solve(
@@ -1027,8 +757,11 @@ vector<Submodel_sols> submodel_solve(
         int k,
         SCIP_Real node_ub,
         vector<SCIP_VAR*> lp_vars,
-        SCIP_Real matrix_range
+        SCIP_Real matrix_range,
+        SCIP_Real time_limit
 ){
+   // Simple check on system (4)
+   auto start_time = std::chrono::high_resolution_clock::now();
 
    queue<SCIP_Real> estL_list;
    queue<SCIP_Real> estR_list;
@@ -1039,13 +772,29 @@ vector<Submodel_sols> submodel_solve(
    queue<string> Status_r;
    vector<Submodel_sols> final_results;
 
-   // Simple check on system (4)
 
-   SubmodelVars preck_submodel = submodelsmall_create(scip, A, b, c, M, k, delta, zl_low, matrix_range);
+
+   SubmodelVars preck_submodel = submodelsmall_create(scip, A, b, c, M, k, delta, zl_low, matrix_range, time_limit);
    SCIP_RETCODE retcode = SCIPsolve(preck_submodel.model_sub);
+   g_total_milps++;
+   SCIP_Longint fairnodes_preck = 0;
    if (retcode != SCIP_OKAY) {
       std::cerr << "Error solving preck submodel !" << std::endl;
+   } else{
+      SCIP_BRANCHRULE** branchrules = SCIPgetBranchrules(preck_submodel.model_sub);
+      int nbranchrules = SCIPgetNBranchrules(preck_submodel.model_sub);
+      SCIP_Longint ConssAdded = 0;
+      SCIP_Longint DomReds = 0;
+      SCIP_Longint Cutoffs = 0;
+      SCIP_Longint Nodes_smallmodel = SCIPgetNTotalNodes(preck_submodel.model_sub);
+      for (int i = 0; i < nbranchrules; ++i) {
+         ConssAdded += SCIPbranchruleGetNConssFound(branchrules[i]);
+         DomReds += SCIPbranchruleGetNDomredsFound(branchrules[i]);
+         Cutoffs += SCIPbranchruleGetNCutoffs(branchrules[i]);
+      }
+      fairnodes_preck += ConssAdded + DomReds + Cutoffs + Nodes_smallmodel;
    }
+   g_total_milp_nodes += fairnodes_preck;
    if (SCIPgetStatus(preck_submodel.model_sub) == SCIP_STATUS_OPTIMAL) {
       cout << "Preck submodel is solved to optimality" << endl;
       cout << "No branching possible in this node" << endl;
@@ -1077,17 +826,59 @@ vector<Submodel_sols> submodel_solve(
       SCIPfree(&preck_submodel.model_sub);
    }
 
-
+   
    while (abs(zl_high - zl_low) > 1e-6){
+      // Check time limit at the beginning of each iteration
+      auto current_time = std::chrono::high_resolution_clock::now();
+      auto elapsed_seconds = std::chrono::duration<double>(current_time - start_time).count();
+
+      if (elapsed_seconds > time_limit) {
+         cout << "Time limit exceeded (" << elapsed_seconds << "s), stopping submodel solve loop" << endl;
+         
+         // Return the best result found so far, or a default result if none found
+         if (!feasible_zl.empty()) {
+            SCIP_Real best_zl = feasible_zl.back();
+            vector<int> best_pi_solution = best_pi_solutions.back();
+            int best_pi0_solution = best_pi0_solutions.back();
+            string status_l = Status_l.back();
+            string status_r = Status_r.back();
+            SCIP_Real est_l = estL_list.back();
+            SCIP_Real est_r = estR_list.back();
+            Submodel_sols result = {best_zl, best_pi_solution, best_pi0_solution, est_l, est_r, status_l, status_r};
+            final_results.push_back(result);
+         } else {
+            // No feasible solution found within time limit
+            Submodel_sols result = {SCIP_INVALID, {}, {}, 1e+20, 1e+20, "time_limit", "time_limit"};
+            final_results.push_back(result);
+         }
+         return final_results;
+      }
+
       SCIP_Real zl = (zl_high + zl_low) / 2;
-      SubmodelVars submodel_datas = submodel_create(scip, A, b, c, M, k, delta, zl, matrix_range);
+      SubmodelVars submodel_datas = submodel_create(scip, A, b, c, M, k, delta, zl, matrix_range, time_limit);
       SCIP_RETCODE retcode1 = SCIPsolve(submodel_datas.model_sub);
+      g_total_milps++;
+      
       // Check if the submodel was solved to optimality
       if (retcode1 != SCIP_OKAY) {
          std::cerr << "Error solving submodel with curr zl: " << zl << std::endl;
          zl_high = zl;
          continue;
       }
+      SCIP_BRANCHRULE** branchrules = SCIPgetBranchrules(submodel_datas.model_sub);
+      int nbranchrules = SCIPgetNBranchrules(submodel_datas.model_sub);
+      int nodes_submodel = SCIPgetNTotalNodes(submodel_datas.model_sub);
+      SCIP_Longint ConssAdded = 0;
+      SCIP_Longint DomReds = 0;
+      SCIP_Longint Cutoffs = 0;
+      for (int i = 0; i < nbranchrules; ++i) {
+         ConssAdded += SCIPbranchruleGetNConssFound(branchrules[i]);
+         DomReds += SCIPbranchruleGetNDomredsFound(branchrules[i]);
+         Cutoffs += SCIPbranchruleGetNCutoffs(branchrules[i]);
+      }
+      
+      SCIP_Longint fairnodes_submodel = ConssAdded + DomReds + Cutoffs + nodes_submodel;
+      g_total_milp_nodes += fairnodes_submodel;
       if (SCIPgetStatus(submodel_datas.model_sub) == SCIP_STATUS_OPTIMAL) {
          
          SCIP_Bool startprobing = TRUE;
@@ -1261,8 +1052,8 @@ vector<Submodel_sols> submodel_solve(
             } else {
                result_l = {"infeasible", 1e+20};
             }
+            g_total_probing_lps++;  // Count probing LP solves
             SCIP_CALL_ABORT( SCIPbacktrackProbing(scip, 0) );
-
             // Handle the right side probing constraint
             SCIPcreateConsLinear(scip, &probing_cons_right, "probing_cons_right", 0, NULL, NULL, pi0_solution + 1, SCIPinfinity(scip),
                   TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE);
@@ -1320,6 +1111,7 @@ vector<Submodel_sols> submodel_solve(
             } else {
                result_r = {"infeasible", 1e+20};
             }
+            g_total_probing_lps++;  // Count probing LP solves
             if( endprobing )
             {
                SCIP_CALL_ABORT( SCIPendProbing(scip) );
@@ -1487,7 +1279,7 @@ vector<Submodel_sols> submodel_solve(
 static
 SCIP_NODE* get_information(SCIP* scip) {
    std::cout << "_____________________________________" << std::endl;
-   std::cout << "Now starting branching with general disjunction`" << std::endl;
+   std::cout << "Now starting branching with general disjunction" << std::endl;
    SCIP_NODE* curr_Node = SCIPgetCurrentNode(scip);
    std::cout << "Current branching Node number: " << SCIPnodeGetNumber(curr_Node) << std::endl;
 
@@ -1586,13 +1378,13 @@ SCIP_Real get_factor(SCIP_Real lp_gap) {
    SCIP_Real factor;
    assert (lp_gap >= 0);
    if (lp_gap < 0.1) {
-      factor = 1.5 + ceil(lp_gap*100)/100;
+      factor = 1 + ceil(lp_gap*100)/100;
    } else if (lp_gap >=0.1 && lp_gap < 1) {
-      factor = 1.5 + ceil(lp_gap*10)/10;
+      factor = 1 + ceil(lp_gap*10)/10;
    } else if (lp_gap == 1e+20) {
-      factor = 5;
+      factor = 3;
    } else {
-      factor = (ceil(lp_gap) + 1) * 5;
+      factor = (ceil(lp_gap) + 1) * 2;
    }
    return factor;
 }
@@ -1667,10 +1459,11 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
       SCIP_Real tmp_range = max_magnitude / base_delta;
       if (matrix_range > 1e+6) {
          scaled_delta = getMagnitudeBase(min_coef);
-        } else if (tmp_range > 1e+6) {
-         scaled_delta = getMagnitudeBase(min_coef);
+      } else if (tmp_range > 1e+6) {
+         scaled_delta = max_magnitude / 1e+6;
       }
       range = getMagnitudeBase(1 / matrix_range);
+
    }
    
    return {scaled_delta, range};
@@ -1683,7 +1476,10 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
 SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
    {
       SCIP_Node *curr_Node = get_information(scip);
-
+      // // Output the current node's LP to a file named with the node number
+      // std::ostringstream lp_filename;
+      // lp_filename << "/scratch/htc/yzhou/exp_scipmip/instances/general_disjunction_bell5_node" << SCIPnodeGetNumber(curr_Node) << ".lp";
+      // SCIP_CALL(SCIPwriteLP(scip, lp_filename.str().c_str()));
       MatrixData LP_data = getConstraintMatrix(scip);
       CSRMatrix A = LP_data.A;
       std::vector<SCIP_Real> b = LP_data.b;
@@ -1716,7 +1512,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       SCIP_Real zl_init = node_lowerbound;
       SCIP_Real zl_low = zl_init;
       SCIP_Real zl_high;
-      SCIP_Real factor = get_factor(lp_gap);
+      SCIP_Real factor = 2.5;
       if (zl_init > 0) {
          zl_high = zl_init * factor;
       } else if (zl_init < 0) {
@@ -1728,7 +1524,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       pair<SCIP_Real, SCIP_Real> numerics_pair = analyzeMatrixRange(A, b, c, (zl_low + zl_high) * 0.5, vars_lp, base_delta, scip);
       SCIP_Real scaled_delta = numerics_pair.first;
       SCIP_Real matrix_range = numerics_pair.second;
-      std::vector<Submodel_sols> final_results = submodel_solve(scip, zl_low, zl_high, m, n, scaled_delta, A, b, c, M, k, node_ub, vars_lp, matrix_range);
+      std::vector<Submodel_sols> final_results = submodel_solve(scip, zl_low, zl_high, m, n, scaled_delta, A, b, c, M, k, node_ub, vars_lp, matrix_range, TIME_LIMIT_SECONDS);
       SCIP_Real est_l = final_results[0].est_l;
       SCIP_Real est_r = final_results[0].est_r;
       string status_l = final_results[0].status_l;
@@ -1758,19 +1554,11 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       }else if (status_l == "infeasible" && status_r != "updated_zl") {
          std::cout << "General disjunction: Infeasible disjunction" << std::endl;
          *result = SCIP_CUTOFF;
-         // if (SCIPnodeGetNumber(curr_Node) == 1) {
-         //    std::cout << "Root node: No feasible solution found, use SCIP default branching rule" << std::endl;
-         //    *result = SCIP_DIDNOTRUN;
-         // }
          return SCIP_OKAY;
 
       } else if (status_l != "updated_zl" && status_r == "infeasible") {
          std::cout << "General disjunction: Infeasible disjunction" << std::endl;
          *result = SCIP_CUTOFF;
-         // if (SCIPnodeGetNumber(curr_Node) == 1) {
-         //    std::cout << "Root node: No feasible solution found, use SCIP default branching rule" << std::endl;
-         //    *result = SCIP_DIDNOTRUN;
-         // }
          return SCIP_OKAY;
 
       } else if (status_l == "updated_zl" && status_r != "updated_zl") {
@@ -1828,9 +1616,30 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
 };
 
 /** creates the general disjunction branching rule and includes it in SCIP */
+
+extern "C" SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPNodes(SCIP* scip) {
+    return g_total_milp_nodes;
+}
+
+extern "C" SCIP_Longint SCIPbranchruleGeneralDisjunctionGetProbingLPs(SCIP* scip) {
+    return g_total_probing_lps;
+}
+
+extern "C" SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPs(SCIP* scip) {
+    return g_total_milps;
+}
+extern "C" void SCIPbranchruleGeneralDisjunctionResetCounters() {
+    g_total_milp_nodes = 0;
+    g_total_probing_lps = 0;
+    g_total_milps = 0;
+}
 extern "C" SCIP_RETCODE SCIPincludeBranchruleGeneralDisjunction(SCIP* scip) {
+
+   SCIPbranchruleGeneralDisjunctionResetCounters();
+
    BranchruleGeneralDisjunction* mybranchrule = new BranchruleGeneralDisjunction(scip);
    SCIP_CALL(SCIPincludeObjBranchrule(scip,  mybranchrule, TRUE));
+
    return SCIP_OKAY;
 }
 #ifdef __cplusplus
