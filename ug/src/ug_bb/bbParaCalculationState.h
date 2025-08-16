@@ -39,6 +39,7 @@
 
 #include <climits>
 #include <cfloat>
+#include <vector>
 #include "ug/paraComm.h"
 #include "ug/paraCalculationState.h"
 
@@ -72,6 +73,7 @@ protected:
    double dualBound;                  ///< final dual bound value
    int    nSelfSplitNodesLeft;        ///< number of self-split nodes left
    long long nFairNodesSolved;        ///< number of fair nodes solved
+   std::vector<long long> fairnodesinfoSolved; ///< information about fair nodes solved in this ParaSolver
 public:
 
    ///
@@ -128,9 +130,10 @@ public:
          int    inMaxNii,                     ///< maximum number of integer infeasibility
          double inDualBound,                  ///< final dual Bound value
          int    inNSelfSplitNodesLeft,        ///< number of self-split nodes left
-         long long inNFairNodesSolved         ///< number of fair nodes solved
+         long long inNFairNodesSolved,         ///< number of fair nodes solved
+         std::vector<long long> inFairNodesInfo ///< information about fair nodes solved in this ParaSolver
          )
-         : ParaCalculationState(inCompTime, inNSolved, static_cast<int>(inNFairNodesSolved), inTerminationState),
+         : ParaCalculationState(inCompTime, inNSolved, static_cast<int>(inNFairNodesSolved), inFairNodesInfo, inTerminationState),
            rootTime(inRootTime),
            nSent(inNSent),
            nImprovedIncumbent(inNImprovedIncumbent),
@@ -150,7 +153,8 @@ public:
            maxNii(inMaxNii),
            dualBound(inDualBound),
            nSelfSplitNodesLeft(inNSelfSplitNodesLeft),
-           nFairNodesSolved(inNFairNodesSolved)
+           nFairNodesSolved(inNFairNodesSolved),
+           fairnodesinfoSolved(inFairNodesInfo)
    {
    }
 
@@ -270,7 +274,15 @@ public:
    {
       return nFairNodesSolved;
    }
-
+   ///
+   /// getter of the fair nodes information
+   /// @return the fair nodes information
+   ///
+   std::vector<long long> getFairNodesInfo(
+         )
+   {
+      return fairnodesinfoSolved;
+   }
    ///
    /// stringfy BbParaCalculationState
    /// @return string to show this object

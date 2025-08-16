@@ -1360,6 +1360,7 @@ protected:
    unsigned long long                   nNodesSolvedInSolvers;       ///< number of nodes solved in current running Solvers
    unsigned long long                   nTotalNodesSolved;           ///< number of nodes solved : updated at termination of subtree computation
    unsigned long long                   nTotalFairNodesSolved;       ///< number of fair nodes solved : updated at termination of subtree computation
+   std::vector<long long>               totalFairNodesInfo;         ///< information about fair nodes
    unsigned long long                   nNodesInSolvers;             ///< number of nodes in all Solvers
    bool                                 collectingMode;              ///< indicate that this system is in collecting mode or not
    bool                                 breakingFirstSubtree;        ///< breaking the first subtree
@@ -1409,6 +1410,7 @@ public:
            nNodesSolvedInSolvers(0),
            nTotalNodesSolved(0),
            nTotalFairNodesSolved(0),
+           totalFairNodesInfo(4, 0),
            nNodesInSolvers(0),  // rampUpPhase(false),
            collectingMode(false),
            breakingFirstSubtree(false),
@@ -1474,6 +1476,7 @@ public:
            nNodesSolvedInSolvers(0),
            nTotalNodesSolved(0),
            nTotalFairNodesSolved(0),
+           totalFairNodesInfo(4, 0),
            nNodesInSolvers(0),  // rampUpPhase(false),
            collectingMode(false),
            breakingFirstSubtree(false),
@@ -1683,6 +1686,15 @@ public:
    }
 
    ///
+   /// get number of fair nodes solved in all Solvers: updated at termination of subtree computation
+   ///
+   virtual std::vector<long long> getFairnodesInfo(
+         )
+   {
+      return totalFairNodesInfo;
+   }
+
+   ///
    /// add number of nodes solved in all Solvers
    ///
    virtual void addTotalNodesSolved(
@@ -1701,6 +1713,17 @@ public:
    {
       nTotalFairNodesSolved += num;
    }
+   
+   virtual void addTotalFairNodesInfo(
+      std::vector<long long> info       ///< information about fair nodes
+   )
+   {
+      totalFairNodesInfo[0] = info[0];
+      totalFairNodesInfo[1] = info[1];
+      totalFairNodesInfo[2] = info[2];
+      totalFairNodesInfo[3] = info[3];
+   }
+
 
    ///
    ///  get number of nodes in all Solvers
@@ -2441,6 +2464,7 @@ protected:
    long long                 nNodesSolvedInBestSolver; ///< number of nodes solved in the best Solver
    long long                 nNodesInBestSolver;       ///< number of nodes in the best Solver
    long long                 nFairNodesSolvedInBestSolver; ///< number of fair nodes solved in the best Solver
+   std::vector<long long>    FairNodesInfoInBestSolver;   ///< information about fair nodes solved in all Solvers
    size_t                    nActiveSolvers;           ///< number of active Solvers
    size_t                    nInactiveSolvers;         ///< number of inactive Solvers
    double                    bestDualBound;            ///< current best dual bound value
@@ -2726,6 +2750,14 @@ public:
    {
       return nFairNodesSolvedInBestSolver;
    }
+
+   virtual std::vector<long long> getFairNodesInfoInBestSolver(
+         )
+   {
+      return FairNodesInfoInBestSolver;
+   }
+
+
    ///
    /// get number of nodes left in the best Solver
    /// @return number of nodes left in the best Solver

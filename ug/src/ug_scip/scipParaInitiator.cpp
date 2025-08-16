@@ -2294,6 +2294,25 @@ ScipParaInitiator::setNumberOfFairNodesSolved(
 {
    nfairnodes = n;
 }
+/** set infos of fair nodes solved */
+void
+ScipParaInitiator::setfairnodesinfo(
+      std::vector<long long> info
+      )
+{
+   fairnodesinfo = info;
+}
+
+/** set total fair nodes info */
+void
+ScipParaInitiator::setTotalFairNodesInfo(
+      std::vector<long long> info
+      )
+{
+   fairnodesinfo = info;
+}
+
+
 
 /** set final dual bound  */
 void
@@ -2368,6 +2387,10 @@ ScipParaInitiator::outputFinalSolverStatistics(
    *os << "  nodes (total)    : " << nSolved << std::endl;
    *os << "  nodes (solved)   : " << SCIPgetNNodes(scip) << std::endl;
    *os << "  fairnodes        : " << nfairnodes << std::endl;
+   *os << "  fairnodes info   : " << fairnodesinfo[0] << std::endl;
+   *os << "  nMilpsnodes      : " << fairnodesinfo[1] << std::endl;
+   *os << "  nMilps           : " << fairnodesinfo[2] << std::endl;
+   *os << "  nProbinglps      : " << fairnodesinfo[3] << std::endl;
    *os << "Solution           :" << std::endl;
    *os << "  Solutions found  : " << SCIPgetNSols(scip) << std::endl;
    SCIP_Real primalbound = SCIPinfinity(scip);

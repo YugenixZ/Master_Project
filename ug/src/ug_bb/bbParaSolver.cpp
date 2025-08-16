@@ -82,8 +82,10 @@ BbParaSolver::BbParaSolver(
       nSent(0),
       nSolvedWithNoPreprocesses(0),
       nfairnodes(0),
+      fairnodesinfo({0, 0, 0, 0}),
       totalNSolved(0),
       totalNFairNodes(0),
+      totalfairnodesinfo({0, 0, 0, 0}),
       minNSolved(INT_MAX),
       maxNSolved(INT_MIN),
       nTransferredLocalCutsFromSolver(0),
@@ -191,6 +193,7 @@ BbParaSolver::sendSolverTerminationState(
           paraComm->getRank(),
           totalNSolved,
           totalNFairNodes,
+          totalfairnodesinfo,  
           minNSolved,
           maxNSolved,
           totalNSent,
@@ -928,6 +931,11 @@ BbParaSolver::run(
 
       nSolved += getNNodesSolved();       // In case of self-split, the number of nodes solved needs to be added for root node
       nfairnodes += getNFairnodesNum();
+      auto currentFairnodesInfo = getFairnodesinfo();
+      fairnodesinfo[0] += currentFairnodesInfo[0];
+      fairnodesinfo[1] += currentFairnodesInfo[1];
+      fairnodesinfo[2] += currentFairnodesInfo[2];
+      fairnodesinfo[3] += currentFairnodesInfo[3];
       if( paraParams->getBoolParamValue(CheckEffectOfRootNodePreprocesses) && nSolved == 1)
       {
          solveToCheckEffectOfRootNodePreprocesses();
@@ -1416,7 +1424,7 @@ BbParaSolver::sendCompletionOfCalculation(
          nSimplexIterRoot, averageSimplexIter,
          nTransferredLocalCuts, minTransferredLocalCuts, maxTransferredLocalCuts,
          nTransferredBendersCuts, minTransferredBendersCuts, maxTransferredBendersCuts,
-         getNRestarts(), minIisum, maxIisum, minNii, maxNii, solverDualBound, nSelfSplitNodesLeft, nfairnodes ));
+         getNRestarts(), minIisum, maxIisum, minNii, maxNii, solverDualBound, nSelfSplitNodesLeft, nfairnodes, fairnodesinfo ));
    
    paraCalculationState->send(paraComm, 0, tag);
    delete paraCalculationState;
@@ -1434,7 +1442,10 @@ BbParaSolver::sendCompletionOfCalculation(
    }
    totalNSolved += nSolved;
    totalNFairNodes += nfairnodes;
-
+   totalfairnodesinfo[0] += fairnodesinfo[0];
+   totalfairnodesinfo[1] += fairnodesinfo[1];
+   totalfairnodesinfo[2] += fairnodesinfo[2];
+   totalfairnodesinfo[3] += fairnodesinfo[3];
    totalNSent += nSent;
    totalNImprovedIncumbent += nImprovedIncumbent;
    nParaTasksSolved++;
@@ -1475,6 +1486,7 @@ BbParaSolver::sendCompletionOfCalculation(
 
    nSolved = 0;
    nfairnodes = 0;
+   fairnodesinfo = {0, 0, 0, 0};
    nSent = 0;
    nImprovedIncumbent = 0;
    nSolvedWithNoPreprocesses = 0;
@@ -1516,6 +1528,7 @@ BbParaSolver::sendCompletionOfCalculation(
             paraComm->getRank(),
             totalNSolved,
             totalNFairNodes,
+            totalfairnodesinfo,
             minNSolved,
             maxNSolved,
             totalNSent,
@@ -1557,6 +1570,7 @@ BbParaSolver::sendCompletionOfCalculation(
          maxNSolved = INT_MIN;
          totalNSolved = 0;
          totalNFairNodes = 0;
+         totalfairnodesinfo = {0, 0, 0, 0};
          totalNSent = 0;
          totalNImprovedIncumbent = 0;
 //         if( newNode )
@@ -1589,6 +1603,7 @@ BbParaSolver::sendCompletionOfCalculation(
          paraComm->getRank(),
          totalNSolved,
          totalNFairNodes,
+         totalfairnodesinfo,
          minNSolved,
          maxNSolved,
          totalNSent,
@@ -1661,7 +1676,7 @@ BbParaSolver::sendCompletionOfCalculationWithoutSolving(
          0, 0.0,
          0, 0, 0,
          0, 0, 0,
-         0, 0, 0, 0, 0, dualBound, nSelfSplitNodesLeft, totalNFairNodes ));
+         0, 0, 0, 0, 0, dualBound, nSelfSplitNodesLeft, totalNFairNodes, totalfairnodesinfo ));
    paraCalculationState->send(paraComm, 0, tag);
    delete paraCalculationState;
 
@@ -1681,6 +1696,7 @@ BbParaSolver::sendCompletionOfCalculationWithoutSolving(
       paraComm->getRank(),
       totalNSolved,
       totalNFairNodes,
+      totalfairnodesinfo,
       minNSolved,
       maxNSolved,
       totalNSent,

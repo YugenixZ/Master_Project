@@ -39,13 +39,13 @@
 
 #include <list>
 #include <thread>
+#include <vector>
 #include "ug_bb/bbParaSolver.h"
 #include "scipUserPlugins.h"
 #include "scipParaDiffSubproblem.h"
 #include "scipParaInterruptMsgMonitor.h"
 #include "scipDiffParamSet.h"
 #include "scipParaTagDef.h"
-
 #define ENFORCED_THRESHOLD 5
 
 namespace ParaSCIP
@@ -151,6 +151,7 @@ protected:
    virtual void solve();
    long long getNNodesSolved();
    long long getNFairnodesNum();
+   std::vector<long long> getFairnodesinfo();
    int getNNodesLeft();
    double getDualBoundValue();
    void reinitialize();

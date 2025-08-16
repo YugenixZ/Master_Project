@@ -36,6 +36,7 @@
 #include "scip/type_retcode.h"
 #include "scip/scip.h"
 #include "scip/branch.h"
+#include "scip/scip_export.h"
 #include <string>
 #include <vector>
 using namespace std;
@@ -118,10 +119,19 @@ SCIP_EXPORT
 SCIP_RETCODE SCIPincludeBranchruleGeneralDisjunction(
         SCIP*                 scip                /**< SCIP data structure */
 );
-SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPNodes(SCIP* scip);
-SCIP_Longint SCIPbranchruleGeneralDisjunctionGetProbingLPs(SCIP* scip);
-SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPs(SCIP* scip);
-void SCIPbranchruleGeneralDisjunctionResetCounters(void);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+SCIP_EXPORT SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPNodes(SCIP* scip);
+SCIP_EXPORT SCIP_Longint SCIPbranchruleGeneralDisjunctionGetProbingLPs(SCIP* scip);
+SCIP_EXPORT SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPs(SCIP* scip);
+SCIP_EXPORT void SCIPbranchruleGeneralDisjunctionResetCounters(void);
+
+#ifdef __cplusplus
+}
+#endif
 /**@addtogroup BRANCHINGRULES
  *
  * @{

@@ -40,7 +40,7 @@
 #include <climits>
 #include <cfloat>
 #include "paraComm.h"
-
+#include <vector>
 namespace UG
 {
 
@@ -54,6 +54,7 @@ protected:
    double compTime;                   ///< computation time of this ParaTask
    int    nSolved;                    ///< the number of tasks solved
    int    nfairnodes;                ///< the number of fair nodes solved  
+   std::vector<long long> fairnodesinfo; ///< the number of fair nodes solved in each solver
    int    terminationState;           ///< indicate whether if this computation is terminationState or not. 0: no, 1: terminationState
                                       ///< meaning can be defined in derived class
 public:
@@ -66,6 +67,7 @@ public:
          : compTime(0.0),
            nSolved(-1),
            nfairnodes(-1),
+           fairnodesinfo({-1,-1,-1,-1}),
            terminationState(-1)
    {
    }
@@ -77,11 +79,13 @@ public:
          double inCompTime,                   ///< computation time of this ParaTask
          int    inNSolved,                     ///< the number of tasks solved
          int    inNFairnodes,                  ///< the number of fair nodes solved
+         std::vector<long long> inFairnodesInfo, ///< the number of fair nodes solved in each solver
          int    inTerminationState            ///< indicate whether if this computation is terminationState or not. 0: no, 1: terminationState
          )
          : compTime(inCompTime),
            nSolved(inNSolved),
            nfairnodes(inNFairnodes),
+           fairnodesinfo(inFairnodesInfo),
            terminationState(inTerminationState)
    {
    }
@@ -126,6 +130,11 @@ public:
       return nfairnodes;
    }
 
+   std::vector<long long> getFairNodesInfo(     
+       )
+   {
+      return fairnodesinfo; // default implementation returns empty vector
+   }
    ///
    /// getter of the termination state for solving the subproblem
    /// @return the termination state

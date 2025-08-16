@@ -40,7 +40,7 @@
 #endif
 #include "bbParaTagDef.h"
 #include "bbParaCommCPP11.h"
-
+#include <vector>
 using namespace UG;
 
 const char *
@@ -139,7 +139,8 @@ BbParaCommCPP11::createParaCalculationState(
                int    maxNii,                     ///< maximum number of integer infeasibility
                double dualBound,                  ///< final dual bound value
                int    nSelfSplitNodesLeft,        ///< number of self-split nodes left
-               long long nFairNodesSolved         ///< number of fair nodes solved
+               long long nFairNodesSolved,        ///< number of fair nodes solved
+               std::vector<long long> fairnodesinfo
            )
 {
    return new BbParaCalculationStateTh(
@@ -165,7 +166,8 @@ BbParaCommCPP11::createParaCalculationState(
                   maxNii,
                   dualBound,
                   nSelfSplitNodesLeft,
-                  nFairNodesSolved
+                  nFairNodesSolved,
+                  fairnodesinfo
               );
 }
 
@@ -248,6 +250,7 @@ BbParaCommCPP11::createParaSolverTerminationState(
                int    rank,                       ///< rankLocal of this solver
                int    totalNSolved,               ///< accumulated number of nodes solved in this ParaSolver
                int    totalNFairNodes,            ///< accumulated number of fair nodes solved in this ParaSolver
+               std::vector<long long> totalfairnodesinfo, ///< accumulated number of fair nodes solved in this ParaSolver
                int    minNSolved,                 ///< minimum number of subtree nodes rooted from ParaNode
                int    maxNSolved,                 ///< maximum number of subtree nodes rooted from ParaNode
                int    totalNSent,                 ///< accumulated number of nodes sent from this ParaSolver
@@ -286,6 +289,7 @@ BbParaCommCPP11::createParaSolverTerminationState(
                  rank,
                  totalNSolved,
                  totalNFairNodes,
+                 totalfairnodesinfo,
                  minNSolved,
                  maxNSolved,
                  totalNSent,

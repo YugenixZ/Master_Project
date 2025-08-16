@@ -133,7 +133,8 @@ BbParaCommMpi::createParaCalculationState(
                int    maxNii,                     ///< maximum number of integer infeasibility
                double dualBound,                  ///< final dual bound value
                int    nSelfSplitNodesLeft,        ///< number of self-split nodes left
-               long long nFairNodesSolved         ///< number of fair nodes solved
+               long long nFairNodesSolved,        ///< number of fair nodes solved
+               std::vector<long long> totalFairNodesInfo 
            )
 {
    return new BbParaCalculationStateMpi(
@@ -159,7 +160,8 @@ BbParaCommMpi::createParaCalculationState(
                   maxNii,
                   dualBound,
                   nSelfSplitNodesLeft,
-                  nFairNodesSolved
+                  nFairNodesSolved,
+                  totalFairNodesInfo
               );
 }
 
@@ -242,6 +244,7 @@ BbParaCommMpi::createParaSolverTerminationState(
                int    rank,                       ///< rank of this solver */
                int    totalNSolved,               ///< accumulated number of nodes solved in this ParaSolver
                int    totalNFairNodes,            ///< accumulated number of fair nodes solved in this ParaSolver
+               std::vector<long long> totalFairNodesInfo, ///< information about fair nodes
                int    minNSolved,                 ///< minimum number of subtree nodes rooted from ParaNode
                int    maxNSolved,                 ///< maximum number of subtree nodes rooted from ParaNode
                int    totalNSent,                 ///< accumulated number of nodes sent from this ParaSolver
@@ -280,6 +283,7 @@ BbParaCommMpi::createParaSolverTerminationState(
                  rank,
                  totalNSolved,
                  totalNFairNodes,
+                 totalFairNodesInfo,
                  minNSolved,
                  maxNSolved,
                  totalNSent,

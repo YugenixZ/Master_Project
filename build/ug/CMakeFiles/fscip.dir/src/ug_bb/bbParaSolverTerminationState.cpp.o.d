@@ -210,4 +210,8 @@ ug/CMakeFiles/fscip.dir/src/ug_bb/bbParaSolverTerminationState.cpp.o: \
  /scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/ug/src/ug/uggithash.h \
  /scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/ug/src/ug/paraSolverTerminationState.h \
  /scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/ug/src/ug/paraInitiator.h \
+ /usr/include/c++/12/vector /usr/include/c++/12/bits/stl_uninitialized.h \
+ /usr/include/c++/12/bits/stl_vector.h \
+ /usr/include/c++/12/bits/stl_bvector.h \
+ /usr/include/c++/12/bits/vector.tcc \
  /scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/ug/src/ug/gzstream.h

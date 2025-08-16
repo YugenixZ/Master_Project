@@ -1679,6 +1679,54 @@ ScipParaSolver::getNFairnodesNum()
    }
 }
 
+vector<long long> 
+ScipParaSolver::getFairnodesinfo()
+{
+   if( SCIPgetStage(scip) == SCIP_STAGE_SOLVING || SCIPgetStage(scip) == SCIP_STAGE_SOLVED )
+   {
+      // Calculate fair nodes using branching rule statistics
+      SCIP_Branchrule** branchrule = SCIPgetBranchrules(scip);
+      int nBranchrules = SCIPgetNBranchrules(scip);
+      long long nDomreductions = 0;  // Domain reductions from strong branching
+      long long nCutoffs = 0;        // Cutoffs from strong branching
+      vector<long long> fairnodesinfo = {0, 0, 0, 0}; 
+      for( int i = 0; i < nBranchrules; ++i )
+      {
+         nDomreductions += SCIPbranchruleGetNDomredsFound(branchrule[i]);
+         nCutoffs += SCIPbranchruleGetNCutoffs(branchrule[i]);
+         if (strcmp(SCIPbranchruleGetName(branchrule[i]), "general_disjunction") == 0)
+         {
+            SCIP_Longint nMilpNodes = SCIPbranchruleGeneralDisjunctionGetMILPNodes(scip);
+            SCIP_Longint nprobinglps = SCIPbranchruleGeneralDisjunctionGetProbingLPs(scip);
+            SCIP_Longint nmilps = SCIPbranchruleGeneralDisjunctionGetMILPs(scip);
+
+            fairnodesinfo[1] += nMilpNodes;  // Total MILP nodes in gendj
+            fairnodesinfo[2] += nmilps;  // Total probing LPs in gendj
+            fairnodesinfo[3] += nprobinglps;       // Total MILPs in gendj   *os << "  nProbinglps      : " << fairnodesinfo[2] << std::endl;
+         }
+      }
+      
+      long long eta = SCIPgetNTotalNodes(scip);  // nodes processed
+      long long nu = nCutoffs;                   // cutoffs from branching
+      long long xi = nDomreductions;             // domain reductions
+      
+      // Fair nodes formula: F = η + 2ν + 2ξ
+      long long fairNodes = eta + 2 * nu + 2 * xi;
+      fairnodesinfo[0] += fairNodes;  // Total fair nodes
+      return fairnodesinfo;
+   }
+   else
+   {
+      if( SCIPgetStage(scip) >= SCIP_STAGE_PRESOLVING && SCIPgetStage(scip) <= SCIP_STAGE_INITSOLVE )
+      {
+         return {1, 0, 0, 0};
+      }
+      else
+      {
+         return {0, 0, 0, 0};
+      }
+   }
+}
 int
 ScipParaSolver::getNNodesLeft(
       )
@@ -2529,6 +2577,7 @@ ScipParaSolver::~ScipParaSolver(
           paraComm->getRank(),
           totalNSolved,
           totalNFairNodes,
+          totalfairnodesinfo,
           minNSolved,
           maxNSolved,
           totalNSent,

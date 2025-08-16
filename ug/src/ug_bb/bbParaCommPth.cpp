@@ -245,6 +245,7 @@ BbParaCommPth::createParaSolverTerminationState(
                int    rank,                       ///< rankLocal of this solver
                int    totalNSolved,               ///< accumulated number of nodes solved in this ParaSolver
                int    totalNFairNodes,            ///< accumulated number of fair nodes solved in this ParaSolver
+               std::vector<long long> totalfairnodesinfo, ///< information about fair nodes
                int    minNSolved,                 ///< minimum number of subtree nodes rooted from ParaNode
                int    maxNSolved,                 ///< maximum number of subtree nodes rooted from ParaNode
                int    totalNSent,                 ///< accumulated number of nodes sent from this ParaSolver
@@ -282,7 +283,8 @@ BbParaCommPth::createParaSolverTerminationState(
                  interrupted,               
                  rank,
                  totalNSolved,
-                 totalNFairNodes,        
+                 totalNFairNodes,
+                 totalfairnodesinfo,  // Pass the data pointer of the vector        
                  minNSolved,         
                  maxNSolved,        
                  totalNSent,       

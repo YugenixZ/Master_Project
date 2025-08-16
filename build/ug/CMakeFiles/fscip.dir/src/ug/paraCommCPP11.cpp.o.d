@@ -260,5 +260,9 @@ ug/CMakeFiles/fscip.dir/src/ug/paraCommCPP11.cpp.o: \
  /scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/ug/src/ug/paraInitialStat.h \
  /scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/ug/src/ug/uggithash.h \
  /scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/ug/src/ug/paraCalculationState.h \
- /usr/include/c++/12/climits \
+ /usr/include/c++/12/climits /usr/include/c++/12/vector \
+ /usr/include/c++/12/bits/stl_uninitialized.h \
+ /usr/include/c++/12/bits/stl_vector.h \
+ /usr/include/c++/12/bits/stl_bvector.h \
+ /usr/include/c++/12/bits/vector.tcc \
  /scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/ug/src/ug/paraSolverState.h

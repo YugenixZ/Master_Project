@@ -65,7 +65,8 @@ BbParaCalculationStateTh::createDatatype(
          maxNii,
          dualBound,
          nSelfSplitNodesLeft,
-         nFairNodesSolved
+         nFairNodesSolved,
+         fairnodesinfo
          );
 }
 
@@ -121,10 +122,10 @@ BbParaCalculationStateTh::receive(
    dualBound = received->dualBound;
    nSelfSplitNodesLeft = received->nSelfSplitNodesLeft;
    nFairNodesSolved = received->nFairNodesSolved;
-
+   fairnodesinfoSolved = received->fairnodesinfoSolved;
    // Update base class nfairnodes field with the received nFairNodesSolved value
    nfairnodes = static_cast<int>(nFairNodesSolved);
-
+   fairnodesinfo = fairnodesinfoSolved;
    delete received;
 
 }

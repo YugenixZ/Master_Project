@@ -91,13 +91,14 @@ public:
          int    inMaxNii,                     ///< maximum number of integer infeasibility
          double inDualBound,                  ///< final dual Bound value
          int    inNSelfSplitNodesLeft,        ///< number of self-split nodes left
-         long long inNFairNodesSolved         ///< number of fair nodes solved
+         long long inNFairNodesSolved,        ///< number of fair nodes solved
+         std::vector<long long> inFairNodesInfo 
          )
          : BbParaCalculationState(inCompTime,inRootTime, inNSolved, inNSent,inNImprovedIncumbent,inTerminationState,inNSolvedWithNoPreprocesses,
                inNSimplexIterRoot, inAverageSimplexIter,
                inNTransferredLocalCuts, inMinTransferredLocalCuts, inMaxTransferredLocalCuts,
                inNTransferredBendersCuts, inMinTransferredBendersCuts, inMaxTransferredBendersCuts,
-               inNRestarts, inMinIisum, inMaxIisum, inMinNii, inMaxNii, inDualBound, inNSelfSplitNodesLeft, inNFairNodesSolved)
+               inNRestarts, inMinIisum, inMaxIisum, inMinNii, inMaxNii, inDualBound, inNSelfSplitNodesLeft, inNFairNodesSolved, inFairNodesInfo )
    {
    }
 

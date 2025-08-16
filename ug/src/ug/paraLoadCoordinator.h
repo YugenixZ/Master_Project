@@ -132,6 +132,7 @@ protected:
    bool               racingTermination;                          ///< racing termination flag, true: if a racing solver solved the problem
    int                nSolvedRacingTermination;                   ///< number of tasks solved at the racing termination solver 
    int                nFairnodesnumber;                           ///< number of fair nodes solved at the racing termination solver
+   std::vector<long long> Totalfairnodesinfo;                    ///< accumulated number of fair nodes solved in this ParaSolver
    ///
    /// counter to check if all solvers are terminated or not
    ///

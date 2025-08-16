@@ -323,12 +323,18 @@ public:
          long long n                                    ///< the number of nodes solved
          ) = 0;
    ///
+
    /// set final dual bound
    ///
    virtual void setNumberOfFairNodes(
          long long n                                   ///< number of fair nodes
          ) = 0;
 
+   /// set total fair nodes information
+   ///
+   virtual void setTotalFairNodesInfo(
+         std::vector<long long> info           ///< information about fair nodes
+         ) = 0;
 
    ///
    /// set final dual bound

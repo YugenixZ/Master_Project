@@ -242,6 +242,7 @@ public:
                int    rank,                                 ///< rank of this solver
                int    totalNSolved,                         ///< accumulated number of nodes solved in this ParaSolver
                int    totalNFairNodes,                      ///< accumulated number of fair nodes solved in this ParaSolver
+               std::vector<long long> totalFairNodesInfo,   ///< information about fair nodes
                int    minNSolved,                           ///< minimum number of subtree nodes rooted from ParaNode
                int    maxNSolved,                           ///< maximum number of subtree nodes rooted from ParaNode
                int    totalNSent,                           ///< accumulated number of nodes sent from this ParaSolver

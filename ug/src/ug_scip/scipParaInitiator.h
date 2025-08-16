@@ -83,7 +83,8 @@ protected:
    SCIP_Real            finalDualBound;
    UG::FinalSolverState finalState;
    long long            nSolved;
-   long long            nfairnodes;  
+   long long            nfairnodes;
+   std::vector<long long> fairnodesinfo;
    double               absgap;
    double               gap;
    double               objlimit;
@@ -104,8 +105,7 @@ public:
          )
          :  UG::BbParaInitiator(inComm, inTimer), paraParams(0), instance(0), solution(0), scipDiffParamSetRoot(0), scipDiffParamSet(0), messagehdlr(0), logfile(0),
             solutionFile(0), transSolutionFile(0), scip(0), probname(0), settingsNameLC(0), settingsNameRoot(0), settingsName(0), racingSettingsName(0),
-            logname(0), isolname(0), generatedIsolname(0), solutionFileName(0), userPlugins(0), finalDualBound(-DBL_MAX), finalState(UG::Aborted), nSolved(0), nfairnodes(0),
-            absgap(-1.0), gap(-1.0), objlimit(DBL_MAX), qsol(false)
+            logname(0), isolname(0), generatedIsolname(0), solutionFileName(0), userPlugins(0), finalDualBound(-DBL_MAX), finalState(UG::Aborted), nSolved(0), nfairnodes(0), fairnodesinfo(4, 0),             absgap(-1.0), gap(-1.0), objlimit(DBL_MAX), qsol(false)
 #ifdef UG_WITH_UGS
             , seqNumber(0)
 #endif
@@ -326,6 +326,13 @@ public:
 
    /** set number of fair nodes solved */
    void setNumberOfFairNodesSolved(long long n);
+
+   /** set number of fair nodes info */
+
+   void setfairnodesinfo(std::vector<long long> info);
+
+   /** set total fair nodes info */
+   virtual void setTotalFairNodesInfo(std::vector<long long> info) override;
 
    /** set final dual bound  */
    void setDualBound(double bound);

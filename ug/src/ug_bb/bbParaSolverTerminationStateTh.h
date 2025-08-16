@@ -38,7 +38,7 @@
 #define __BB_PARA_SOLVER_TERMINATION_STATE_TH_H__
 
 #include "bbParaSolverTerminationState.h"
-
+#include <vector>
 namespace UG
 {
 
@@ -78,6 +78,7 @@ public:
          int          inRank,                                 ///< rank of this solver
          int          inTotalNSolved,                         ///< accumulated number of nodes solved in this ParaSolver
          int          inTotalNFairNodes,                      ///< accumulated number of fair nodes solved in this ParaSolver
+         std::vector<long long> inFairNodesInfo,                   ///< information about fair nodes
          int          inMinNSolved,                           ///< minimum number of subtree nodes rooted from ParaNode
          int          inMaxNSolved,                           ///< maximum number of subtree nodes rooted from ParaNode
          int          inTotalNSent,                           ///< accumulated number of nodes sent from this ParaSolver
@@ -115,6 +116,7 @@ public:
            inRank,
            inTotalNSolved,
            inTotalNFairNodes,
+           inFairNodesInfo,
            inMinNSolved,
            inMaxNSolved,
            inTotalNSent,

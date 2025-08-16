@@ -40,6 +40,7 @@
 #include "ug/paraComm.h"
 #include "ug/paraInitiator.h"
 #include "ug/paraSolverTerminationState.h"
+#include <vector>
 #ifdef UG_WITH_ZLIB
 #include "ug/gzstream.h"
 #endif
@@ -59,6 +60,7 @@ protected:
    ///-------------------------------------
    int          totalNSolved;                        ///< accumulated number of nodes solved in this ParaSolver
    int          totalNFairNodes;                     ///< accumulated number of fair nodes solved in this ParaSolver
+   std::vector<long long> totalFairNodesInfo;        ///< information about fair nodes
    int          minNSolved;                          ///< minimum number of subtree nodes rooted from ParaNode
    int          maxNSolved;                          ///< maximum number of subtree nodes rooted from ParaNode
    int          totalNSent;                          ///< accumulated number of nodes sent from this ParaSolver
@@ -94,6 +96,7 @@ public:
          : ParaSolverTerminationState(),
            totalNSolved(-1),
            totalNFairNodes(-1),
+           totalFairNodesInfo({-1,-1,-1,-1}),
            minNSolved(-1),
            maxNSolved(-1),
            totalNSent(-1),
@@ -130,6 +133,7 @@ public:
          int          inRank,                                ///< rank of this solver
          int          inTotalNSolved,                        ///< accumulated number of nodes solved in this ParaSolver
          int          inTotalNFairNodes,                     ///< accumulated number of fair nodes solved in this ParaSolver
+         std::vector<long long> inFairNodesInfo,                   ///< information about fair nodes
          int          inMinNSolved,                          ///< minimum number of subtree nodes rooted from ParaNode
          int          inMaxNSolved,                          ///< maximum number of subtree nodes rooted from ParaNode
          int          inTotalNSent,                          ///< accumulated number of nodes sent from this ParaSolver
@@ -167,6 +171,7 @@ public:
                                       inIdleTimeToWaitNotificationId, inIdleTimeToWaitAckCompletion, inIdleTimeToWaitToken, inDetTime),
            totalNSolved(inTotalNSolved),
            totalNFairNodes(inTotalNFairNodes),
+           totalFairNodesInfo(inFairNodesInfo),
            minNSolved(inMinNSolved),
            maxNSolved(inMaxNSolved),
            totalNSent(inTotalNSent),

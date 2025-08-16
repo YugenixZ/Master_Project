@@ -47,6 +47,7 @@ BbParaSolverTerminationStateTh::createDatatype(
          rank,
          totalNSolved,
          totalNFairNodes,
+         totalFairNodesInfo,
          minNSolved,
          maxNSolved,
          totalNSent,

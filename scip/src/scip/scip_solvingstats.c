@@ -3185,6 +3185,15 @@ void SCIPprintBranchruleStatistics(
          SCIPbranchruleGetNCutsFound(scip->set->branchrules[i]),
          SCIPbranchruleGetNConssFound(scip->set->branchrules[i]),
          SCIPbranchruleGetNChildren(scip->set->branchrules[i]));
+         if (strcmp(SCIPbranchruleGetName(scip->set->branchrules[i]), "general_disjunction") == 0){
+            SCIPmessageFPrintInfo(scip->messagehdlr, file,
+            "  GeneralDisjunction(extra): subMILPs=%" SCIP_LONGINT_FORMAT
+            " fairNodes of all MILPs=%" SCIP_LONGINT_FORMAT " probingLPs=%" SCIP_LONGINT_FORMAT "\n",
+            SCIPbranchruleGeneralDisjunctionGetMILPs(scip),
+            SCIPbranchruleGeneralDisjunctionGetMILPNodes(scip),
+            SCIPbranchruleGeneralDisjunctionGetProbingLPs(scip));
+         }
+
    }
 }
 
