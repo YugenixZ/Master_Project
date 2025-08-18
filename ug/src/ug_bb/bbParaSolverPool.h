@@ -1718,10 +1718,10 @@ public:
       std::vector<long long> info       ///< information about fair nodes
    )
    {
-      totalFairNodesInfo[0] = info[0];
-      totalFairNodesInfo[1] = info[1];
-      totalFairNodesInfo[2] = info[2];
-      totalFairNodesInfo[3] = info[3];
+      totalFairNodesInfo[0] += info[0];
+      totalFairNodesInfo[1] += info[1];
+      totalFairNodesInfo[2] += info[2];
+      totalFairNodesInfo[3] += info[3];
    }
 
 

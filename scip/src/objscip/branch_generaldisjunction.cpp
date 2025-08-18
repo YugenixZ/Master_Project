@@ -1382,7 +1382,7 @@ SCIP_Real get_factor(SCIP_Real lp_gap) {
    } else if (lp_gap >=0.1 && lp_gap < 1) {
       factor = 1 + ceil(lp_gap*10)/10;
    } else if (lp_gap == 1e+20) {
-      factor = 3;
+      factor = 2;
    } else {
       factor = (ceil(lp_gap) + 1) * 2;
    }
@@ -1533,7 +1533,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
 
       if ( status_l == "NULL" || status_r == "NULL") {
          std::cout << "General disjunction: No feasible solution found, use SCIP default branching rule" << std::endl;
-         *result = SCIP_DIDNOTRUN;
+         *result = SCIP_DIDNOTFIND;
          return SCIP_OKAY;
 
       } else if (status_l == "updated_zl" && status_r == "updated_zl") {
@@ -1609,7 +1609,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
 
       } else {
          std::cout << "General disjunction: Both children are not added" << std::endl;
-         *result = SCIP_DIDNOTRUN;
+         *result = SCIP_DIDNOTFIND;
          return SCIP_OKAY;
       };
    };
