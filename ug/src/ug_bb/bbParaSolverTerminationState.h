@@ -96,7 +96,7 @@ public:
          : ParaSolverTerminationState(),
            totalNSolved(-1),
            totalNFairNodes(-1),
-           totalFairNodesInfo({-1,-1,-1,-1}),
+           totalFairNodesInfo({-1,-1,-1,-1,-1,-1,-1}),
            minNSolved(-1),
            maxNSolved(-1),
            totalNSent(-1),

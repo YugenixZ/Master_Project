@@ -96,13 +96,13 @@ protected:
    int          nSent;                                ///< number of ParaNodes sent from this subtree rooted from the current ParaNode
    int          nSolvedWithNoPreprocesses;            ///< number of nodes solved when it is solved with no preprocesses
    long long    nfairnodes;                           ///< number of fair nodes processed by this solver
-   std::vector<long long> fairnodesinfo;              ///< fair nodes info: [0] total fair nodes, [1] nMilpsnodes, [2] nMilps, [3] nProbinglps
+   std::vector<long long> fairnodesinfo;              ///< fair nodes info: [0] total fair nodes, [1] nDomreductions, [2] nCutoffs, [3] nConss, [4] nMilpsnodes, [5] nMilps, [6] nProbinglps
    ///
    ///  Counters related to this BbParaSolver
    ///
    int          totalNSolved;                         ///< accumulated number of nodes solved in this BbParaSolver
    int          totalNFairNodes;                      ///< accumulated number of fair nodes processed by this BbParaSolver
-   std::vector<long long> totalfairnodesinfo;         ///< total fair nodes info: [0] total fair nodes, [1] nMilpsnodes, [2] nMilps, [3] nProbinglps
+   std::vector<long long> totalfairnodesinfo;         ///< total fair nodes info: [0] total fair nodes, [1] nDomreductions, [2] nCutoffs, [3] nConss, [4] nMilpsnodes, [5] nMilps, [6] nProbinglps
    int          minNSolved;                           ///< minimum number of subtree nodes rooted from ParaNode
    int          maxNSolved;                           ///< maximum number of subtree nodes rooted from ParaNode
    int          nTransferredLocalCutsFromSolver;      ///< number of local cuts transferred from this Solver

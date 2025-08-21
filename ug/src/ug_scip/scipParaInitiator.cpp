@@ -2388,9 +2388,12 @@ ScipParaInitiator::outputFinalSolverStatistics(
    *os << "  nodes (solved)   : " << SCIPgetNNodes(scip) << std::endl;
    *os << "  fairnodes        : " << nfairnodes << std::endl;
    *os << "  fairnodes info   : " << fairnodesinfo[0] << std::endl;
-   *os << "  nMilpsnodes      : " << fairnodesinfo[1] << std::endl;
-   *os << "  nMilps           : " << fairnodesinfo[2] << std::endl;
-   *os << "  nProbinglps      : " << fairnodesinfo[3] << std::endl;
+   *os << "  nDomreductions   : " << fairnodesinfo[1] << std::endl;
+   *os << "  nCutoffs         : " << fairnodesinfo[2] << std::endl;
+   *os << "  nConss           : " << fairnodesinfo[3] << std::endl;
+   *os << "  nMilpsnodes      : " << fairnodesinfo[4] << std::endl;
+   *os << "  nMilps           : " << fairnodesinfo[5] << std::endl;
+   *os << "  nProbinglps      : " << fairnodesinfo[6] << std::endl;
    *os << "Solution           :" << std::endl;
    *os << "  Solutions found  : " << SCIPgetNSols(scip) << std::endl;
    SCIP_Real primalbound = SCIPinfinity(scip);

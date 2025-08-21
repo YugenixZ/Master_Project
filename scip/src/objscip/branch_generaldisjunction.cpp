@@ -885,7 +885,7 @@ vector<Submodel_sols> submodel_solve(
          SCIP_Bool endprobing = FALSE;
 
          // Retrieve the solutions
-         cout << "Submodel solved with current zl: " << zl << endl;
+         // cout << "Submodel solved with current zl: " << zl << endl;
          SCIP_Sol *submodel_sol = SCIPgetBestSol(submodel_datas.model_sub);
          vector<SCIP_Real> pi_plus_solution(n);
          vector<SCIP_Real> pi_minus_solution(n);
@@ -1454,8 +1454,8 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
       SCIP_Real min_magnitude = getMagnitudeBase(min_coef);
       SCIP_Real max_magnitude = getMagnitudeBase(std::round(max_coef));
       SCIP_Real matrix_range = (min_magnitude > 0) ? max_magnitude / min_magnitude : max_magnitude;      
-      cout << "Matrix range (min_coef: " << min_coef << ", max_coef: " << max_coef << "): ";
-      cout << "Matrix range: " << matrix_range << endl;
+      // cout << "Matrix range (min_coef: " << min_coef << ", max_coef: " << max_coef << "): ";
+      // cout << "Matrix range: " << matrix_range << endl;
       SCIP_Real tmp_range = max_magnitude / base_delta;
       if (matrix_range > 1e+6) {
          scaled_delta = getMagnitudeBase(min_coef);
@@ -1608,7 +1608,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
          return SCIP_OKAY;
 
       } else {
-         std::cout << "General disjunction: Both children are not added" << std::endl;
+         std::cout << "General disjunction: Both Children are not added" << std::endl;
          *result = SCIP_DIDNOTFIND;
          return SCIP_OKAY;
       };

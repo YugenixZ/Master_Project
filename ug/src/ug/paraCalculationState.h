@@ -67,7 +67,7 @@ public:
          : compTime(0.0),
            nSolved(-1),
            nfairnodes(-1),
-           fairnodesinfo({-1,-1,-1,-1}),
+           fairnodesinfo({-1,-1,-1,-1,-1,-1,-1}),
            terminationState(-1)
    {
    }

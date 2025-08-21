@@ -1410,7 +1410,7 @@ public:
            nNodesSolvedInSolvers(0),
            nTotalNodesSolved(0),
            nTotalFairNodesSolved(0),
-           totalFairNodesInfo(4, 0),
+           totalFairNodesInfo(7, 0),
            nNodesInSolvers(0),  // rampUpPhase(false),
            collectingMode(false),
            breakingFirstSubtree(false),
@@ -1476,7 +1476,7 @@ public:
            nNodesSolvedInSolvers(0),
            nTotalNodesSolved(0),
            nTotalFairNodesSolved(0),
-           totalFairNodesInfo(4, 0),
+           totalFairNodesInfo(7, 0),
            nNodesInSolvers(0),  // rampUpPhase(false),
            collectingMode(false),
            breakingFirstSubtree(false),
@@ -1722,6 +1722,9 @@ public:
       totalFairNodesInfo[1] += info[1];
       totalFairNodesInfo[2] += info[2];
       totalFairNodesInfo[3] += info[3];
+      totalFairNodesInfo[4] += info[4];
+      totalFairNodesInfo[5] += info[5];
+      totalFairNodesInfo[6] += info[6];
    }
 
 

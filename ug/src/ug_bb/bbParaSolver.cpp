@@ -82,10 +82,10 @@ BbParaSolver::BbParaSolver(
       nSent(0),
       nSolvedWithNoPreprocesses(0),
       nfairnodes(0),
-      fairnodesinfo({0, 0, 0, 0}),
+      fairnodesinfo({0, 0, 0, 0, 0, 0, 0}),
       totalNSolved(0),
       totalNFairNodes(0),
-      totalfairnodesinfo({0, 0, 0, 0}),
+      totalfairnodesinfo({0, 0, 0, 0, 0, 0, 0}),
       minNSolved(INT_MAX),
       maxNSolved(INT_MIN),
       nTransferredLocalCutsFromSolver(0),
@@ -936,6 +936,9 @@ BbParaSolver::run(
       fairnodesinfo[1] += currentFairnodesInfo[1];
       fairnodesinfo[2] += currentFairnodesInfo[2];
       fairnodesinfo[3] += currentFairnodesInfo[3];
+      fairnodesinfo[4] += currentFairnodesInfo[4];
+      fairnodesinfo[5] += currentFairnodesInfo[5];
+      fairnodesinfo[6] += currentFairnodesInfo[6];
       if( paraParams->getBoolParamValue(CheckEffectOfRootNodePreprocesses) && nSolved == 1)
       {
          solveToCheckEffectOfRootNodePreprocesses();
@@ -1446,6 +1449,9 @@ BbParaSolver::sendCompletionOfCalculation(
    totalfairnodesinfo[1] += fairnodesinfo[1];
    totalfairnodesinfo[2] += fairnodesinfo[2];
    totalfairnodesinfo[3] += fairnodesinfo[3];
+   totalfairnodesinfo[4] += fairnodesinfo[4];
+   totalfairnodesinfo[5] += fairnodesinfo[5];
+   totalfairnodesinfo[6] += fairnodesinfo[6];
    totalNSent += nSent;
    totalNImprovedIncumbent += nImprovedIncumbent;
    nParaTasksSolved++;
@@ -1486,7 +1492,7 @@ BbParaSolver::sendCompletionOfCalculation(
 
    nSolved = 0;
    nfairnodes = 0;
-   fairnodesinfo = {0, 0, 0, 0};
+   fairnodesinfo = {0, 0, 0, 0, 0, 0, 0};
    nSent = 0;
    nImprovedIncumbent = 0;
    nSolvedWithNoPreprocesses = 0;
@@ -1570,7 +1576,7 @@ BbParaSolver::sendCompletionOfCalculation(
          maxNSolved = INT_MIN;
          totalNSolved = 0;
          totalNFairNodes = 0;
-         totalfairnodesinfo = {0, 0, 0, 0};
+         totalfairnodesinfo = {0, 0, 0, 0, 0, 0, 0};
          totalNSent = 0;
          totalNImprovedIncumbent = 0;
 //         if( newNode )

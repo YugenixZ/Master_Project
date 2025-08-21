@@ -588,7 +588,7 @@ BbParaLoadCoordinator::~BbParaLoadCoordinator(
          {
             bbParaInitiator->setNumberOfNodesSolved(1ULL);   // always set 1 : no meaning
             bbParaInitiator->setNumberOfFairNodes(1ULL);   // always set 1 : no meaning
-            bbParaInitiator->setTotalFairNodesInfo({0,0,0,0});
+            bbParaInitiator->setTotalFairNodesInfo({0,0,0,0,0,0,0});
          }
          bbParaInitiator->setDualBound(paraNodePool->getBestDualBoundValue());
          lcts.externalGlobalBestDualBoundValue = bbParaInitiator->convertToExternalValue(paraNodePool->getBestDualBoundValue());
@@ -643,7 +643,7 @@ BbParaLoadCoordinator::~BbParaLoadCoordinator(
                {
                   bbParaInitiator->setNumberOfNodesSolved(1ULL);   // always set 1 : no meaning
                   bbParaInitiator->setNumberOfFairNodes(1ULL);   // always set 1 : no meaning
-                  bbParaInitiator->setTotalFairNodesInfo({0,0,0,0});
+                  bbParaInitiator->setTotalFairNodesInfo({0,0,0,0,0,0,0});
                }
 
                if( bbParaInitiator->getGlobalBestIncumbentSolution() && allCompInfeasibleAfterSolution && (!givenGapIsReached) )
@@ -711,7 +711,7 @@ BbParaLoadCoordinator::~BbParaLoadCoordinator(
                   {
                      bbParaInitiator->setNumberOfNodesSolved(1ULL);   // always set 1 : no meaning
                      bbParaInitiator->setNumberOfFairNodes(1ULL);   // always set 1 : no meaning
-                     bbParaInitiator->setTotalFairNodesInfo({0,0,0,0});
+                     bbParaInitiator->setTotalFairNodesInfo({0,0,0,0,0,0,0});
                   }
                   bbParaInitiator->setDualBound(lcts.globalBestDualBoundValue);
                }
