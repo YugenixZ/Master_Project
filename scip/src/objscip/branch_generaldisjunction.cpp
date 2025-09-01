@@ -75,6 +75,7 @@ static SCIP_Longint g_total_milps = 0;           // MILP solves (submodels)
 
 class BranchruleGeneralDisjunction : public scip::ObjBranchrule {
 public:
+   // Parameters for submodel solving
    int M = 1;
    int k = 15;
    SCIP_Real base_delta = 1e-4;
@@ -301,9 +302,7 @@ SubmodelVars submodelsmall_create(
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
 
-   // Set random seed for reproducibility
-   SCIP_CALL_ABORT(SCIPsetIntParam(model_sub_s, "randomization/permutationseed", 12345));
-   SCIP_CALL_ABORT(SCIPsetIntParam(model_sub_s, "randomization/randomseedshift", 12345));
+
 
    retcode = SCIPsetRealParam(model_sub_s, "limits/time", time_limit);
    if (retcode != SCIP_OKAY) {
@@ -714,9 +713,7 @@ SubmodelVars submodel_create(
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
 
-   // Set random seed for reproducibility
-   SCIP_CALL_ABORT(SCIPsetIntParam(model_sub, "randomization/permutationseed", 12345));
-   SCIP_CALL_ABORT(SCIPsetIntParam(model_sub, "randomization/randomseedshift", 12345));
+
 
    retcode = SCIPsetRealParam(model_sub, "limits/time", time_limit);
    if (retcode != SCIP_OKAY) {
@@ -1392,7 +1389,7 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
       // cout << "Matrix range: " << matrix_range << endl;
       SCIP_Real tmp_range = max_magnitude / base_delta;
       if (matrix_range > 1e+6) {
-         scaled_delta = getMagnitudeBase(min_coef);
+         scaled_delta = getMagnitudeBase(min_coef) * 10;
       } else if (tmp_range > 1e+6) {
          scaled_delta = max_magnitude / 1e+6;
       }

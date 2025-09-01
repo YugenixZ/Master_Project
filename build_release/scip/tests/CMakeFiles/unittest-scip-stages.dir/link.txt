@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -DNDEBUG "CMakeFiles/unittest-scip-stages.dir/src/scip/stages.c.o" -o scip/unittest-scip-stages  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build_release/lib /usr/lib/x86_64-linux-gnu/libcriterion.so ../../lib/libscip.so.9.2.2.0 -lm 

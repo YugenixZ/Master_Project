@@ -1,1 +1,0 @@
-/usr/bin/cc -O3 -DNDEBUG "CMakeFiles/unittest-misc-activity.dir/src/misc/activity.c.o" -o misc/unittest-misc-activity  -Wl,-rpath,/scratch/htc/yzhou/yzhou_SCIP/scipoptsuite-9.2.2/build_release/lib /usr/lib/x86_64-linux-gnu/libcriterion.so ../../lib/libscip.so.9.2.2.0 -lm 
