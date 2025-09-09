@@ -39,6 +39,7 @@
 #include "scip/scip_var.h"
 #include "scip/scip_branch.h"
 #include "branch_generaldisjunction.h"
+#include "scip/branch_relpscost.h"
 #include "objbranchrule.h"
 #include "scip/scipdefplugins.h"
 #include "scip/struct_lp.h"
@@ -78,7 +79,7 @@ public:
    // Parameters for submodel solving
    int M = 1;
    int k = 15;
-   SCIP_Real base_delta = 1e-4;
+   SCIP_Real base_delta = 0.1;
    const double TIME_LIMIT_SECONDS = 1000.0;
 
    explicit BranchruleGeneralDisjunction(SCIP* scip)
@@ -109,14 +110,11 @@ SubmodelVars submodelsmall_create(
        SCIP_Real matrix_range,
        SCIP_Real time_limit
 ){
-   SCIP_Real delta_scaled = 0.1;
-   SCIP_Real delta_scaled_minus = delta_scaled - 1;
    // Create the submodel
    size_t m = b.size();
    size_t n = c.size();
    SCIP *model_sub_s;
    SCIP_RETCODE retcode;
-
    retcode = SCIPcreate(&model_sub_s);
    if (retcode != SCIP_OKAY) {
       SCIPprintError(retcode);
@@ -152,6 +150,7 @@ SubmodelVars submodelsmall_create(
          return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
       }
       SCIP_CALL_ABORT(SCIPaddVar(model_sub_s, p[i]));
+      
    }
 
    for (size_t i = 0; i < m; ++i) {
@@ -223,7 +222,7 @@ SubmodelVars submodelsmall_create(
 
    //pb - pi0 >= delta
    SCIP_CONS* cons_p_b;
-   SCIPcreateConsBasicLinear(model_sub_s, &cons_p_b, "cons_p_b", 0, nullptr, nullptr, delta_scaled, SCIPinfinity(model_sub_s));
+   SCIPcreateConsBasicLinear(model_sub_s, &cons_p_b, "cons_p_b", 0, nullptr, nullptr, delta, SCIPinfinity(model_sub_s));
    for (size_t i = 0; i < m; ++i) {
       SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub_s, cons_p_b, p[i], b[i]));
    }
@@ -233,7 +232,7 @@ SubmodelVars submodelsmall_create(
 
    //qb + pi0 >= delta - 1
    SCIP_CONS* cons_q_b;
-   SCIPcreateConsBasicLinear(model_sub_s, &cons_q_b, "cons_q_b", 0, nullptr, nullptr, delta_scaled_minus, SCIPinfinity(model_sub_s));
+   SCIPcreateConsBasicLinear(model_sub_s, &cons_q_b, "cons_q_b", 0, nullptr, nullptr, delta - 1, SCIPinfinity(model_sub_s));
    for (size_t i = 0; i < m; ++i) {
       SCIP_CALL_ABORT(SCIPaddCoefLinear(model_sub_s, cons_q_b, q[i], b[i]));
    }
@@ -312,13 +311,13 @@ SubmodelVars submodelsmall_create(
    }
    SCIPsetMessagehdlrQuiet(model_sub_s, TRUE);
 
-   if (matrix_range < 1e-8){
-      matrix_range = 1e-8;
-   } else if (matrix_range > 1e-6) {
-      matrix_range = 1e-6;
+   if (matrix_range < 1e-6){
+      if (matrix_range < 1e-8){
+         matrix_range = 1e-8;
+      }
+      SCIPsetRealParam(model_sub_s, "numerics/feastol", matrix_range);
+      SCIPsetRealParam(model_sub_s, "numerics/sumepsilon", matrix_range);
    }
-   SCIPsetRealParam(model_sub_s, "numerics/feastol", matrix_range);
-   SCIPsetRealParam(model_sub_s, "numerics/sumepsilon", matrix_range);
    
    return SubmodelVars{model_sub_s, p, {}, q, {}, pi_plus, pi_minus, pi0};
 
@@ -338,6 +337,26 @@ SCIP_Real getMagnitudeBase(SCIP_Real x) {
       mag /= 10.0;
    }
    return mag;
+}
+
+/* Consult relpscost branching rule for variable evaluation */
+static
+SCIP_RESULT consultRelpscost(
+    SCIP* scip,
+    SCIP_VAR** lpcands,
+    SCIP_Real* lpcandssol,
+    SCIP_Real* lpcandsfrac,
+    int nlpcands,
+    SCIP_Bool executebranching = FALSE
+) {
+
+   SCIP_RESULT relpscost_result;
+   
+   // Call relpscost for evaluation (default: do not execute branching)
+   SCIP_CALL_ABORT(SCIPexecRelpscostBranching(scip, lpcands, lpcandssol, lpcandsfrac,
+                                             nlpcands, executebranching, &relpscost_result));
+   
+   return relpscost_result;
 }
 
 /* Check if not all elements are zero */
@@ -485,7 +504,6 @@ SubmodelVars submodel_create(
    // Create the submodel 
    size_t m = b.size();
    size_t n = c.size();
-
    SCIP *model_sub;
    SCIP_RETCODE retcode;
 
@@ -714,19 +732,20 @@ SubmodelVars submodel_create(
    }
 
 
-
+   
    retcode = SCIPsetRealParam(model_sub, "limits/time", time_limit);
    if (retcode != SCIP_OKAY) {
       SCIPprintError(retcode);
       SCIPfree(&model_sub);
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
-   if (matrix_range < 1e-8){
-      matrix_range = 1e-8;
+   if (matrix_range < 1e-6){
+      if (matrix_range < 1e-8){
+         matrix_range = 1e-8;
+      }
+      SCIPsetRealParam(model_sub, "numerics/feastol", matrix_range);
+      SCIPsetRealParam(model_sub, "numerics/sumepsilon", matrix_range);
    }
-   SCIPsetRealParam(model_sub, "numerics/feastol", matrix_range);
-   SCIPsetRealParam(model_sub, "numerics/sumepsilon", matrix_range);
-
    SCIPsetMessagehdlrQuiet(model_sub, TRUE);
    return SubmodelVars{model_sub, p, s_L, q, s_R, pi_plus, pi_minus, pi0};
 }
@@ -750,7 +769,7 @@ vector<Submodel_sols> submodel_solve(
         SCIP_Real matrix_range,
         SCIP_Real time_limit
 ){
-   // Simple check on system (4)
+   // Search disjunction time tracking
    auto start_time = std::chrono::high_resolution_clock::now();
 
    queue<SCIP_Real> estL_list;
@@ -763,11 +782,12 @@ vector<Submodel_sols> submodel_solve(
    vector<Submodel_sols> final_results;
 
 
-
+   // Simple check on system (4)
    SubmodelVars preck_submodel = submodelsmall_create(scip, A, b, c, M, k, delta, zl_low, matrix_range, time_limit);
    SCIP_RETCODE retcode = SCIPsolve(preck_submodel.model_sub);
    g_total_milps++;
    SCIP_Longint fairnodes_preck = 0;
+   // Retrieve the number of fair nodes solved in precheck submodel
    if (retcode != SCIP_OKAY) {
       std::cerr << "Error solving preck submodel !" << std::endl;
    } else{
@@ -816,7 +836,7 @@ vector<Submodel_sols> submodel_solve(
       SCIPfree(&preck_submodel.model_sub);
    }
 
-   
+   // Start the binary search
    while (abs(zl_high - zl_low) > 1e-6){
       // Check time limit at the beginning of each iteration
       auto current_time = std::chrono::high_resolution_clock::now();
@@ -855,6 +875,8 @@ vector<Submodel_sols> submodel_solve(
          zl_high = zl;
          continue;
       }
+
+      //Retrieve the number of fair nodes solved in submodel
       SCIP_BRANCHRULE** branchrules = SCIPgetBranchrules(submodel_datas.model_sub);
       int nbranchrules = SCIPgetNBranchrules(submodel_datas.model_sub);
       int nodes_submodel = SCIPgetNTotalNodes(submodel_datas.model_sub);
@@ -869,6 +891,8 @@ vector<Submodel_sols> submodel_solve(
       
       SCIP_Longint fairnodes_submodel = ConssAdded + DomReds + Cutoffs + nodes_submodel;
       g_total_milp_nodes += fairnodes_submodel;
+
+      // Starting probing if the submodel is solved to optimality
       if (SCIPgetStatus(submodel_datas.model_sub) == SCIP_STATUS_OPTIMAL) {
          
          SCIP_Bool startprobing = TRUE;
@@ -1010,6 +1034,7 @@ vector<Submodel_sols> submodel_solve(
             }
             g_total_probing_lps++;  // Count probing LP solves
             SCIP_CALL_ABORT( SCIPbacktrackProbing(scip, 0) );
+
             // Handle the right side probing constraint
             SCIPcreateConsLinear(scip, &probing_cons_right, "probing_cons_right", 0, NULL, NULL, pi0_solution + 1, SCIPinfinity(scip),
                   TRUE, TRUE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, TRUE, TRUE);
@@ -1303,7 +1328,7 @@ SCIP_RETCODE createBranchingConstraint(
    return SCIP_OKAY;
 };
 
-/* Method for get factor for scaling zl*/
+/* Method for get factor for scaling zl */
 static
 SCIP_Real get_factor(SCIP_Real lp_gap) {
    SCIP_Real factor;
@@ -1319,7 +1344,9 @@ SCIP_Real get_factor(SCIP_Real lp_gap) {
    }
    return factor;
 }
-/* Helper function to analyze coefficients and output only matrix range */
+
+/* Helper function to analyze coefficients and output only
+ matrix range to maintain the numerical stability */
 static
 pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
     const CSRMatrix& A,
@@ -1335,7 +1362,7 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
     SCIP_Real max_coef = 0.0;
     // Analyze constraint matrix A
     for (size_t i = 0; i < A.values.size(); ++i) {
-        if (std::abs(A.values[i]) > 1e-12) {
+        if (std::abs(A.values[i]) > 1e-9) {
             SCIP_Real abs_val = std::abs(A.values[i]);
             min_coef = std::min(min_coef, abs_val);
             max_coef = std::max(max_coef, abs_val);
@@ -1344,7 +1371,7 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
     
     // Analyze RHS vector b
     for (size_t i = 0; i < b.size(); ++i) {
-        if (std::abs(b[i]) > 1e-12) {
+        if (std::abs(b[i]) > 1e-9) {
             SCIP_Real abs_val = std::abs(b[i]);
             min_coef = std::min(min_coef, abs_val);
             max_coef = std::max(max_coef, abs_val);
@@ -1353,7 +1380,7 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
     
     // Analyze objective coefficients c
     for (size_t i = 0; i < c.size(); ++i) {
-        if (std::abs(c[i]) > 1e-12) {
+        if (std::abs(c[i]) > 1e-9) {
             SCIP_Real abs_val = std::abs(c[i]);
             min_coef = std::min(min_coef, abs_val);
             max_coef = std::max(max_coef, abs_val);
@@ -1372,7 +1399,7 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
     // Analyze current LP solution x*
     for (size_t i = 0; i < vars_lp.size(); ++i) {
         SCIP_Real sol_val = SCIPgetSolVal(scip, nullptr, vars_lp[i]);
-        if (std::abs(sol_val) > 1e-12) {
+        if (std::abs(sol_val) > 1e-9) {
             SCIP_Real abs_val = std::abs(sol_val);
             min_coef = std::min(min_coef, abs_val);
             max_coef = std::max(max_coef, abs_val);
@@ -1380,19 +1407,48 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
     }
     SCIP_Real scaled_delta = base_delta;
     SCIP_Real range = 1e-6;
+    
     // Calculate matrix range using getMagnitudeBase on min and max coefficients
-    if (min_coef != SCIP_REAL_MAX && max_coef > 0) {
+    if (max_coef != SCIP_REAL_MAX && min_coef - 1e-9 > 0) {
       SCIP_Real min_magnitude = getMagnitudeBase(min_coef);
       SCIP_Real max_magnitude = getMagnitudeBase(std::round(max_coef));
-      SCIP_Real matrix_range = (min_magnitude > 0) ? max_magnitude / min_magnitude : max_magnitude;      
+      SCIP_Real matrix_range = (min_magnitude - 1e-9 > 0) ? max_magnitude / min_magnitude : max_magnitude;      
       // cout << "Matrix range (min_coef: " << min_coef << ", max_coef: " << max_coef << "): ";
       // cout << "Matrix range: " << matrix_range << endl;
-      SCIP_Real tmp_range = max_magnitude / base_delta;
-      if (matrix_range > 1e+6) {
-         scaled_delta = getMagnitudeBase(min_coef) * 10;
-      } else if (tmp_range > 1e+6) {
-         scaled_delta = max_magnitude / 1e+6;
+      if (matrix_range -1e+6 > 1e-9){
+         if (max_magnitude / 1e+5 > base_delta) {
+            scaled_delta = base_delta;
+         } else {
+            scaled_delta = max_magnitude / 1e+5;
+         }
+      }     
+      else if (matrix_range >= 1e+4) {
+         // Scale delta proportionally to matrix range
+         SCIP_Real scale_factor = matrix_range / 1e+4;  // Between 1 and 100
+         scaled_delta = base_delta / std::sqrt(scale_factor);
+         
+         // Ensure minimum delta for numerical stability
+         scaled_delta = std::max(scaled_delta, 1e-6);
       }
+      else if (matrix_range >= 1e+2) {
+         // Use base_delta or slightly larger
+         scaled_delta = base_delta;
+      }
+      else {
+         // Can afford to use larger delta for faster convergence
+         scaled_delta = base_delta * 2.0;
+         
+         // Cap the maximum delta
+         scaled_delta = std::min(scaled_delta, 1.0);
+      }
+    
+      // Additional safety check based on coefficient magnitude
+      if (max_coef >= 1e+2 && max_coef <= 1e+4) {
+         // For your specific case: max_coef in range 1e+2 to 1e+4
+         SCIP_Real magnitude_based_delta = max_coef / 1e+5;
+         scaled_delta = std::min(scaled_delta, magnitude_based_delta);
+      }
+
       range = getMagnitudeBase(1 / matrix_range);
 
    }
@@ -1408,6 +1464,31 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
    {
       SCIP_Node *curr_Node = get_information(scip);
       MatrixData LP_data = getConstraintMatrix(scip);
+
+      // Get LP branching candidates
+      SCIP_VAR** lpcands;
+      SCIP_Real* lpcandssol;
+      SCIP_Real* lpcandsfrac;
+      int nlpcands;
+      SCIP_CALL(SCIPgetLPBranchCands(scip, &lpcands, &lpcandssol, &lpcandsfrac, NULL, &nlpcands, NULL));
+      
+      if (nlpcands == 0) {
+         *result = SCIP_DIDNOTRUN;
+         return SCIP_OKAY;
+      }
+      
+      // First consult relpscost (evaluation only, no branching)
+      SCIP_RESULT relpscost_result = consultRelpscost(scip, lpcands, lpcandssol, lpcandsfrac, nlpcands, FALSE);
+      if (relpscost_result == SCIP_REDUCEDDOM) {
+         *result = SCIP_REDUCEDDOM;
+         std::cout << "Relpscost reduced domain, skip general disjunction branching" << std::endl;
+         return SCIP_OKAY;
+      } else if (relpscost_result == SCIP_CONSADDED) {
+         *result = SCIP_CONSADDED;
+         std::cout << "Relpscost added constraint, skip general disjunction branching" << std::endl;
+         return SCIP_OKAY;
+      }
+
       CSRMatrix A = LP_data.A;
       std::vector<SCIP_Real> b = LP_data.b;
       std::vector<SCIP_Real> c = LP_data.c;
@@ -1451,6 +1532,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       pair<SCIP_Real, SCIP_Real> numerics_pair = analyzeMatrixRange(A, b, c, (zl_low + zl_high) * 0.5, vars_lp, base_delta, scip);
       SCIP_Real scaled_delta = numerics_pair.first;
       SCIP_Real matrix_range = numerics_pair.second;
+
       std::vector<Submodel_sols> final_results = submodel_solve(scip, zl_low, zl_high, m, n, scaled_delta, A, b, c, M, k, node_ub, vars_lp, matrix_range, TIME_LIMIT_SECONDS);
       SCIP_Real est_l = final_results[0].est_l;
       SCIP_Real est_r = final_results[0].est_r;

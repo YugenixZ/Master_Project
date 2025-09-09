@@ -1,2 +1,8 @@
 build/lib/libscip.so.9.2.2.0
 .vscode/
+build/
+build_release/
+network06.sol.trans
+network06.sol
+network05.sol.trans
+network05.sol
