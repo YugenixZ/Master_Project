@@ -311,10 +311,8 @@ SubmodelVars submodelsmall_create(
    }
    SCIPsetMessagehdlrQuiet(model_sub_s, TRUE);
 
-   if (matrix_range < 1e-6){
-      if (matrix_range < 1e-8){
-         matrix_range = 1e-8;
-      }
+   if (matrix_range - 1e-8 <= 1e-9){
+      matrix_range = 1e-7;
       SCIPsetRealParam(model_sub_s, "numerics/feastol", matrix_range);
       SCIPsetRealParam(model_sub_s, "numerics/sumepsilon", matrix_range);
    }
@@ -739,13 +737,12 @@ SubmodelVars submodel_create(
       SCIPfree(&model_sub);
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
-   if (matrix_range < 1e-6){
-      if (matrix_range < 1e-8){
-         matrix_range = 1e-8;
-      }
-      SCIPsetRealParam(model_sub, "numerics/feastol", matrix_range);
-      SCIPsetRealParam(model_sub, "numerics/sumepsilon", matrix_range);
+   if (matrix_range - 1e-8 <= 1e-9){
+      matrix_range = 1e-7;
+      SCIPsetRealParam(model_sub_s, "numerics/feastol", matrix_range);
+      SCIPsetRealParam(model_sub_s, "numerics/sumepsilon", matrix_range);
    }
+   
    SCIPsetMessagehdlrQuiet(model_sub, TRUE);
    return SubmodelVars{model_sub, p, s_L, q, s_R, pi_plus, pi_minus, pi0};
 }
@@ -899,7 +896,7 @@ vector<Submodel_sols> submodel_solve(
          SCIP_Bool endprobing = FALSE;
 
          // Retrieve the solutions
-         // cout << "Submodel solved with current zl: " << zl << endl;
+         cout << "Submodel solved with current zl: " << zl << endl;
          SCIP_Sol *submodel_sol = SCIPgetBestSol(submodel_datas.model_sub);
          vector<SCIP_Real> pi_plus_solution(n);
          vector<SCIP_Real> pi_minus_solution(n);
@@ -1349,79 +1346,83 @@ SCIP_Real get_factor(SCIP_Real lp_gap) {
  matrix range to maintain the numerical stability */
 static
 pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
-    const CSRMatrix& A,
-    const vector<SCIP_Real>& b,
-    const vector<SCIP_Real>& c,
-    SCIP_Real zl,
-    const vector<SCIP_VAR*>& vars_lp,
-    SCIP_Real base_delta,
-    SCIP* scip
+   const CSRMatrix& A,
+   const vector<SCIP_Real>& b,
+   const vector<SCIP_Real>& c,
+   SCIP_Real zl,
+   const vector<SCIP_VAR*>& vars_lp,
+   SCIP_Real base_delta,
+   SCIP* scip
 ) {
-    // Find min and max coefficient values across all data
-    SCIP_Real min_coef = SCIP_REAL_MAX;
-    SCIP_Real max_coef = 0.0;
-    // Analyze constraint matrix A
-    for (size_t i = 0; i < A.values.size(); ++i) {
-        if (std::abs(A.values[i]) > 1e-9) {
-            SCIP_Real abs_val = std::abs(A.values[i]);
-            min_coef = std::min(min_coef, abs_val);
-            max_coef = std::max(max_coef, abs_val);
-        }
-    }
+   // Find min and max coefficient values across all data
+   SCIP_Real min_coef = SCIP_REAL_MAX;
+   SCIP_Real max_coef = 0.0;
+   // Analyze constraint matrix A
+   for (size_t i = 0; i < A.values.size(); ++i) {
+      if (std::abs(A.values[i]) > 1e-9) {
+         SCIP_Real abs_val = std::abs(A.values[i]);
+         min_coef = std::min(min_coef, abs_val);
+         max_coef = std::max(max_coef, abs_val);
+      }
+   }
     
-    // Analyze RHS vector b
-    for (size_t i = 0; i < b.size(); ++i) {
-        if (std::abs(b[i]) > 1e-9) {
-            SCIP_Real abs_val = std::abs(b[i]);
-            min_coef = std::min(min_coef, abs_val);
-            max_coef = std::max(max_coef, abs_val);
-        }
-    }
+   // Analyze RHS vector b
+   for (size_t i = 0; i < b.size(); ++i) {
+      if (std::abs(b[i]) > 1e-9) {
+         SCIP_Real abs_val = std::abs(b[i]);
+         min_coef = std::min(min_coef, abs_val);
+         max_coef = std::max(max_coef, abs_val);
+      }
+   }
     
-    // Analyze objective coefficients c
-    for (size_t i = 0; i < c.size(); ++i) {
-        if (std::abs(c[i]) > 1e-9) {
-            SCIP_Real abs_val = std::abs(c[i]);
-            min_coef = std::min(min_coef, abs_val);
-            max_coef = std::max(max_coef, abs_val);
-        }
-    }
-    
-    // Analyze dual bound zl
-    if (!SCIPisInfinity(scip, std::abs(zl))) {
-        SCIP_Real abs_val = std::abs(zl);
-        if (abs_val > 1e-12) {
-            min_coef = std::min(min_coef, abs_val);
-            max_coef = std::max(max_coef, abs_val);
-        }
-    }
-    
-    // Analyze current LP solution x*
-    for (size_t i = 0; i < vars_lp.size(); ++i) {
-        SCIP_Real sol_val = SCIPgetSolVal(scip, nullptr, vars_lp[i]);
-        if (std::abs(sol_val) > 1e-9) {
-            SCIP_Real abs_val = std::abs(sol_val);
-            min_coef = std::min(min_coef, abs_val);
-            max_coef = std::max(max_coef, abs_val);
-        }
-    }
-    SCIP_Real scaled_delta = base_delta;
-    SCIP_Real range = 1e-6;
-    
-    // Calculate matrix range using getMagnitudeBase on min and max coefficients
-    if (max_coef != SCIP_REAL_MAX && min_coef - 1e-9 > 0) {
+   // Analyze objective coefficients c
+   for (size_t i = 0; i < c.size(); ++i) {
+      if (std::abs(c[i]) > 1e-9) {
+         SCIP_Real abs_val = std::abs(c[i]);
+         min_coef = std::min(min_coef, abs_val);
+         max_coef = std::max(max_coef, abs_val);
+      }
+   }
+   
+   // Analyze dual bound zl
+   if (!SCIPisInfinity(scip, std::abs(zl))) {
+      SCIP_Real abs_val = std::abs(zl);
+      if (abs_val > 1e-12) {
+         min_coef = std::min(min_coef, abs_val);
+         max_coef = std::max(max_coef, abs_val);
+      }
+   }
+   
+   // Analyze current LP solution x*
+   for (size_t i = 0; i < vars_lp.size(); ++i) {
+      SCIP_Real sol_val = SCIPgetSolVal(scip, nullptr, vars_lp[i]);
+      if (std::abs(sol_val) > 1e-9) {
+         SCIP_Real abs_val = std::abs(sol_val);
+         min_coef = std::min(min_coef, abs_val);
+         max_coef = std::max(max_coef, abs_val);
+      }
+   }
+   SCIP_Real scaled_delta = base_delta;
+   SCIP_Real range = 1e-6;
+   
+   // Calculate matrix range using getMagnitudeBase on min and max coefficients
+   if (max_coef != SCIP_REAL_MAX && min_coef - 1e-9 > 0) {
       SCIP_Real min_magnitude = getMagnitudeBase(min_coef);
       SCIP_Real max_magnitude = getMagnitudeBase(std::round(max_coef));
       SCIP_Real matrix_range = (min_magnitude - 1e-9 > 0) ? max_magnitude / min_magnitude : max_magnitude;      
-      // cout << "Matrix range (min_coef: " << min_coef << ", max_coef: " << max_coef << "): ";
-      // cout << "Matrix range: " << matrix_range << endl;
-      if (matrix_range -1e+6 > 1e-9){
+      
+      if (matrix_range > 1e+8) {
+
          if (max_magnitude / 1e+5 > base_delta) {
             scaled_delta = base_delta;
          } else {
             scaled_delta = max_magnitude / 1e+5;
          }
       }     
+      else if (matrix_range > 1e+5 && matrix_range <= 1e+8) {
+         // For matrix range between 1e+5 and 1e+7, keep default delta
+         scaled_delta = base_delta;
+      }
       else if (matrix_range >= 1e+4) {
          // Scale delta proportionally to matrix range
          SCIP_Real scale_factor = matrix_range / 1e+4;  // Between 1 and 100
@@ -1434,25 +1435,27 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
          // Use base_delta or slightly larger
          scaled_delta = base_delta;
       }
+      else if (matrix_range >= 1e-8) {
+         // For small matrix ranges including 1e-6 and 1e-7 (your successful cases)
+         // Keep the base_delta as it works well for these instances
+         scaled_delta = base_delta;
+      }
       else {
-         // Can afford to use larger delta for faster convergence
+         // For very small matrix ranges, use larger delta for faster convergence
          scaled_delta = base_delta * 2.0;
          
          // Cap the maximum delta
          scaled_delta = std::min(scaled_delta, 1.0);
       }
-    
       // Additional safety check based on coefficient magnitude
       if (max_coef >= 1e+2 && max_coef <= 1e+4) {
          // For your specific case: max_coef in range 1e+2 to 1e+4
          SCIP_Real magnitude_based_delta = max_coef / 1e+5;
          scaled_delta = std::min(scaled_delta, magnitude_based_delta);
       }
-
       range = getMagnitudeBase(1 / matrix_range);
-
    }
-   
+
    return {scaled_delta, range};
 }
 /*
@@ -1612,23 +1615,23 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
 
 /** creates the general disjunction branching rule and includes it in SCIP */
 
-extern "C" SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPNodes(SCIP* scip) {
+SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPNodes(SCIP* scip) {
     return g_total_milp_nodes;
 }
 
-extern "C" SCIP_Longint SCIPbranchruleGeneralDisjunctionGetProbingLPs(SCIP* scip) {
+SCIP_Longint SCIPbranchruleGeneralDisjunctionGetProbingLPs(SCIP* scip) {
     return g_total_probing_lps;
 }
 
-extern "C" SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPs(SCIP* scip) {
+SCIP_Longint SCIPbranchruleGeneralDisjunctionGetMILPs(SCIP* scip) {
     return g_total_milps;
 }
-extern "C" void SCIPbranchruleGeneralDisjunctionResetCounters() {
+void SCIPbranchruleGeneralDisjunctionResetCounters() {
     g_total_milp_nodes = 0;
     g_total_probing_lps = 0;
     g_total_milps = 0;
 }
-extern "C" SCIP_RETCODE SCIPincludeBranchruleGeneralDisjunction(SCIP* scip) {
+SCIP_RETCODE SCIPincludeBranchruleGeneralDisjunction(SCIP* scip) {
 
    SCIPbranchruleGeneralDisjunctionResetCounters();
 
