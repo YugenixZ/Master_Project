@@ -2,6 +2,9 @@ build/lib/libscip.so.9.2.2.0
 .vscode/
 build/
 build_release/
+build_release_con2/
+build_released_noconsult/
+build_released_nocon_2/
 network06.sol.trans
 network06.sol
 network05.sol.trans

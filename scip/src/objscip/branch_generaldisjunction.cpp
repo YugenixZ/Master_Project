@@ -739,8 +739,8 @@ SubmodelVars submodel_create(
    }
    if (matrix_range - 1e-8 <= 1e-9){
       matrix_range = 1e-7;
-      SCIPsetRealParam(model_sub_s, "numerics/feastol", matrix_range);
-      SCIPsetRealParam(model_sub_s, "numerics/sumepsilon", matrix_range);
+      SCIPsetRealParam(model_sub, "numerics/feastol", matrix_range);
+      SCIPsetRealParam(model_sub, "numerics/sumepsilon", matrix_range);
    }
    
    SCIPsetMessagehdlrQuiet(model_sub, TRUE);
@@ -896,7 +896,7 @@ vector<Submodel_sols> submodel_solve(
          SCIP_Bool endprobing = FALSE;
 
          // Retrieve the solutions
-         cout << "Submodel solved with current zl: " << zl << endl;
+         // cout << "Submodel solved with current zl: " << zl << endl;
          SCIP_Sol *submodel_sol = SCIPgetBestSol(submodel_datas.model_sub);
          vector<SCIP_Real> pi_plus_solution(n);
          vector<SCIP_Real> pi_minus_solution(n);
@@ -1236,7 +1236,7 @@ vector<Submodel_sols> submodel_solve(
    Submodel_sols result;
 
    if (feasible_zl.empty()){
-      result = {SCIP_INVALID, {}, {}, NULL, NULL, "NULL", "NULL"};
+      result = {SCIP_INVALID, {}, {}, 1e+20, 1e+20, "NULL", "NULL"};
    }
    else {
       SCIP_Real best_zl = feasible_zl.back();
