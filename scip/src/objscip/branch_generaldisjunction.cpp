@@ -78,7 +78,7 @@ class BranchruleGeneralDisjunction : public scip::ObjBranchrule {
 public:
    // Parameters for submodel solving
    int M = 1;
-   int k = 15;
+   int k = 5;
    SCIP_Real base_delta = 0.1;
    const double TIME_LIMIT_SECONDS = 1000.0;
 
@@ -259,7 +259,7 @@ SubmodelVars submodelsmall_create(
    SCIP_LPSOLSTAT status_LP = SCIPgetLPSolstat(scip);
    if (status_LP == SCIP_LPSOLSTAT_OPTIMAL) {
       vector<SCIP_Real> x_star(n);
-      SCIP_Real epsilon = delta;
+      SCIP_Real epsilon = 1e-3;
       SCIP_COL **lp_cols = SCIPgetLPCols(scip);
       assert (lp_cols != nullptr);
       for (size_t j = 0; j < n; ++j) {
@@ -312,7 +312,7 @@ SubmodelVars submodelsmall_create(
    SCIPsetMessagehdlrQuiet(model_sub_s, TRUE);
 
    if (matrix_range - 1e-8 <= 1e-9){
-      matrix_range = 1e-7;
+      matrix_range = 1e-8;
       SCIPsetRealParam(model_sub_s, "numerics/feastol", matrix_range);
       SCIPsetRealParam(model_sub_s, "numerics/sumepsilon", matrix_range);
    }
@@ -686,7 +686,7 @@ SubmodelVars submodel_create(
    SCIP_LPSOLSTAT status_LP = SCIPgetLPSolstat(scip);
    if (status_LP == SCIP_LPSOLSTAT_OPTIMAL) {
       vector<SCIP_Real> x_star(n);
-      SCIP_Real epsilon = delta;
+      SCIP_Real epsilon = 1e-3;
       SCIP_COL **lp_cols = SCIPgetLPCols(scip);
       assert (lp_cols != nullptr);
 
@@ -834,7 +834,7 @@ vector<Submodel_sols> submodel_solve(
    }
 
    // Start the binary search
-   while (abs(zl_high - zl_low) > 1e-6){
+   while (abs(zl_high - zl_low) > 1e-4){
       // Check time limit at the beginning of each iteration
       auto current_time = std::chrono::high_resolution_clock::now();
       auto elapsed_seconds = std::chrono::duration<double>(current_time - start_time).count();
@@ -896,7 +896,7 @@ vector<Submodel_sols> submodel_solve(
          SCIP_Bool endprobing = FALSE;
 
          // Retrieve the solutions
-         // cout << "Submodel solved with current zl: " << zl << endl;
+         // cout << "Submodel solved with current zl: " << zl << endl; 
          SCIP_Sol *submodel_sol = SCIPgetBestSol(submodel_datas.model_sub);
          vector<SCIP_Real> pi_plus_solution(n);
          vector<SCIP_Real> pi_minus_solution(n);
@@ -945,9 +945,9 @@ vector<Submodel_sols> submodel_solve(
          // Check if pi_solution is not all zero and if both s_L and s_R are zero
          if (notallzero(pi_solution)) {
             if (!SCIPisFeasZero(scip, s_L_solution) || !SCIPisFeasZero(scip, s_R_solution)) {
-               // cout << "One of the s_L and s_R are non-zero, DEBUG" << endl;
+               cout << "One of the s_L and s_R are non-zero, DEBUG" << endl;
             } else {
-               // cout<< "Both s_L and s_R are zero, DEBUG" << endl;
+               cout<< "Both s_L and s_R are zero, DEBUG" << endl;
                // Write out the current submodel problem to a file for debugging
                // std::ostringstream submodel_fname;
                // submodel_fname << "/scratch/htc/yzhou/exp_scipmip/instances/submodel_debug_zl_" << std::setprecision(8) << zl << ".lp";
@@ -1553,7 +1553,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
          int pi0_sol_plus = final_results[0].pi0_solution + 1; 
          SCIP_CALL(createBranchingConstraint(scip, CreateChild, curr_Node, vars_lp, final_results[0].pi_solution, final_results[0].pi0_solution, est_l, "left"));
          SCIP_CALL(createBranchingConstraint(scip, CreateChild, curr_Node, vars_lp, final_results[0].pi_solution, pi0_sol_plus, est_r, "right"));
-         std::cout << "General disjunction: Both children are added" << std::endl;
+         std::cout << "General disjunction: Both Children are added" << std::endl;
          *result = SCIP_BRANCHED;
          return SCIP_OKAY;
 
@@ -1581,7 +1581,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
             SCIP_Bool CreateChild = TRUE;
             SCIP_CALL(createBranchingConstraint(scip, CreateChild, curr_Node, vars_lp, final_results[0].pi_solution, final_results[0].pi0_solution, est_l, "left"));
             SCIP_CALL(createBranchingConstraint(scip, CreateChild, curr_Node, vars_lp, final_results[0].pi_solution, pi0_sol_plus, est_r, "right"));
-            std::cout << "General disjunction: Both Children are added:" << std::endl;
+            std::cout << "General disjunction: Both Children are added" << std::endl;
             *result = SCIP_BRANCHED;
          }
          return SCIP_OKAY;
@@ -1600,7 +1600,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
             int pi0_sol_plus = final_results[0].pi0_solution + 1;
             SCIP_CALL(createBranchingConstraint(scip, CreateChild, curr_Node, vars_lp, final_results[0].pi_solution, pi0_sol_plus, est_r, "right"));
             SCIP_CALL(createBranchingConstraint(scip, CreateChild, curr_Node, vars_lp, final_results[0].pi_solution, final_results[0].pi0_solution, est_l, "left"));
-            std::cout << "General disjunction: Both Children are added:" << std::endl;
+            std::cout << "General disjunction: Both Children are added" << std::endl;
             *result = SCIP_BRANCHED;
          }
          return SCIP_OKAY;
