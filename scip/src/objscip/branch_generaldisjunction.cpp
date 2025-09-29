@@ -93,7 +93,7 @@ public:
  */
 
  /* 
- * Methods for testing
+ * Methods for solving submodel  
  */
 
 /* Create the small submodel for testing system (4)*/
@@ -321,6 +321,7 @@ SubmodelVars submodelsmall_create(
 
 }
 
+/* Get the magnitude base of a number */
 static
 SCIP_Real getMagnitudeBase(SCIP_Real x) {
    x = std::abs(x);
@@ -362,10 +363,6 @@ static
 SCIP_Bool notallzero(const vector <int>& vec) {
    return std::any_of(vec.begin(), vec.end(), [](double val) { return abs(val) - 1e-6 > 0.0; });
 }
-
-/*
-* Methods for solving
-*/
 
 /* get the LP constraint matrix A, vector b and objective vector c*/
 static
@@ -803,8 +800,8 @@ vector<Submodel_sols> submodel_solve(
    }
    g_total_milp_nodes += fairnodes_preck;
    if (SCIPgetStatus(preck_submodel.model_sub) == SCIP_STATUS_OPTIMAL) {
-      cout << "Preck submodel is solved to optimality" << endl;
-      cout << "No branching possible in this node" << endl;
+      std::cout << "Preck submodel is solved to optimality" << std::endl;
+      std::cout << "No branching possible in this node" << std::endl;
       SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi0);
       for (int i = 0; i < m; ++i) {
          SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.p[i]);
@@ -820,7 +817,7 @@ vector<Submodel_sols> submodel_solve(
       return final_results;
    } 
    else {
-      cout << "Preck submodel is infeasible, continue branching" << endl;
+      std::cout << "Preck submodel is infeasible, continue branching" << std::endl;
       SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.pi0);
       for (int i = 0; i < m; ++i) {
          SCIPreleaseVar(preck_submodel.model_sub, &preck_submodel.p[i]);
@@ -840,7 +837,7 @@ vector<Submodel_sols> submodel_solve(
       auto elapsed_seconds = std::chrono::duration<double>(current_time - start_time).count();
 
       if (elapsed_seconds > time_limit) {
-         cout << "Time limit exceeded (" << elapsed_seconds << "s), stopping submodel solve loop" << endl;
+         std::cout << "Time limit exceeded (" << elapsed_seconds << "s), stopping submodel solve loop" << std::endl;
          
          // Return the best result found so far, or a default result if none found
          if (!feasible_zl.empty()) {
@@ -995,7 +992,7 @@ vector<Submodel_sols> submodel_solve(
                      (solstatleft == SCIP_LPSOLSTAT_TIMELIMIT);
             assert(solstatleft != SCIP_LPSOLSTAT_UNBOUNDEDRAY);
             if ( lperror ) {
-               cout << "Error in probing left side: " << solstatleft << endl;
+               std::cout << "Error in probing left side: " << solstatleft << std::endl;
                result_l = {"infeasible", 1e+20};
                leftobjval = 1e+20;
             } else{
@@ -1048,14 +1045,14 @@ vector<Submodel_sols> submodel_solve(
             SCIP_CALL_ABORT(SCIPreleaseCons(scip, &probing_cons_right));
             SCIP_RETCODE retcode1 = SCIPsolveProbingLP(scip, -1, &lperror, &rightinf);
             if (retcode1 != SCIP_OKAY) {
-               std::cerr << "Error solving probing LP with curr zl: " << zl << endl;
+               std::cerr << "Error solving probing LP with curr zl: " << zl << std::endl;
             }
             solstatright = SCIPgetLPSolstat(scip);
             lperror = lperror || (solstatright == SCIP_LPSOLSTAT_NOTSOLVED) || (solstatright == SCIP_LPSOLSTAT_ITERLIMIT) ||
                      (solstatright== SCIP_LPSOLSTAT_TIMELIMIT);
             assert(solstatright != SCIP_LPSOLSTAT_UNBOUNDEDRAY);
             if ( lperror ) {
-               cout << "Error in probing right side: " << static_cast<int>(solstatright) << endl;
+               std::cout << "Error in probing right side: " << static_cast<int>(solstatright) << std::endl;
                result_r = {"infeasible", 1e+20};
                rightobjval = 1e+20;
             } else{
@@ -1163,7 +1160,7 @@ vector<Submodel_sols> submodel_solve(
                continue;
             } 
             else if (result_l.first == "obj_val less than Best_zl" && result_r.first == "obj_val less than Best_zl") {
-               cout << "Both sides have objective value less than Best_zl, DEBUG" << endl;
+               std::cout << "Both sides have objective value less than Best_zl, DEBUG" << std::endl;
  
                SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_L);
                SCIPreleaseVar(submodel_datas.model_sub, &submodel_datas.s_R);
@@ -1320,7 +1317,7 @@ SCIP_RETCODE createBranchingConstraint(
       }
    }
    else {
-      cout << "Invalid side" << endl;
+      std::cout << "Invalid side" << std::endl;
    }
    return SCIP_OKAY;
 };
@@ -1420,36 +1417,31 @@ pair<SCIP_Real, SCIP_Real> analyzeMatrixRange(
          }
       }     
       else if (matrix_range > 1e+5 && matrix_range <= 1e+8) {
-         // For matrix range between 1e+5 and 1e+7, keep default delta
+
          scaled_delta = base_delta;
       }
       else if (matrix_range >= 1e+4) {
-         // Scale delta proportionally to matrix range
-         SCIP_Real scale_factor = matrix_range / 1e+4;  // Between 1 and 100
+
+         SCIP_Real scale_factor = matrix_range / 1e+4;  
          scaled_delta = base_delta / std::sqrt(scale_factor);
          
-         // Ensure minimum delta for numerical stability
          scaled_delta = std::max(scaled_delta, 1e-6);
       }
       else if (matrix_range >= 1e+2) {
-         // Use base_delta or slightly larger
+
          scaled_delta = base_delta;
       }
       else if (matrix_range >= 1e-8) {
-         // For small matrix ranges including 1e-6 and 1e-7 (your successful cases)
-         // Keep the base_delta as it works well for these instances
          scaled_delta = base_delta;
       }
       else {
-         // For very small matrix ranges, use larger delta for faster convergence
+
          scaled_delta = base_delta * 2.0;
-         
-         // Cap the maximum delta
+
          scaled_delta = std::min(scaled_delta, 1.0);
-      }
-      // Additional safety check based on coefficient magnitude
+
       if (max_coef >= 1e+2 && max_coef <= 1e+4) {
-         // For your specific case: max_coef in range 1e+2 to 1e+4
+
          SCIP_Real magnitude_based_delta = max_coef / 1e+5;
          scaled_delta = std::min(scaled_delta, magnitude_based_delta);
       }
@@ -1492,6 +1484,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
          return SCIP_OKAY;
       }
 
+      // Retrieve problem data
       CSRMatrix A = LP_data.A;
       std::vector<SCIP_Real> b = LP_data.b;
       std::vector<SCIP_Real> c = LP_data.c;
@@ -1508,12 +1501,12 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       SCIP_Real node_lowerbound = SCIPgetNodeLowerbound(scip, curr_Node);
       SCIP_Real node_ub = SCIPgetPrimalbound(scip);
 
-      cout << "LP objective value: " << LP_obj << endl;
-      cout << "Node lower bound: " << node_lowerbound << endl;
-      cout << "Node upper bound: " << node_ub << endl;
+      std::cout << "LP objective value: " << LP_obj << std::endl;
+      std::cout << "Node lower bound: " << node_lowerbound << std::endl;
+      std::cout << "Node upper bound: " << node_ub << std::endl;
 
       SCIP_Real lp_gap = SCIPgetGap(scip);
-      cout << "gap to the primal bound: " << lp_gap << endl;
+      std::cout << "gap to the primal bound: " << lp_gap << std::endl;
       SCIP_COL** cols_lp = SCIPgetLPCols(scip);
       vector<SCIP_VAR*> vars_lp(c.size());
       for (size_t i = 0; i < c.size(); ++i) {
@@ -1542,6 +1535,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       string status_l = final_results[0].status_l;
       string status_r = final_results[0].status_r;
 
+      // Make branching decision based on submodel results
       if ( status_l == "NULL" || status_r == "NULL") {
          std::cout << "General disjunction: No feasible solution found, use SCIP default branching rule" << std::endl;
          *result = SCIP_DIDNOTFIND;
