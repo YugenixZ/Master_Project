@@ -2083,6 +2083,8 @@ BbParaLoadCoordinator::processTagCompletionOfCalculation(
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNumOfNodesSolved(source)) );
       // dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->inactivateSolver(source, calcState->getNSolved(),paraNodePool);  // Keep running to get another task
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
       if( ( paraParams->getBoolParamValue(UG::EnhancedFinalCheckpoint) ||
             paraParams->getRealParamValue(FinalCheckpointGeneratingTime) > 0.0 ) &&
             runningPhase == TerminationPhase )
@@ -2113,6 +2115,8 @@ BbParaLoadCoordinator::processTagCompletionOfCalculation(
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNumOfNodesSolved(source)) );
       // dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->inactivateSolver(source, calcState->getNSolved(),paraNodePool);    // this does not work
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
       if( ( paraParams->getBoolParamValue(UG::EnhancedFinalCheckpoint) ||
             paraParams->getRealParamValue(FinalCheckpointGeneratingTime) > 0.0 ) &&
             runningPhase == TerminationPhase )
@@ -2275,6 +2279,8 @@ BbParaLoadCoordinator::processTagCompletionOfCalculation(
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addNumNodesSolved( (calcState->getNSolved() -
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNumOfNodesSolved(source)) );
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
       if( ( paraParams->getBoolParamValue(UG::EnhancedFinalCheckpoint) ||
             paraParams->getRealParamValue(FinalCheckpointGeneratingTime) > 0.0)  &&
             runningPhase == TerminationPhase )
@@ -2358,6 +2364,8 @@ BbParaLoadCoordinator::processTagCompletionOfCalculation(
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addNumNodesSolved( (calcState->getNSolved() -
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNumOfNodesSolved(source)) );
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
       if( ( paraParams->getBoolParamValue(UG::EnhancedFinalCheckpoint) ||
             paraParams->getRealParamValue(FinalCheckpointGeneratingTime) > 0.0)  &&
             runningPhase == TerminationPhase )
@@ -3126,6 +3134,8 @@ BbParaLoadCoordinator::processTagSelfSlpitNodeCalcuationState(
       }
       // delete node; // should not delete
       bbParaSolverPool->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
 
       // std::cout << "Rank" << source
       //     << ", lcts.best = " << lcts.externalGlobalBestDualBoundValue
@@ -3167,6 +3177,8 @@ BbParaLoadCoordinator::processTagSelfSlpitNodeCalcuationState(
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addNumNodesSolved( (calcState->getNSolved() -
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNumOfNodesSolved(source)) );
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
       if( ( paraParams->getBoolParamValue(UG::EnhancedFinalCheckpoint) ||
             paraParams->getRealParamValue(FinalCheckpointGeneratingTime) > 0.0 ) &&
             runningPhase == TerminationPhase )
@@ -3196,6 +3208,8 @@ BbParaLoadCoordinator::processTagSelfSlpitNodeCalcuationState(
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addNumNodesSolved( (calcState->getNSolved() -
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNumOfNodesSolved(source)) );
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
       if( ( paraParams->getBoolParamValue(UG::EnhancedFinalCheckpoint) ||
             paraParams->getRealParamValue(FinalCheckpointGeneratingTime) > 0.0 ) &&
             runningPhase == TerminationPhase )
@@ -3388,6 +3402,8 @@ BbParaLoadCoordinator::processTagSelfSlpitNodeCalcuationState(
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addNumNodesSolved( (calcState->getNSolved() -
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNumOfNodesSolved(source)) );
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
       hardTimeLimitIsReached = true;
       if( ( paraParams->getBoolParamValue(UG::EnhancedFinalCheckpoint) ||
             paraParams->getRealParamValue(FinalCheckpointGeneratingTime) > 0.0 ) &&
@@ -3565,6 +3581,8 @@ BbParaLoadCoordinator::processTagSelfSlpitNodeCalcuationState(
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addNumNodesSolved( (calcState->getNSolved() -
          dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getNumOfNodesSolved(source)) );
       dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalNodesSolved(calcState->getNSolved());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesSolved(calcState->getNFairnodes());
+      dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->addTotalFairNodesInfo(calcState->getFairNodesInfo());
       memoryLimitIsReached = true;
       if( ( paraParams->getBoolParamValue(UG::EnhancedFinalCheckpoint) ||
             paraParams->getRealParamValue(FinalCheckpointGeneratingTime) > 0.0 ) &&
@@ -3853,8 +3871,8 @@ BbParaLoadCoordinator::outputTabularSolvingStatus(
             *osTabularSolvingStatus << std::setw(12) << std::right << dynamic_cast<BbParaRacingSolverPool *>(paraRacingSolverPool)->getNnodesLeftInBestSolver();
          }
 
-         // For racing phase, fair nodes information may not be available yet, so display placeholder
-         *osTabularSolvingStatus << std::setw(12) << std::right << "-";
+         // // For racing phase, fair nodes information may not be available yet, so display placeholder
+         // *osTabularSolvingStatus << std::setw(12) << std::right << "-";
 
          *osTabularSolvingStatus << std::setw(10) << std::right << paraRacingSolverPool->getNumActiveSolvers();
          if( bbParaInitiator->getGlobalBestIncumbentSolution() )
@@ -3898,7 +3916,7 @@ BbParaLoadCoordinator::outputTabularSolvingStatus(
          {
             *osTabularSolvingStatus << std::setw(15) << std::right << nSolvedRacingTermination;
             *osTabularSolvingStatus << std::setw(12) << std::right << 0;
-            *osTabularSolvingStatus << std::setw(12) << std::right << "-";  // Fair nodes placeholder
+            // *osTabularSolvingStatus << std::setw(12) << std::right << "-";  // Fair nodes placeholder
             *osTabularSolvingStatus << std::setw(10) << std::right << 0;
             if( bbParaInitiator->getGlobalBestIncumbentSolution() )
             {
@@ -3925,7 +3943,7 @@ BbParaLoadCoordinator::outputTabularSolvingStatus(
          {
             *osTabularSolvingStatus << std::setw(15) << std::right << nSolvedInInterruptedRacingSolvers;
             *osTabularSolvingStatus << std::setw(12) << std::right << nTasksLeftInInterruptedRacingSolvers;
-            *osTabularSolvingStatus << std::setw(12) << std::right << nFairnodesnumber;  // Fair nodes placeholder
+            // *osTabularSolvingStatus << std::setw(12) << std::right << nFairnodesnumber;  // Fair nodes placeholder
             *osTabularSolvingStatus << std::setw(10) << std::right << 0;
             if( bbParaInitiator->getGlobalBestIncumbentSolution() )
             {
@@ -3976,8 +3994,8 @@ BbParaLoadCoordinator::outputTabularSolvingStatus(
                + paraNodePool->getNumOfNodes() );
       }
       
-      // Output fair nodes count
-      *osTabularSolvingStatus << std::setw(12) << std::right << dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getTotalFairNodesSolved();
+      // // Output fair nodes count
+      // *osTabularSolvingStatus << std::setw(12) << std::right << dynamic_cast<BbParaSolverPoolForMinimization *>(paraSolverPool)->getTotalFairNodesSolved();
       
       *osTabularSolvingStatus << std::setw(10) << std::right << paraSolverPool->getNumActiveSolvers();
       if( bbParaInitiator->getGlobalBestIncumbentSolution() )

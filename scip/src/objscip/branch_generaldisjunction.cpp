@@ -311,8 +311,8 @@ SubmodelVars submodelsmall_create(
    }
    SCIPsetMessagehdlrQuiet(model_sub_s, TRUE);
 
-   if (matrix_range - 1e-8 <= 1e-9){
-      matrix_range = 1e-8;
+   if (matrix_range < 1e-9){
+      matrix_range = 1e-7;
       SCIPsetRealParam(model_sub_s, "numerics/feastol", matrix_range);
       SCIPsetRealParam(model_sub_s, "numerics/sumepsilon", matrix_range);
    }
@@ -737,7 +737,7 @@ SubmodelVars submodel_create(
       SCIPfree(&model_sub);
       return SubmodelVars{nullptr, {}, nullptr, {}, nullptr, {}, {}, nullptr};
    }
-   if (matrix_range - 1e-8 <= 1e-9){
+   if (matrix_range < 1e-9){
       matrix_range = 1e-7;
       SCIPsetRealParam(model_sub, "numerics/feastol", matrix_range);
       SCIPsetRealParam(model_sub, "numerics/sumepsilon", matrix_range);
@@ -945,9 +945,9 @@ vector<Submodel_sols> submodel_solve(
          // Check if pi_solution is not all zero and if both s_L and s_R are zero
          if (notallzero(pi_solution)) {
             if (!SCIPisFeasZero(scip, s_L_solution) || !SCIPisFeasZero(scip, s_R_solution)) {
-               cout << "One of the s_L and s_R are non-zero, DEBUG" << endl;
+               // cout << "One of the s_L and s_R are non-zero, DEBUG" << endl;
             } else {
-               cout<< "Both s_L and s_R are zero, DEBUG" << endl;
+               // cout<< "Both s_L and s_R are zero, DEBUG" << endl;
                // Write out the current submodel problem to a file for debugging
                // std::ostringstream submodel_fname;
                // submodel_fname << "/scratch/htc/yzhou/exp_scipmip/instances/submodel_debug_zl_" << std::setprecision(8) << zl << ".lp";
@@ -1046,8 +1046,8 @@ vector<Submodel_sols> submodel_solve(
             assert(prob_node_r != NULL);
             SCIP_CALL_ABORT(SCIPaddConsNode(scip, prob_node_r, probing_cons_right, NULL));
             SCIP_CALL_ABORT(SCIPreleaseCons(scip, &probing_cons_right));
-            SCIP_RETCODE retcode = SCIPsolveProbingLP(scip, -1, &lperror, &rightinf);
-            if (retcode != SCIP_OKAY) {
+            SCIP_RETCODE retcode1 = SCIPsolveProbingLP(scip, -1, &lperror, &rightinf);
+            if (retcode1 != SCIP_OKAY) {
                std::cerr << "Error solving probing LP with curr zl: " << zl << endl;
             }
             solstatright = SCIPgetLPSolstat(scip);
@@ -1325,22 +1325,22 @@ SCIP_RETCODE createBranchingConstraint(
    return SCIP_OKAY;
 };
 
-/* Method for get factor for scaling zl */
-static
-SCIP_Real get_factor(SCIP_Real lp_gap) {
-   SCIP_Real factor;
-   assert (lp_gap >= 0);
-   if (lp_gap < 0.1) {
-      factor = 1 + ceil(lp_gap*100)/100;
-   } else if (lp_gap >=0.1 && lp_gap < 1) {
-      factor = 1 + ceil(lp_gap*10)/10;
-   } else if (lp_gap == 1e+20) {
-      factor = 2;
-   } else {
-      factor = (ceil(lp_gap) + 1) * 2;
-   }
-   return factor;
-}
+// /* Method for get factor for scaling zl */
+// static
+// SCIP_Real get_factor(SCIP_Real lp_gap) {
+//    SCIP_Real factor;
+//    assert (lp_gap >= 0);
+//    if (lp_gap < 0.1) {
+//       factor = 1 + ceil(lp_gap*100)/100;
+//    } else if (lp_gap >=0.1 && lp_gap < 1) {
+//       factor = 1 + ceil(lp_gap*10)/10;
+//    } else if (lp_gap == 1e+20) {
+//       factor = 2;
+//    } else {
+//       factor = (ceil(lp_gap) + 1) * 2;
+//    }
+//    return factor;
+// }
 
 /* Helper function to analyze coefficients and output only
  matrix range to maintain the numerical stability */
@@ -1535,7 +1535,7 @@ SCIP_DECL_BRANCHEXECLP(BranchruleGeneralDisjunction::scip_execlp){
       pair<SCIP_Real, SCIP_Real> numerics_pair = analyzeMatrixRange(A, b, c, (zl_low + zl_high) * 0.5, vars_lp, base_delta, scip);
       SCIP_Real scaled_delta = numerics_pair.first;
       SCIP_Real matrix_range = numerics_pair.second;
-
+      // cout << "Matrix range: " << matrix_range << ", scaled delta: " << scaled_delta << endl;
       std::vector<Submodel_sols> final_results = submodel_solve(scip, zl_low, zl_high, m, n, scaled_delta, A, b, c, M, k, node_ub, vars_lp, matrix_range, TIME_LIMIT_SECONDS);
       SCIP_Real est_l = final_results[0].est_l;
       SCIP_Real est_r = final_results[0].est_r;

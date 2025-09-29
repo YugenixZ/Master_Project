@@ -2385,9 +2385,8 @@ ScipParaInitiator::outputFinalSolverStatistics(
    *os << "  presolving       : " << SCIPgetPresolvingTime(scip) << " (included in solving)" << std::endl;
    *os << "B&B Tree           :" << std::endl;
    *os << "  nodes (total)    : " << nSolved << std::endl;
-   *os << "  nodes (solved)   : " << SCIPgetNNodes(scip) << std::endl;
    *os << "  fairnodes        : " << nfairnodes << std::endl;
-   *os << "  fairnodes info   : " << fairnodesinfo[0] << std::endl;
+   // *os << "  fairnodes info   : " << fairnodesinfo[0] << std::endl;
    *os << "  nDomreductions   : " << fairnodesinfo[1] << std::endl;
    *os << "  nCutoffs         : " << fairnodesinfo[2] << std::endl;
    *os << "  nConss           : " << fairnodesinfo[3] << std::endl;
