@@ -11,3 +11,7 @@ network06.sol
 network05.sol.trans
 network05.sol
 compile_commands.json
+Experiment_data/fullstrong_seq_sandbox_logs/markshare1.log
+Experiment_data/fullstrong_seq_sandbox_logs/markshare_5_0.log
+Experiment_data/relpscost_seq_sandbox_logs/markshare1.log
+Experiment_data/relpscost_seq_sandbox_logs/markshare_5_0.log
