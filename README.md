@@ -146,6 +146,38 @@ Optimization Suite and for details concerning special architectures and
 operating systems, see the INSTALL file of SCIP and the documentation
 of each component.
 
+## Using General Disjunction Branching Rule
+
+If you want to use the general disjunction branching rule in SCIP, you need to
+build scipmip according to your environment. The general disjunction branching
+rule is implemented as a custom branching rule that can be used for solving
+mixed-integer programming problems with enhanced branching strategies.
+
+To build scipmip with general disjunction branching support:
+
+1. Ensure your environment is properly configured with the required dependencies
+2. Use the appropriate build configuration for your system:
+
+   For CMake builds:
+   ```
+   mkdir build
+   cd build
+   cmake .. 
+   make scipmip
+   ```
+
+   For Makefile builds:
+   ```
+   make scipmip
+   ```
+
+3. The scipmip binary will be created in the `bin` directory and will include
+   the general disjunction branching rule functionality.
+
+Note: The general disjunction branching rule may require specific parameter
+settings or problem formulations to be effective. Refer to the SCIP documentation
+for detailed usage instructions and parameter configuration.
+
 ## Creating a single library containing SCIP, SoPlex, and ZIMPL
 
 In case you need a single library which contains SCIP, SoPlex, and ZIMPL
