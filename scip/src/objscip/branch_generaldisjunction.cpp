@@ -1312,7 +1312,7 @@ SCIP_RETCODE createBranchingConstraint(
          SCIP_CALL(SCIPreleaseCons(scip, &cons_r));
       }
       else{
-         SCIP_CALL(SCIPaddConsNode(scip, curr_Node, cons_r, NULL));
+         SCIP_CALL(SCIPaddConsNode(scip, curr_Node, cons_r, nullptr));
          SCIP_CALL(SCIPreleaseCons(scip, &cons_r));
       }
    }
