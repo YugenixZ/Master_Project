@@ -1,1 +1,3 @@
 build/lib/libscip.so.9.2.2.0 filter=lfs diff=lfs merge=lfs -text
+*.log filter=lfs diff=lfs merge=lfs -text
+Experiment_data/**/*.log filter=lfs diff=lfs merge=lfs -text
