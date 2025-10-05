@@ -1,0 +1,240 @@
+######### Solver Rank = 10 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18256.7
+#=== Total computing time = 18247.4
+#=== Total idle time = 9.24
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 5.43, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 3.58 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 140.08 ( Mean = 140.08, Min = 140.08, Max = 140.08 )
+#=== The number of ParaNodes received in this solver = 2
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 148 ( / Subtree : Mean = 148, Min = 148, Max = 148 )
+#=== Total number of restarts in this solver = 2( / Subtree : Mean = 2, Min = 1, Max = 1 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 1
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 2
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 9 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18358.4
+#=== Total computing time = 18355.3
+#=== Total idle time = 3.14
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 1.09, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 1.82 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 1061.49 ( Mean = 1061.49, Min = 1061.49, Max = 1061.49 )
+#=== The number of ParaNodes received in this solver = 2
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 74 ( / Subtree : Mean = 74, Min = 74, Max = 74 )
+#=== Total number of restarts in this solver = 2( / Subtree : Mean = 2, Min = 1, Max = 1 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 1
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 11 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18382.3
+#=== Total computing time = 18374.5
+#=== Total idle time = 7.81
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 4.87, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 2.71 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 1332.7 ( Mean = 1332.7, Min = 1332.7, Max = 1332.7 )
+#=== The number of ParaNodes received in this solver = 2
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 35 ( / Subtree : Mean = 35, Min = 35, Max = 35 )
+#=== Total number of restarts in this solver = 2( / Subtree : Mean = 2, Min = 1, Max = 1 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 1
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 4 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18566.5
+#=== Total computing time = 18559.6
+#=== Total idle time = 6.94
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 3.94, Idle Time after last ParaNode = 0 )
+#=== ( Idle time to wait notification Id messages = 2.78 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 1207.71 ( Mean = 603.855, Min = 2.92, Max = 1204.79 )
+#=== The number of ParaNodes received in this solver = 3
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 31 ( / Subtree : Mean = 15, Min = 11, Max = 20 )
+#=== Total number of restarts in this solver = 3( / Subtree : Mean = 1, Min = 1, Max = 1 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 2
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 5 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18578.6
+#=== Total computing time = 18572.7
+#=== Total idle time = 5.89
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 3.98, Idle Time after last ParaNode = 0 )
+#=== ( Idle time to wait notification Id messages = 1.69 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 4.24 ( Mean = 2.12, Min = 4.24, Max = 4.24 )
+#=== The number of ParaNodes received in this solver = 3
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 255 ( / Subtree : Mean = 127, Min = 2, Max = 253 )
+#=== Total number of restarts in this solver = 4( / Subtree : Mean = 2, Min = 1, Max = 2 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 2
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 7 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18598.5
+#=== Total computing time = 18589.8
+#=== Total idle time = 8.74
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 5.84, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 2.67 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 1118.98 ( Mean = 1118.98, Min = 1118.98, Max = 1118.98 )
+#=== The number of ParaNodes received in this solver = 2
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 71 ( / Subtree : Mean = 71, Min = 71, Max = 71 )
+#=== Total number of restarts in this solver = 2( / Subtree : Mean = 2, Min = 1, Max = 1 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 1
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 1
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 8 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18733.1
+#=== Total computing time = 18723.8
+#=== Total idle time = 9.3
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 0.07, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 9 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 8.41 ( Mean = 4.205, Min = 4.14, Max = 4.27 )
+#=== The number of ParaNodes received in this solver = 2
+#=== The number of ParaNodes sent from this solver = 579
+#=== The number of nodes solved in this solver = 1457 ( / Subtree : Mean = 728, Min = 71, Max = 1386 )
+#=== Total number of restarts in this solver = 2( / Subtree : Mean = 1, Min = 1, Max = 1 )
+#=== Total number of cuts sent from this solver = 2316( / Subtree : Mean = 1158, Min = 4, Max = 4 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 2
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 1576 ( Int: 1576 )
+######### Solver Rank = 2 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18756.3
+#=== Total computing time = 18749.5
+#=== Total idle time = 6.88
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 3.7, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 2.95 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 1005.47 ( Mean = 335.157, Min = 1005.47, Max = 1005.47 )
+#=== The number of ParaNodes received in this solver = 4
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 207 ( / Subtree : Mean = 69, Min = 2, Max = 179 )
+#=== Total number of restarts in this solver = 6( / Subtree : Mean = 2, Min = 1, Max = 2 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 3
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 3
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 1 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18822.7
+#=== Total computing time = 18820
+#=== Total idle time = 2.69
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 0.91, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 1.55 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 3.75 ( Mean = 1.875, Min = 3.75, Max = 3.75 )
+#=== The number of ParaNodes received in this solver = 3
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 265 ( / Subtree : Mean = 132, Min = 12, Max = 253 )
+#=== Total number of restarts in this solver = 4( / Subtree : Mean = 2, Min = 1, Max = 2 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 2
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 2
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 6 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18845.7
+#=== Total computing time = 18838.7
+#=== Total idle time = 6.99
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 2.94, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 3.82 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 4.3 ( Mean = 4.3, Min = 4.3, Max = 4.3 )
+#=== The number of ParaNodes received in this solver = 2
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 72 ( / Subtree : Mean = 72, Min = 72, Max = 72 )
+#=== Total number of restarts in this solver = 2( / Subtree : Mean = 2, Min = 1, Max = 1 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 1
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 12 is terminated. #########
+#=== Elapsed time to terminate this Solver = 18866.8
+#=== Total computing time = 18858.7
+#=== Total idle time = 8.15
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 5.35, Idle Time after last ParaNode = 0.01 )
+#=== ( Idle time to wait notification Id messages = 2.57 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 1160.86 ( Mean = 580.43, Min = 1160.86, Max = 1160.86 )
+#=== The number of ParaNodes received in this solver = 3
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 518 ( / Subtree : Mean = 259, Min = 147, Max = 371 )
+#=== Total number of restarts in this solver = 4( / Subtree : Mean = 2, Min = 1, Max = 2 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 2
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### Solver Rank = 3 is terminated. #########
+#=== Elapsed time to terminate this Solver = 19028.5
+#=== Total computing time = 19023.2
+#=== Total idle time = 5.24
+#=== ( Idle time to start first ParaNode = 0.22, Idle time between ParaNods = 2.11, Idle Time after last ParaNode = 0 )
+#=== ( Idle time to wait notification Id messages = 2.91 )
+#=== ( Idle time to wait acknowledgment of completion = 0 )
+#=== ( Idle time to wait token = 0 )
+#=== Total root node process time = 4.05 ( Mean = 2.025, Min = 4.05, Max = 4.05 )
+#=== The number of ParaNodes received in this solver = 3
+#=== The number of ParaNodes sent from this solver = 0
+#=== The number of nodes solved in this solver = 151 ( / Subtree : Mean = 75, Min = 24, Max = 127 )
+#=== Total number of restarts in this solver = 4( / Subtree : Mean = 2, Min = 1, Max = 2 )
+#=== Total number of cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== Total number of benders cuts sent from this solver = 0( / Subtree : Mean = 0, Min = 0, Max = 0 )
+#=== The number of ParaNodes solved in this solver = 2
+#=== ( Solved at root node  =  0, Solved at pre-checking of root node solvability = 0 )
+#=== The number of improved solutions found in this solver = 0
+#=== The number of tightened variable bounds in this solver = 0 ( Int: 0 )
+######### The number of nodes solved in all solvers: 3284 : 3288 #########
+######### LoadCoordinator Rank = 0 is terminated. #########
+#=== The number of ParaNodes received = 579
+#=== The number of ParaNodes sent = 20
+#=== ( # sent back immediately = 0, # failed to send back = 1 )
+#=== ( # sent back immediately ( another node ) = 2, # failed to send back ( another node ) = 0 )
+#=== The number of ParaNodes deleted in LoadCoordinator = 0 ( by merging: 0 )
+#=== Maximum usage of node pool = 579, initial p = 1, maximum multiplier = 1
+#=== LoadCoodibator NodePool is not empty. 574 nodes remained.
+#=== Idle time to terminate this LoadCoordinator  = 19014.9
+#=== Elapsed time to terminate this LoadCoordinator  = 19028.5
+#=== Time used for merging nodes: add = 0, gen. = 0, regen. = 0, merge = 0

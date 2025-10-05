@@ -1,0 +1,253 @@
+SCIP version 9.2.2 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: CPLEX 12.10.0.0] [GitHash: 416226a4f8]
+Copyright (c) 2002-2025 Zuse Institute Berlin (ZIB)
+
+reading parameter file </scratch/htc/yzhou/exp_scipmip/settings/sandbox_gendj.set>
+
+read problem </scratch/htc/yzhou/exp_scipmip/instances/additional/square23.mps>
+============
+
+original problem has 11660 variables (11638 bin, 22 int, 0 impl, 0 cont) and 7887 constraints
+   7887 constraints of type <linear>
+Reading Time: 0.63
+
+read solution </scratch/htc/yzhou/solutions/square23.sol>
+============
+
+primal solution from solution file </scratch/htc/yzhou/solutions/square23.sol> was accepted as candidate, will be checked when solving starts
+original problem has 11660 variables (11638 bin, 22 int, 0 impl, 0 cont) and 7887 constraints
+   7887 constraints of type <linear>
+Reading Time: 0.65
+solve problem
+=============
+LP Solver <CPLEX 12.10.0.0>: fastmip setting not available -- SCIP parameter has no effect
+LP Solver <CPLEX 12.10.0.0>: clock type cannot be set
+LP Solver <CPLEX 12.10.0.0>: row representation of the basis not available -- SCIP parameter lp/rowrepswitch has no effect
+LP Solver <CPLEX 12.10.0.0>: solution polishing not available -- SCIP parameter lp/solutionpolishing has no effect
+LP Solver <CPLEX 12.10.0.0>: refactorization interval not available -- SCIP parameter lp/refactorinterval has no effect
+1/1 feasible solution given by solution candidate storage, new primal bound 1.300000e+01
+
+transformed problem has 11660 variables (11638 bin, 22 int, 0 impl, 0 cont) and 7887 constraints
+   7887 constraints of type <linear>
+
+original problem has 898813 active (0.97737%) nonzeros and 898813 (0.97737%) check nonzeros
+
+presolving:
+(round 1, fast)       7315 del vars, 7315 del conss, 0 add conss, 7337 chg bounds, 0 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 529 clqs
+(round 2, exhaustive) 7315 del vars, 7328 del conss, 0 add conss, 7337 chg bounds, 13 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 529 clqs
+(round 3, exhaustive) 7315 del vars, 7328 del conss, 0 add conss, 7337 chg bounds, 13 chg sides, 0 chg coeffs, 529 upgd conss, 0 impls, 529 clqs
+   (1.6s) probing: 100/4323 (2.3%) - 0 fixings, 0 aggregations, 1678 implications, 0 bound changes
+   (1.8s) probing: 200/4323 (4.6%) - 0 fixings, 0 aggregations, 3338 implications, 0 bound changes
+   (1.9s) probing: 300/4323 (6.9%) - 0 fixings, 0 aggregations, 4999 implications, 0 bound changes
+   (2.1s) probing: 400/4323 (9.3%) - 0 fixings, 0 aggregations, 6676 implications, 0 bound changes
+   (2.3s) probing: 500/4323 (11.6%) - 0 fixings, 0 aggregations, 8358 implications, 0 bound changes
+   (2.5s) probing: 600/4323 (13.9%) - 0 fixings, 0 aggregations, 10219 implications, 0 bound changes
+   (2.7s) probing: 700/4323 (16.2%) - 0 fixings, 0 aggregations, 12138 implications, 0 bound changes
+   (2.9s) probing: 800/4323 (18.5%) - 0 fixings, 0 aggregations, 14039 implications, 0 bound changes
+   (3.1s) probing: 900/4323 (20.8%) - 0 fixings, 0 aggregations, 15952 implications, 0 bound changes
+   (3.4s) probing: 1000/4323 (23.1%) - 0 fixings, 0 aggregations, 17834 implications, 0 bound changes
+   (3.4s) probing: 1001/4323 (23.2%) - 0 fixings, 0 aggregations, 17855 implications, 0 bound changes
+   (3.4s) probing aborted: 1000/1000 successive useless probings
+   (3.5s) symmetry computation started: requiring (bin +, int +, cont +), (fixed: bin -, int -, cont -)
+   (3.6s) symmetry computation finished: 2 generators found (max: 1500, log10 of symmetry group size: 0.0) (symcode time: 0.02)
+dynamic symmetry handling statistics:
+   orbitopal reduction:       no components
+   orbital reduction:          1 components of sizes 2
+   lexicographic reduction:    2 permutations with support sizes 4180, 4048
+handled 1 out of 1 symmetry components
+clique table cleanup detected 0 bound changes
+
+presolved problem has 269382 active (11.0909%) nonzeros and 269382 (11.0909%) check nonzeros
+
+presolving (4 rounds: 4 fast, 3 medium, 3 exhaustive):
+ 7315 deleted vars, 7328 deleted constraints, 0 added constraints, 7337 tightened bounds, 0 added holes, 13 changed sides, 0 changed coefficients
+ 17587 implications, 797 cliques
+presolved problem has 4345 variables (4323 bin, 22 int, 0 impl, 0 cont) and 559 constraints
+    529 constraints of type <setppc>
+     30 constraints of type <linear>
+transformed objective value is always integral (scale: 1)
+Presolving Time: 3.46
+transformed 1/1 original solutions to the transformed problem space
+
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+  3.7s|     1 |     0 |   165 |     - |   471M |   0 |4345 | 559 | 559 |   0 |  0 |   0 |   0 | 8.333333e+00 | 1.300000e+01 |  56.00%| unknown
+  3.8s|     1 |     0 |   165 |     - |   471M |   0 |4345 | 559 | 559 |   0 |  0 |   0 |   0 | 8.333333e+00 | 1.300000e+01 |  56.00%| unknown
+  3.8s|     1 |     0 |   165 |     - |   471M |   0 |4345 | 559 | 559 |   0 |  1 |   0 |   0 | 8.333333e+00 | 1.300000e+01 |  56.00%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 1
+LP objective value: 4.33333
+Node lower bound: 4.67636
+Node upper bound: 13
+gap to the primal bound: 0.498324
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.25s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+ 1008s|     1 |     2 |   165 |     - |   471M |   0 |4345 | 559 | 559 |   0 |  2 |   0 |  38 | 8.676364e+00 | 1.300000e+01 |  49.83%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 2
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 2
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 2
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 2
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 2
+LP objective value: 5.01408
+Node lower bound: 5.11111
+Node upper bound: 13
+gap to the primal bound: 0.426829
+Preck submodel is infeasible, continue branching

@@ -1,0 +1,8 @@
+[ Not default SCIP parameters for root Solver are as follows ]
+display/verblevel = 5
+branching/general_disjunction/priority = 10000000
+limits/time = 86400
+[ Not default SCIP parameters for NOT root Solvers are as follows ]
+display/verblevel = 5
+branching/general_disjunction/priority = 10000000
+limits/time = 86400

@@ -1,0 +1,175 @@
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node        Gap     Best Node(S)     Gap(S)
+*       1              0           1        12     1000000.0000                -          -
+*       1              0           1        12      147000.0000                -          -
+*       1              0           1        12       83000.0000                -          -
+*       1              0           1        12       81500.0000                -          -
+*       1              0           1        12       80500.0000                -          -
+*       1              0           1        12       79520.0000                -          -
+*       1              0           1        12       78559.0000                -          -
+*       1              0           1        12       77617.0000                -          -
+*       1              0           1        12       76694.0000                -          -
+*       1              0           1        12       75790.0000                -          -
+*       1              0           1        12       74904.0000                -          -
+*       1              0           1        12       74035.0000                -          -
+*       1              0           1        12       73184.0000                -          -
+*       1              0           1        12       72350.0000                -          -
+*       1              0           1        12       71533.0000                -          -
+*       1              0           1        12       70732.0000                -          -
+*       1              0           1        12       69947.0000                -          -
+*       3              2           3        12       65500.0000       31739.4962    106.37%
+        5              8           2        12       65500.0000       63000.0000      3.97%
+        5             11           0         0       65500.0000       65500.0000      0.00%
+        6             11           0         0       65500.0000       65500.0000      0.00%
+SCIP Status        : problem is solved
+Total Time         : 5.74
+  solving          : 5.74
+  presolving       : 0.01 (included in solving)
+B&B Tree           :
+  nodes (total)    : 11
+  nodes (solved)   : 0
+  fairnodes        : 311
+  fairnodes info   : 311
+  nDomreductions   : 110
+  nCutoffs         : 0
+  nConss           : 40
+  nMilpsnodes      : 2081
+  nMilps           : 2150
+  nProbinglps      : 2
+Solution           :
+  Solutions found  : 18
+  Primal Bound     : +6.55000000000000e+04
+  Dual Bound       : +6.55000000000000e+04
+Gap                : 0.00000 %
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node        Gap     Best Node(S)     Gap(S)
+*       0              0           1        12     1000000.0000                -          -
+*       0              0           1        12      147000.0000                -          -
+*       0              0           1        12       83000.0000                -          -
+*       0              0           1        12       65500.0000                -          -
+        5             10           1        12       65500.0000       63000.0000      3.97%
+        5             11           0         0       65500.0000       65500.0000      0.00%
+        5             11           0         0       65500.0000       65500.0000      0.00%
+        6             11           0         0       65500.0000       65500.0000      0.00%
+SCIP Status        : problem is solved
+Total Time         : 5.90
+  solving          : 5.90
+  presolving       : 0.01 (included in solving)
+B&B Tree           :
+  nodes (total)    : 11
+  nodes (solved)   : 0
+  fairnodes        : 211
+  fairnodes info   : 211
+  nDomreductions   : 62
+  nCutoffs         : 0
+  nConss           : 38
+  nMilpsnodes      : 2161
+  nMilps           : 2203
+  nProbinglps      : 44
+Solution           :
+  Solutions found  : 4
+  Primal Bound     : +6.55000000000000e+04
+  Dual Bound       : +6.55000000000000e+04
+Gap                : 0.00000 %
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node        Gap     Best Node(S)     Gap(S)
+*       1              0           1        12     1000000.0000                -          -
+*       1              0           1        12      147000.0000                -          -
+*       1              0           1        12       83000.0000                -          -
+*       1              0           1        12       69334.0000                -          -
+*       1              0           1        12       68635.0000                -          -
+*       1              0           1        12       67950.0000                -          -
+*       1              0           1        12       67279.0000                -          -
+*       1              0           1        12       66621.0000                -          -
+*       1              0           1        12       65976.0000                -          -
+*       1              0           1        12       65638.0000                -          -
+*       2              2           3        12       65500.0000       34704.2464     88.74%
+        5              5           4        12       65500.0000       34705.0000     88.73%
+        5             12           0         0       65500.0000       65500.0000      0.00%
+        6             12           0         0       65500.0000       65500.0000      0.00%
+SCIP Status        : problem is solved
+Total Time         : 5.95
+  solving          : 5.95
+  presolving       : 0.01 (included in solving)
+B&B Tree           :
+  nodes (total)    : 12
+  nodes (solved)   : 0
+  fairnodes        : 252
+  fairnodes info   : 252
+  nDomreductions   : 62
+  nCutoffs         : 0
+  nConss           : 58
+  nMilpsnodes      : 2074
+  nMilps           : 2148
+  nProbinglps      : 42
+Solution           :
+  Solutions found  : 11
+  Primal Bound     : +6.55000000000000e+04
+  Dual Bound       : +6.55000000000000e+04
+Gap                : 0.00000 %
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node        Gap     Best Node(S)     Gap(S)
+*       0              0           1        12     1000000.0000                -          -
+*       0              0           1        12      147000.0000                -          -
+*       0              0           1        12       83000.0000                -          -
+*       0              0           1        12       69334.0000                -          -
+*       2              2           3        12       65500.0000       40000.0000     63.75%
+        5              9           1        12       65500.0000       63000.0000      3.97%
+        6             11           0         0       65500.0000       65500.0000      0.00%
+        7             11           0         0       65500.0000       65500.0000      0.00%
+SCIP Status        : problem is solved
+Total Time         : 6.62
+  solving          : 6.62
+  presolving       : 0.01 (included in solving)
+B&B Tree           :
+  nodes (total)    : 11
+  fairnodes        : 141
+  fairnodes info   : 141
+  nDomreductions   : 28
+  nCutoffs         : 0
+  nConss           : 37
+  nMilpsnodes      : 2439
+  nMilps           : 2529
+  nProbinglps      : 0
+Solution           :
+  Solutions found  : 5
+  Primal Bound     : +6.55000000000000e+04
+  Dual Bound       : +6.55000000000000e+04
+Gap                : 0.00000 %
+                               Nodes    Active                                            
+     Time          Nodes        Left   Solvers     Best Integer        Best Node        Gap     Best Node(S)     Gap(S)
+*       1              0           1        12     1000000.0000                -          -
+*       1              0           1        12      147000.0000                -          -
+*       1              0           1        12       83000.0000                -          -
+*       1              0           1        12       69334.0000                -          -
+*       1              0           1        12       68635.0000                -          -
+*       1              0           1        12       68269.0000                -          -
+*       1              0           1        12       67950.0000                -          -
+*       1              0           1        12       67279.0000                -          -
+*       1              0           1        12       66621.0000                -          -
+*       1              0           1        12       66276.0000                -          -
+*       1              0           1        12       65976.0000                -          -
+*       1              0           1        12       65638.0000                -          -
+*       2              2           3        12       65500.0000       34704.2464     88.74%
+        5              5           4        12       65500.0000       34705.0000     88.73%
+        5             12           0         0       65500.0000       65500.0000      0.00%
+        6             12           0         0       65500.0000       65500.0000      0.00%
+SCIP Status        : problem is solved
+Total Time         : 6.06
+  solving          : 6.06
+  presolving       : 0.01 (included in solving)
+B&B Tree           :
+  nodes (total)    : 12
+  fairnodes        : 252
+  fairnodes info   : 252
+  nDomreductions   : 62
+  nCutoffs         : 0
+  nConss           : 58
+  nMilpsnodes      : 2066
+  nMilps           : 2105
+  nProbinglps      : 46
+Solution           :
+  Solutions found  : 13
+  Primal Bound     : +6.55000000000000e+04
+  Dual Bound       : +6.55000000000000e+04
+Gap                : 0.00000 %

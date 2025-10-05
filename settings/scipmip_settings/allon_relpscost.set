@@ -1,0 +1,4 @@
+# SCIP version 9.1.0
+
+limits/time = 86400
+display/verblevel = 5

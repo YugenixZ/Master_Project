@@ -1,0 +1,2198 @@
+SCIP version 9.2.2 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: CPLEX 12.10.0.0] [GitHash: 416226a4f8]
+Copyright (c) 2002-2025 Zuse Institute Berlin (ZIB)
+
+reading parameter file </scratch/htc/yzhou/exp_scipmip/settings/allon_gendj.set>
+
+read problem </scratch/htc/yzhou/exp_scipmip/instances/additionals/net12.mps>
+============
+
+original problem has 14115 variables (1603 bin, 0 int, 0 impl, 12512 cont) and 14021 constraints
+  14021 constraints of type <linear>
+Reading Time: 0.33
+solve problem
+=============
+LP Solver <CPLEX 12.10.0.0>: fastmip setting not available -- SCIP parameter has no effect
+LP Solver <CPLEX 12.10.0.0>: clock type cannot be set
+LP Solver <CPLEX 12.10.0.0>: row representation of the basis not available -- SCIP parameter lp/rowrepswitch has no effect
+LP Solver <CPLEX 12.10.0.0>: solution polishing not available -- SCIP parameter lp/solutionpolishing has no effect
+LP Solver <CPLEX 12.10.0.0>: refactorization interval not available -- SCIP parameter lp/refactorinterval has no effect
+transformed problem has 14115 variables (1603 bin, 0 int, 0 impl, 12512 cont) and 14021 constraints
+  14021 constraints of type <linear>
+
+original problem has 80384 active (0.0406172%) nonzeros and 80384 (0.0406172%) check nonzeros
+
+presolving:
+clique table cleanup detected 9 bound changes
+(round 1, medium)     36 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 385 clqs
+(round 2, fast)       85 del vars, 72 del conss, 0 add conss, 4 chg bounds, 8 chg sides, 16 chg coeffs, 0 upgd conss, 6 impls, 385 clqs
+(round 3, fast)       111 del vars, 74 del conss, 0 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 0 upgd conss, 6 impls, 385 clqs
+(round 4, exhaustive) 111 del vars, 74 del conss, 0 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 385 upgd conss, 6 impls, 385 clqs
+   (0.2s) probing: 100/1541 (6.5%) - 18 fixings, 0 aggregations, 84 implications, 0 bound changes
+(round 5, exhaustive) 137 del vars, 74 del conss, 0 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 395 upgd conss, 6 impls, 517 clqs
+(round 6, fast)       137 del vars, 99 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 395 upgd conss, 6 impls, 520 clqs
+(round 7, fast)       153 del vars, 99 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 395 upgd conss, 6 impls, 520 clqs
+(round 8, exhaustive) 180 del vars, 102 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 397 upgd conss, 6 impls, 566 clqs
+(round 9, fast)       194 del vars, 122 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 397 upgd conss, 6 impls, 553 clqs
+   (0.4s) probing: 200/1541 (13.0%) - 30 fixings, 24 aggregations, 258 implications, 0 bound changes
+(round 10, exhaustive) 221 del vars, 122 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 397 upgd conss, 6 impls, 622 clqs
+(round 11, fast)       221 del vars, 139 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 397 upgd conss, 6 impls, 628 clqs
+(round 12, fast)       237 del vars, 139 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 397 upgd conss, 6 impls, 628 clqs
+   (0.5s) probing: 300/1541 (19.5%) - 52 fixings, 38 aggregations, 343 implications, 0 bound changes
+(round 13, exhaustive) 262 del vars, 139 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 403 upgd conss, 6 impls, 672 clqs
+(round 14, fast)       266 del vars, 163 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 403 upgd conss, 6 impls, 669 clqs
+(round 15, fast)       280 del vars, 163 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 403 upgd conss, 6 impls, 669 clqs
+   (0.6s) probing: 400/1541 (26.0%) - 78 fixings, 40 aggregations, 427 implications, 0 bound changes
+(round 16, exhaustive) 305 del vars, 163 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 404 upgd conss, 7 impls, 754 clqs
+(round 17, fast)       306 del vars, 182 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 404 upgd conss, 7 impls, 765 clqs
+(round 18, fast)       324 del vars, 182 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 404 upgd conss, 7 impls, 765 clqs
+   (0.7s) probing: 500/1541 (32.4%) - 95 fixings, 43 aggregations, 534 implications, 0 bound changes
+(round 19, exhaustive) 353 del vars, 184 del conss, 4 add conss, 6 chg bounds, 8 chg sides, 16 chg coeffs, 413 upgd conss, 11 impls, 905 clqs
+(round 20, exhaustive) 353 del vars, 195 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 422 upgd conss, 11 impls, 914 clqs
+   (0.8s) probing: 600/1541 (38.9%) - 114 fixings, 44 aggregations, 721 implications, 0 bound changes
+(round 21, exhaustive) 388 del vars, 195 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 422 upgd conss, 20 impls, 1057 clqs
+(round 22, fast)       388 del vars, 209 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 422 upgd conss, 20 impls, 1073 clqs
+(round 23, fast)       402 del vars, 209 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 422 upgd conss, 20 impls, 1073 clqs
+(round 24, exhaustive) 402 del vars, 209 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 438 upgd conss, 20 impls, 1073 clqs
+   (1.0s) probing: 700/1541 (45.4%) - 138 fixings, 44 aggregations, 892 implications, 0 bound changes
+   (1.0s) probing: 800/1541 (51.9%) - 155 fixings, 44 aggregations, 11142 implications, 0 bound changes
+(round 25, exhaustive) 427 del vars, 209 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 438 upgd conss, 9526 impls, 1881 clqs
+(round 26, fast)       427 del vars, 267 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 438 upgd conss, 9526 impls, 1896 clqs
+(round 27, fast)       485 del vars, 267 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 438 upgd conss, 9526 impls, 1896 clqs
+(round 28, exhaustive) 485 del vars, 267 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 453 upgd conss, 9526 impls, 1896 clqs
+(round 29, exhaustive) 510 del vars, 267 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 453 upgd conss, 9526 impls, 1920 clqs
+(round 30, fast)       520 del vars, 364 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 453 upgd conss, 9526 impls, 1895 clqs
+(round 31, fast)       605 del vars, 374 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 453 upgd conss, 9526 impls, 1895 clqs
+   (1.2s) probing: 900/1541 (58.4%) - 175 fixings, 55 aggregations, 11216 implications, 0 bound changes
+(round 32, exhaustive) 630 del vars, 374 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 457 upgd conss, 9528 impls, 1923 clqs
+(round 33, fast)       633 del vars, 538 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 457 upgd conss, 9528 impls, 1915 clqs
+(round 34, fast)       794 del vars, 541 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 457 upgd conss, 9528 impls, 1915 clqs
+(round 35, exhaustive) 819 del vars, 541 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 459 upgd conss, 9528 impls, 1850 clqs
+(round 36, fast)       828 del vars, 599 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 459 upgd conss, 9528 impls, 1816 clqs
+(round 37, fast)       861 del vars, 608 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 459 upgd conss, 9528 impls, 1816 clqs
+   (1.4s) probing: 1000/1541 (64.9%) - 199 fixings, 77 aggregations, 11305 implications, 0 bound changes
+   (1.5s) probing: 1100/1541 (71.4%) - 215 fixings, 77 aggregations, 11411 implications, 0 bound changes
+(round 38, exhaustive) 886 del vars, 608 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 459 upgd conss, 9531 impls, 1922 clqs
+(round 39, fast)       888 del vars, 756 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 459 upgd conss, 9531 impls, 1920 clqs
+(round 40, fast)       1034 del vars, 758 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 459 upgd conss, 9531 impls, 1920 clqs
+   (1.6s) probing: 1200/1541 (77.9%) - 227 fixings, 82 aggregations, 11532 implications, 0 bound changes
+(round 41, exhaustive) 1059 del vars, 758 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 465 upgd conss, 9534 impls, 2026 clqs
+(round 42, fast)       1060 del vars, 894 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 465 upgd conss, 9534 impls, 2032 clqs
+(round 43, fast)       1192 del vars, 895 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 465 upgd conss, 9534 impls, 2032 clqs
+   (1.7s) probing: 1300/1541 (84.4%) - 247 fixings, 83 aggregations, 11728 implications, 0 bound changes
+(round 44, exhaustive) 1217 del vars, 895 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 474 upgd conss, 9535 impls, 2192 clqs
+(round 45, fast)       1219 del vars, 1045 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 474 upgd conss, 9535 impls, 2199 clqs
+(round 46, fast)       1367 del vars, 1047 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 474 upgd conss, 9535 impls, 2199 clqs
+(round 47, exhaustive) 1367 del vars, 1047 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 489 upgd conss, 9535 impls, 2199 clqs
+   (1.9s) probing: 1400/1541 (90.9%) - 272 fixings, 85 aggregations, 11918 implications, 0 bound changes
+(round 48, exhaustive) 1392 del vars, 1047 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 489 upgd conss, 9537 impls, 2392 clqs
+(round 49, fast)       1392 del vars, 1230 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 489 upgd conss, 9537 impls, 2414 clqs
+(round 50, fast)       1575 del vars, 1230 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 489 upgd conss, 9537 impls, 2414 clqs
+(round 51, exhaustive) 1575 del vars, 1230 del conss, 4 add conss, 16 chg bounds, 8 chg sides, 16 chg coeffs, 511 upgd conss, 9537 impls, 2414 clqs
+   (2.0s) probing: 1500/1541 (97.3%) - 293 fixings, 85 aggregations, 12142 implications, 0 bound changes
+   (2.0s) probing cycle finished: starting next cycle
+   (2.1s) probing: 100/1113 (9.0%) - 293 fixings, 85 aggregations, 12160 implications, 0 bound changes
+   (2.1s) probing: 193/1113 (17.3%) - 293 fixings, 85 aggregations, 12206 implications, 0 bound changes
+   (2.1s) probing aborted: 50/50 successive totally useless probings
+   (2.2s) symmetry computation started: requiring (bin +, int +, cont +), (fixed: bin -, int -, cont -)
+   (2.2s) symmetry computation finished: 4 generators found (max: 1500, log10 of symmetry group size: 0.0) (symcode time: 0.01)
+dynamic symmetry handling statistics:
+   orbitopal reduction:       no components
+   orbital reduction:         no components
+   lexicographic reduction:    4 permutations with support sizes 36, 40, 38, 38
+handled 4 out of 4 symmetry components
+clique table cleanup detected 0 bound changes
+
+presolved problem has 64848 active (0.0404066%) nonzeros and 64848 (0.0404066%) check nonzeros
+
+presolving (52 rounds: 52 fast, 23 medium, 22 exhaustive):
+ 1577 deleted vars, 1230 deleted constraints, 4 added constraints, 16 tightened bounds, 0 added holes, 8 changed sides, 16 changed coefficients
+ 9543 implications, 2493 cliques
+presolved problem has 12547 variables (1113 bin, 0 int, 0 impl, 11434 cont) and 12791 constraints
+      6 constraints of type <knapsack>
+    449 constraints of type <setppc>
+  12332 constraints of type <linear>
+      4 constraints of type <logicor>
+transformed objective value is always integral (scale: 1)
+Presolving Time: 2.19
+
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+  2.5s|     1 |     0 |  1696 |     - |   191M |   0 |  12k|  12k|  12k|   0 |  0 |  15 |   0 | 6.839788e+01 |      --      |    Inf | unknown
+  3.6s|     1 |     0 |  5523 |     - |   200M |   0 |  12k|  12k|  12k|  42 |  1 |  15 |   0 | 7.243986e+01 |      --      |    Inf | unknown
+  4.0s|     1 |     0 |  7336 |     - |   206M |   0 |  12k|  12k|  12k|  67 |  2 |  16 |   0 | 7.639208e+01 |      --      |    Inf | unknown
+  4.5s|     1 |     0 |  8713 |     - |   213M |   0 |  12k|  12k|  12k|  93 |  3 |  18 |   0 | 7.901966e+01 |      --      |    Inf | unknown
+  4.7s|     1 |     0 |  9501 |     - |   219M |   0 |  12k|  12k|  12k| 112 |  4 |  18 |   0 | 8.076016e+01 |      --      |    Inf | unknown
+  5.0s|     1 |     0 |  9948 |     - |   227M |   0 |  12k|  12k|  12k| 133 |  5 |  19 |   0 | 8.147484e+01 |      --      |    Inf | unknown
+  5.2s|     1 |     0 | 10336 |     - |   235M |   0 |  12k|  12k|  12k| 150 |  6 |  19 |   0 | 8.209925e+01 |      --      |    Inf | unknown
+  5.3s|     1 |     0 | 10795 |     - |   240M |   0 |  12k|  12k|  12k| 168 |  7 |  20 |   0 | 8.276837e+01 |      --      |    Inf | unknown
+  5.5s|     1 |     0 | 10877 |     - |   246M |   0 |  12k|  12k|  12k| 188 |  8 |  21 |   0 | 8.284036e+01 |      --      |    Inf | unknown
+  6.1s|     1 |     0 | 13058 |     - |   255M |   0 |  12k|  12k|  12k| 199 |  9 |  21 |   0 | 8.532651e+01 |      --      |    Inf | unknown
+  6.3s|     1 |     0 | 13516 |     - |   261M |   0 |  12k|  12k|  12k| 214 | 10 |  23 |   0 | 8.536335e+01 |      --      |    Inf | unknown
+  6.6s|     1 |     0 | 13682 |     - |   263M |   0 |  12k|  12k|  12k| 230 | 11 |  23 |   0 | 8.541892e+01 |      --      |    Inf | unknown
+  7.1s|     1 |     0 | 15134 |     - |   264M |   0 |  12k|  12k|  12k| 241 | 12 |  25 |   0 | 8.657574e+01 |      --      |    Inf | unknown
+  7.3s|     1 |     0 | 15534 |     - |   265M |   0 |  12k|  12k|  13k| 258 | 13 |  26 |   0 | 8.666098e+01 |      --      |    Inf | unknown
+  7.4s|     1 |     0 | 15942 |     - |   267M |   0 |  12k|  12k|  13k| 273 | 14 |  27 |   0 | 8.689217e+01 |      --      |    Inf | unknown
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+  7.5s|     1 |     0 | 16078 |     - |   270M |   0 |  12k|  12k|  13k| 290 | 15 |  27 |   0 | 8.693012e+01 |      --      |    Inf | unknown
+  7.6s|     1 |     0 | 16291 |     - |   272M |   0 |  12k|  12k|  13k| 302 | 16 |  28 |   0 | 8.711585e+01 |      --      |    Inf | unknown
+  8.0s|     1 |     0 | 16594 |     - |   273M |   0 |  12k|  12k|  13k| 317 | 17 |  28 |   0 | 8.724431e+01 |      --      |    Inf | unknown
+  8.3s|     1 |     0 | 16746 |     - |   275M |   0 |  12k|  12k|  13k| 328 | 18 |  29 |   0 | 8.743851e+01 |      --      |    Inf | unknown
+  8.4s|     1 |     0 | 17041 |     - |   276M |   0 |  12k|  12k|  13k| 341 | 19 |  29 |   0 | 8.750387e+01 |      --      |    Inf | unknown
+  8.5s|     1 |     0 | 17151 |     - |   278M |   0 |  12k|  12k|  13k| 357 | 20 |  30 |   0 | 8.751656e+01 |      --      |    Inf | unknown
+  8.6s|     1 |     0 | 17236 |     - |   278M |   0 |  12k|  12k|  13k| 367 | 21 |  30 |   0 | 8.754848e+01 |      --      |    Inf | unknown
+  8.7s|     1 |     0 | 17361 |     - |   278M |   0 |  12k|  12k|  13k| 377 | 22 |  32 |   0 | 8.760319e+01 |      --      |    Inf | unknown
+  9.0s|     1 |     0 | 17412 |     - |   278M |   0 |  12k|  12k|  13k| 383 | 23 |  33 |   0 | 8.761769e+01 |      --      |    Inf | unknown
+  9.2s|     1 |     0 | 17483 |     - |   278M |   0 |  12k|  12k|  13k| 391 | 24 |  34 |   0 | 8.762406e+01 |      --      |    Inf | unknown
+  9.3s|     1 |     0 | 17498 |     - |   278M |   0 |  12k|  12k|  13k| 396 | 25 |  35 |   0 | 8.762407e+01 |      --      |    Inf | unknown
+  9.4s|     1 |     0 | 17500 |     - |   279M |   0 |  12k|  12k|  13k| 398 | 26 |  36 |   0 | 8.762407e+01 |      --      |    Inf | unknown
+  9.4s|     1 |     0 | 17501 |     - |   279M |   0 |  12k|  12k|  13k| 399 | 27 |  37 |   0 | 8.762407e+01 |      --      |    Inf | unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 1
+LP objective value: 23.6241
+Node lower bound: 25.0733
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.04s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+ 1022s|     1 |     2 | 30045 |     - |   280M |   0 |  12k|  12k|  13k| 399 | 28 |  74 |  56 | 8.931655e+01 |      --      |    Inf | unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 2
+LP objective value: 25.059
+Node lower bound: 25.3165
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.13s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+LP objective value: 31.7131
+Node lower bound: 31.7131
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 4
+LP objective value: 44.6877
+Node lower bound: 44.6877
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.16s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 5
+LP objective value: 29.2778
+Node lower bound: 29.2778
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 6
+LP objective value: 45.3475
+Node lower bound: 45.3475
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.12s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 7
+LP objective value: 41.327
+Node lower bound: 41.327
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.15s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 8
+LP objective value: 48.5658
+Node lower bound: 48.5658
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.08s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 9
+LP objective value: 55.5315
+Node lower bound: 55.5315
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.12s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 16
+LP objective value: 48.9017
+Node lower bound: 48.9017
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.12s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 11
+LP objective value: 39.5259
+Node lower bound: 39.5259
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.09s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 17
+LP objective value: 49.1295
+Node lower bound: 49.1295
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 10
+LP objective value: 31.1312
+Node lower bound: 31.1312
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.15s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 18
+LP objective value: 55.578
+Node lower bound: 55.578
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 19
+LP objective value: 57.2643
+Node lower bound: 57.2643
+Node upper bound: 1e+20
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.11s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+d 251m|    15 |    16 | 78776 |4376.8 |fracdivi|   4 |  12k|  12k|  13k|   0 |  1 | 174 |  56 | 9.513122e+01 | 2.960000e+02 | 211.15%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 13
+LP objective value: 56.6269
+Node lower bound: 56.6269
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 12
+LP objective value: 48.6221
+Node lower bound: 48.6221
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.16s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 22
+LP objective value: 76.8531
+Node lower bound: 76.8531
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 23
+LP objective value: 49.8258
+Node lower bound: 49.8258
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.13s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 14
+LP objective value: 41.7602
+Node lower bound: 41.7602
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.16s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 27
+LP objective value: 31.244
+Node lower bound: 31.244
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.15s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 15
+LP objective value: 51.2788
+Node lower bound: 51.2788
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.12s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 20
+LP objective value: 78.9208
+Node lower bound: 78.9208
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.15s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 21
+LP objective value: 61.2382
+Node lower bound: 61.2382
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.12s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 39
+LP objective value: 58.4256
+Node lower bound: 58.4256
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.16s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 24
+LP objective value: 51.6996
+Node lower bound: 51.6996
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.12s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 25
+LP objective value: 55.818
+Node lower bound: 55.818
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.11s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 38
+LP objective value: 74.7523
+Node lower bound: 74.7523
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 54
+LP objective value: 66.9958
+Node lower bound: 66.9958
+Node upper bound: 296
+gap to the primal bound: 2.11149
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+d 485m|    29 |    30 |134543 |4180.1 |linesear|   6 |  12k|  13k|  13k|   0 |  1 | 264 |  56 | 9.513122e+01 | 2.550000e+02 | 168.05%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 55
+LP objective value: 70.9161
+Node lower bound: 70.9161
+Node upper bound: 255
+gap to the primal bound: 1.68051
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.15s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 26
+LP objective value: 31.8538
+Node lower bound: 31.8538
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.11s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 61
+LP objective value: 73.4215
+Node lower bound: 73.4215
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 65
+LP objective value: 85.8113
+Node lower bound: 85.8113
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.05s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 64
+LP objective value: 76.6815
+Node lower bound: 76.6815
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.04s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 66
+LP objective value: 107.435
+Node lower bound: 107.435
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.03s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 67
+LP objective value: 105.4
+Node lower bound: 105.4
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.01s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 60
+LP objective value: 104.947
+Node lower bound: 104.947
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.02s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 52
+LP objective value: 66.1347
+Node lower bound: 66.1347
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.03s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 53
+LP objective value: 66.2609
+Node lower bound: 66.2609
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.04s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 43
+LP objective value: 39.5837
+Node lower bound: 39.5837
+Node upper bound: 255
+gap to the primal bound: 1.67734
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.01s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 42
+LP objective value: 78.0223
+Node lower bound: 78.0223
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.02s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 73
+LP objective value: 107.116
+Node lower bound: 107.116
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.97s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 84
+LP objective value: 108.194
+Node lower bound: 108.194
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1126.83s), stopping submodel solve loop
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 84
+LP objective value: 123.038
+Node lower bound: 123.038
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1422.32s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 87
+LP objective value: 135.931
+Node lower bound: 135.931
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1057.63s), stopping submodel solve loop
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 87
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1121.34s), stopping submodel solve loop
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 87
+LP objective value: 155
+Node lower bound: 155
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1033.49s), stopping submodel solve loop
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 87
+LP objective value: 160
+Node lower bound: 160
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1009.51s), stopping submodel solve loop
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 72
+LP objective value: 136.333
+Node lower bound: 136.333
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 88
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.97s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 81
+LP objective value: 49.9643
+Node lower bound: 49.9643
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.89s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 92
+LP objective value: 70.8974
+Node lower bound: 70.8974
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.99s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 95
+LP objective value: 77.952
+Node lower bound: 77.952
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.97s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 96
+LP objective value: 106.432
+Node lower bound: 106.432
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.96s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 97
+LP objective value: 84.0989
+Node lower bound: 84.0989
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.92s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 100
+LP objective value: 121.1
+Node lower bound: 121.1
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.99s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 103
+LP objective value: 132.917
+Node lower bound: 132.917
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.01s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 104
+LP objective value: 132.917
+Node lower bound: 132.917
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 106
+LP objective value: 132.917
+Node lower bound: 132.917
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.01s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 109
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.98s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 111
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.95s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 113
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.94s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 115
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.98s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 117
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1133.46s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 119
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1193.22s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 120
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1010.49s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 123
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1038.18s), stopping submodel solve loop
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 123
+LP objective value: 151.667
+Node lower bound: 151.667
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 124
+LP objective value: 153.333
+Node lower bound: 153.333
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 126
+LP objective value: 155
+Node lower bound: 155
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 127
+LP objective value: 155
+Node lower bound: 155
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 62
+LP objective value: 44.2916
+Node lower bound: 44.2916
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.92s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 131
+LP objective value: 65.7855
+Node lower bound: 65.7855
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.02s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 132
+LP objective value: 78.6927
+Node lower bound: 78.6927
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.07s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 125
+LP objective value: 153.333
+Node lower bound: 153.333
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 136
+LP objective value: 155
+Node lower bound: 155
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 122
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1025.56s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 112
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.96s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 143
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.97s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 145
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.93s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 146
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.91s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 148
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1109.38s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 150
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 153
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 155
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 156
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 144
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1051.72s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 161
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+ 1407m|   100 |    61 |199184 |1835.2 |   299M |  25 |  12k|  13k|  13k| 574 |  1 | 521 |  56 | 9.585377e+01 | 2.550000e+02 | 166.03%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 163
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 165
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 166
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 164
+LP objective value: 150
+Node lower bound: 150
+Node upper bound: 255
+gap to the primal bound: 1.6603
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 63
+LP objective value: 44.9688
+Node lower bound: 44.9688
+Node upper bound: 255
+gap to the primal bound: 1.46178
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1001.14s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+
+SCIP Status        : solving was interrupted [time limit reached]
+Solving Time (sec) : 86489.02
+Solving Nodes      : 111
+Primal Bound       : +2.55000000000000e+02 (2 solutions)
+Dual Bound         : +1.03583690770531e+02
+Gap                : 146.18 %
+
+primal solution:
+================
+
+objective value:                                  255
+C14077                                              1 	(obj:1)
+C14078                                              1 	(obj:1)
+C14079                                              1 	(obj:1)
+C14080                                              1 	(obj:1)
+C14082                                              1 	(obj:1)
+C14083                                              1 	(obj:1)
+C14084                                              1 	(obj:1)
+C14085                                              1 	(obj:1)
+C14086                                              1 	(obj:1)
+C14087                                              1 	(obj:1)
+C14089                                              1 	(obj:1)
+C14090                                              1 	(obj:1)
+C14091                                              1 	(obj:1)
+C14092                                              1 	(obj:1)
+C14093                                              1 	(obj:1)
+C14094                                              1 	(obj:10)
+C14095                                              1 	(obj:10)
+C14096                                              1 	(obj:20)
+C14097                                              1 	(obj:10)
+C14099                                              1 	(obj:10)
+C14101                                              1 	(obj:10)
+C14102                                              1 	(obj:20)
+C14103                                              1 	(obj:10)
+C14104                                              1 	(obj:10)
+C14106                                              1 	(obj:10)
+C14107                                              1 	(obj:20)
+C14108                                              1 	(obj:10)
+C14109                                              1 	(obj:20)
+C14110                                              1 	(obj:10)
+C14112                                              1 	(obj:10)
+C14113                                              1 	(obj:20)
+C14114                                              1 	(obj:10)
+C14115                                              1 	(obj:20)
+C12629                                              1 	(obj:0)
+C12539                                              1 	(obj:0)
+C12562                                              1 	(obj:0)
+C12541                                              1 	(obj:0)
+C12521                                              1 	(obj:0)
+C12636                                              1 	(obj:0)
+C12638                                              1 	(obj:0)
+C12525                                              1 	(obj:0)
+C12642                                              1 	(obj:0)
+C12554                                              1 	(obj:0)
+C12607                                              1 	(obj:0)
+C12593                                              1 	(obj:0)
+C12617                                              1 	(obj:0)
+C12595                                              1 	(obj:0)
+C12621                                              1 	(obj:0)
+C12782                                              1 	(obj:0)
+C13158                                              1 	(obj:0)
+C12677                                              1 	(obj:0)
+C12679                                              1 	(obj:0)
+C13165                                              1 	(obj:0)
+C13167                                              1 	(obj:0)
+C13171                                              1 	(obj:0)
+C12692                                              1 	(obj:0)
+C12720                                              1 	(obj:0)
+C12950                                              1 	(obj:0)
+C12883                                              1 	(obj:0)
+C12726                                              1 	(obj:0)
+C12956                                              1 	(obj:0)
+C12727                                              1 	(obj:0)
+C12957                                              1 	(obj:0)
+C12890                                              1 	(obj:0)
+C12760                                              1 	(obj:0)
+C12898                                              1 	(obj:0)
+C12742                                              1 	(obj:0)
+C12972                                              1 	(obj:0)
+C12797                                              1 	(obj:0)
+C13096                                              1 	(obj:0)
+C12823                                              1 	(obj:0)
+C12803                                              1 	(obj:0)
+C13102                                              1 	(obj:0)
+C12804                                              1 	(obj:0)
+C13103                                              1 	(obj:0)
+C12853                                              1 	(obj:0)
+C12831                                              1 	(obj:0)
+C12832                                              1 	(obj:0)
+C12833                                              1 	(obj:0)
+C12834                                              1 	(obj:0)
+C13185                                              1 	(obj:0)
+C12866                                              1 	(obj:0)
+C12872                                              1 	(obj:0)
+C13198                                              1 	(obj:0)
+C12927                                              1 	(obj:0)
+C13251                                              1 	(obj:0)
+C12933                                              1 	(obj:0)
+C13258                                              1 	(obj:0)
+C13261                                              1 	(obj:0)
+C13266                                              1 	(obj:0)
+C13019                                              1 	(obj:0)
+C12977                                              1 	(obj:0)
+C13038                                              1 	(obj:0)
+C13041                                              1 	(obj:0)
+C13134                                              1 	(obj:0)
+C13050                                              1 	(obj:0)
+C13074                                              1 	(obj:0)
+C13143                                              1 	(obj:0)
+C13076                                              1 	(obj:0)
+C13145                                              1 	(obj:0)
+C13056                                              1 	(obj:0)
+C13153                                              1 	(obj:0)
+C13086                                              1 	(obj:0)
+C13155                                              1 	(obj:0)
+C13156                                              1 	(obj:0)
+C13342                                              1 	(obj:0)
+C13320                                              1 	(obj:0)
+C13343                                              1 	(obj:0)
+C13300                                              1 	(obj:0)
+C13351                                              1 	(obj:0)
+C13330                                              1 	(obj:0)
+C13331                                              1 	(obj:0)
+C13354                                              1 	(obj:0)
+C13355                                              1 	(obj:0)
+C13333                                              1 	(obj:0)
+C13356                                              1 	(obj:0)
+C13335                                              1 	(obj:0)
+C13358                                              1 	(obj:0)
+C13313                                              1 	(obj:0)
+C13339                                              1 	(obj:0)
+C13362                                              1 	(obj:0)
+C13317                                              1 	(obj:0)
+C13432                                              1 	(obj:0)
+C13387                                              1 	(obj:0)
+C13548                                              1 	(obj:0)
+C14009                                              1 	(obj:0)
+C13390                                              1 	(obj:0)
+C13392                                              1 	(obj:0)
+C13394                                              1 	(obj:0)
+C13555                                              1 	(obj:0)
+C14016                                              1 	(obj:0)
+C14018                                              1 	(obj:0)
+C13398                                              1 	(obj:0)
+C14022                                              1 	(obj:0)
+C14023                                              1 	(obj:0)
+C14025                                              1 	(obj:0)
+C13382                                              1 	(obj:0)
+C13406                                              1 	(obj:0)
+C13567                                              1 	(obj:0)
+C13407                                              1 	(obj:0)
+C13568                                              1 	(obj:0)
+C13569                                              1 	(obj:0)
+C13409                                              1 	(obj:0)
+C13458                                              1 	(obj:0)
+C13468                                              1 	(obj:0)
+C13469                                              1 	(obj:0)
+C13471                                              1 	(obj:0)
+C13473                                              1 	(obj:0)
+C13477                                              1 	(obj:0)
+C13961                                              1 	(obj:0)
+C13503                                              1 	(obj:0)
+C13733                                              1 	(obj:0)
+C13734                                              1 	(obj:0)
+C13528                                              1 	(obj:0)
+C13666                                              1 	(obj:0)
+C13741                                              1 	(obj:0)
+C13514                                              1 	(obj:0)
+C13744                                              1 	(obj:0)
+C13544                                              1 	(obj:0)
+C13682                                              1 	(obj:0)
+C13545                                              1 	(obj:0)
+C13683                                              1 	(obj:0)
+C13523                                              1 	(obj:0)
+C13753                                              1 	(obj:0)
+C13870                                              1 	(obj:0)
+C13598                                              1 	(obj:0)
+C13621                                              1 	(obj:0)
+C13576                                              1 	(obj:0)
+C13875                                              1 	(obj:0)
+C13624                                              1 	(obj:0)
+C13580                                              1 	(obj:0)
+C13879                                              1 	(obj:0)
+C13604                                              1 	(obj:0)
+C13627                                              1 	(obj:0)
+C13606                                              1 	(obj:0)
+C13629                                              1 	(obj:0)
+C13630                                              1 	(obj:0)
+C13587                                              1 	(obj:0)
+C13593                                              1 	(obj:0)
+C13966                                              1 	(obj:0)
+C13969                                              1 	(obj:0)
+C13649                                              1 	(obj:0)
+C13972                                              1 	(obj:0)
+C13974                                              1 	(obj:0)
+C13975                                              1 	(obj:0)
+C13977                                              1 	(obj:0)
+C13656                                              1 	(obj:0)
+C13662                                              1 	(obj:0)
+C13710                                              1 	(obj:0)
+C14034                                              1 	(obj:0)
+C14038                                              1 	(obj:0)
+C14050                                              1 	(obj:0)
+C14051                                              1 	(obj:0)
+C13730                                              1 	(obj:0)
+C14053                                              1 	(obj:0)
+C13986                                              1 	(obj:0)
+C13987                                              1 	(obj:0)
+C13781                                              1 	(obj:0)
+C13782                                              1 	(obj:0)
+C13761                                              1 	(obj:0)
+C13785                                              1 	(obj:0)
+C13994                                              1 	(obj:0)
+C13813                                              1 	(obj:0)
+C13771                                              1 	(obj:0)
+C14001                                              1 	(obj:0)
+C14002                                              1 	(obj:0)
+C13775                                              1 	(obj:0)
+C14006                                              1 	(obj:0)
+C13920                                              1 	(obj:0)
+C13829                                              1 	(obj:0)
+C14059                                              1 	(obj:0)
+C13853                                              1 	(obj:0)
+C13855                                              1 	(obj:0)
+C13857                                              1 	(obj:0)
+C13926                                              1 	(obj:0)
+C13928                                              1 	(obj:0)
+C13861                                              1 	(obj:0)
+C13862                                              1 	(obj:0)
+C13931                                              1 	(obj:0)
+C13863                                              1 	(obj:0)
+C13844                                              1 	(obj:0)
+C0006                                               2 	(obj:0)
+C0019                                               2 	(obj:0)
+C0040                                               3 	(obj:0)
+C0051                                               2 	(obj:0)
+C0055                                               3 	(obj:0)
+C0059                                               1 	(obj:0)
+C0098                                               2 	(obj:0)
+C0105                                               1 	(obj:0)
+C0111                                               2 	(obj:0)
+C0121                                               2 	(obj:0)
+C0123                                               2 	(obj:0)
+C0128                                               1 	(obj:0)
+C0138                                               3 	(obj:0)
+C0145                                               3 	(obj:0)
+C0151                                               1 	(obj:0)
+C0161                                               3 	(obj:0)
+C0180                                               2 	(obj:0)
+C0197                                               1 	(obj:0)
+C0207                                               3 	(obj:0)
+C0213                                               2 	(obj:0)
+C0226                                               2 	(obj:0)
+C0257                                               3 	(obj:0)
+C0260                                               3 	(obj:0)
+C0299                                               3 	(obj:0)
+C0306                                               3 	(obj:0)
+C0312                                               1 	(obj:0)
+C0344                                               2 	(obj:0)
+C0345                                               3 	(obj:0)
+C0362                                               3 	(obj:0)
+C0371                                               1 	(obj:0)
+C0377                                               3 	(obj:0)
+C0381                                               1 	(obj:0)
+C0397                                               2 	(obj:0)
+C0399                                               1 	(obj:0)
+C0404                                               1 	(obj:0)
+C0405                                               1 	(obj:0)
+C0417                                               1 	(obj:0)
+C0426                                               1 	(obj:0)
+C0427                                               1 	(obj:0)
+C0433                                               2 	(obj:0)
+C0450                                               1 	(obj:0)
+C0464                                               3 	(obj:0)
+C0486                                               1 	(obj:0)
+C0489                                               1 	(obj:0)
+C0501                                               3 	(obj:0)
+C0509                                               1 	(obj:0)
+C0519                                               1 	(obj:0)
+C0524                                               3 	(obj:0)
+C0532                                               1 	(obj:0)
+C0542                                               1 	(obj:0)
+C0545                                               3 	(obj:0)
+C0568                                               3 	(obj:0)
+C0574                                               2 	(obj:0)
+C0578                                               1 	(obj:0)
+C0588                                               1 	(obj:0)
+C0617                                               2 	(obj:0)
+C0624                                               1 	(obj:0)
+C0634                                               1 	(obj:0)
+C0639                                               3 	(obj:0)
+C0666                                               2 	(obj:0)
+C0680                                               1 	(obj:0)
+C0689                                               2 	(obj:0)
+C0712                                               2 	(obj:0)
+C0726                                               1 	(obj:0)
+C0735                                               2 	(obj:0)
+C0738                                               3 	(obj:0)
+C0745                                               3 	(obj:0)
+C0747                                               1 	(obj:0)
+C0751                                               2 	(obj:0)
+C0773                                               1 	(obj:0)
+C0785                                               1 	(obj:0)
+C0820                                               2 	(obj:0)
+C0830                                               3 	(obj:0)
+C0832                                               3 	(obj:0)
+C0839                                               1 	(obj:0)
+C0843                                               2 	(obj:0)
+C0854                                               1 	(obj:0)
+C0869                                               3 	(obj:0)
+C0892                                               3 	(obj:0)
+C0912                                               2 	(obj:0)
+C0913                                               3 	(obj:0)
+C0935                                               2 	(obj:0)
+C0936                                               3 	(obj:0)
+C0942                                               2 	(obj:0)
+C0958                                               2 	(obj:0)
+C0992                                               1 	(obj:0)
+C1007                                               3 	(obj:0)
+C1027                                               2 	(obj:0)
+C1050                                               2 	(obj:0)
+C1057                                               2 	(obj:0)
+C1073                                               2 	(obj:0)
+C1080                                               2 	(obj:0)
+C1103                                               2 	(obj:0)
+C1107                                               1 	(obj:0)
+C1108                                               3 	(obj:0)
+C1113                                               3 	(obj:0)
+C1136                                               3 	(obj:0)
+C1146                                               2 	(obj:0)
+C1169                                               2 	(obj:0)
+C1199                                               1 	(obj:0)
+C1215                                               2 	(obj:0)
+C1245                                               1 	(obj:0)
+C1255                                               1 	(obj:0)
+C1268                                               1 	(obj:0)
+C1282                                               3 	(obj:0)
+C1284                                               2 	(obj:0)
+C1291                                               1 	(obj:0)
+C1302                                               1 	(obj:0)
+C1324                                               1 	(obj:0)
+C1328                                               3 	(obj:0)
+C1330                                               2 	(obj:0)
+C1353                                               2 	(obj:0)
+C1376                                               2 	(obj:0)
+C1406                                               1 	(obj:0)
+C1416                                               1 	(obj:0)
+C1476                                               3 	(obj:0)
+C1481                                               3 	(obj:0)
+C1499                                               3 	(obj:0)
+C1501                                               2 	(obj:0)
+C1504                                               2 	(obj:0)
+C1530                                               1 	(obj:0)
+C1534                                               3 	(obj:0)
+C1537                                               2 	(obj:0)
+C1553                                               1 	(obj:0)
+C1557                                               3 	(obj:0)
+C1568                                               3 	(obj:0)
+C1570                                               2 	(obj:0)
+C1583                                               2 	(obj:0)
+C1588                                               1 	(obj:0)
+C1595                                               2 	(obj:0)
+C1610                                               3 	(obj:0)
+C1611                                               1 	(obj:0)
+C1613                                               1 	(obj:0)
+C1618                                               2 	(obj:0)
+C1633                                               3 	(obj:0)
+C1668                                               1 	(obj:0)
+C1676                                               1 	(obj:0)
+C1677                                               2 	(obj:0)
+C1679                                               3 	(obj:0)
+C1682                                               1 	(obj:0)
+C1685                                               2 	(obj:0)
+C1726                                               1 	(obj:0)
+C1730                                               2 	(obj:0)
+C1749                                               1 	(obj:0)
+C1758                                               1 	(obj:0)
+C1768                                               1 	(obj:0)
+C1771                                               3 	(obj:0)
+C1795                                               1 	(obj:0)
+C1799                                               1 	(obj:0)
+C1806                                               1 	(obj:0)
+C1814                                               1 	(obj:0)
+C1817                                               3 	(obj:0)
+C1829                                               1 	(obj:0)
+C1878                                               2 	(obj:0)
+C1891                                               1 	(obj:0)
+C1901                                               2 	(obj:0)
+C1978                                               3 	(obj:0)
+C2001                                               3 	(obj:0)
+C2003                                               1 	(obj:0)
+C2016                                               2 	(obj:0)
+C2047                                               3 	(obj:0)
+C2049                                               1 	(obj:0)
+C2062                                               2 	(obj:0)
+C2100                                               1 	(obj:0)
+C2108                                               2 	(obj:0)
+C2139                                               3 	(obj:0)
+C2146                                               1 	(obj:0)
+C2154                                               2 	(obj:0)
+C2185                                               3 	(obj:0)
+C2200                                               2 	(obj:0)
+C2202                                               1 	(obj:0)
+C2589                                               1 	(obj:0)
+C2636                                               1 	(obj:0)
+C2638                                               2 	(obj:0)
+C2641                                               2 	(obj:0)
+C2648                                               1 	(obj:0)
+C2658                                               1 	(obj:0)
+C2664                                               2 	(obj:0)
+C2694                                               1 	(obj:0)
+C2696                                               1 	(obj:0)
+C2709                                               3 	(obj:0)
+C2732                                               3 	(obj:0)
+C2753                                               3 	(obj:0)
+C2776                                               3 	(obj:0)
+C2782                                               2 	(obj:0)
+C2825                                               2 	(obj:0)
+C2832                                               1 	(obj:0)
+C2842                                               1 	(obj:0)
+C2847                                               3 	(obj:0)
+C2920                                               2 	(obj:0)
+C2943                                               2 	(obj:0)
+C3325                                               1 	(obj:0)
+C3337                                               3 	(obj:0)
+C3394                                               1 	(obj:0)
+C3429                                               3 	(obj:0)
+C3499                                               1 	(obj:0)
+C3518                                               2 	(obj:0)
+C3578                                               1 	(obj:0)
+C3656                                               2 	(obj:0)
+C3679                                               2 	(obj:0)
+C3684                                               3 	(obj:0)
+C3693                                               1 	(obj:0)
+C3707                                               3 	(obj:0)
+C3714                                               1 	(obj:0)
+C3761                                               1 	(obj:0)
+C3785                                               1 	(obj:0)
+C3790                                               3 	(obj:0)
+C3799                                               3 	(obj:0)
+C3823                                               2 	(obj:0)
+C3836                                               3 	(obj:0)
+C3859                                               3 	(obj:0)
+C3884                                               1 	(obj:0)
+C3885                                               2 	(obj:0)
+C3905                                               3 	(obj:0)
+C3928                                               3 	(obj:0)
+C3951                                               3 	(obj:0)
+C3976                                               1 	(obj:0)
+C3992                                               1 	(obj:0)
+C4022                                               1 	(obj:0)
+C4053                                               2 	(obj:0)
+C4164                                               1 	(obj:0)
+C4171                                               2 	(obj:0)
+C4187                                               1 	(obj:0)
+C4194                                               2 	(obj:0)
+C4252                                               1 	(obj:0)
+C4253                                               2 	(obj:0)
+C4254                                               2 	(obj:0)
+C4302                                               1 	(obj:0)
+C4325                                               1 	(obj:0)
+C4344                                               1 	(obj:0)
+C4371                                               1 	(obj:0)
+C4390                                               1 	(obj:0)
+C4392                                               2 	(obj:0)
+C4415                                               2 	(obj:0)
+C4436                                               1 	(obj:0)
+C4445                                               2 	(obj:0)
+C4462                                               2 	(obj:0)
+C4479                                               3 	(obj:0)
+C4502                                               3 	(obj:0)
+C4537                                               2 	(obj:0)
+C4564                                               1 	(obj:0)
+C4577                                               3 	(obj:0)
+C4597                                               1 	(obj:0)
+C4600                                               3 	(obj:0)
+C4623                                               3 	(obj:0)
+C4629                                               2 	(obj:0)
+C4668                                               2 	(obj:0)
+C4679                                               1 	(obj:0)
+C4702                                               1 	(obj:0)
+C4715                                               3 	(obj:0)
+C4718                                               1 	(obj:0)
+C4748                                               1 	(obj:0)
+C4761                                               3 	(obj:0)
+C4771                                               1 	(obj:0)
+C4797                                               1 	(obj:0)
+C4818                                               1 	(obj:0)
+C4824                                               2 	(obj:0)
+C4866                                               1 	(obj:0)
+C4908                                               2 	(obj:0)
+C4910                                               1 	(obj:0)
+C5050                                               1 	(obj:0)
+C5065                                               2 	(obj:0)
+C5127                                               2 	(obj:0)
+C5161                                               3 	(obj:0)
+C5165                                               1 	(obj:0)
+C5186                                               1 	(obj:0)
+C5188                                               1 	(obj:0)
+C5212                                               1 	(obj:0)
+C5224                                               1 	(obj:0)
+C5234                                               1 	(obj:0)
+C5278                                               1 	(obj:0)
+C5280                                               1 	(obj:0)
+C5295                                               2 	(obj:0)
+C5298                                               2 	(obj:0)
+C5321                                               2 	(obj:0)
+C5418                                               1 	(obj:0)
+C5433                                               2 	(obj:0)
+C5540                                               1 	(obj:0)
+C5543                                               3 	(obj:0)
+C5556                                               1 	(obj:0)
+C5563                                               1 	(obj:0)
+C5566                                               3 	(obj:0)
+C5583                                               3 	(obj:0)
+C5586                                               1 	(obj:0)
+C5606                                               3 	(obj:0)
+C5632                                               1 	(obj:0)
+C5639                                               3 	(obj:0)
+C5655                                               1 	(obj:0)
+C5663                                               2 	(obj:0)
+C5668                                               1 	(obj:0)
+C5671                                               1 	(obj:0)
+C5681                                               3 	(obj:0)
+C5684                                               1 	(obj:0)
+C5701                                               1 	(obj:0)
+C5704                                               3 	(obj:0)
+C5737                                               1 	(obj:0)
+C5750                                               3 	(obj:0)
+C5772                                               2 	(obj:0)
+C5783                                               1 	(obj:0)
+C5795                                               2 	(obj:0)
+C5806                                               1 	(obj:0)
+C5813                                               3 	(obj:0)
+C5819                                               3 	(obj:0)
+C5822                                               1 	(obj:0)
+C5836                                               3 	(obj:0)
+C5852                                               1 	(obj:0)
+C5865                                               3 	(obj:0)
+C5875                                               1 	(obj:0)
+C5890                                               3 	(obj:0)
+C5891                                               1 	(obj:0)
+C5892                                               3 	(obj:0)
+C5913                                               3 	(obj:0)
+C5914                                               1 	(obj:0)
+C5915                                               3 	(obj:0)
+C5936                                               3 	(obj:0)
+C5937                                               1 	(obj:0)
+C6005                                               1 	(obj:0)
+C6007                                               3 	(obj:0)
+C6021                                               3 	(obj:0)
+C6051                                               3 	(obj:0)
+C6092                                               1 	(obj:0)
+C6093                                               2 	(obj:0)
+C6097                                               3 	(obj:0)
+C6184                                               1 	(obj:0)
+C6230                                               1 	(obj:0)
+C6239                                               2 	(obj:0)
+C6633                                               3 	(obj:0)
+C6649                                               3 	(obj:0)
+C6658                                               1 	(obj:0)
+C6672                                               3 	(obj:0)
+C6741                                               3 	(obj:0)
+C6750                                               1 	(obj:0)
+C6767                                               2 	(obj:0)
+C6836                                               2 	(obj:0)
+C6853                                               2 	(obj:0)
+C6899                                               2 	(obj:0)
+C6968                                               2 	(obj:0)
+C6991                                               2 	(obj:0)
+C6995                                               1 	(obj:0)
+C7005                                               1 	(obj:0)
+C7017                                               3 	(obj:0)
+C7049                                               1 	(obj:0)
+C7064                                               1 	(obj:0)
+C7066                                               1 	(obj:0)
+C7074                                               1 	(obj:0)
+C7109                                               3 	(obj:0)
+C7133                                               1 	(obj:0)
+C7140                                               1 	(obj:0)
+C7198                                               2 	(obj:0)
+C7248                                               1 	(obj:0)
+C7255                                               1 	(obj:0)
+C7258                                               1 	(obj:0)
+C7324                                               1 	(obj:0)
+C7336                                               2 	(obj:0)
+C7347                                               1 	(obj:0)
+C7359                                               2 	(obj:0)
+C7366                                               2 	(obj:0)
+C7369                                               3 	(obj:0)
+C7392                                               3 	(obj:0)
+C7423                                               3 	(obj:0)
+C7446                                               3 	(obj:0)
+C7505                                               3 	(obj:0)
+C7528                                               3 	(obj:0)
+C7549                                               2 	(obj:0)
+C7572                                               2 	(obj:0)
+C7575                                               2 	(obj:0)
+C7588                                               2 	(obj:0)
+C7589                                               2 	(obj:0)
+C7591                                               1 	(obj:0)
+C7595                                               2 	(obj:0)
+C7600                                               1 	(obj:0)
+C7608                                               3 	(obj:0)
+C7643                                               3 	(obj:0)
+C7661                                               3 	(obj:0)
+C7664                                               2 	(obj:0)
+C7680                                               2 	(obj:0)
+C7687                                               2 	(obj:0)
+C7700                                               3 	(obj:0)
+C7732                                               3 	(obj:0)
+C7755                                               3 	(obj:0)
+C7821                                               1 	(obj:0)
+C7847                                               3 	(obj:0)
+C7874                                               2 	(obj:0)
+C7897                                               2 	(obj:0)
+C7939                                               3 	(obj:0)
+C7986                                               2 	(obj:0)
+C8032                                               2 	(obj:0)
+C8054                                               3 	(obj:0)
+C8109                                               1 	(obj:0)
+C8128                                               3 	(obj:0)
+C8167                                               3 	(obj:0)
+C8178                                               1 	(obj:0)
+C8337                                               1 	(obj:0)
+C8385                                               1 	(obj:0)
+C8493                                               2 	(obj:0)
+C8496                                               3 	(obj:0)
+C8565                                               3 	(obj:0)
+C8585                                               2 	(obj:0)
+C8620                                               3 	(obj:0)
+C8643                                               3 	(obj:0)
+C8657                                               3 	(obj:0)
+C8680                                               3 	(obj:0)
+C8692                                               2 	(obj:0)
+C8700                                               2 	(obj:0)
+C8703                                               3 	(obj:0)
+C8758                                               3 	(obj:0)
+C8772                                               3 	(obj:0)
+C8778                                               2 	(obj:0)
+C8841                                               3 	(obj:0)
+C8864                                               3 	(obj:0)
+C8866                                               1 	(obj:0)
+C8870                                               2 	(obj:0)
+C8877                                               2 	(obj:0)
+C8880                                               3 	(obj:0)
+C8895                                               3 	(obj:0)
+C8918                                               3 	(obj:0)
+C8956                                               3 	(obj:0)
+C8958                                               1 	(obj:0)
+C8962                                               2 	(obj:0)
+C8977                                               3 	(obj:0)
+C9000                                               3 	(obj:0)
+C9025                                               3 	(obj:0)
+C9031                                               2 	(obj:0)
+C9032                                               3 	(obj:0)
+C9048                                               3 	(obj:0)
+C9054                                               2 	(obj:0)
+C9055                                               3 	(obj:0)
+C9071                                               3 	(obj:0)
+C9077                                               2 	(obj:0)
+C9115                                               3 	(obj:0)
+C9118                                               1 	(obj:0)
+C9171                                               3 	(obj:0)
+C9186                                               3 	(obj:0)
+C9192                                               2 	(obj:0)
+C9224                                               1 	(obj:0)
+C9229                                               2 	(obj:0)
+C9281                                               1 	(obj:0)
+C9321                                               2 	(obj:0)
+C9339                                               1 	(obj:0)
+C9348                                               1 	(obj:0)
+C9356                                               2 	(obj:0)
+C9362                                               1 	(obj:0)
+C9379                                               3 	(obj:0)
+C9401                                               3 	(obj:0)
+C9413                                               2 	(obj:0)
+C9424                                               2 	(obj:0)
+C9454                                               1 	(obj:0)
+C9463                                               1 	(obj:0)
+C9477                                               1 	(obj:0)
+C9508                                               3 	(obj:0)
+C9509                                               1 	(obj:0)
+C9523                                               1 	(obj:0)
+C9532                                               1 	(obj:0)
+C9555                                               1 	(obj:0)
+C9945                                               1 	(obj:0)
+C9948                                               1 	(obj:0)
+C9949                                               1 	(obj:0)
+C9970                                               1 	(obj:0)
+C9982                                               2 	(obj:0)
+C10017                                              1 	(obj:0)
+C10018                                              1 	(obj:0)
+C10022                                              1 	(obj:0)
+C10040                                              1 	(obj:0)
+C10062                                              1 	(obj:0)
+C10115                                              3 	(obj:0)
+C10136                                              3 	(obj:0)
+C10159                                              3 	(obj:0)
+C10199                                              1 	(obj:0)
+C10222                                              1 	(obj:0)
+C10225                                              1 	(obj:0)
+C10228                                              1 	(obj:0)
+C10240                                              2 	(obj:0)
+C10275                                              3 	(obj:0)
+C10347                                              1 	(obj:0)
+C10442                                              3 	(obj:0)
+C10465                                              3 	(obj:0)
+C10511                                              3 	(obj:0)
+C10528                                              3 	(obj:0)
+C10603                                              3 	(obj:0)
+C10620                                              3 	(obj:0)
+C10649                                              3 	(obj:0)
+C10678                                              2 	(obj:0)
+C10685                                              1 	(obj:0)
+C10690                                              3 	(obj:0)
+C10706                                              1 	(obj:0)
+C10711                                              3 	(obj:0)
+C10724                                              2 	(obj:0)
+C10732                                              1 	(obj:0)
+C10754                                              1 	(obj:0)
+C10770                                              2 	(obj:0)
+C10798                                              1 	(obj:0)
+C10800                                              1 	(obj:0)
+C10815                                              2 	(obj:0)
+C10818                                              2 	(obj:0)
+C10841                                              2 	(obj:0)
+C10872                                              3 	(obj:0)
+C10885                                              2 	(obj:0)
+C10895                                              3 	(obj:0)
+C10908                                              2 	(obj:0)
+C10938                                              1 	(obj:0)
+C10941                                              3 	(obj:0)
+C10953                                              2 	(obj:0)
+C11000                                              2 	(obj:0)
+C11065                                              3 	(obj:0)
+C11103                                              3 	(obj:0)
+C11112                                              1 	(obj:0)
+C11126                                              3 	(obj:0)
+C11133                                              1 	(obj:0)
+C11157                                              3 	(obj:0)
+C11181                                              1 	(obj:0)
+C11188                                              1 	(obj:0)
+C11196                                              3 	(obj:0)
+C11219                                              3 	(obj:0)
+C11269                                              2 	(obj:0)
+C11319                                              1 	(obj:0)
+C11326                                              1 	(obj:0)
+C11334                                              3 	(obj:0)
+C11372                                              1 	(obj:0)
+C11384                                              2 	(obj:0)
+C11395                                              1 	(obj:0)
+C11407                                              2 	(obj:0)
+C11410                                              3 	(obj:0)
+C11413                                              2 	(obj:0)
+C11417                                              3 	(obj:0)
+C11431                                              3 	(obj:0)
+C11433                                              3 	(obj:0)
+C11440                                              3 	(obj:0)
+C11442                                              1 	(obj:0)
+C11446                                              2 	(obj:0)
+C11449                                              3 	(obj:0)
+C11487                                              1 	(obj:0)
+C11495                                              3 	(obj:0)
+C11502                                              3 	(obj:0)
+C11509                                              3 	(obj:0)
+C11511                                              1 	(obj:0)
+C11515                                              2 	(obj:0)
+C11528                                              2 	(obj:0)
+C11533                                              1 	(obj:0)
+C11541                                              3 	(obj:0)
+C11564                                              3 	(obj:0)
+C11578                                              3 	(obj:0)
+C11584                                              2 	(obj:0)
+C11585                                              3 	(obj:0)
+C11586                                              2 	(obj:0)
+C11590                                              2 	(obj:0)
+C11601                                              3 	(obj:0)
+C11607                                              2 	(obj:0)
+C11608                                              3 	(obj:0)
+C11617                                              2 	(obj:0)
+C11624                                              3 	(obj:0)
+C11630                                              2 	(obj:0)
+C11632                                              3 	(obj:0)
+C11636                                              2 	(obj:0)
+C11679                                              3 	(obj:0)
+C11693                                              3 	(obj:0)
+C11699                                              2 	(obj:0)
+C11739                                              3 	(obj:0)
+C11740                                              1 	(obj:0)
+C11741                                              1 	(obj:0)
+C11745                                              2 	(obj:0)
+C11747                                              3 	(obj:0)
+C11780                                              3 	(obj:0)
+C11784                                              2 	(obj:0)
+C11799                                              1 	(obj:0)
+C11803                                              3 	(obj:0)
+C11807                                              2 	(obj:0)
+C11812                                              1 	(obj:0)
+C11841                                              2 	(obj:0)
+C11858                                              1 	(obj:0)
+C11876                                              2 	(obj:0)
+C11895                                              3 	(obj:0)
+C11899                                              2 	(obj:0)
+C11922                                              2 	(obj:0)
+C11937                                              3 	(obj:0)
+C11945                                              2 	(obj:0)
+C11960                                              3 	(obj:0)
+C11977                                              3 	(obj:0)
+C12003                                              1 	(obj:0)
+C12004                                              2 	(obj:0)
+C12006                                              3 	(obj:0)
+C12023                                              3 	(obj:0)
+C12060                                              2 	(obj:0)
+C12072                                              1 	(obj:0)
+C12075                                              3 	(obj:0)
+C12083                                              2 	(obj:0)
+C12108                                              1 	(obj:0)
+C12118                                              1 	(obj:0)
+C12121                                              3 	(obj:0)
+C12131                                              1 	(obj:0)
+C12155                                              1 	(obj:0)
+C12162                                              3 	(obj:0)
+C12173                                              2 	(obj:0)
+C12201                                              1 	(obj:0)
+C12209                                              2 	(obj:0)
+C12218                                              2 	(obj:0)
+C12265                                              2 	(obj:0)
+C12277                                              3 	(obj:0)
+C12279                                              1 	(obj:0)
+C12287                                              2 	(obj:0)
+C12288                                              2 	(obj:0)
+C12300                                              3 	(obj:0)
+C12333                                              2 	(obj:0)
+C12339                                              1 	(obj:0)
+C12345                                              3 	(obj:0)
+C12348                                              1 	(obj:0)
+C12356                                              2 	(obj:0)
+C12379                                              2 	(obj:0)
+C12380                                              2 	(obj:0)
+C12385                                              1 	(obj:0)
+C12394                                              1 	(obj:0)
+C12424                                              3 	(obj:0)
+C12425                                              2 	(obj:0)
+C12484                                              3 	(obj:0)
+C12494                                              2 	(obj:0)
+
+Statistics
+==========
+
+SCIP Status        : solving was interrupted [time limit reached]
+Total Time         :   86489.34
+  solving          :   86489.02
+  presolving       :       2.19 (included in solving)
+  reading          :       0.33
+  copying          :       0.16 (5 #copies) (minimal 0.02, maximal 0.04, average 0.03)
+Original Problem   :
+  Problem name     : net12
+  Variables        : 14115 (1603 binary, 0 integer, 0 implicit integer, 12512 continuous)
+  Constraints      : 14021 initial, 14021 maximal
+  Objective        : minimize, 39 non-zeros (abs.min = 1, abs.max = 20)
+Presolved Problem  :
+  Problem name     : t_net12
+  Variables        : 12547 (1113 binary, 0 integer, 0 implicit integer, 11434 continuous)
+  Constraints      : 12791 initial, 13297 maximal
+  Objective        : minimize, 29 non-zeros (abs.min = 1, abs.max = 20)
+  Nonzeros         : 64848 constraint, 5616 clique table
+Presolvers         :   ExecTime  SetupTime  Calls  FixedVars   AggrVars   ChgTypes  ChgBounds   AddHoles    DelCons    AddCons   ChgSides   ChgCoefs
+  boundshift       :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  convertinttobin  :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  domcol           :       0.23       0.00     16          0          0          0          0          0          0          0          0          0
+  dualagg          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualcomp         :       0.13       0.00     16          0          0          0          0          0          0          0          0          0
+  dualinfer        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualsparsify     :       0.05       0.00      1          0          0          0          0          0          0          0          0          0
+  gateextraction   :       0.00       0.00     20          0          0          0          0          0          0          0          0          0
+  implics          :       0.00       0.00     23          0          0          0          0          0          0          0          0          0
+  inttobinary      :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  qpkktref         :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  redvub           :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  sparsify         :       0.14       0.00      4          0          0          0          0          0          0          0          0          0
+  stuffing         :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  trivial          :       0.01       0.00     52         39          0          0          0          0          0          0          0          0
+  tworowbnd        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualfix          :       0.02       0.00     52       1052          0          0          0          0          0          0          0          0
+  genvbounds       :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  probing          :       1.10       0.00     16        293         85          0          0          0          0          0          0          0
+  pseudoobj        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  symmetry         :       0.05       0.00      1          0          0          0          0          0          0          0          0          0
+  vbounds          :       0.00       0.00     10          6         24          0          0          0          0          0          0          0
+  knapsack         :       0.00       0.00     90          0          0          0          0          0          4          4          0          0
+  setppc           :       0.01       0.00     90          0          1          0          0          0         52          0          0          0
+  linear           :       0.41       0.01     74          6         62          0         16          0       1174          0          8         16
+  logicor          :       0.00       0.00     82          0          0          0          0          0          0          0          0          0
+  bounddisjunction :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  benders          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  components       :       0.01       0.00      1          0          0          0          0          0          0          0          0          0
+  root node        :          -          -      -          0          -          -          0          -          -          -          -          -
+Constraints        :     Number  MaxNumber  #Separate #Propagate    #EnfoLP    #EnfoRelax  #EnfoPS    #Check   #ResProp    Cutoffs    DomReds       Cuts    Applied      Conss   Children
+  benderslp        :          0          0          0          0         93          0          0         16          0          0          0          0          0          0          0
+  integral         :          0          0          0          0         93          0          0         16          0          1          0          0          0         38        172
+  knapsack         :          6+        16         28      11668          0          0          0         11         64          9         39          0          0          0          0
+  setppc           :        449+       522         28      12131          0          0          0         10       1666        248        505          5          0          0          0
+  linear           :      12332      12332         28      11885          0          0          0          5       3221        252      14789        973          0          0          0
+  logicor          :          4+       420         28       1716          0          0          0          2        161          4         91          0          0          0          0
+  bounddisjunction :          0+        15          0        139          0          0          0          0          0          1          2          0          0          0          0
+  benders          :          0          0          0          0          0          0          0          3          0          0          0          0          0          0          0
+  fixedvar         :          0          0          0          0          0          0          0          3          0          0          0          0          0          0          0
+  countsols        :          0          0          0          0          0          0          0          3          0          0          0          0          0          0          0
+  components       :          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0
+Constraint Timings :  TotalTime  SetupTime   Separate  Propagate     EnfoLP     EnfoPS     EnfoRelax   Check    ResProp    SB-Prop
+  benderslp        :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  integral         :   86416.49       0.00       0.00       0.00   86416.49       0.00       0.00       0.00       0.00       0.00
+  knapsack         :       0.01       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  setppc           :       0.09       0.00       0.00       0.09       0.00       0.00       0.00       0.00       0.00       0.00
+  linear           :       0.57       0.01       0.09       0.47       0.00       0.00       0.00       0.00       0.00       0.00
+  logicor          :       0.01       0.00       0.00       0.01       0.00       0.00       0.00       0.00       0.00       0.00
+  bounddisjunction :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  benders          :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  fixedvar         :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  countsols        :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  components       :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+Propagators        : #Propagate   #ResProp    Cutoffs    DomReds
+  dualfix          :          1          0          0          0
+  genvbounds       :          0          0          0          0
+  nlobbt           :          0          0          0          0
+  obbt             :          0          0          0          0
+  probing          :          0          0          0          0
+  pseudoobj        :        582          0          0          0
+  redcost          :        226          0          0          0
+  rootredcost      :          3          0          0          0
+  symmetry         :          0          0          0          0
+  vbounds          :       4729          0          0          0
+Propagator Timings :  TotalTime  SetupTime   Presolve  Propagate    ResProp    SB-Prop
+  dualfix          :       0.02       0.00       0.02       0.00       0.00       0.00
+  genvbounds       :       0.00       0.00       0.00       0.00       0.00       0.00
+  nlobbt           :       0.00       0.00       0.00       0.00       0.00       0.00
+  obbt             :       0.00       0.00       0.00       0.00       0.00       0.00
+  probing          :       1.10       0.00       1.10       0.00       0.00       0.00
+  pseudoobj        :       0.00       0.00       0.00       0.00       0.00       0.00
+  redcost          :       0.04       0.00       0.00       0.04       0.00       0.00
+  rootredcost      :       0.00       0.00       0.00       0.00       0.00       0.00
+  symmetry         :       0.06       0.00       0.05       0.00       0.00       0.00
+  vbounds          :       0.01       0.00       0.00       0.01       0.00       0.00
+Symmetry           :
+  orbitopal red.   :          0 reductions applied,          0 cutoffs
+  orbital reduction:          0 reductions applied,          0 cutoffs
+  lexicographic red:          0 reductions applied,          0 cutoffs
+  shadow tree time :       0.00 s
+Conflict Analysis  :       Time      Calls    Success    DomReds  Conflicts   Literals    Reconvs ReconvLits   Dualrays   Nonzeros   LP Iters   (pool size: [10000,10000])
+  propagation      :       0.00        448        172          -        419        8.9        101        6.0          -          -          -
+  infeasible LP    :       0.04         42         28          -        168       29.7          6       10.8         28      101.1          0
+  bound exceed. LP :       0.07         10          9          -         68       32.5          6        3.3          9      520.1         90
+  strong branching :       0.00          0          0          -          0        0.0          0        0.0          -          -          0
+  pseudo solution  :       0.00          0          0          -          0        0.0          0        0.0          -          -          -
+  applied globally :       0.01          -          -          0        507        8.3          -          -         34          -          -
+  applied locally  :          -          -          -          0          0        0.0          -          -          3          -          -
+Separators         :   ExecTime  SetupTime      Calls  RootCalls    Cutoffs    DomReds  FoundCuts ViaPoolAdd  DirectAdd    Applied ViaPoolApp  DirectApp      Conss
+  cut pool         :       0.08          -         76         51          -          -       3961       9962          -          -          -          -          -    (maximal pool size:       3961)
+  aggregation      :       1.01       0.00         38         28          0          0        754       2498          0         24         24          0          0
+  > cmir           :          -          -          -          -          -          -          -       2433          0         21         21          0          -
+  > flowcover      :          -          -          -          -          -          -          -         38          0          0          0          0          -
+  > knapsackcover  :          -          -          -          -          -          -          -         27          0          3          3          0          -
+  cgmip            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  clique           :       0.05       0.00         28         28          0          0         40        140          0         17         17          0          0
+  closecuts        :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  convexproj       :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  disjunctive      :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  eccuts           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  gauge            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  gomory           :       0.78       0.00         19         10          0          0       2450       5293          0        138        138          0          0
+  > gomorymi       :          -          -          -          -          -          -          -       5275          0        136        136          0          -
+  > strongcg       :          -          -          -          -          -          -          -         18          0          2          2          0          -
+  impliedbounds    :       0.03       0.00         38         28          0          0        631       1849          0        338        338          0          0
+  interminor       :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  intobj           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  lagromory        :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  mcf              :       0.01       0.00          1          1          0          0          0          0          0          0          0          0          0
+  minor            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  mixing           :       0.02       0.00         38         28          0          0          6         21          0          1          1          0          0
+  oddcycle         :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  rapidlearning    :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  rlt              :       0.00       0.00         10         10          0          0          0          0          0          0          0          0          0
+  zerohalf         :       0.13       0.00         29         20          0          0         80        161          0         60         60          0          0
+Cutselectors       :   ExecTime  SetupTime      Calls  RootCalls   Selected     Forced   Filtered  RootSelec   RootForc   RootFilt 
+  hybrid           :       0.02       0.00         40         27        578          0      10362        399          0       9176
+  ensemble         :       0.00       0.00          0          0          0          0          0          0          0          0
+  dynamic          :       0.00       0.00          0          0          0          0          0          0          0          0
+Pricers            :   ExecTime  SetupTime      Calls       Vars
+  problem variables:       0.00          -          0          0
+Branching Rules    :   ExecTime  SetupTime   BranchLP  BranchExt   BranchPS    Cutoffs    DomReds       Cuts      Conss   Children
+  allfullstrong    :       0.00       0.00          0          0          0          0          0          0          0          0
+  cloud            :       0.00       0.00          0          0          0          0          0          0          0          0
+  distribution     :       0.00       0.00          0          0          0          0          0          0          0          0
+  fullstrong       :       0.00       0.00          0          0          0          0          0          0          0          0
+  general_disjuncti:   86411.85       0.00         93          0          0          1          0          0         38          8
+  GeneralDisjunction(extra): subMILPs=646 fairNodes of all MILPs=127357 probingLPs=106
+  gomory           :       0.00       0.00          0          0          0          0          0          0          0          0
+  inference        :       0.00       0.00          0          0          0          0          0          0          0          0
+  leastinf         :       0.00       0.00          0          0          0          0          0          0          0          0
+  lookahead        :       0.00       0.00          0          0          0          0          0          0          0          0
+  mostinf          :       0.00       0.00          0          0          0          0          0          0          0          0
+  multaggr         :       0.00       0.00          0          0          0          0          0          0          0          0
+  nodereopt        :       0.00       0.00          0          0          0          0          0          0          0          0
+  pscost           :       0.00       0.00          0          0          0          0          0          0          0          0
+  random           :       0.00       0.00          0          0          0          0          0          0          0          0
+  relpscost        :       4.64       0.00         82          0          0          0          0          0          0        164
+  vanillafullstrong:       0.00       0.00          0          0          0          0          0          0          0          0
+Primal Heuristics  :   ExecTime  SetupTime      Calls      Found       Best
+  LP solutions     :       0.00          -          -          0          0
+  relax solutions  :       0.00          -          -          0          0
+  pseudo solutions :       0.00          -          -          0          0
+  strong branching :       0.00          -          -          0          0
+  actconsdiving    :       0.00       0.00          0          0          0
+  adaptivediving   :       1.03       0.00          4          0          0
+  alns             :       0.43       0.00          4          0          0
+  bound            :       0.00       0.00          0          0          0
+  clique           :       0.04       0.00          1          0          0
+  coefdiving       :       0.00       0.00          0          0          0
+  completesol      :       0.00       0.00          0          0          0
+  conflictdiving   :       0.04       0.00          3          0          0
+  crossover        :       0.00       0.00          0          0          0
+  dins             :       0.00       0.00          0          0          0
+  distributiondivin:       3.45       0.00          3          0          0
+  dps              :       0.00       0.00          0          0          0
+  dualval          :       0.00       0.00          0          0          0
+  farkasdiving     :       3.49       0.00          1          0          0
+  feaspump         :       0.94       0.00          2          0          0
+  fixandinfer      :       0.00       0.00          0          0          0
+  fracdiving       :       0.35       0.00          6          1          1
+  gins             :       0.00       0.00          0          0          0
+  guideddiving     :       0.08       0.00          3          0          0
+  indicator        :       0.00       0.00          0          0          0
+  indicatordiving  :       0.00       0.00          0          0          0
+  intdiving        :       0.00       0.00          0          0          0
+  intshifting      :       0.01       0.00          2          0          0
+  linesearchdiving :       0.14       0.00          4          1          1
+  localbranching   :       0.00       0.00          0          0          0
+  locks            :       0.02       0.00          1          0          0
+  lpface           :       0.00       0.00          0          0          0
+  mpec             :       0.00       0.00          0          0          0
+  multistart       :       0.00       0.00          0          0          0
+  mutation         :       0.00       0.00          0          0          0
+  nlpdiving        :       0.00       0.00          0          0          0
+  objpscostdiving  :      21.14       0.00          3          0          0
+  octane           :       0.00       0.00          0          0          0
+  ofins            :       0.00       0.00          0          0          0
+  oneopt           :       0.01       0.00          2          0          0
+  padm             :       0.00       0.00          0          0          0
+  proximity        :       0.00       0.00          0          0          0
+  pscostdiving     :       2.01       0.00          4          0          0
+  randrounding     :       0.11       0.00         34          0          0
+  rens             :       0.24       0.00          1          0          0
+  reoptsols        :       0.00       0.00          0          0          0
+  repair           :       0.00       0.00          0          0          0
+  rins             :       0.00       0.00          0          0          0
+  rootsoldiving    :       2.92       0.00          1          0          0
+  rounding         :       0.05       0.00        112          0          0
+  scheduler        :       0.00       0.00          0          0          0
+  shiftandpropagate:       0.01       0.00          1          0          0
+  shifting         :       0.09       0.00         47          0          0
+  simplerounding   :       0.00       0.00        133          0          0
+  subnlp           :       0.00       0.00          0          0          0
+  trivial          :       0.01       0.00          2          0          0
+  trivialnegation  :       0.00       0.00          0          0          0
+  trustregion      :       0.00       0.00          0          0          0
+  trysol           :       0.00       0.00          0          0          0
+  twoopt           :       0.00       0.00          0          0          0
+  undercover       :       0.00       0.00          0          0          0
+  vbounds          :       0.00       0.00          0          0          0
+  veclendiving     :       0.34       0.00          7          0          0
+  zeroobj          :       0.00       0.00          0          0          0
+  zirounding       :       0.03       0.00         85          0          0
+  other solutions  :          -          -          -          0          -
+LNS (Scheduler)    :      Calls  SetupTime  SolveTime SolveNodes       Sols       Best       Exp3    Exp3-IX  EpsGreedy        UCB TgtFixRate  Opt  Inf Node Stal  Sol  Usr Othr Actv
+  rens             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  rins             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  mutation         :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  localbranching   :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  crossover        :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  proximity        :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  zeroobjective    :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  dins             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  trustregion      :          0       0.00       0.00          0          0          0    0.00000    0.00000   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    0
+LP                 :       Time      Calls Iterations  Iter/call   Iter/sec  Time-0-It Calls-0-It    ItLimit
+  primal LP        :       1.37         10          0       0.00       0.00       1.37         10
+  dual LP          :      29.22        149     114407     767.83    3915.74       0.00          0
+  lex dual LP      :       0.00          0          0       0.00          -
+  barrier LP       :       0.00          0          0       0.00          -       0.00          0
+  resolve instable :       0.00          0          0       0.00          -
+  diving/probing LP:      37.28        388      88730     228.69    2380.05
+  strong branching :       7.39         56      30649     547.30    4147.88          -          -         41
+    (at root node) :          -         56      30649     547.30          -
+  conflict analysis:       0.05          9         90      10.00    1820.28
+B&B Tree           :
+  number of runs   :          1
+  nodes            :        111 (86 internal, 25 leaves)
+  feasible leaves  :          0
+  infeas. leaves   :         23
+  objective leaves :          2
+  nodes (total)    :        111 (86 internal, 25 leaves)
+  nodes left       :         57
+  max depth        :         25
+  max depth (total):         25
+  backtracks       :         57 (51.4%)
+  early backtracks :          0 (0.0%)
+  nodes exc. ref.  :          0 (0.0%)
+  delayed cutoffs  :          5
+  repropagations   :         54 (456 domain reductions, 4 cutoffs)
+  avg switch length:       4.14
+  switching time   :       0.67
+Root Node          :
+  First LP value   : +6.83978758169935e+01
+  First LP Iters   :       1696 (8005.85 Iter/sec)
+  First LP Time    :       0.21
+  Final Dual Bound : +8.93165483974036e+01
+  Final Root Iters :      17501
+  Root LP Estimate : +2.08635063213503e+02
+Solution           :
+  Solutions found  :          2 (2 improvements)
+  First Solution   : +2.96000000000000e+02   (in run 1, after 15 nodes, 15052.51 seconds, depth 208, found by <fracdiving>)
+  Gap First Sol.   :     211.15 %
+  Gap Last Sol.    :     168.05 %
+  Primal Bound     : +2.55000000000000e+02   (in run 1, after 29 nodes, 29098.46 seconds, depth 91, found by <linesearchdiving>)
+  Dual Bound       : +1.03583690770531e+02
+  Gap              :     146.18 %
+Integrals          :      Total       Avg%
+  primal-dual      : 6039829.68      69.83
+  primal-ref       :          -          - (not evaluated)
+  dual-ref         :          -          - (not evaluated)

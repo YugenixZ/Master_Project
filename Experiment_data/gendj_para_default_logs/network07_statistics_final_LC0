@@ -1,0 +1,55 @@
+######### The number of nodes solved in all solvers: 5582 #########
+######### LoadCoordinator Rank = 0 is terminated. #########
+#=== The number of ParaNodes received = 168
+#=== The number of ParaNodes sent = 169
+#=== ( # sent back immediately = 1, # failed to send back = 28 )
+#=== ( # sent back immediately ( another node ) = 0, # failed to send back ( another node ) = 0 )
+#=== The number of ParaNodes deleted in LoadCoordinator = 0 ( by merging: 0 )
+#=== Maximum usage of node pool = 159, initial p = 1, maximum multiplier = 1
+#=== Idle time to terminate this LoadCoordinator  = 41856.4
+#=== Elapsed time to terminate this LoadCoordinator  = 41861.1
+#=== Time used for merging nodes: add = 0, gen. = 0, regen. = 0, merge = 0
+######### The number of nodes solved in all solvers: 6305 #########
+######### LoadCoordinator Rank = 0 is terminated. #########
+#=== The number of ParaNodes received = 319
+#=== The number of ParaNodes sent = 320
+#=== ( # sent back immediately = 0, # failed to send back = 73 )
+#=== ( # sent back immediately ( another node ) = 0, # failed to send back ( another node ) = 0 )
+#=== The number of ParaNodes deleted in LoadCoordinator = 0 ( by merging: 0 )
+#=== Maximum usage of node pool = 267, initial p = 1, maximum multiplier = 1
+#=== Idle time to terminate this LoadCoordinator  = 24570.3
+#=== Elapsed time to terminate this LoadCoordinator  = 24576.8
+#=== Time used for merging nodes: add = 0, gen. = 0, regen. = 0, merge = 0
+######### The number of nodes solved in all solvers: 7208 #########
+######### LoadCoordinator Rank = 0 is terminated. #########
+#=== The number of ParaNodes received = 442
+#=== The number of ParaNodes sent = 443
+#=== ( # sent back immediately = 0, # failed to send back = 382 )
+#=== ( # sent back immediately ( another node ) = 0, # failed to send back ( another node ) = 0 )
+#=== The number of ParaNodes deleted in LoadCoordinator = 0 ( by merging: 0 )
+#=== Maximum usage of node pool = 32, initial p = 1, maximum multiplier = 2
+#=== Idle time to terminate this LoadCoordinator  = 47549.8
+#=== Elapsed time to terminate this LoadCoordinator  = 47552.9
+#=== Time used for merging nodes: add = 0, gen. = 0, regen. = 0, merge = 0
+######### The number of nodes solved in all solvers: 8831 #########
+######### LoadCoordinator Rank = 0 is terminated. #########
+#=== The number of ParaNodes received = 611
+#=== The number of ParaNodes sent = 612
+#=== ( # sent back immediately = 0, # failed to send back = 129 )
+#=== ( # sent back immediately ( another node ) = 0, # failed to send back ( another node ) = 0 )
+#=== The number of ParaNodes deleted in LoadCoordinator = 0 ( by merging: 0 )
+#=== Maximum usage of node pool = 481, initial p = 1, maximum multiplier = 2
+#=== Idle time to terminate this LoadCoordinator  = 49887.5
+#=== Elapsed time to terminate this LoadCoordinator  = 49903.7
+#=== Time used for merging nodes: add = 0, gen. = 0, regen. = 0, merge = 0
+######### The number of nodes solved in all solvers: 4947 #########
+######### LoadCoordinator Rank = 0 is terminated. #########
+#=== The number of ParaNodes received = 307
+#=== The number of ParaNodes sent = 308
+#=== ( # sent back immediately = 3, # failed to send back = 76 )
+#=== ( # sent back immediately ( another node ) = 0, # failed to send back ( another node ) = 0 )
+#=== The number of ParaNodes deleted in LoadCoordinator = 0 ( by merging: 0 )
+#=== Maximum usage of node pool = 243, initial p = 1, maximum multiplier = 1
+#=== Idle time to terminate this LoadCoordinator  = 37372.8
+#=== Elapsed time to terminate this LoadCoordinator  = 37378.2
+#=== Time used for merging nodes: add = 0, gen. = 0, regen. = 0, merge = 0

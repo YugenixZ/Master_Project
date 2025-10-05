@@ -1,0 +1,1446 @@
+SCIP version 9.2.2 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: CPLEX 12.10.0.0] [GitHash: 416226a4f8]
+Copyright (c) 2002-2025 Zuse Institute Berlin (ZIB)
+
+reading parameter file </scratch/htc/yzhou/exp_scipmip/settings/sandbox_fullstrong.set>
+
+read problem </scratch/htc/yzhou/exp_scipmip/instances/ult_experiments/dano3_5.mps>
+============
+
+original problem has 13873 variables (115 bin, 0 int, 0 impl, 13758 cont) and 3202 constraints
+   3202 constraints of type <linear>
+Reading Time: 0.08
+
+read solution </scratch/htc/yzhou/solutions/dano3_5.sol>
+============
+
+primal solution from solution file </scratch/htc/yzhou/solutions/dano3_5.sol> was accepted as candidate, will be checked when solving starts
+original problem has 13873 variables (115 bin, 0 int, 0 impl, 13758 cont) and 3202 constraints
+   3202 constraints of type <linear>
+Reading Time: 0.11
+solve problem
+=============
+LP Solver <CPLEX 12.10.0.0>: fastmip setting not available -- SCIP parameter has no effect
+LP Solver <CPLEX 12.10.0.0>: clock type cannot be set
+LP Solver <CPLEX 12.10.0.0>: row representation of the basis not available -- SCIP parameter lp/rowrepswitch has no effect
+LP Solver <CPLEX 12.10.0.0>: solution polishing not available -- SCIP parameter lp/solutionpolishing has no effect
+LP Solver <CPLEX 12.10.0.0>: refactorization interval not available -- SCIP parameter lp/refactorinterval has no effect
+1/1 feasible solution given by solution candidate storage, new primal bound 5.769249e+02
+
+transformed problem has 13873 variables (115 bin, 0 int, 0 impl, 13758 cont) and 3202 constraints
+   3202 constraints of type <linear>
+
+original problem has 79655 active (0.179317%) nonzeros and 79655 (0.179317%) check nonzeros
+
+presolving:
+(round 1, fast)       36 del vars, 36 del conss, 0 add conss, 1522 chg bounds, 5 chg sides, 120 chg coeffs, 0 upgd conss, 0 impls, 0 clqs
+(round 2, fast)       36 del vars, 36 del conss, 0 add conss, 14165 chg bounds, 5 chg sides, 120 chg coeffs, 0 upgd conss, 0 impls, 0 clqs
+(round 3, exhaustive) 36 del vars, 51 del conss, 0 add conss, 14165 chg bounds, 5 chg sides, 120 chg coeffs, 0 upgd conss, 0 impls, 0 clqs
+(round 4, exhaustive) 36 del vars, 51 del conss, 0 add conss, 14165 chg bounds, 5 chg sides, 120 chg coeffs, 133 upgd conss, 0 impls, 0 clqs
+   (0.3s) sparsify aborted: 552/79553 (0.7%) nonzeros canceled - in total 552 canceled nonzeros, 1080 changed coefficients, 0 added nonzeros
+(round 5, exhaustive) 36 del vars, 51 del conss, 0 add conss, 14165 chg bounds, 5 chg sides, 1200 chg coeffs, 133 upgd conss, 133 impls, 0 clqs
+   (0.5s) probing: 100/115 (87.0%) - 0 fixings, 0 aggregations, 2365 implications, 21 bound changes
+   (0.5s) probing cycle finished: starting next cycle
+   (0.5s) dualsparsify: 11 nonzeros canceled
+   (0.5s) symmetry computation started: requiring (bin +, int +, cont +), (fixed: bin -, int -, cont -)
+   (0.6s) no symmetry present (symcode time: 0.00)
+clique table cleanup detected 0 bound changes
+
+presolved problem has 78990 active (0.181168%) nonzeros and 78990 (0.181168%) check nonzeros
+
+presolving (6 rounds: 6 fast, 4 medium, 4 exhaustive):
+ 36 deleted vars, 51 deleted constraints, 0 added constraints, 14186 tightened bounds, 0 added holes, 5 changed sides, 1233 changed coefficients
+ 2882 implications, 0 cliques
+presolved problem has 13837 variables (115 bin, 0 int, 0 impl, 13722 cont) and 3151 constraints
+    133 constraints of type <varbound>
+   3018 constraints of type <linear>
+Presolving Time: 0.54
+
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+  4.8s|     1 |     0 | 24478 |     - |   154M |   0 |  13k|3151 |3151 |   0 |  0 |   0 |   0 | 5.763290e+02 | 5.769249e+02 |   0.10%| unknown
+  4.8s|     1 |     0 | 24478 |     - |   154M |   0 |  13k|3151 |3151 |   0 |  0 |   0 |   0 | 5.763290e+02 | 5.769249e+02 |   0.10%| unknown
+  4.8s|     1 |     0 | 24478 |     - |   154M |   0 |  13k|3151 |3150 |   0 |  0 |   0 |   0 | 5.763290e+02 | 5.769249e+02 |   0.10%| unknown
+  4.8s|     1 |     0 | 24478 |     - |   154M |   0 |  13k|3130 |3150 |   0 |  1 |   0 |   0 | 5.763290e+02 | 5.769249e+02 |   0.10%| unknown
+ 18.6s|     1 |     0 | 42529 |     - |   154M |   0 |  13k|3125 |3150 |   0 |  2 |   0 |  13 | 5.764029e+02 | 5.769249e+02 |   0.09%| unknown
+ 62.2s|     1 |     0 | 42565 |     - |   154M |   0 |  13k|3121 |3150 |   0 |  3 |   0 |  20 | 5.764029e+02 | 5.769249e+02 |   0.09%| unknown
+ 82.3s|     1 |     2 | 42565 |     - |   154M |   0 |  13k|3121 |3150 |   0 |  4 |   0 |  24 | 5.764029e+02 | 5.769249e+02 |   0.09%| unknown
+
+SCIP Status        : problem is solved [optimal solution found]
+Solving Time (sec) : 137.46
+Solving Nodes      : 13
+Primal Bound       : +5.76924915956562e+02 (1 solutions)
+Dual Bound         : +5.76924915956562e+02
+Gap                : 0.00 %
+
+primal solution:
+================
+
+objective value:                     576.924915956562
+xac                                                 1 	(obj:0)
+xag                                                 1 	(obj:0)
+xbm                                                 1 	(obj:0)
+xbq                                                 1 	(obj:0)
+xco                                                 1 	(obj:0)
+xcr                                                 1 	(obj:0)
+xdw                                                 1 	(obj:0)
+xdx                                                 1 	(obj:0)
+xef                                                 1 	(obj:0)
+xeg                                                 1 	(obj:0)
+z                                    576.924915956562 	(obj:1)
+xfa                                 0.768307418491619 	(obj:0)
+xfd                                0.0368364030335861 	(obj:0)
+xfi                               0.00823189377939237 	(obj:0)
+xfj                                0.0320822519041419 	(obj:0)
+xfl                                 0.636068599070577 	(obj:0)
+xfm                                 0.353997497277061 	(obj:0)
+xfq                                              0.04 	(obj:0)
+xfr                                0.0115120114867291 	(obj:0)
+xfs                                0.0736420556604256 	(obj:0)
+xft                               0.00500215371399734 	(obj:0)
+xfv                                0.0343197155824772 	(obj:0)
+xgh                                0.0217820060751163 	(obj:0)
+xgj                                  0.92646479383135 	(obj:0)
+xgk                                                 1 	(obj:0)
+xgu                                0.0517532000935337 	(obj:0)
+xhj                                 0.908010623573504 	(obj:0)
+xhk                                 0.351505712801256 	(obj:0)
+xhn                                  0.74048366362524 	(obj:0)
+xic                                0.0736420556604256 	(obj:0)
+xie                                 0.951271186440678 	(obj:0)
+xih                              0.000919370386287526 	(obj:0)
+xij                                0.0598002750305777 	(obj:0)
+xin                                0.0736420556604256 	(obj:0)
+xio                               0.00465315260233295 	(obj:0)
+xis                                 0.812605494520817 	(obj:0)
+xiw                                0.0234664096984563 	(obj:0)
+xjd                                 0.381752819320063 	(obj:0)
+xjh                                0.0251137865406554 	(obj:0)
+xjo                                0.0791422399789045 	(obj:0)
+xjp                                0.0491208114334997 	(obj:0)
+xjr                                 0.896446048090262 	(obj:0)
+xjs                                 0.382516680125196 	(obj:0)
+xju                                0.0407746123959781 	(obj:0)
+xjv                                 0.145133002115442 	(obj:0)
+xka                                 0.476666330462857 	(obj:0)
+xkb                                 0.390144326942003 	(obj:0)
+xkl                                0.0208758851737496 	(obj:0)
+xkm                                0.0546239082446899 	(obj:0)
+xko                               0.00209391867104985 	(obj:0)
+xks                                0.0325646859041914 	(obj:0)
+xkv                                                 1 	(obj:0)
+xkw                                0.0222329292309875 	(obj:0)
+xkx                              0.000798015370469963 	(obj:0)
+xlb                                 0.458943066339952 	(obj:0)
+xlc                                 0.336188239186318 	(obj:0)
+xlk                                 0.159208647457692 	(obj:0)
+xln                                                 1 	(obj:0)
+xlo                                0.0213691661865053 	(obj:0)
+xlp                              0.000434846563537476 	(obj:0)
+xls                               0.00063071257102919 	(obj:0)
+xlu                                0.0232253216948167 	(obj:0)
+xma                               0.00194412872005641 	(obj:0)
+xmf                                0.0355691221568721 	(obj:0)
+xmk                                0.0390478642704143 	(obj:0)
+xml                                 0.459767446074404 	(obj:0)
+xmo                                0.0304758355833165 	(obj:0)
+xmp                                 0.950444342002963 	(obj:0)
+xms                                 0.478312293641844 	(obj:0)
+xmu                               0.00443896755013673 	(obj:0)
+xna                                  0.40453253932817 	(obj:0)
+xnl                                0.0685509979486096 	(obj:0)
+xnp                                                 1 	(obj:0)
+xnq                                0.0122217358277544 	(obj:0)
+xnr                                 0.042944785276074 	(obj:0)
+xnt                                 0.467065553041794 	(obj:0)
+xnv                               0.00378846990233037 	(obj:0)
+xnw                              0.000895918675267788 	(obj:0)
+xob                                                 1 	(obj:0)
+xoc                               0.00198294801529286 	(obj:0)
+xoj                                0.0736420556604256 	(obj:0)
+xok                                 0.340224880903792 	(obj:0)
+xom                               0.00890024147845801 	(obj:0)
+xot                                 0.519497407983969 	(obj:0)
+xox                                0.0557524659580626 	(obj:0)
+xpd                                 0.729662841060258 	(obj:0)
+xpf                                0.0388398092240824 	(obj:0)
+xpi                                  0.23830202224399 	(obj:0)
+xpk                                0.0736420556604256 	(obj:0)
+xpl                               0.00550611382282042 	(obj:0)
+xpm                                0.0736420556604256 	(obj:0)
+xpn                                0.0736420556604256 	(obj:0)
+xpv                                 0.766763046667573 	(obj:0)
+xqb                                0.0711233238995377 	(obj:0)
+xqf                                0.0177866350421888 	(obj:0)
+xqi                                 0.578912518154503 	(obj:0)
+xql                                 0.735588902249414 	(obj:0)
+xqm                                 0.492133890953128 	(obj:0)
+xqo                                 0.035960706233019 	(obj:0)
+xqt                               0.00843488526023952 	(obj:0)
+xqu                                0.0596111788703369 	(obj:0)
+xqw                              0.000447959337633891 	(obj:0)
+xrb                                0.0736420556604256 	(obj:0)
+xrc                                0.0490147028143168 	(obj:0)
+xrd                                 0.581410777646351 	(obj:0)
+xrf                                 0.893074873600876 	(obj:0)
+xri                                 0.174553565822115 	(obj:0)
+xrq                                  0.15466196879549 	(obj:0)
+xrs                                0.0736420556604256 	(obj:0)
+xsh                                 0.952184836997941 	(obj:0)
+xsr                                0.0478151630020591 	(obj:0)
+xst                                                 1 	(obj:0)
+xta                                0.0603614899533627 	(obj:0)
+xtu                                 0.990058284538309 	(obj:0)
+xtw                                 0.949580225508328 	(obj:0)
+xua                                0.0726527084466165 	(obj:0)
+xue                                 0.048728813559322 	(obj:0)
+xuh                                                 1 	(obj:0)
+xun                                0.0736420556604256 	(obj:0)
+xuo                                0.0105781348120033 	(obj:0)
+xuq                                 0.793116295376756 	(obj:0)
+xur                               0.00128199214487663 	(obj:0)
+xva                                 0.164039088675069 	(obj:0)
+xvf                                0.0147295599759804 	(obj:0)
+xvi                                                 1 	(obj:0)
+xvm                                0.0167024063862373 	(obj:0)
+xvo                                 0.804528944962713 	(obj:0)
+xwb                               0.00614722715808151 	(obj:0)
+xwc                                 0.539172054323647 	(obj:0)
+xwd                                 0.270337158939742 	(obj:0)
+xwk                                0.0363708389064201 	(obj:0)
+xwo                               0.00676447105744436 	(obj:0)
+xws                                 0.146086021916069 	(obj:0)
+xwu                               0.00167694329671823 	(obj:0)
+xwv                                0.0499957657321778 	(obj:0)
+xwx                                 0.943449518671467 	(obj:0)
+xxa                                0.0514962959222985 	(obj:0)
+xxe                                                 1 	(obj:0)
+xxl                                0.0736420556604256 	(obj:0)
+xxn                                0.0385901693934833 	(obj:0)
+xxo                                0.0044334299126522 	(obj:0)
+xxu                                 0.828461491561813 	(obj:0)
+xxw                               0.00337655754932675 	(obj:0)
+floac                                447.924915956462 	(obj:0)
+faac                                 233.963258826931 	(obj:0)
+ffac                                   28.75492288415 	(obj:0)
+fhac                                 9.29288390922495 	(obj:0)
+fiac                                 14.6377117960241 	(obj:0)
+fjac                                  21.827054030919 	(obj:0)
+fkac                                 19.4245603196213 	(obj:0)
+flac                                  29.207717475802 	(obj:0)
+fmac                                 1.89941375949511 	(obj:0)
+fnac                                 21.0552147239264 	(obj:0)
+foac                                 16.9772649134592 	(obj:0)
+frac                                  6.0230279944203 	(obj:0)
+fsac                                 7.73869891314969 	(obj:0)
+ftac                                 7.37324713082165 	(obj:0)
+fuac                                 20.9561837934251 	(obj:0)
+fwac                                 3.72105418966889 	(obj:0)
+fxac                                 5.07270129542373 	(obj:0)
+floag                                576.924915956562 	(obj:0)
+faag                                 126.036741173069 	(obj:0)
+fcag                                               42 	(obj:0)
+ffag                                 64.1510329202992 	(obj:0)
+fhag                                 69.7417692020852 	(obj:0)
+fkag                                               16 	(obj:0)
+flag                                 67.8151385952821 	(obj:0)
+fnag                                 59.2162832166096 	(obj:0)
+foag                                 18.2813540438523 	(obj:0)
+fpag                                 12.0646246125255 	(obj:0)
+frag                                 49.9415710274844 	(obj:0)
+fsag                                 12.1754849949805 	(obj:0)
+ftag                                  20.500916170374 	(obj:0)
+fvag                                               19 	(obj:0)
+flobm                                576.924915956562 	(obj:0)
+fbbm                                 213.301669506459 	(obj:0)
+fcbm                                               42 	(obj:0)
+ffbm                                 38.7601501633764 	(obj:0)
+fgbm                                 17.9621457433509 	(obj:0)
+fhbm                                 6.79471163631633 	(obj:0)
+fjbm                                 7.70882382661545 	(obj:0)
+fkbm                                 59.5586937805845 	(obj:0)
+flbm                                               24 	(obj:0)
+fobm                                 44.1887345988266 	(obj:0)
+fpbm                                 14.0880619797054 	(obj:0)
+fqbm                                 28.9483682156717 	(obj:0)
+fsbm                                 8.63372385379682 	(obj:0)
+ftbm                                 20.8225104709217 	(obj:0)
+fubm                                 10.1573221809374 	(obj:0)
+fvbm                                               40 	(obj:0)
+flobq                                576.924915956562 	(obj:0)
+fbbq                                 273.698330493541 	(obj:0)
+fcbq                                  73.929062571629 	(obj:0)
+fdbq                                 4.55144150171137 	(obj:0)
+fjbq                                 5.88698148841898 	(obj:0)
+fkbq                                 36.5931805071383 	(obj:0)
+flbq                                               20 	(obj:0)
+fnbq                                 39.8847138997519 	(obj:0)
+fobq                                               58 	(obj:0)
+frbq                                 32.9681832169759 	(obj:0)
+fubq                                 8.27534818492975 	(obj:0)
+fvbq                                               19 	(obj:0)
+fxbq                                 4.13767409246488 	(obj:0)
+floco                                576.924915956562 	(obj:0)
+faco                                 79.4721875104883 	(obj:0)
+fbco                                  1.3454180796424 	(obj:0)
+fcco                                 272.867459372118 	(obj:0)
+ffco                                 9.73902480588086 	(obj:0)
+fico                                 40.8792619608087 	(obj:0)
+fkco                                 1.42456031962131 	(obj:0)
+flco                                 46.8749355336796 	(obj:0)
+fmco                                 1.89941375949511 	(obj:0)
+fqco                                 22.1729037566406 	(obj:0)
+frco                                               16 	(obj:0)
+ftco                                 37.8116967287903 	(obj:0)
+fvco                                 2.36535283396464 	(obj:0)
+fwco                                               39 	(obj:0)
+fxco                                 5.07270129542373 	(obj:0)
+flocr                                576.924915956562 	(obj:0)
+facr                                 111.491071316442 	(obj:0)
+fccr                                 264.132540627882 	(obj:0)
+fdcr                                               41 	(obj:0)
+ffcr                                 19.0158980782691 	(obj:0)
+fkcr                                               18 	(obj:0)
+flcr                                 34.3953249233332 	(obj:0)
+fncr                                 21.0552147239264 	(obj:0)
+focr                                 1.86397113437529 	(obj:0)
+fucr                                 1.09974874904734 	(obj:0)
+fwcr                                 64.8711464032854 	(obj:0)
+flodw                                576.924915956562 	(obj:0)
+fadw                                               23 	(obj:0)
+fbdw                                 18.5520406623661 	(obj:0)
+fcdw                                               17 	(obj:0)
+fddw                                 202.994643805357 	(obj:0)
+fgdw                                               44 	(obj:0)
+fhdw                                               24 	(obj:0)
+fjdw                                               18 	(obj:0)
+fldw                                               20 	(obj:0)
+fmdw                                               20 	(obj:0)
+fndw                                 47.1364060198551 	(obj:0)
+fpdw                                 22.9441064480938 	(obj:0)
+fqdw                                               23 	(obj:0)
+frdw                                 62.2117792654712 	(obj:0)
+ftdw                                 3.17644579297533 	(obj:0)
+fudw                                               20 	(obj:0)
+fxdw                                 10.9094939623947 	(obj:0)
+flodx                                576.924915956562 	(obj:0)
+fcdx                                 14.8266858674183 	(obj:0)
+fddx                                 339.005356194643 	(obj:0)
+ffdx                                               34 	(obj:0)
+fgdx                                               22 	(obj:0)
+fhdx                                               22 	(obj:0)
+fjdx                                 25.3898363998301 	(obj:0)
+fldx                                 5.27340567186619 	(obj:0)
+fndx                                 29.7944838088147 	(obj:0)
+fqdx                                 14.4784062930285 	(obj:0)
+frdx                                 67.7816215051621 	(obj:0)
+fwdx                                 2.37512021579835 	(obj:0)
+floef                                576.924915956562 	(obj:0)
+fdef                                               57 	(obj:0)
+feef                                 318.256231510055 	(obj:0)
+fhef                                0.711382443137442 	(obj:0)
+fief                                 74.3991466407553 	(obj:0)
+flef                                0.604675076666823 	(obj:0)
+fpef                                  23.067844578622 	(obj:0)
+fqef                                 5.47801072328475 	(obj:0)
+fref                                 4.38393018236408 	(obj:0)
+ftef                                  34.168905832222 	(obj:0)
+fvef                                               20 	(obj:0)
+fwef                                 37.5632965833753 	(obj:0)
+fxef                                 1.29149238603972 	(obj:0)
+floeg                                576.924915956562 	(obj:0)
+fbeg                                               39 	(obj:0)
+fdeg                                 57.8332090536179 	(obj:0)
+feeg                                 201.743768489945 	(obj:0)
+fieg                                  63.158807650253 	(obj:0)
+fpeg                                 27.9353753874745 	(obj:0)
+fqeg                                               38 	(obj:0)
+fseg                                 17.7944007489944 	(obj:0)
+fteg                                 19.0629467223959 	(obj:0)
+fueg                                               23 	(obj:0)
+fweg                                  54.396407903881 	(obj:0)
+fxeg                                               35 	(obj:0)
+flofa                                378.895528154372 	(obj:0)
+fcfa                                               58 	(obj:0)
+fffa                                 139.004400913946 	(obj:0)
+fifa                                 35.6377117960241 	(obj:0)
+fjfa                                  21.827054030919 	(obj:0)
+fkfa                                 14.7295599759804 	(obj:0)
+frfa                                 55.9645990219047 	(obj:0)
+ftfa                                  34.168905832222 	(obj:0)
+fwfa                                 19.5632965833753 	(obj:0)
+flofd                                36.8364030335861 	(obj:0)
+fefd                                 1.47345612134345 	(obj:0)
+fffd                                 35.3629469122427 	(obj:0)
+flofi                                8.23189377939237 	(obj:0)
+fefi                                 8.04256022246634 	(obj:0)
+fffi                                 0.18933355692603 	(obj:0)
+flofj                                32.0822519041419 	(obj:0)
+fffj                                 32.0822519041419 	(obj:0)
+flofl                                360.177392750353 	(obj:0)
+fefl                                 82.6075426505204 	(obj:0)
+fffl                                 140.936559491388 	(obj:0)
+fifl                                 13.3574405804821 	(obj:0)
+fjfl                                  22.007108187627 	(obj:0)
+fmfl                                 25.8273743048642 	(obj:0)
+frfl                                  74.149875149431 	(obj:0)
+fxfl                                 1.29149238603972 	(obj:0)
+flofm                                173.150425847684 	(obj:0)
+fefm                                 17.3924573494796 	(obj:0)
+fffm                                 139.688785943971 	(obj:0)
+fifm                                 5.40399426424906 	(obj:0)
+frfm                                 10.6651882899843 	(obj:0)
+flofq                                              40 	(obj:0)
+fefq                                               40 	(obj:0)
+flofr                                11.5120114867291 	(obj:0)
+fefr                                 11.5120114867291 	(obj:0)
+flofs                                73.6420556604256 	(obj:0)
+fefs                                 34.9063343830417 	(obj:0)
+fffs                                 38.7357212773839 	(obj:0)
+floft                                5.00215371399734 	(obj:0)
+feft                                 5.00215371399734 	(obj:0)
+flofv                                34.3197155824772 	(obj:0)
+fefv                                 34.3197155824772 	(obj:0)
+flogh                                21.7820060751163 	(obj:0)
+fagh                                 20.4533037045342 	(obj:0)
+fggh                                 1.32870237058209 	(obj:0)
+flogj                                389.389709787912 	(obj:0)
+fagj                                  0.5466962954658 	(obj:0)
+fegj                                 45.1060442948885 	(obj:0)
+ffgj                                 37.7487921757385 	(obj:0)
+fggj                                 304.829369371566 	(obj:0)
+figj                                 1.15880765025305 	(obj:0)
+flogk                                576.924915956562 	(obj:0)
+fagk                                 35.5089286835577 	(obj:0)
+fdgk                                 14.8332090536179 	(obj:0)
+fegk                                 55.6377241950564 	(obj:0)
+ffgk                                 5.40224074456072 	(obj:0)
+fggk                                  212.61654065383 	(obj:0)
+fhgk                                 29.7417692020852 	(obj:0)
+figk                                               22 	(obj:0)
+flgk                                 28.8151385952821 	(obj:0)
+fngk                                 20.2162832166096 	(obj:0)
+fogk                                 18.2813540438523 	(obj:0)
+frgk                                 32.9415710274844 	(obj:0)
+fsgk                                 12.9698857439749 	(obj:0)
+ftgk                                 15.5638628927699 	(obj:0)
+fwgk                                  54.396407903881 	(obj:0)
+fxgk                                               18 	(obj:0)
+flogu                                51.7532000935337 	(obj:0)
+fagu                                 8.52781248951175 	(obj:0)
+fegu                                               41 	(obj:0)
+fggu                                 2.22538760402195 	(obj:0)
+flohj                                431.935539530129 	(obj:0)
+fhhj                                 201.521839051041 	(obj:0)
+fihj                                 32.6883824486462 	(obj:0)
+fohj                                 37.9806757179227 	(obj:0)
+fshj                                 72.2491052180767 	(obj:0)
+fthj                                 14.5281699771761 	(obj:0)
+fuhj                                 50.9380567440313 	(obj:0)
+fxhj                                 22.0293103732355 	(obj:0)
+flohk                                190.505712801194 	(obj:0)
+fhhk                                 114.463739468184 	(obj:0)
+fqhk                                 10.5327732665868 	(obj:0)
+fshk                                  10.805361572886 	(obj:0)
+fthk                                 8.43613710723015 	(obj:0)
+fuhk                                 42.8639229824046 	(obj:0)
+fwhk                                 3.40377840390313 	(obj:0)
+flohn                                317.408579581802 	(obj:0)
+fghn                                 9.56846191813867 	(obj:0)
+fhhn                                 107.014421480776 	(obj:0)
+fihn                                 30.3838794877302 	(obj:0)
+fjhn                                0.893062249079762 	(obj:0)
+fshn                                   24.73364776101 	(obj:0)
+fuhn                                 106.192887787231 	(obj:0)
+fwhn                                               18 	(obj:0)
+fxhn                                 20.6222188978366 	(obj:0)
+floic                                73.6420556604256 	(obj:0)
+fiic                                 43.6776600759049 	(obj:0)
+fpic                                 10.5990427505561 	(obj:0)
+fvic                                 19.3653528339646 	(obj:0)
+floie                                527.196102397213 	(obj:0)
+faie                                               21 	(obj:0)
+fbie                                 58.9766949152542 	(obj:0)
+fcie                                 20.9702402094878 	(obj:0)
+fhie                                 17.7113824431374 	(obj:0)
+fiie                                 179.413886494398 	(obj:0)
+fjie                                  12.052915947873 	(obj:0)
+fkie                                 15.2203389830508 	(obj:0)
+flie                                 18.3312694048006 	(obj:0)
+fnie                                 7.20551619118527 	(obj:0)
+fpie                                 51.0032199660965 	(obj:0)
+fqie                                 65.3572480114203 	(obj:0)
+fuie                                 39.9533898305085 	(obj:0)
+fvie                                               20 	(obj:0)
+floih                               0.919370386287526 	(obj:0)
+fiih                                0.885353681994887 	(obj:0)
+fkih                               0.0340167042926384 	(obj:0)
+floij                                59.8002750305777 	(obj:0)
+fgij                                 5.88281649349199 	(obj:0)
+fhij                                 5.51936258558974 	(obj:0)
+fiij                                 23.8317612693049 	(obj:0)
+flij                                 15.7480850537728 	(obj:0)
+fvij                                 8.81824962841833 	(obj:0)
+floin                                73.6420556604256 	(obj:0)
+fiin                                 29.4882500682225 	(obj:0)
+fpin                                 4.82598567731808 	(obj:0)
+fvin                                 39.3278199148847 	(obj:0)
+floio                                4.65315260233295 	(obj:0)
+fvio                                 4.65315260233295 	(obj:0)
+flois                                390.530410477405 	(obj:0)
+fiis                                 244.703088410175 	(obj:0)
+fjis                                 11.2342090462617 	(obj:0)
+fkis                                 4.40129739151601 	(obj:0)
+fmis                                 9.28135384977577 	(obj:0)
+fnis                                   20.78444343137 	(obj:0)
+fpis                                 5.64007903454888 	(obj:0)
+fqis                                 34.6434126587862 	(obj:0)
+fris                                 20.3798747754706 	(obj:0)
+fvis                                 39.4626518794501 	(obj:0)
+floiw                                23.4664096984563 	(obj:0)
+fkiw                                 23.4664096984563 	(obj:0)
+flojd                                210.668521364808 	(obj:0)
+fejd                                 38.5265438786566 	(obj:0)
+ffjd                                 8.63952796852778 	(obj:0)
+fgjd                                               66 	(obj:0)
+fhjd                                 44.4154958436494 	(obj:0)
+fjjd                                 14.8883599534825 	(obj:0)
+fojd                                               18 	(obj:0)
+fvjd                                 12.5373481205499 	(obj:0)
+fxjd                                 7.66124559994234 	(obj:0)
+flojh                                25.1137865406554 	(obj:0)
+fajh                                  0.5466962954658 	(obj:0)
+ffjh                                 3.44255161318301 	(obj:0)
+fgjh                                 11.1004028971187 	(obj:0)
+fjjh                                 1.92272749724664 	(obj:0)
+fojh                                 8.10140823764155 	(obj:0)
+flojo                                76.6302617991806 	(obj:0)
+fgjo                                 1.26627583966247 	(obj:0)
+fhjo                                 11.3992271166163 	(obj:0)
+fjjo                                 45.0984988999352 	(obj:0)
+fujo                                  3.6978584045045 	(obj:0)
+fvjo                                0.800336765193869 	(obj:0)
+fxjo                                 14.3680647732932 	(obj:0)
+flojp                                49.1208114334997 	(obj:0)
+fgjp                                 31.4315380818613 	(obj:0)
+fjjp                                 17.6892733516383 	(obj:0)
+flojr                                473.370964046823 	(obj:0)
+fejr                                 6.57950041623192 	(obj:0)
+fgjr                                 13.5846330372457 	(obj:0)
+fhjr                                 87.2914285037947 	(obj:0)
+fijr                                 19.9958815769568 	(obj:0)
+fjjr                                 253.173469386981 	(obj:0)
+fojr                                 16.1360288656247 	(obj:0)
+fsjr                                 39.9917631539136 	(obj:0)
+fujr                                  36.618259106076 	(obj:0)
+flojs                                180.745830290994 	(obj:0)
+ffjs                                 14.8217271094332 	(obj:0)
+fgjs                                 66.5547236131922 	(obj:0)
+fhjs                                 3.93505017257004 	(obj:0)
+fjjs                                 74.2922153470934 	(obj:0)
+fojs                                 21.1421140487054 	(obj:0)
+floju                                40.7746123959781 	(obj:0)
+fgju                                 40.7746123959781 	(obj:0)
+flojv                                97.4250440412215 	(obj:0)
+ffjv                                 3.92723738873638 	(obj:0)
+fijv                                 1.68306979124732 	(obj:0)
+fjjv                                 48.9354555636238 	(obj:0)
+fsjv                                 32.2573420641631 	(obj:0)
+fujv                                 10.6219392334508 	(obj:0)
+floka                                256.560361907543 	(obj:0)
+fgka                                 10.4866592701828 	(obj:0)
+fhka                                  73.021890987307 	(obj:0)
+fkka                                 64.0245401473927 	(obj:0)
+fmka                                 12.8627393601408 	(obj:0)
+fnka                                 13.9755641256456 	(obj:0)
+foka                                 35.2586189573115 	(obj:0)
+fuka                                 34.3118497874752 	(obj:0)
+fvka                                 12.6184992720873 	(obj:0)
+flokb                                160.355942436574 	(obj:0)
+fgkb                                 17.9621457433509 	(obj:0)
+fhkb                                 6.79471163631633 	(obj:0)
+fkkb                                 118.390100923417 	(obj:0)
+fmkb                                 8.65691093856077 	(obj:0)
+fukb                                 8.55207319492946 	(obj:0)
+flokl                                20.8758851737496 	(obj:0)
+fgkl                                 16.6988333081617 	(obj:0)
+fkkl                                  4.1770518655879 	(obj:0)
+flokm                                53.4431772618018 	(obj:0)
+fgkm                                 3.33902094848741 	(obj:0)
+fhkm                                 13.2052883636837 	(obj:0)
+fkkm                                 26.9295867646321 	(obj:0)
+fpkm                                 9.96928118499861 	(obj:0)
+floko                                2.09391867104984 	(obj:0)
+fkko                                 2.09391867104984 	(obj:0)
+floks                                32.5646859041914 	(obj:0)
+fkks                                 32.5646859041914 	(obj:0)
+flokv                                576.924915956562 	(obj:0)
+fakv                                 35.5089286835577 	(obj:0)
+fbkv                                 4.19826515998369 	(obj:0)
+fckv                                 40.5798661119287 	(obj:0)
+fdkv                                 32.2040479600381 	(obj:0)
+fekv                                 18.6377241950564 	(obj:0)
+ffkv                                 5.40224074456072 	(obj:0)
+fgkv                                 68.1298813836467 	(obj:0)
+fjkv                                  33.956086605873 	(obj:0)
+fkkv                                 221.789171122272 	(obj:0)
+fnkv                                 6.24071909096397 	(obj:0)
+fpkv                                 13.7609802466133 	(obj:0)
+frkv                                 32.9415710274844 	(obj:0)
+fskv                                  3.7752473168609 	(obj:0)
+fwkv                                 41.8001863077842 	(obj:0)
+fxkv                                               18 	(obj:0)
+flokw                                22.2329292309875 	(obj:0)
+fkkw                                 22.2329292309875 	(obj:0)
+flokx                               0.798015370469963 	(obj:0)
+fkkx                                0.798015370469963 	(obj:0)
+flolb                                229.656366801983 	(obj:0)
+fdlb                                 11.6397432861855 	(obj:0)
+fflb                                 47.0211253574955 	(obj:0)
+fklb                                 3.25851291794292 	(obj:0)
+fllb                                 64.1934949189579 	(obj:0)
+fmlb                                 7.34308906143923 	(obj:0)
+fnlb                                 33.4066347557642 	(obj:0)
+fqlb                                 19.5337923269174 	(obj:0)
+frlb                                  20.149875149431 	(obj:0)
+fulb                                 18.9724249353845 	(obj:0)
+fxlb                                 4.13767409246488 	(obj:0)
+flolc                                122.724429773116 	(obj:0)
+fblc                                  1.3454180796424 	(obj:0)
+fllc                                 96.0625429812107 	(obj:0)
+fqlc                                 22.1729037566406 	(obj:0)
+fulc                                  3.1435649556222 	(obj:0)
+flolk                                18.8840723655627 	(obj:0)
+fblk                                  7.8231794545645 	(obj:0)
+fllk                                  6.3683458983077 	(obj:0)
+fqlk                                 4.69254701269054 	(obj:0)
+floln                                576.924915956562 	(obj:0)
+fbln                                               19 	(obj:0)
+feln                                               40 	(obj:0)
+ffln                                 53.8431123924465 	(obj:0)
+fhln                                 16.0900128552351 	(obj:0)
+fjln                              0.00710818762700427 	(obj:0)
+flln                                 326.818208480848 	(obj:0)
+fmln                                 2.53849291628475 	(obj:0)
+foln                                               24 	(obj:0)
+fpln                                 35.0074059292836 	(obj:0)
+fqln                                 8.35673785551266 	(obj:0)
+frln                                               33 	(obj:0)
+fuln                                 6.03864856415491 	(obj:0)
+fxln                                 12.2251887751684 	(obj:0)
+flolo                                21.3691661865053 	(obj:0)
+fmlo                                 21.3691661865053 	(obj:0)
+flolp                               0.434846563537476 	(obj:0)
+fmlp                                0.434846563537476 	(obj:0)
+flols                                0.63071257102919 	(obj:0)
+fmls                                 0.63071257102919 	(obj:0)
+flolu                                23.2253216948167 	(obj:0)
+fblu                                 20.2018823470391 	(obj:0)
+fllu                                0.557407720675601 	(obj:0)
+fmlu                                 2.46603162710198 	(obj:0)
+floma                                1.94412872005641 	(obj:0)
+fmma                                 1.94412872005641 	(obj:0)
+flomf                                29.6550747366861 	(obj:0)
+fbmf                                0.640244198823698 	(obj:0)
+fmmf                                 10.9197205021597 	(obj:0)
+fqmf                                 18.0951100357027 	(obj:0)
+flomk                                39.0478642704143 	(obj:0)
+fbmk                                 5.76017973080027 	(obj:0)
+fmmk                                 23.1987084623294 	(obj:0)
+fomk                                 10.0889760772847 	(obj:0)
+floml                                191.824904719715 	(obj:0)
+feml                                 17.3924573494796 	(obj:0)
+ffml                                 22.9276782585537 	(obj:0)
+fgml                                  2.3011666918383 	(obj:0)
+fkml                                 23.4882805452167 	(obj:0)
+fmml                                 61.4488507982133 	(obj:0)
+fnml                                 8.22006135249772 	(obj:0)
+fpml                                 40.1817438588691 	(obj:0)
+fqml                                 15.8646658650351 	(obj:0)
+flomo                                30.4758355833165 	(obj:0)
+fmmo                                 30.4758355833165 	(obj:0)
+flomp                                527.369257959525 	(obj:0)
+fbmp                                 126.968681477001 	(obj:0)
+fcmp                                               21 	(obj:0)
+ffmp                                 95.5212578487936 	(obj:0)
+fjmp                                 39.0367554830862 	(obj:0)
+fmmp                                 149.412554110321 	(obj:0)
+fqmp                                 95.4300090403075 	(obj:0)
+floms                                41.0937983733007 	(obj:0)
+fbms                                 13.5651147397605 	(obj:0)
+fmms                                 27.5286836335402 	(obj:0)
+flomu                                4.43896755013673 	(obj:0)
+fbmu                                  2.3674493600728 	(obj:0)
+fmmu                                  2.0715181900637 	(obj:0)
+flona                                253.412208313242 	(obj:0)
+ffna                                 13.9015548905028 	(obj:0)
+fhna                                 6.01276212400306 	(obj:0)
+flna                                 97.0228560710841 	(obj:0)
+fmna                                 8.11424580778705 	(obj:0)
+fnna                                 98.0709296709755 	(obj:0)
+fsna                                 6.96203983400429 	(obj:0)
+fvna                                 23.3278199148847 	(obj:0)
+flonl                                68.5509979486096 	(obj:0)
+fhnl                                 16.0900128552351 	(obj:0)
+finl                                 1.55519934720003 	(obj:0)
+fnnl                                 36.0801236757599 	(obj:0)
+fpnl                                 14.8256620704145 	(obj:0)
+flonp                                576.924915956562 	(obj:0)
+ffnp                                0.941557501943691 	(obj:0)
+fhnp                                 39.0016593567725 	(obj:0)
+finp                                 25.0610105502659 	(obj:0)
+fjnp                                 0.90017043670677 	(obj:0)
+flnp                                 83.3527601304396 	(obj:0)
+fmnp                                 2.53849291628475 	(obj:0)
+fnnp                                 284.678399078476 	(obj:0)
+fqnp                                 1.98222631988146 	(obj:0)
+frnp                                               16 	(obj:0)
+funp                                 88.4686396658046 	(obj:0)
+fvnp                                               16 	(obj:0)
+fwnp                                               18 	(obj:0)
+flonq                                12.2217358277544 	(obj:0)
+fnnq                                 12.2217358277544 	(obj:0)
+flonr                               0.944785276073628 	(obj:0)
+fnnr                                0.944785276073628 	(obj:0)
+flont                                167.110800013271 	(obj:0)
+flnt                                 68.4425922793244 	(obj:0)
+fnnt                                   37.21555656863 	(obj:0)
+fpnt                                 10.3599209654511 	(obj:0)
+fqnt                                 6.37451153563121 	(obj:0)
+fxnt                                 44.7182186642339 	(obj:0)
+flonv                                3.78846990233037 	(obj:0)
+fnnv                                 3.78846990233037 	(obj:0)
+flonw                               0.895918675267788 	(obj:0)
+fxnw                                0.895918675267788 	(obj:0)
+floob                                576.924915956562 	(obj:0)
+faob                                               24 	(obj:0)
+fcob                                 115.929062571629 	(obj:0)
+fdob                                 6.76447105744436 	(obj:0)
+ffob                                 9.73902480588086 	(obj:0)
+fiob                                 21.8792619608087 	(obj:0)
+fjob                                 7.61454593063866 	(obj:0)
+fkob                                 31.5032604463629 	(obj:0)
+flob                                 23.8065050810421 	(obj:0)
+fnob                                 26.4780791439877 	(obj:0)
+foob                                 162.188734598827 	(obj:0)
+fpob                                 14.0880619797054 	(obj:0)
+fqob                                  19.479028069302 	(obj:0)
+ftob                                 12.3398667059663 	(obj:0)
+fuob                                 2.11501360492641 	(obj:0)
+fvob                                               79 	(obj:0)
+fwob                                               20 	(obj:0)
+flooc                                1.98294801529286 	(obj:0)
+fjoc                               0.0456078043517357 	(obj:0)
+fooc                                 1.93734021094112 	(obj:0)
+flooj                                73.6420556604256 	(obj:0)
+floj                                 1.25191494622723 	(obj:0)
+fooj                                 66.3988754340491 	(obj:0)
+ftoj                                 1.47183002282393 	(obj:0)
+fvoj                                 4.51943525732541 	(obj:0)
+flook                                218.474371952545 	(obj:0)
+fcok                                 40.5798661119287 	(obj:0)
+fhok                                  9.8163823170382 	(obj:0)
+fjok                                  33.956086605873 	(obj:0)
+flok                                 4.81651550641024 	(obj:0)
+fmok                                 29.7444155293169 	(obj:0)
+fook                                 49.8882888361746 	(obj:0)
+fpok                                  37.054317773583 	(obj:0)
+fvok                                 12.6184992720873 	(obj:0)
+floom                                8.90024147845801 	(obj:0)
+foom                                 8.90024147845801 	(obj:0)
+floot                                242.377076969263 	(obj:0)
+faot                                 15.4721875104883 	(obj:0)
+fcot                                 48.1554567654663 	(obj:0)
+foot                                 168.623678201102 	(obj:0)
+fxot                                 10.1257544922059 	(obj:0)
+floox                                31.5482218805776 	(obj:0)
+fcox                                 28.2030739230939 	(obj:0)
+fkox                                 1.28230671703544 	(obj:0)
+foox                                 2.06284124044832 	(obj:0)
+flopd                                311.081322961099 	(obj:0)
+fbpd                                 18.5520406623661 	(obj:0)
+ffpd                                 26.9975251192295 	(obj:0)
+fhpd                                 20.5845041563506 	(obj:0)
+flpd                                 25.2734056718662 	(obj:0)
+fmpd                                               20 	(obj:0)
+fnpd                                 90.7944838088147 	(obj:0)
+fppd                                 51.4009572494439 	(obj:0)
+fqpd                                 37.4784062930285 	(obj:0)
+fupd                                               20 	(obj:0)
+flopf                                38.8398092240824 	(obj:0)
+fmpf                                 37.9076538027044 	(obj:0)
+fppf                                0.932155421377978 	(obj:0)
+flopi                                163.100498225543 	(obj:0)
+ffpi                                 5.48094651161176 	(obj:0)
+flpi                                 30.5875150133844 	(obj:0)
+fmpi                                 9.28135384977577 	(obj:0)
+fnpi                                 27.9899596225553 	(obj:0)
+fppi                                 80.8855022515472 	(obj:0)
+fqpi                                 8.87522097684173 	(obj:0)
+flopk                                73.6420556604256 	(obj:0)
+fbpk                                 30.6149059746189 	(obj:0)
+fmpk                                 11.5765263070551 	(obj:0)
+fppk                                 26.6759436580289 	(obj:0)
+fqpk                                 4.77467972072262 	(obj:0)
+flopl                                5.50611382282042 	(obj:0)
+fmpl                                 5.50611382282042 	(obj:0)
+flopm                                73.6420556604256 	(obj:0)
+fnpm                                 30.2200613524977 	(obj:0)
+fppm                                 43.4219943079278 	(obj:0)
+flopn                                73.6420556604256 	(obj:0)
+fgpn                                 31.4315380818613 	(obj:0)
+fipn                                 5.74408034151322 	(obj:0)
+fmpn                                 8.11424580778705 	(obj:0)
+fppn                                 28.3521914292639 	(obj:0)
+flopv                                391.395920698355 	(obj:0)
+fbpv                                 13.8017348400163 	(obj:0)
+ffpv                                  44.984343719896 	(obj:0)
+fhpv                                 18.4171552004219 	(obj:0)
+fipv                                 19.3169302087527 	(obj:0)
+fjpv                                 15.6261992714313 	(obj:0)
+flpv                                 3.49183944518899 	(obj:0)
+fnpv                                 71.6738942946082 	(obj:0)
+fppv                                  153.33125568241 	(obj:0)
+fqpv                                 6.28392836959615 	(obj:0)
+fupv                                 44.4686396658046 	(obj:0)
+floqb                                71.1233238995377 	(obj:0)
+fqqb                                 31.9355478194523 	(obj:0)
+frqb                                 18.9119736845032 	(obj:0)
+ftqb                                 8.48264376495541 	(obj:0)
+fuqb                                 11.7931586306268 	(obj:0)
+floqf                                17.7866350421888 	(obj:0)
+fbqf                                 17.3597558011763 	(obj:0)
+fqqf                                0.426879241012532 	(obj:0)
+floqi                                277.126052112436 	(obj:0)
+fbqi                                 58.9766949152542 	(obj:0)
+fcqi                                  12.929062571629 	(obj:0)
+fqqi                                 120.841511323769 	(obj:0)
+frqi                                 21.4253934712753 	(obj:0)
+fuqi                                 62.9533898305085 	(obj:0)
+floql                                 433.27248183745 	(obj:0)
+fbql                                  67.370479881246 	(obj:0)
+fcql                                               23 	(obj:0)
+fiql                                 6.08736007231786 	(obj:0)
+fkql                                 19.5931805071383 	(obj:0)
+fnql                                 28.1064497275063 	(obj:0)
+foql                                               40 	(obj:0)
+fqql                                  98.891315086726 	(obj:0)
+ftql                                               41 	(obj:0)
+fuql                                 52.1546384551616 	(obj:0)
+fxql                                 57.0690581073536 	(obj:0)
+floqm                                251.086609321955 	(obj:0)
+fiqm                                 13.5960057357509 	(obj:0)
+fjqm                                 31.3279316564708 	(obj:0)
+fqqm                                 157.441416725374 	(obj:0)
+frqm                                 10.3348117100157 	(obj:0)
+fsqm                                 8.36627614620318 	(obj:0)
+ftqm                                 20.1774895290783 	(obj:0)
+fuqm                                 9.84267781906257 	(obj:0)
+floqo                                 35.960706233019 	(obj:0)
+fbqo                                 15.6545819203576 	(obj:0)
+fqqo                                 20.3061243126614 	(obj:0)
+floqt                                8.43488526023952 	(obj:0)
+fbqt                                 8.43488526023952 	(obj:0)
+floqu                                58.6111788686392 	(obj:0)
+fbqu                                 25.4539733776338 	(obj:0)
+fqqu                                 33.1572054910054 	(obj:0)
+floqw                               0.447959337633891 	(obj:0)
+fbqw                                0.447959337633891 	(obj:0)
+florb                                73.6420556604256 	(obj:0)
+firb                                0.120738039191252 	(obj:0)
+fjrb                                 29.9812593843958 	(obj:0)
+frrb                                 34.9063343830417 	(obj:0)
+fsrb                                 8.63372385379682 	(obj:0)
+florc                                49.0147028143168 	(obj:0)
+fhrc                                  10.707116090775 	(obj:0)
+fjrc                                 1.12733816472929 	(obj:0)
+frrc                                 17.7645293013154 	(obj:0)
+fsrc                                 2.86034383740642 	(obj:0)
+fwrc                                 16.5553754200906 	(obj:0)
+flord                                349.508740165603 	(obj:0)
+fard                                               46 	(obj:0)
+fcrd                                 51.8266858674183 	(obj:0)
+fjrd                                 67.5014764463477 	(obj:0)
+frrd                                 154.994064209426 	(obj:0)
+fwrd                                 29.1865136424103 	(obj:0)
+florf                                371.913836977698 	(obj:0)
+farf                                               41 	(obj:0)
+fcrf                                               58 	(obj:0)
+fhrf                                 19.2886175568626 	(obj:0)
+fjrf                                  43.834162218546 	(obj:0)
+flrf                                 16.3953249233332 	(obj:0)
+frrf                                 177.395732278956 	(obj:0)
+furf                                               16 	(obj:0)
+flori                                 128.46647183919 	(obj:0)
+fari                                 24.4910713164423 	(obj:0)
+fcri                                 24.4613115259301 	(obj:0)
+ffri                                 3.01589807826912 	(obj:0)
+fhri                                 23.2307450287272 	(obj:0)
+fjri                                 23.2871249941347 	(obj:0)
+frri                                  27.012910276711 	(obj:0)
+fsri                                 2.96741061897596 	(obj:0)
+florq                                107.661968795465 	(obj:0)
+fjrq                                 47.4409501680518 	(obj:0)
+frrq                                 56.7039956488182 	(obj:0)
+fsrq                                 3.51702297859515 	(obj:0)
+flors                                73.6420556604256 	(obj:0)
+fcrs                                 32.8445432345337 	(obj:0)
+fgrs                                 13.5846330372457 	(obj:0)
+fjrs                                 2.35042399098445 	(obj:0)
+frrs                                 5.22243390173129 	(obj:0)
+fwrs                                 19.6400214959304 	(obj:0)
+flosh                                529.109752954502 	(obj:0)
+fcsh                                 10.8445432345337 	(obj:0)
+fdsh                                               42 	(obj:0)
+ffsh                                 37.5574483868171 	(obj:0)
+fgsh                                 58.1393566504379 	(obj:0)
+fish                                 100.207470579296 	(obj:0)
+fjsh                                 39.9326405659953 	(obj:0)
+fksh                                 36.9659832957074 	(obj:0)
+fssh                                 163.014835097853 	(obj:0)
+fwsh                                  40.447475143862 	(obj:0)
+flosr                                47.8151630020593 	(obj:0)
+fesr                                0.908488097039006 	(obj:0)
+fhsr                                 3.93505017257004 	(obj:0)
+fisr                                 1.12485646223449 	(obj:0)
+fjsr                                 4.34926598020903 	(obj:0)
+fssr                                 19.9867381348607 	(obj:0)
+fwsr                                 17.5107641551459 	(obj:0)
+flost                                576.924915956562 	(obj:0)
+fbst                                 13.5651147397605 	(obj:0)
+fdst                                 1.23921134673095 	(obj:0)
+fest                                 33.9978462860027 	(obj:0)
+fist                                 123.868229500145 	(obj:0)
+fjst                                 21.5949418381347 	(obj:0)
+fmst                                 18.4407500543451 	(obj:0)
+fnst                                   20.78444343137 	(obj:0)
+fost                                 21.1421140487054 	(obj:0)
+fpst                                 5.64007903454888 	(obj:0)
+fqst                                 34.6434126587862 	(obj:0)
+frst                                 3.60230867720193 	(obj:0)
+fsst                                 234.998426767286 	(obj:0)
+fvst                                 39.4626518794501 	(obj:0)
+fwst                                  3.9453856940783 	(obj:0)
+flota                                60.3614899533627 	(obj:0)
+fsta                                 29.9521440741259 	(obj:0)
+ftta                                 30.4093458792369 	(obj:0)
+flotu                                566.983200494871 	(obj:0)
+fatu                                 15.4721875104883 	(obj:0)
+fctu                                 31.1554567654663 	(obj:0)
+fdtu                                 1.23921134673095 	(obj:0)
+fitu                                 43.6628034831542 	(obj:0)
+fjtu                                 2.59494183813472 	(obj:0)
+fltu                                 44.4425922793244 	(obj:0)
+fmtu                                 18.4407500543451 	(obj:0)
+fntu                                               19 	(obj:0)
+fotu                                 69.8792674802812 	(obj:0)
+fqtu                                 25.0179241944174 	(obj:0)
+frtu                                 3.60230867720193 	(obj:0)
+fstu                                  71.389060287942 	(obj:0)
+fttu                                 189.363615902322 	(obj:0)
+fvtu                                               18 	(obj:0)
+fwtu                                  3.9453856940783 	(obj:0)
+fxtu                                 9.77769498097665 	(obj:0)
+flotw                                 526.50514146489 	(obj:0)
+fitw                                 64.2054260169903 	(obj:0)
+fotw                                 75.8865247695266 	(obj:0)
+fstw                                  75.657222405218 	(obj:0)
+fttw                                 263.227038218441 	(obj:0)
+fvtw                                 21.4626518794501 	(obj:0)
+fxtw                                 26.0662781754631 	(obj:0)
+floua                                72.6527084466165 	(obj:0)
+fmua                                 1.97829987151083 	(obj:0)
+ftua                                  5.2959115897368 	(obj:0)
+fuua                                   23.64433400595 	(obj:0)
+fxua                                 41.7341629794189 	(obj:0)
+floue                                 48.728813559322 	(obj:0)
+fbue                                 1.02330508474576 	(obj:0)
+fque                                 1.12076271186441 	(obj:0)
+fsue                                 21.5381355932203 	(obj:0)
+fuue                                 25.0466101694915 	(obj:0)
+flouh                                576.924915956562 	(obj:0)
+fbuh                                               23 	(obj:0)
+fcuh                                 11.1554567654663 	(obj:0)
+fiuh                                 0.97943767508545 	(obj:0)
+fjuh                               0.0376941858377868 	(obj:0)
+fluh                                               21 	(obj:0)
+fnuh                                               19 	(obj:0)
+fouh                                 49.8792674802812 	(obj:0)
+fquh                                 29.5327732665868 	(obj:0)
+fsuh                                 2.77327945411943 	(obj:0)
+ftuh                                 58.9643070844062 	(obj:0)
+fuuh                                 275.994867513667 	(obj:0)
+fwuh                                0.956303260041185 	(obj:0)
+fxuh                                 83.6515292710721 	(obj:0)
+floun                                73.6420556604256 	(obj:0)
+fdun                                 19.2468968956343 	(obj:0)
+fsun                                 6.22839207299425 	(obj:0)
+fuun                                 17.2371033144184 	(obj:0)
+fxun                                 30.9296633773787 	(obj:0)
+flouo                                10.5781348120033 	(obj:0)
+fuuo                                 2.32657630116648 	(obj:0)
+fxuo                                 8.25155851083683 	(obj:0)
+flouq                                370.041211333318 	(obj:0)
+fduq                                 17.4485584982886 	(obj:0)
+fiuq                                 19.6833658080688 	(obj:0)
+fsuq                                  21.849253167608 	(obj:0)
+ftuq                                 69.6601332940337 	(obj:0)
+fuuq                                  168.46851655043 	(obj:0)
+fxuq                                 72.9313840148887 	(obj:0)
+flour                                1.28199214487663 	(obj:0)
+fuur                                 1.28199214487663 	(obj:0)
+flova                                78.5271104955337 	(obj:0)
+fgva                                 11.5133407298172 	(obj:0)
+fkva                                 16.6704601962482 	(obj:0)
+fnva                                 12.2250041439149 	(obj:0)
+fpva                                 12.0646246125255 	(obj:0)
+fvva                                  26.053680813028 	(obj:0)
+flovf                                14.7295599759804 	(obj:0)
+fkvf                                 14.7295599759804 	(obj:0)
+flovi                                428.924915956337 	(obj:0)
+favi                                 16.5089286835577 	(obj:0)
+fcvi                                 3.57986611192865 	(obj:0)
+fevi                                 35.9574397775337 	(obj:0)
+ffvi                                 14.3138218531931 	(obj:0)
+fgvi                                  41.882816493492 	(obj:0)
+fkvi                                 43.1220627773158 	(obj:0)
+flvi                                 3.49183944518899 	(obj:0)
+fpvi                                 28.1828251769724 	(obj:0)
+fqvi                                 6.28392836959615 	(obj:0)
+frvi                                 9.94157102748436 	(obj:0)
+fsvi                                  14.032589381024 	(obj:0)
+fvvi                                 211.627226859051 	(obj:0)
+flovm                                16.7024063862373 	(obj:0)
+fpvm                                 16.7024063862373 	(obj:0)
+flovo                                342.965839098868 	(obj:0)
+fgvo                                 14.7337241603375 	(obj:0)
+fhvo                                 18.4171552004219 	(obj:0)
+fjvo                                 40.5177414409282 	(obj:0)
+fkvo                                 47.2670881727272 	(obj:0)
+fnvo                                 26.4780791439877 	(obj:0)
+fpvo                                 51.1423797532884 	(obj:0)
+fuvo                                 16.0905788992554 	(obj:0)
+fvvo                                 128.319092327921 	(obj:0)
+flowb                                6.14722715808151 	(obj:0)
+fdwb                                 6.14722715808151 	(obj:0)
+flowc                                326.560779693501 	(obj:0)
+fdwc                                               59 	(obj:0)
+fiwc                                 20.5638900888797 	(obj:0)
+fowc                                 19.9493660099749 	(obj:0)
+fpwc                                 12.4009572494439 	(obj:0)
+frwc                                 28.2124427042643 	(obj:0)
+fswc                                 12.4009572494439 	(obj:0)
+ftwc                                 46.4384495979686 	(obj:0)
+fwwc                                 127.594716793526 	(obj:0)
+flowd                                80.7548443879778 	(obj:0)
+fnwd                                  5.1364060198551 	(obj:0)
+fpwd                                   10.54314919865 	(obj:0)
+frwd                                 17.9993365612069 	(obj:0)
+fswd                                               23 	(obj:0)
+ftwd                                 3.17644579297533 	(obj:0)
+fvwd                                 4.46265187945013 	(obj:0)
+fwwd                                  13.188606573388 	(obj:0)
+fxwd                                 3.24824836245233 	(obj:0)
+flowk                                36.3708389064201 	(obj:0)
+fdwk                                 36.3708389064201 	(obj:0)
+flowo                                6.76447105744436 	(obj:0)
+fdwo                                 6.76447105744436 	(obj:0)
+flows                                113.000282975387 	(obj:0)
+fdws                                 43.2392113467309 	(obj:0)
+fiws                                  4.4974681315004 	(obj:0)
+fwws                                 65.2636034971557 	(obj:0)
+flowu                                1.67694329671823 	(obj:0)
+fdwu                                 1.67694329671823 	(obj:0)
+flowv                                49.9957657321778 	(obj:0)
+fdwv                                 9.79595203996195 	(obj:0)
+ftwv                                               38 	(obj:0)
+fwwv                                 2.19981369221582 	(obj:0)
+flowx                                413.578678705567 	(obj:0)
+fiwx                                 2.14406779661018 	(obj:0)
+fkwx                                 21.6993389294438 	(obj:0)
+fowx                                 34.9371587595517 	(obj:0)
+fswx                                 40.2562651557741 	(obj:0)
+ftwx                                 115.788588620473 	(obj:0)
+fwwx                                 198.753259443714 	(obj:0)
+floxa                                51.4962959222985 	(obj:0)
+fdxa                                               42 	(obj:0)
+fwxa                                 2.15775760629362 	(obj:0)
+fxxa                                 7.33853831600486 	(obj:0)
+floxe                                576.924915956562 	(obj:0)
+fcxe                                 23.0297597905122 	(obj:0)
+fdxe                                 154.833209053618 	(obj:0)
+ffxe                                               18 	(obj:0)
+fixe                                 2.14406779661018 	(obj:0)
+fjxe                                 7.94708405212705 	(obj:0)
+fkxe                                0.779661016949154 	(obj:0)
+flxe                                 5.27340567186619 	(obj:0)
+fnxe                                 13.7944838088147 	(obj:0)
+frxe                                 27.3839301823641 	(obj:0)
+fsxe                                 16.2562651557741 	(obj:0)
+ftxe                                 96.2318525546178 	(obj:0)
+fwxe                                 112.959704487256 	(obj:0)
+fxxe                                 98.2914923860397 	(obj:0)
+floxl                                73.6420556604256 	(obj:0)
+fdxl                                 28.6397432861855 	(obj:0)
+fwxl                                               24 	(obj:0)
+fxxl                                   21.00231237424 	(obj:0)
+floxn                                38.5901693934833 	(obj:0)
+fdxn                                 19.7531031043657 	(obj:0)
+fxxn                                 18.8370662891176 	(obj:0)
+floxo                                 4.4334299126522 	(obj:0)
+fxxo                                  4.4334299126522 	(obj:0)
+floxu                                405.386407518375 	(obj:0)
+fdxu                                 50.7793007504738 	(obj:0)
+fjxu                                 17.4427523477031 	(obj:0)
+fqxu                                 14.4784062930285 	(obj:0)
+frxu                                 17.3976913227981 	(obj:0)
+ftxu                                0.556736065854736 	(obj:0)
+fwxu                                 20.0109175659629 	(obj:0)
+fxxu                                 284.720603172619 	(obj:0)
+floxw                                3.37655754932675 	(obj:0)
+fxxw                                 3.37655754932675 	(obj:0)
+fluxa                                             879 	(obj:0)
+fluxb                                            1101 	(obj:0)
+fluxc                                            1383 	(obj:0)
+fluxd                                            1308 	(obj:0)
+fluxe                                            1089 	(obj:0)
+fluxf                                1194.05064132135 	(obj:0)
+fluxg                                 1141.3287265189 	(obj:0)
+fluxh                                1050.16752695993 	(obj:0)
+fluxi                                 1353.8257652378 	(obj:0)
+fluxj                                1115.23733480586 	(obj:0)
+fluxk                                 962.21231317833 	(obj:0)
+fluxl                                1233.71475679517 	(obj:0)
+fluxm                                593.852392721962 	(obj:0)
+fluxn                                1192.87288305483 	(obj:0)
+fluxo                                1099.97419918718 	(obj:0)
+fluxp                                869.092135855525 	(obj:0)
+fluxq                                1086.08209759751 	(obj:0)
+fluxr                                1168.31443565138 	(obj:0)
+fluxs                                1029.76504260803 	(obj:0)
+fluxt                                1216.19799928079 	(obj:0)
+fluxu                                1283.28021500526 	(obj:0)
+fluxv                                842.802473933494 	(obj:0)
+fluxw                                 1075.4062986601 	(obj:0)
+fluxx                                1007.21872754128 	(obj:0)
+sppa                                 1024.84983191302 	(obj:0)
+sppb                                 1153.84983191312 	(obj:0)
+sppc                                 1153.84983191312 	(obj:0)
+sppd                                 1153.84983191312 	(obj:0)
+sppe                                 1153.84983191312 	(obj:0)
+sppf                                 1153.84983191312 	(obj:0)
+sppg                                 1039.84983191312 	(obj:0)
+spph                                 939.849831913126 	(obj:0)
+sppi                                 1153.84983191312 	(obj:0)
+sppj                                 1153.84983191312 	(obj:0)
+sppk                                 1125.84983191293 	(obj:0)
+sppl                                 993.849831913112 	(obj:0)
+sppm                                  865.84983191315 	(obj:0)
+sppn                                 1083.84983191311 	(obj:0)
+sppo                                 1153.84983191312 	(obj:0)
+sppp                                 1130.84983191318 	(obj:0)
+sppq                                 1153.84983191312 	(obj:0)
+sppr                                 1153.84983191312 	(obj:0)
+spps                                 1153.84983191312 	(obj:0)
+sppt                                 1153.84983191312 	(obj:0)
+sppu                                 1153.84983191312 	(obj:0)
+sppv                                 881.849831912957 	(obj:0)
+sppw                                 1034.84983191327 	(obj:0)
+sppx                                 1153.84983191312 	(obj:0)
+dmda                                 1153.84983191312 	(obj:0)
+dmdb                                 1117.84983191316 	(obj:0)
+dmdc                                 1021.84983191311 	(obj:0)
+dmdd                                 988.849831913075 	(obj:0)
+dmde                                  1152.8498319131 	(obj:0)
+dmdf                                  1049.8498319132 	(obj:0)
+dmdg                                 1153.84983191312 	(obj:0)
+dmdh                                 1153.84983191312 	(obj:0)
+dmdi                                  1005.8498319129 	(obj:0)
+dmdj                                 986.849831913187 	(obj:0)
+dmdk                                 1153.84983191312 	(obj:0)
+dmdl                                 1153.84983191312 	(obj:0)
+dmdm                                 1153.84983191312 	(obj:0)
+dmdn                                 1153.84983191312 	(obj:0)
+dmdo                                 1112.84983191293 	(obj:0)
+dmdp                                 1153.84983191312 	(obj:0)
+dmdq                                  1106.8498319131 	(obj:0)
+dmdr                                 1111.84983191312 	(obj:0)
+dmds                                 905.849831913159 	(obj:0)
+dmdt                                 999.849831913332 	(obj:0)
+dmdu                                 1152.84983191307 	(obj:0)
+dmdv                                 1153.84983191312 	(obj:0)
+dmdw                                 1153.84983191312 	(obj:0)
+dmdx                                 1022.84983191318 	(obj:0)
+
+Statistics
+==========
+
+SCIP Status        : problem is solved [optimal solution found]
+Total Time         :     137.57
+  solving          :     137.46
+  presolving       :       0.54 (included in solving)
+  reading          :       0.11
+  copying          :       0.00 (0 times copied the problem)
+Original Problem   :
+  Problem name     : dano3_5
+  Variables        : 13873 (115 binary, 0 integer, 0 implicit integer, 13758 continuous)
+  Constraints      : 3202 initial, 3202 maximal
+  Objective        : minimize, 1 non-zeros (abs.min = 1, abs.max = 1)
+Presolved Problem  :
+  Problem name     : t_dano3_5
+  Variables        : 13837 (115 binary, 0 integer, 0 implicit integer, 13722 continuous)
+  Constraints      : 3151 initial, 3151 maximal
+  Objective        : minimize, 1 non-zeros (abs.min = 1, abs.max = 1)
+  Nonzeros         : 78990 constraint, 0 clique table
+Presolvers         :   ExecTime  SetupTime  Calls  FixedVars   AggrVars   ChgTypes  ChgBounds   AddHoles    DelCons    AddCons   ChgSides   ChgCoefs
+  boundshift       :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  convertinttobin  :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  domcol           :       0.01       0.00      2          0          0          0          0          0          0          0          0          0
+  dualagg          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualcomp         :       0.01       0.00      2          0          0          0          0          0          0          0          0          0
+  dualinfer        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualsparsify     :       0.02       0.00      1          0          0          0          0          0          0          0          0         33
+  gateextraction   :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  implics          :       0.00       0.00      4          0          0          0          0          0          0          0          0          0
+  inttobinary      :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  qpkktref         :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  redvub           :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  sparsify         :       0.32       0.00      2          0          0          0          0          0          0          0          0       1080
+  stuffing         :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  trivial          :       0.00       0.00      6          0          0          0          0          0          0          0          0          0
+  tworowbnd        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualfix          :       0.00       0.00      6          0          0          0          0          0          0          0          0          0
+  genvbounds       :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  probing          :       0.07       0.00      1          0          0          0         21          0          0          0          0          0
+  pseudoobj        :       0.00       0.00      2          0          0          0          1          0          0          0          0          0
+  symmetry         :       0.02       0.00      1          0          0          0          0          0          0          0          0          0
+  vbounds          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  varbound         :       0.00       0.00      4          0          0          0          0          0          0          0          0          0
+  linear           :       0.08       0.01     10          0         36          0      14164          0         51          0          5        120
+  benders          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  components       :       0.01       0.00      1          0          0          0          0          0          0          0          0          0
+  root node        :          -          -      -         25          -          -        231          -          -          -          -          -
+Constraints        :     Number  MaxNumber  #Separate #Propagate    #EnfoLP    #EnfoRelax  #EnfoPS    #Check   #ResProp    Cutoffs    DomReds       Cuts    Applied      Conss   Children
+  benderslp        :          0          0          0          0         64          0          0          3          0          0          0          0          0          0          0
+  integral         :          0          0          0          0         64          0          0          3          0          0         58          0          0          0         12
+  varbound         :        133        133          0        358          0          0          0          1          0          0          9          0          0          0          0
+  linear           :       3018       3018          0        358          0          0          0          1          0          0        195          0          0          0          0
+  benders          :          0          0          0          0          0          0          0          1          0          0          0          0          0          0          0
+  fixedvar         :          0          0          0          0          0          0          0          1          0          0          0          0          0          0          0
+  countsols        :          0          0          0          0          0          0          0          1          0          0          0          0          0          0          0
+  components       :          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0
+Constraint Timings :  TotalTime  SetupTime   Separate  Propagate     EnfoLP     EnfoPS     EnfoRelax   Check    ResProp    SB-Prop
+  benderslp        :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  integral         :     109.30       0.00       0.00       0.00     109.30       0.00       0.00       0.00       0.00       0.00
+  varbound         :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  linear           :       0.03       0.01       0.01       0.01       0.00       0.00       0.00       0.00       0.00       0.00
+  benders          :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  fixedvar         :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  countsols        :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  components       :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+Propagators        : #Propagate   #ResProp    Cutoffs    DomReds
+  dualfix          :          8          0          0          0
+  genvbounds       :          0          0          0          0
+  nlobbt           :          0          0          0          0
+  obbt             :          0          0          0          0
+  probing          :          0          0          0          0
+  pseudoobj        :         19          0          0          2
+  redcost          :          8          0          0          7
+  rootredcost      :          0          0          0          0
+  symmetry         :          0          0          0          0
+  vbounds          :          3          0          0          0
+Propagator Timings :  TotalTime  SetupTime   Presolve  Propagate    ResProp    SB-Prop
+  dualfix          :       0.01       0.00       0.00       0.00       0.00       0.00
+  genvbounds       :       0.00       0.00       0.00       0.00       0.00       0.00
+  nlobbt           :       0.00       0.00       0.00       0.00       0.00       0.00
+  obbt             :       0.00       0.00       0.00       0.00       0.00       0.00
+  probing          :       0.07       0.00       0.07       0.00       0.00       0.00
+  pseudoobj        :       0.00       0.00       0.00       0.00       0.00       0.00
+  redcost          :       0.00       0.00       0.00       0.00       0.00       0.00
+  rootredcost      :       0.00       0.00       0.00       0.00       0.00       0.00
+  symmetry         :       0.02       0.00       0.02       0.00       0.00       0.00
+  vbounds          :       0.00       0.00       0.00       0.00       0.00       0.00
+Symmetry           :
+  orbitopal red.   :          0 reductions applied,          0 cutoffs
+  orbital reduction:          0 reductions applied,          0 cutoffs
+  lexicographic red:          0 reductions applied,          0 cutoffs
+  shadow tree time :       0.00 s
+Conflict Analysis  :       Time      Calls    Success    DomReds  Conflicts   Literals    Reconvs ReconvLits   Dualrays   Nonzeros   LP Iters   (pool size: [--,--])
+  propagation      :       0.00          0          0          -          0        0.0          0        0.0          -          -          -
+  infeasible LP    :       0.00          0          0          -          0        0.0          0        0.0          0        0.0          0
+  bound exceed. LP :       0.00          0          0          -          0        0.0          0        0.0          0        0.0          0
+  strong branching :       0.00          0          0          -          0        0.0          0        0.0          -          -          0
+  pseudo solution  :       0.00          0          0          -          0        0.0          0        0.0          -          -          -
+  applied globally :       0.00          -          -          0          0        0.0          -          -          0          -          -
+  applied locally  :          -          -          -          0          0        0.0          -          -          0          -          -
+Separators         :   ExecTime  SetupTime      Calls  RootCalls    Cutoffs    DomReds  FoundCuts ViaPoolAdd  DirectAdd    Applied ViaPoolApp  DirectApp      Conss
+  cut pool         :       0.00          -          0          0          -          -          0          0          -          -          -          -          -    (maximal pool size:          0)
+  aggregation      :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  > cmir           :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  > flowcover      :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  > knapsackcover  :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  cgmip            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  clique           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  closecuts        :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  convexproj       :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  disjunctive      :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  eccuts           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  gauge            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  gomory           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  > gomorymi       :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  > strongcg       :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  impliedbounds    :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  interminor       :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  intobj           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  lagromory        :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  mcf              :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  minor            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  mixing           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  oddcycle         :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  rapidlearning    :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  rlt              :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  zerohalf         :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+Cutselectors       :   ExecTime  SetupTime      Calls  RootCalls   Selected     Forced   Filtered  RootSelec   RootForc   RootFilt 
+  hybrid           :       0.00       0.00          0          0          0          0          0          0          0          0
+  ensemble         :       0.00       0.00          0          0          0          0          0          0          0          0
+  dynamic          :       0.00       0.00          0          0          0          0          0          0          0          0
+Pricers            :   ExecTime  SetupTime      Calls       Vars
+  problem variables:       0.00          -          0          0
+Branching Rules    :   ExecTime  SetupTime   BranchLP  BranchExt   BranchPS    Cutoffs    DomReds       Cuts      Conss   Children
+  allfullstrong    :       0.00       0.00          0          0          0          0          0          0          0          0
+  cloud            :       0.00       0.00          0          0          0          0          0          0          0          0
+  distribution     :       0.00       0.00          0          0          0          0          0          0          0          0
+  fullstrong       :     109.30       0.00         64          0          0          0         58          0          0         12
+  general_disjuncti:       0.00       0.00          0          0          0          0          0          0          0          0
+  GeneralDisjunction(extra): subMILPs=0 fairNodes of all MILPs=0 probingLPs=0
+  gomory           :       0.00       0.00          0          0          0          0          0          0          0          0
+  inference        :       0.00       0.00          0          0          0          0          0          0          0          0
+  leastinf         :       0.00       0.00          0          0          0          0          0          0          0          0
+  lookahead        :       0.00       0.00          0          0          0          0          0          0          0          0
+  mostinf          :       0.00       0.00          0          0          0          0          0          0          0          0
+  multaggr         :       0.00       0.00          0          0          0          0          0          0          0          0
+  nodereopt        :       0.00       0.00          0          0          0          0          0          0          0          0
+  pscost           :       0.00       0.00          0          0          0          0          0          0          0          0
+  random           :       0.00       0.00          0          0          0          0          0          0          0          0
+  relpscost        :       0.00       0.00          0          0          0          0          0          0          0          0
+  vanillafullstrong:       0.00       0.00          0          0          0          0          0          0          0          0
+Primal Heuristics  :   ExecTime  SetupTime      Calls      Found       Best
+  LP solutions     :       0.00          -          -          0          0
+  relax solutions  :       0.00          -          -          0          0
+  pseudo solutions :       0.00          -          -          0          0
+  strong branching :       0.00          -          -          0          0
+  actconsdiving    :       0.00       0.00          0          0          0
+  adaptivediving   :       0.00       0.00          0          0          0
+  alns             :       0.00       0.00          0          0          0
+  bound            :       0.00       0.00          0          0          0
+  clique           :       0.00       0.00          0          0          0
+  coefdiving       :       0.00       0.00          0          0          0
+  completesol      :       0.00       0.00          0          0          0
+  conflictdiving   :       0.00       0.00          0          0          0
+  crossover        :       0.00       0.00          0          0          0
+  dins             :       0.00       0.00          0          0          0
+  distributiondivin:       0.00       0.00          0          0          0
+  dps              :       0.00       0.00          0          0          0
+  dualval          :       0.00       0.00          0          0          0
+  farkasdiving     :       0.00       0.00          0          0          0
+  feaspump         :       0.00       0.00          0          0          0
+  fixandinfer      :       0.00       0.00          0          0          0
+  fracdiving       :       0.00       0.00          0          0          0
+  gins             :       0.00       0.00          0          0          0
+  guideddiving     :       0.00       0.00          0          0          0
+  indicator        :       0.00       0.00          0          0          0
+  indicatordiving  :       0.00       0.00          0          0          0
+  intdiving        :       0.00       0.00          0          0          0
+  intshifting      :       0.00       0.00          0          0          0
+  linesearchdiving :       0.00       0.00          0          0          0
+  localbranching   :       0.00       0.00          0          0          0
+  locks            :       0.00       0.00          0          0          0
+  lpface           :       0.00       0.00          0          0          0
+  mpec             :       0.00       0.00          0          0          0
+  multistart       :       0.00       0.00          0          0          0
+  mutation         :       0.00       0.00          0          0          0
+  nlpdiving        :       0.00       0.00          0          0          0
+  objpscostdiving  :       0.00       0.00          0          0          0
+  octane           :       0.00       0.00          0          0          0
+  ofins            :       0.00       0.00          0          0          0
+  oneopt           :       0.00       0.00          0          0          0
+  padm             :       0.00       0.00          0          0          0
+  proximity        :       0.00       0.00          0          0          0
+  pscostdiving     :       0.00       0.00          0          0          0
+  randrounding     :       0.00       0.00          0          0          0
+  rens             :       0.00       0.00          0          0          0
+  reoptsols        :       0.00       0.00          0          0          0
+  repair           :       0.00       0.00          0          0          0
+  rins             :       0.00       0.00          0          0          0
+  rootsoldiving    :       0.00       0.00          0          0          0
+  rounding         :       0.00       0.00          0          0          0
+  scheduler        :       0.00       0.00          0          0          0
+  shiftandpropagate:       0.00       0.00          0          0          0
+  shifting         :       0.00       0.00          0          0          0
+  simplerounding   :       0.00       0.00          0          0          0
+  subnlp           :       0.00       0.00          0          0          0
+  trivial          :       0.00       0.00          0          0          0
+  trivialnegation  :       0.00       0.00          0          0          0
+  trustregion      :       0.00       0.00          0          0          0
+  trysol           :       0.00       0.00          0          0          0
+  twoopt           :       0.00       0.00          0          0          0
+  undercover       :       0.00       0.00          0          0          0
+  vbounds          :       0.00       0.00          0          0          0
+  veclendiving     :       0.00       0.00          0          0          0
+  zeroobj          :       0.00       0.00          0          0          0
+  zirounding       :       0.00       0.00          0          0          0
+  other solutions  :          -          -          -          1          -
+LNS (Scheduler)    :      Calls  SetupTime  SolveTime SolveNodes       Sols       Best       Exp3    Exp3-IX  EpsGreedy        UCB TgtFixRate  Opt  Inf Node Stal  Sol  Usr Othr Actv
+  rens             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  rins             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  mutation         :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  localbranching   :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  crossover        :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  proximity        :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  zeroobjective    :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  dins             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  trustregion      :          0       0.00       0.00          0          0          0    0.00000    0.00000   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    0
+LP                 :       Time      Calls Iterations  Iter/call   Iter/sec  Time-0-It Calls-0-It    ItLimit
+  primal LP        :       0.00          0          0       0.00          -       0.00          0
+  dual LP          :      27.46         74     113407    1597.28    4130.00       0.01          3
+  lex dual LP      :       0.00          0          0       0.00          -
+  barrier LP       :       0.00          0          0       0.00          -       0.00          0
+  resolve instable :       0.00          0          0       0.00          -
+  diving/probing LP:       0.17          0          0       0.00       0.00
+  strong branching :     108.77        160     404425    2527.66    3718.31          -          -          0
+    (at root node) :          -         24     290213   12092.21          -
+  conflict analysis:       0.00          0          0       0.00          -
+B&B Tree           :
+  number of runs   :          1
+  nodes            :         13 (6 internal, 7 leaves)
+  feasible leaves  :          0
+  infeas. leaves   :          0
+  objective leaves :          7
+  nodes (total)    :         13 (6 internal, 7 leaves)
+  nodes left       :          0
+  max depth        :          4
+  max depth (total):          4
+  backtracks       :          4 (30.8%)
+  early backtracks :          0 (0.0%)
+  nodes exc. ref.  :          0 (0.0%)
+  delayed cutoffs  :          0
+  repropagations   :          0 (0 domain reductions, 0 cutoffs)
+  avg switch length:       2.31
+  switching time   :       0.00
+Root Node          :
+  First LP value   : +5.76328985313957e+02
+  First LP Iters   :      24478 (5823.63 Iter/sec)
+  First LP Time    :       4.20
+  Final Dual Bound : +5.76402901300121e+02
+  Final Root Iters :      42565
+  Root LP Estimate : +5.76625856622607e+02
+Solution           :
+  Solutions found  :          1 (1 improvements)
+  First Solution   : +5.76924915956562e+02   (in run 0, after 0 nodes, 0.00 seconds, depth -1, found by <initial>)
+  Gap First Sol.   :   infinite
+  Gap Last Sol.    :   infinite
+  Primal Bound     : +5.76924915956562e+02   (in run 0, after 0 nodes, 0.00 seconds, depth -1, found by <initial>)
+  Dual Bound       : +5.76924915956562e+02
+  Gap              :       0.00 %
+Integrals          :      Total       Avg%
+  primal-dual      :     280.03       2.04
+  primal-ref       :          -          - (not evaluated)
+  dual-ref         :          -          - (not evaluated)

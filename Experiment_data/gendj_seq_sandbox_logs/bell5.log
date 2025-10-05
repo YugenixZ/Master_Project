@@ -1,0 +1,1735 @@
+SCIP version 9.2.2 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: CPLEX 12.10.0.0] [GitHash: 416226a4f8]
+Copyright (c) 2002-2025 Zuse Institute Berlin (ZIB)
+
+reading parameter file </scratch/htc/yzhou/exp_scipmip/settings/sandbox_gendj.set>
+
+read problem </scratch/htc/yzhou/exp_scipmip/instances/ult_experiments/bell5.mps>
+============
+
+original problem has 104 variables (30 bin, 28 int, 0 impl, 46 cont) and 91 constraints
+     91 constraints of type <linear>
+Reading Time: 0.10
+
+read solution </scratch/htc/yzhou/solutions/bell5.sol>
+============
+
+primal solution from solution file </scratch/htc/yzhou/solutions/bell5.sol> was accepted as candidate, will be checked when solving starts
+original problem has 104 variables (30 bin, 28 int, 0 impl, 46 cont) and 91 constraints
+     91 constraints of type <linear>
+Reading Time: 0.11
+solve problem
+=============
+LP Solver <CPLEX 12.10.0.0>: fastmip setting not available -- SCIP parameter has no effect
+LP Solver <CPLEX 12.10.0.0>: clock type cannot be set
+LP Solver <CPLEX 12.10.0.0>: row representation of the basis not available -- SCIP parameter lp/rowrepswitch has no effect
+LP Solver <CPLEX 12.10.0.0>: solution polishing not available -- SCIP parameter lp/solutionpolishing has no effect
+LP Solver <CPLEX 12.10.0.0>: refactorization interval not available -- SCIP parameter lp/refactorinterval has no effect
+1/1 feasible solution given by solution candidate storage, new primal bound 8.966406e+06
+
+transformed problem has 104 variables (30 bin, 28 int, 0 impl, 46 cont) and 91 constraints
+     91 constraints of type <linear>
+
+original problem has 266 active (2.81065%) nonzeros and 266 (2.81065%) check nonzeros
+
+presolving:
+(round 1, fast)       5 del vars, 7 del conss, 0 add conss, 153 chg bounds, 0 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 13 clqs
+(round 2, fast)       8 del vars, 10 del conss, 0 add conss, 159 chg bounds, 0 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 13 clqs
+(round 3, fast)       8 del vars, 12 del conss, 0 add conss, 160 chg bounds, 0 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 13 clqs
+(round 4, fast)       9 del vars, 13 del conss, 0 add conss, 174 chg bounds, 0 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 12 clqs
+(round 5, fast)       9 del vars, 13 del conss, 0 add conss, 201 chg bounds, 0 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 12 clqs
+(round 6, fast)       13 del vars, 20 del conss, 0 add conss, 201 chg bounds, 0 chg sides, 11 chg coeffs, 0 upgd conss, 0 impls, 12 clqs
+(round 7, fast)       15 del vars, 22 del conss, 0 add conss, 201 chg bounds, 0 chg sides, 11 chg coeffs, 0 upgd conss, 0 impls, 10 clqs
+(round 8, fast)       15 del vars, 22 del conss, 0 add conss, 233 chg bounds, 0 chg sides, 11 chg coeffs, 0 upgd conss, 0 impls, 10 clqs
+(round 9, fast)       15 del vars, 24 del conss, 0 add conss, 233 chg bounds, 2 chg sides, 20 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 10, fast)       15 del vars, 24 del conss, 0 add conss, 248 chg bounds, 2 chg sides, 20 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 11, fast)       15 del vars, 24 del conss, 0 add conss, 248 chg bounds, 2 chg sides, 23 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 12, fast)       15 del vars, 24 del conss, 0 add conss, 256 chg bounds, 2 chg sides, 23 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 13, fast)       15 del vars, 24 del conss, 0 add conss, 256 chg bounds, 2 chg sides, 25 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 14, fast)       15 del vars, 24 del conss, 0 add conss, 261 chg bounds, 2 chg sides, 25 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 15, fast)       15 del vars, 24 del conss, 0 add conss, 261 chg bounds, 2 chg sides, 27 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 16, fast)       15 del vars, 24 del conss, 0 add conss, 264 chg bounds, 2 chg sides, 27 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 17, fast)       15 del vars, 24 del conss, 0 add conss, 264 chg bounds, 2 chg sides, 28 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 18, fast)       15 del vars, 24 del conss, 0 add conss, 266 chg bounds, 2 chg sides, 28 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 19, fast)       15 del vars, 24 del conss, 0 add conss, 267 chg bounds, 2 chg sides, 28 chg coeffs, 0 upgd conss, 2 impls, 10 clqs
+(round 20, exhaustive) 15 del vars, 24 del conss, 0 add conss, 267 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 2 impls, 10 clqs
+(round 21, medium)     19 del vars, 32 del conss, 8 add conss, 267 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 3 impls, 14 clqs
+   (0.0s) probing cycle finished: starting next cycle
+(round 22, exhaustive) 22 del vars, 32 del conss, 8 add conss, 271 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 23, fast)       24 del vars, 45 del conss, 8 add conss, 273 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 24, fast)       25 del vars, 46 del conss, 8 add conss, 275 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 25, fast)       25 del vars, 47 del conss, 9 add conss, 276 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 26, fast)       25 del vars, 47 del conss, 9 add conss, 281 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 27, fast)       25 del vars, 47 del conss, 9 add conss, 287 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 28, fast)       25 del vars, 47 del conss, 9 add conss, 292 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 29, fast)       25 del vars, 48 del conss, 9 add conss, 292 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 30, fast)       25 del vars, 48 del conss, 9 add conss, 295 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 31, fast)       25 del vars, 48 del conss, 9 add conss, 296 chg bounds, 2 chg sides, 28 chg coeffs, 28 upgd conss, 65 impls, 10 clqs
+(round 32, exhaustive) 25 del vars, 48 del conss, 9 add conss, 296 chg bounds, 2 chg sides, 28 chg coeffs, 30 upgd conss, 65 impls, 10 clqs
+(round 33, exhaustive) 26 del vars, 48 del conss, 9 add conss, 296 chg bounds, 2 chg sides, 28 chg coeffs, 30 upgd conss, 67 impls, 10 clqs
+   (0.0s) probing cycle finished: starting next cycle
+   (0.0s) symmetry computation started: requiring (bin +, int +, cont +), (fixed: bin -, int -, cont -)
+   (0.0s) no symmetry present (symcode time: 0.00)
+cons components found 2 undirected components at node 1, depth 0 (0)
+clique table cleanup detected 0 bound changes
+
+presolved problem has 108 active (5.67227%) nonzeros and 108 (5.67227%) check nonzeros
+
+presolving (34 rounds: 34 fast, 6 medium, 5 exhaustive):
+ 48 deleted vars, 66 deleted constraints, 9 added constraints, 296 tightened bounds, 0 added holes, 2 changed sides, 28 changed coefficients
+ 70 implications, 4 cliques
+presolved problem has 56 variables (14 bin, 16 int, 0 impl, 26 cont) and 34 constraints
+     11 constraints of type <varbound>
+      2 constraints of type <setppc>
+     21 constraints of type <linear>
+Presolving Time: 0.08
+transformed 1/1 original solutions to the transformed problem space
+
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+  0.1s|     1 |     0 |    23 |     - |  1240k |   0 |  56 |  34 |  34 |   0 |  0 |   0 |   0 | 8.951800e+06 | 8.966406e+06 |   0.16%| unknown
+  0.1s|     1 |     0 |    23 |     - |  1240k |   0 |  56 |  34 |  33 |   0 |  0 |   0 |   0 | 8.951800e+06 | 8.966406e+06 |   0.16%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 1
+Relpscost reduced domain, skip general disjunction branching
+  0.1s|     1 |     0 |    25 |     - |  1247k |   0 |  56 |  33 |  33 |   0 |  1 |   0 |   9 | 8.952700e+06 | 8.966406e+06 |   0.15%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 1
+LP objective value: 1.26866e+06
+Node lower bound: 1.2693e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00153095
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+  5.6s|     1 |     0 |    55 |     - |  1268k |   0 |  56 |  34 |  34 |   0 |  2 |   0 |   9 | 8.955098e+06 | 8.966406e+06 |   0.13%| unknown
+  5.6s|     1 |     0 |    55 |     - |  1268k |   0 |  56 |  34 |  34 |   0 |  2 |   0 |   9 | 8.955098e+06 | 8.966406e+06 |   0.13%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 1
+LP objective value: 1.27169e+06
+Node lower bound: 1.27247e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00117619
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+ 10.8s|     1 |     2 |    55 |     - |  1272k |   0 |  56 |  34 |  34 |   0 |  3 |   0 |  10 | 8.955873e+06 | 8.966406e+06 |   0.12%| unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+LP objective value: 1.27273e+06
+Node lower bound: 1.27447e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00117619
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 3
+LP objective value: 1.2805e+06
+Node lower bound: 1.2805e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00117619
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 2
+LP objective value: 1.27905e+06
+Node lower bound: 1.27949e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000392097
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 4
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 4
+LP objective value: 1.28007e+06
+Node lower bound: 1.28021e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000392097
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 7
+LP objective value: 1.28037e+06
+Node lower bound: 1.28051e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000392097
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 9
+LP objective value: 1.28051e+06
+Node lower bound: 1.28051e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000392097
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 11
+LP objective value: 1.28079e+06
+Node lower bound: 1.28087e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000392097
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 5
+LP objective value: 1.28155e+06
+Node lower bound: 1.28199e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00031193
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 5
+LP objective value: 1.28203e+06
+Node lower bound: 1.28203e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00031193
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 5
+LP objective value: 1.28217e+06
+Node lower bound: 1.28217e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00031193
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 5
+LP objective value: 1.2826e+06
+Node lower bound: 1.2826e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00031193
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 10
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 10
+LP objective value: 1.28076e+06
+Node lower bound: 1.28076e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00031193
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 13
+LP objective value: 1.28087e+06
+Node lower bound: 1.28087e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00031193
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 6
+LP objective value: 1.28045e+06
+Node lower bound: 1.28052e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00027827
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 6
+LP objective value: 1.28103e+06
+Node lower bound: 1.28111e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00027827
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 17
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 17
+LP objective value: 1.28098e+06
+Node lower bound: 1.28098e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00027827
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 20
+LP objective value: 1.28116e+06
+Node lower bound: 1.28116e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00027827
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 19
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 19
+LP objective value: 1.282e+06
+Node lower bound: 1.282e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00027827
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 12
+LP objective value: 1.28114e+06
+Node lower bound: 1.28114e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.00027827
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 8
+LP objective value: 1.28137e+06
+Node lower bound: 1.28201e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000249949
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 25
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 25
+LP objective value: 1.28142e+06
+Node lower bound: 1.28142e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000249949
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 22
+LP objective value: 1.28139e+06
+Node lower bound: 1.28139e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000249949
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 24
+LP objective value: 1.28151e+06
+Node lower bound: 1.28151e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000249949
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 26
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 26
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 26
+LP objective value: 1.2824e+06
+Node lower bound: 1.2824e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000249949
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 16
+LP objective value: 1.28098e+06
+Node lower bound: 1.28123e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 27
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 27
+LP objective value: 1.28192e+06
+Node lower bound: 1.28199e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 27
+LP objective value: 1.28267e+06
+Node lower bound: 1.28267e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 30
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 30
+LP objective value: 1.28188e+06
+Node lower bound: 1.28191e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 31
+LP objective value: 1.28188e+06
+Node lower bound: 1.28188e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 33
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 33
+LP objective value: 1.28159e+06
+Node lower bound: 1.28194e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 33
+LP objective value: 1.28256e+06
+Node lower bound: 1.28256e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 35
+LP objective value: 1.28163e+06
+Node lower bound: 1.28163e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 35
+LP objective value: 1.28274e+06
+Node lower bound: 1.28274e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 35
+LP objective value: 1.28295e+06
+Node lower bound: 1.28295e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 35
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 21
+LP objective value: 1.28125e+06
+Node lower bound: 1.28125e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 44
+LP objective value: 1.28182e+06
+Node lower bound: 1.28182e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 45
+LP objective value: 1.28195e+06
+Node lower bound: 1.28195e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 45
+LP objective value: 1.28254e+06
+Node lower bound: 1.28254e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 28
+LP objective value: 1.28201e+06
+Node lower bound: 1.28201e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000237884
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 46
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 46
+LP objective value: 1.28214e+06
+Node lower bound: 1.28214e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 46
+LP objective value: 1.28237e+06
+Node lower bound: 1.28237e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 43
+LP objective value: 1.282e+06
+Node lower bound: 1.282e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 43
+LP objective value: 1.2823e+06
+Node lower bound: 1.2823e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 40
+LP objective value: 1.28254e+06
+Node lower bound: 1.28254e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 29
+LP objective value: 1.28229e+06
+Node lower bound: 1.28229e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 50
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 50
+LP objective value: 1.28226e+06
+Node lower bound: 1.28226e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 47
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 47
+LP objective value: 1.28254e+06
+Node lower bound: 1.28254e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 57
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 57
+LP objective value: 1.28248e+06
+Node lower bound: 1.28248e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 57
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 36
+LP objective value: 1.28148e+06
+Node lower bound: 1.28148e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 60
+LP objective value: 1.28161e+06
+Node lower bound: 1.28161e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000225987
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 23
+LP objective value: 1.28136e+06
+Node lower bound: 1.28153e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 62
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 62
+LP objective value: 1.28227e+06
+Node lower bound: 1.28227e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 62
+LP objective value: 1.28278e+06
+Node lower bound: 1.28278e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 62
+LP objective value: 1.28299e+06
+Node lower bound: 1.28299e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 65
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 64
+LP objective value: 1.28169e+06
+Node lower bound: 1.28173e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 67
+LP objective value: 1.28208e+06
+Node lower bound: 1.28208e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 66
+LP objective value: 1.2823e+06
+Node lower bound: 1.2823e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 66
+LP objective value: 1.28258e+06
+Node lower bound: 1.28258e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 66
+LP objective value: 1.28286e+06
+Node lower bound: 1.28289e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 66
+LP objective value: 1.28298e+06
+Node lower bound: 1.28298e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 69
+LP objective value: 1.28261e+06
+Node lower bound: 1.28264e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 71
+LP objective value: 1.28285e+06
+Node lower bound: 1.28285e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 61
+LP objective value: 1.28162e+06
+Node lower bound: 1.28162e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 72
+LP objective value: 1.28201e+06
+Node lower bound: 1.28201e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 72
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 73
+LP objective value: 1.28178e+06
+Node lower bound: 1.28178e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 74
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 74
+LP objective value: 1.28255e+06
+Node lower bound: 1.28255e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 74
+LP objective value: 1.2828e+06
+Node lower bound: 1.2828e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 76
+LP objective value: 1.28294e+06
+Node lower bound: 1.28294e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 75
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 75
+LP objective value: 1.28217e+06
+Node lower bound: 1.28217e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 78
+LP objective value: 1.28267e+06
+Node lower bound: 1.28267e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 80
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 79
+LP objective value: 1.28253e+06
+Node lower bound: 1.28253e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 63
+LP objective value: 1.28202e+06
+Node lower bound: 1.28202e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 63
+LP objective value: 1.28231e+06
+Node lower bound: 1.28231e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 82
+LP objective value: 1.28256e+06
+Node lower bound: 1.28256e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 15
+LP objective value: 1.28264e+06
+Node lower bound: 1.28264e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 51
+LP objective value: 1.28222e+06
+Node lower bound: 1.28222e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 88
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 88
+LP objective value: 1.28299e+06
+Node lower bound: 1.28299e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 89
+LP objective value: 1.28244e+06
+Node lower bound: 1.28244e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 89
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 89
+LP objective value: 1.28283e+06
+Node lower bound: 1.28283e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 14
+LP objective value: 1.28263e+06
+Node lower bound: 1.28263e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 14
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 14
+LP objective value: 1.28297e+06
+Node lower bound: 1.28297e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 91
+LP objective value: 1.283e+06
+Node lower bound: 1.283e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 84
+LP objective value: 1.28298e+06
+Node lower bound: 1.28298e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 55
+LP objective value: 1.28266e+06
+Node lower bound: 1.28266e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 55
+LP objective value: 1.28292e+06
+Node lower bound: 1.28292e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 55
+LP objective value: 1.28299e+06
+Node lower bound: 1.28299e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 87
+LP objective value: 1.28266e+06
+Node lower bound: 1.28266e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 48
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 48
+LP objective value: 1.28287e+06
+Node lower bound: 1.28287e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 85
+LP objective value: 1.28296e+06
+Node lower bound: 1.28296e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 85
+LP objective value: 1.283e+06
+Node lower bound: 1.283e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 68
+LP objective value: 1.28236e+06
+Node lower bound: 1.28236e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 96
+LP objective value: 1.28261e+06
+Node lower bound: 1.28264e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 98
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 99
+LP objective value: 1.28283e+06
+Node lower bound: 1.28286e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 99
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 56
+LP objective value: 1.28259e+06
+Node lower bound: 1.28259e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 100
+LP objective value: 1.28294e+06
+Node lower bound: 1.28294e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 101
+LP objective value: 1.28284e+06
+Node lower bound: 1.28284e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 37
+LP objective value: 1.28123e+06
+Node lower bound: 1.28123e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 103
+LP objective value: 1.28155e+06
+Node lower bound: 1.28155e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000197525
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 83
+LP objective value: 1.28266e+06
+Node lower bound: 1.28266e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000179663
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 83
+LP objective value: 1.28294e+06
+Node lower bound: 1.28294e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000179663
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 83
+LP objective value: 1.28298e+06
+Node lower bound: 1.28298e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000179663
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 38
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 38
+LP objective value: 1.28288e+06
+Node lower bound: 1.28288e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000179663
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 41
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 41
+LP objective value: 1.28299e+06
+Node lower bound: 1.28299e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000179663
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 52
+LP objective value: 1.28284e+06
+Node lower bound: 1.28284e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000179663
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 32
+LP objective value: 1.28167e+06
+Node lower bound: 1.28167e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000148262
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 104
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 104
+LP objective value: 1.28212e+06
+Node lower bound: 1.28212e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000148262
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 105
+LP objective value: 1.28223e+06
+Node lower bound: 1.28223e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 105
+LP objective value: 1.28297e+06
+Node lower bound: 1.28297e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 105
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 58
+LP objective value: 1.28262e+06
+Node lower bound: 1.28262e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 58
+LP objective value: 1.28287e+06
+Node lower bound: 1.28287e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 58
+LP objective value: 1.28296e+06
+Node lower bound: 1.28296e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 58
+LP objective value: 1.28299e+06
+Node lower bound: 1.28299e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 97
+LP objective value: 1.28261e+06
+Node lower bound: 1.28269e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 53
+LP objective value: 1.28276e+06
+Node lower bound: 1.28276e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 106
+LP objective value: 1.28284e+06
+Node lower bound: 1.28284e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 108
+LP objective value: 1.28296e+06
+Node lower bound: 1.28296e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 109
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 77
+LP objective value: 1.28291e+06
+Node lower bound: 1.28291e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Only Right constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 77
+LP objective value: 1.28296e+06
+Node lower bound: 1.28296e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 0.000125554
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+  517s|   100 |     9 |  6511 |  65.5 |  9512k |  12 |  56 |  34 |  44 |   0 |  2 |   0 |  93 | 8.965281e+06 | 8.966406e+06 |   0.01%|  93.85%
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 39
+LP objective value: 1.28288e+06
+Node lower bound: 1.28288e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 5.13931e-05
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 107
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 107
+LP objective value: 1.28283e+06
+Node lower bound: 1.28283e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 5.13931e-05
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 59
+LP objective value: 1.28281e+06
+Node lower bound: 1.28281e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 5.13931e-05
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 81
+LP objective value: 1.28271e+06
+Node lower bound: 1.28271e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 5.13931e-05
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 110
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 111
+LP objective value: 1.28286e+06
+Node lower bound: 1.28286e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 5.13931e-05
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 49
+LP objective value: 1.28286e+06
+Node lower bound: 1.28286e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 5.10659e-05
+Preck submodel is infeasible, continue branching
+General disjunction: Only Left constraint added:
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 49
+LP objective value: 1.2829e+06
+Node lower bound: 1.2829e+06
+Node upper bound: 8.96641e+06
+gap to the primal bound: 5.10659e-05
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+
+SCIP Status        : problem is solved [optimal solution found]
+Solving Time (sec) : 544.14
+Solving Nodes      : 111
+Primal Bound       : +8.96640649152000e+06 (85 solutions)
+Dual Bound         : +8.96640649152000e+06
+Gap                : 0.00 %
+
+primal solution:
+================
+
+objective value:                        8966406.49152
+c1                                                  1 	(obj:0)
+c2                                                  1 	(obj:0)
+c3                                                  1 	(obj:0)
+c4                                                  1 	(obj:0)
+c5                                                  1 	(obj:0)
+c7                                                  1 	(obj:0)
+c13                                                 1 	(obj:0)
+c14                                                 1 	(obj:0)
+c16                                                 1 	(obj:0)
+g14                                                19 	(obj:10000)
+g12                                                41 	(obj:10000)
+g11                                                17 	(obj:10000)
+g10                                                10 	(obj:10000)
+g9                                                125 	(obj:10000)
+g7                                                498 	(obj:10000)
+g6                                                  2 	(obj:10000)
+g5                                                 38 	(obj:10000)
+g4                                                  2 	(obj:10000)
+h7                                                 11 	(obj:59000)
+h5                                                  1 	(obj:59000)
+h4                                                  1 	(obj:59000)
+a1                                               8318 	(obj:24.5645)
+a2                                               7494 	(obj:20.3962)
+a3                                                 60 	(obj:14.1693)
+a4                                                 10 	(obj:50.2605)
+a8                                               4800 	(obj:48.034)
+a10                                                18 	(obj:36.0182)
+a11                                                 8 	(obj:18.7245)
+a12                                                16 	(obj:30.3169)
+a13                                              4334 	(obj:5.3655)
+a14                                               334 	(obj:25.55)
+a15                                               700 	(obj:20.7977)
+a16                                                24 	(obj:1.825)
+b1                                                792 	(obj:2.45645)
+b2                                                792 	(obj:2.03962)
+b3                                                336 	(obj:1.41693)
+b4                                                336 	(obj:5.02605)
+b6                                                 40 	(obj:3.66095)
+b7                                                166 	(obj:3.9201)
+b8                                               3000 	(obj:4.8034)
+b9                                               3000 	(obj:2.94336)
+b10                                              1632 	(obj:3.60182)
+b11                                              1392 	(obj:1.87245)
+b12                                               984 	(obj:3.03169)
+b13                                               456 	(obj:0.53655)
+b14                                               456 	(obj:2.555)
+f4                                                 48 	(obj:0)
+f5                                                900 	(obj:0)
+f6                                                 40 	(obj:0)
+f7                                              11950 	(obj:0)
+f9                                               3000 	(obj:0)
+f10                                               240 	(obj:0)
+f11                                               408 	(obj:0)
+f12                                               984 	(obj:0)
+f14                                               456 	(obj:0)
+
+Statistics
+==========
+
+SCIP Status        : problem is solved [optimal solution found]
+Total Time         :     544.25
+  solving          :     544.14
+  presolving       :       0.08 (included in solving)
+  reading          :       0.11
+  copying          :       0.00 (0 times copied the problem)
+Original Problem   :
+  Problem name     : BELL5
+  Variables        : 104 (30 binary, 28 integer, 0 implicit integer, 46 continuous)
+  Constraints      : 91 initial, 91 maximal
+  Objective        : minimize, 74 non-zeros (abs.min = 0.1825, abs.max = 60000)
+Presolved Problem  :
+  Problem name     : t_BELL5
+  Variables        : 56 (14 binary, 16 integer, 0 implicit integer, 26 continuous)
+  Constraints      : 34 initial, 34 maximal
+  Objective        : minimize, 49 non-zeros (abs.min = 0.1825, abs.max = 59000)
+  Nonzeros         : 108 constraint, 8 clique table
+Presolvers         :   ExecTime  SetupTime  Calls  FixedVars   AggrVars   ChgTypes  ChgBounds   AddHoles    DelCons    AddCons   ChgSides   ChgCoefs
+  boundshift       :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  convertinttobin  :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  domcol           :       0.00       0.00      3          1          0          0          0          0          0          0          0          0
+  dualagg          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualcomp         :       0.00       0.00      3          0          0          0          0          0          0          0          0          0
+  dualinfer        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualsparsify     :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  gateextraction   :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  implics          :       0.00       0.00      6          0          0          0          0          0          0          0          0          0
+  inttobinary      :       0.00       0.00     34          0          0          0          0          0          0          0          0          0
+  qpkktref         :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  redvub           :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  sparsify         :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  stuffing         :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  trivial          :       0.00       0.00     34          0          0          0          0          0          0          0          0          0
+  tworowbnd        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualfix          :       0.00       0.00     34          3          0          0          0          0          0          0          0          0
+  genvbounds       :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  probing          :       0.00       0.00      2          3          0          0          4          0          0          0          0          0
+  pseudoobj        :       0.00       0.00      7          0          0          0         61          0          0          0          0          0
+  symmetry         :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  vbounds          :       0.00       0.00      3          0          0          0          0          0          0          0          0          0
+  varbound         :       0.00       0.00     19          0          0          0          0          0          1          1          0          0
+  knapsack         :       0.00       0.00      2          0          0          0          0          0          4          8          0          0
+  setppc           :       0.00       0.00     23          0          4          0          0          0         13          0          0          0
+  linear           :       0.00       0.00     39          2         13          0        231          0         30          0          2         28
+  benders          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  components       :       0.06       0.00      1         22          0          0          0          0         18          0          0          0
+  root node        :          -          -      -         12          -          -         26          -          -          -          -          -
+Constraints        :     Number  MaxNumber  #Separate #Propagate    #EnfoLP    #EnfoRelax  #EnfoPS    #Check   #ResProp    Cutoffs    DomReds       Cuts    Applied      Conss   Children
+  benderslp        :          0          0          0          0        165          0          0         87          0          0          0          0          0          0          0
+  integral         :          0          0          0          0        165          0          0         87          0         34         47          0          0         37        110
+  varbound         :         11         11          0        141          0          0          0         85          0          0          2          0          0          0          0
+  setppc           :          2          2          0        141          0          0          0         85          0          0          0          0          0          0          0
+  linear           :         21+        33          0        142          0          0          0         85          0          1          4          0          0          0          0
+  benders          :          0          0          0          0          0          0          0         86          0          0          0          0          0          0          0
+  fixedvar         :          0          0          0          0          0          0          0         86          0          0          0          0          0          0          0
+  countsols        :          0          0          0          0          0          0          0         86          0          0          0          0          0          0          0
+  components       :          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0
+Constraint Timings :  TotalTime  SetupTime   Separate  Propagate     EnfoLP     EnfoPS     EnfoRelax   Check    ResProp    SB-Prop
+  benderslp        :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  integral         :     544.00       0.00       0.00       0.00     544.00       0.00       0.00       0.00       0.00       0.00
+  varbound         :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  setppc           :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  linear           :       0.02       0.00       0.02       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  benders          :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  fixedvar         :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  countsols        :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  components       :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+Propagators        : #Propagate   #ResProp    Cutoffs    DomReds
+  dualfix          :          7          0          0          0
+  genvbounds       :          0          0          0          0
+  nlobbt           :          0          0          0          0
+  obbt             :          0          0          0          0
+  probing          :          0          0          0          0
+  pseudoobj        :         17          0          0          2
+  redcost          :          8          0          0         10
+  rootredcost      :          0          0          0          0
+  symmetry         :          0          0          0          0
+  vbounds          :          2          0          0          0
+Propagator Timings :  TotalTime  SetupTime   Presolve  Propagate    ResProp    SB-Prop
+  dualfix          :       0.00       0.00       0.00       0.00       0.00       0.00
+  genvbounds       :       0.00       0.00       0.00       0.00       0.00       0.00
+  nlobbt           :       0.00       0.00       0.00       0.00       0.00       0.00
+  obbt             :       0.00       0.00       0.00       0.00       0.00       0.00
+  probing          :       0.00       0.00       0.00       0.00       0.00       0.00
+  pseudoobj        :       0.00       0.00       0.00       0.00       0.00       0.00
+  redcost          :       0.00       0.00       0.00       0.00       0.00       0.00
+  rootredcost      :       0.00       0.00       0.00       0.00       0.00       0.00
+  symmetry         :       0.00       0.00       0.00       0.00       0.00       0.00
+  vbounds          :       0.00       0.00       0.00       0.00       0.00       0.00
+Symmetry           :
+  orbitopal red.   :          0 reductions applied,          0 cutoffs
+  orbital reduction:          0 reductions applied,          0 cutoffs
+  lexicographic red:          0 reductions applied,          0 cutoffs
+  shadow tree time :       0.00 s
+Conflict Analysis  :       Time      Calls    Success    DomReds  Conflicts   Literals    Reconvs ReconvLits   Dualrays   Nonzeros   LP Iters   (pool size: [--,--])
+  propagation      :       0.00          0          0          -          0        0.0          0        0.0          -          -          -
+  infeasible LP    :       0.00          0          0          -          0        0.0          0        0.0          0        0.0          0
+  bound exceed. LP :       0.00          0          0          -          0        0.0          0        0.0          0        0.0          0
+  strong branching :       0.00          0          0          -          0        0.0          0        0.0          -          -          0
+  pseudo solution  :       0.00          0          0          -          0        0.0          0        0.0          -          -          -
+  applied globally :       0.00          -          -          0          0        0.0          -          -          0          -          -
+  applied locally  :          -          -          -          0          0        0.0          -          -          0          -          -
+Separators         :   ExecTime  SetupTime      Calls  RootCalls    Cutoffs    DomReds  FoundCuts ViaPoolAdd  DirectAdd    Applied ViaPoolApp  DirectApp      Conss
+  cut pool         :       0.00          -          0          0          -          -          0          0          -          -          -          -          -    (maximal pool size:          0)
+  aggregation      :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  > cmir           :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  > flowcover      :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  > knapsackcover  :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  cgmip            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  clique           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  closecuts        :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  convexproj       :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  disjunctive      :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  eccuts           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  gauge            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  gomory           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  > gomorymi       :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  > strongcg       :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  impliedbounds    :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  interminor       :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  intobj           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  lagromory        :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  mcf              :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  minor            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  mixing           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  oddcycle         :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  rapidlearning    :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  rlt              :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  zerohalf         :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+Cutselectors       :   ExecTime  SetupTime      Calls  RootCalls   Selected     Forced   Filtered  RootSelec   RootForc   RootFilt 
+  hybrid           :       0.00       0.00          0          0          0          0          0          0          0          0
+  ensemble         :       0.00       0.00          0          0          0          0          0          0          0          0
+  dynamic          :       0.00       0.00          0          0          0          0          0          0          0          0
+Pricers            :   ExecTime  SetupTime      Calls       Vars
+  problem variables:       0.00          -          0          0
+Branching Rules    :   ExecTime  SetupTime   BranchLP  BranchExt   BranchPS    Cutoffs    DomReds       Cuts      Conss   Children
+  allfullstrong    :       0.00       0.00          0          0          0          0          0          0          0          0
+  cloud            :       0.00       0.00          0          0          0          0          0          0          0          0
+  distribution     :       0.00       0.00          0          0          0          0          0          0          0          0
+  fullstrong       :       0.00       0.00          0          0          0          0          0          0          0          0
+  general_disjuncti:     544.00       0.00        165          0          0         34         46          0         37         78
+  GeneralDisjunction(extra): subMILPs=4572 fairNodes of all MILPs=753804 probingLPs=3832
+  gomory           :       0.00       0.00          0          0          0          0          0          0          0          0
+  inference        :       0.00       0.00          0          0          0          0          0          0          0          0
+  leastinf         :       0.00       0.00          0          0          0          0          0          0          0          0
+  lookahead        :       0.00       0.00          0          0          0          0          0          0          0          0
+  mostinf          :       0.00       0.00          0          0          0          0          0          0          0          0
+  multaggr         :       0.00       0.00          0          0          0          0          0          0          0          0
+  nodereopt        :       0.00       0.00          0          0          0          0          0          0          0          0
+  pscost           :       0.00       0.00          0          0          0          0          0          0          0          0
+  random           :       0.00       0.00          0          0          0          0          0          0          0          0
+  relpscost        :       0.00       0.00         17          0          0          0          1          0          0         32
+  vanillafullstrong:       0.00       0.00          0          0          0          0          0          0          0          0
+Primal Heuristics  :   ExecTime  SetupTime      Calls      Found       Best
+  LP solutions     :       0.00          -          -          0          0
+  relax solutions  :       0.00          -          -          0          0
+  pseudo solutions :       0.00          -          -          0          0
+  strong branching :       0.00          -          -         84          0
+  actconsdiving    :       0.00       0.00          0          0          0
+  adaptivediving   :       0.00       0.00          0          0          0
+  alns             :       0.00       0.00          0          0          0
+  bound            :       0.00       0.00          0          0          0
+  clique           :       0.00       0.00          0          0          0
+  coefdiving       :       0.00       0.00          0          0          0
+  completesol      :       0.00       0.00          0          0          0
+  conflictdiving   :       0.00       0.00          0          0          0
+  crossover        :       0.00       0.00          0          0          0
+  dins             :       0.00       0.00          0          0          0
+  distributiondivin:       0.00       0.00          0          0          0
+  dps              :       0.00       0.00          0          0          0
+  dualval          :       0.00       0.00          0          0          0
+  farkasdiving     :       0.00       0.00          0          0          0
+  feaspump         :       0.00       0.00          0          0          0
+  fixandinfer      :       0.00       0.00          0          0          0
+  fracdiving       :       0.00       0.00          0          0          0
+  gins             :       0.00       0.00          0          0          0
+  guideddiving     :       0.00       0.00          0          0          0
+  indicator        :       0.00       0.00          0          0          0
+  indicatordiving  :       0.00       0.00          0          0          0
+  intdiving        :       0.00       0.00          0          0          0
+  intshifting      :       0.00       0.00          0          0          0
+  linesearchdiving :       0.00       0.00          0          0          0
+  localbranching   :       0.00       0.00          0          0          0
+  locks            :       0.00       0.00          0          0          0
+  lpface           :       0.00       0.00          0          0          0
+  mpec             :       0.00       0.00          0          0          0
+  multistart       :       0.00       0.00          0          0          0
+  mutation         :       0.00       0.00          0          0          0
+  nlpdiving        :       0.00       0.00          0          0          0
+  objpscostdiving  :       0.00       0.00          0          0          0
+  octane           :       0.00       0.00          0          0          0
+  ofins            :       0.00       0.00          0          0          0
+  oneopt           :       0.00       0.00          0          0          0
+  padm             :       0.00       0.00          0          0          0
+  proximity        :       0.00       0.00          0          0          0
+  pscostdiving     :       0.00       0.00          0          0          0
+  randrounding     :       0.00       0.00          0          0          0
+  rens             :       0.00       0.00          0          0          0
+  reoptsols        :       0.00       0.00          0          0          0
+  repair           :       0.00       0.00          0          0          0
+  rins             :       0.00       0.00          0          0          0
+  rootsoldiving    :       0.00       0.00          0          0          0
+  rounding         :       0.00       0.00          0          0          0
+  scheduler        :       0.00       0.00          0          0          0
+  shiftandpropagate:       0.00       0.00          0          0          0
+  shifting         :       0.00       0.00          0          0          0
+  simplerounding   :       0.00       0.00          0          0          0
+  subnlp           :       0.00       0.00          0          0          0
+  trivial          :       0.00       0.00          0          0          0
+  trivialnegation  :       0.00       0.00          0          0          0
+  trustregion      :       0.00       0.00          0          0          0
+  trysol           :       0.00       0.00          0          0          0
+  twoopt           :       0.00       0.00          0          0          0
+  undercover       :       0.00       0.00          0          0          0
+  vbounds          :       0.00       0.00          0          0          0
+  veclendiving     :       0.00       0.00          0          0          0
+  zeroobj          :       0.00       0.00          0          0          0
+  zirounding       :       0.00       0.00          0          0          0
+  other solutions  :          -          -          -          1          -
+LNS (Scheduler)    :      Calls  SetupTime  SolveTime SolveNodes       Sols       Best       Exp3    Exp3-IX  EpsGreedy        UCB TgtFixRate  Opt  Inf Node Stal  Sol  Usr Othr Actv
+  rens             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  rins             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  mutation         :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  localbranching   :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  crossover        :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  proximity        :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  zeroobjective    :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  dins             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  trustregion      :          0       0.00       0.00          0          0          0    0.00000    0.00000   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    0
+LP                 :       Time      Calls Iterations  Iter/call   Iter/sec  Time-0-It Calls-0-It    ItLimit
+  primal LP        :       0.00          0          0       0.00          -       0.00          0
+  dual LP          :       0.03        189        369       1.97   12885.88       0.00          2
+  lex dual LP      :       0.00          0          0       0.00          -
+  barrier LP       :       0.00          0          0       0.00          -       0.00          0
+  resolve instable :       0.00          0          0       0.00          -
+  diving/probing LP:       0.60       3820       6541       1.71   10964.88
+  strong branching :       0.02         96        245       2.55   16286.64          -          -          0
+    (at root node) :          -         10         26       2.60          -
+  conflict analysis:       0.00          0          0       0.00          -
+B&B Tree           :
+  number of runs   :          1
+  nodes            :        111 (55 internal, 56 leaves)
+  feasible leaves  :          0
+  infeas. leaves   :         34
+  objective leaves :         22
+  nodes (total)    :        111 (55 internal, 56 leaves)
+  nodes left       :          0
+  max depth        :         13
+  max depth (total):         13
+  backtracks       :         71 (64.0%)
+  early backtracks :          0 (0.0%)
+  nodes exc. ref.  :          0 (0.0%)
+  delayed cutoffs  :          0
+  repropagations   :          0 (0 domain reductions, 0 cutoffs)
+  avg switch length:       5.84
+  switching time   :       0.01
+Root Node          :
+  First LP value   : +8.95179992812973e+06
+  First LP Iters   :         23 (57644.11 Iter/sec)
+  First LP Time    :       0.00
+  Final Dual Bound : +8.95587264615259e+06
+  Final Root Iters :         27
+  Root LP Estimate : +8.95685185171836e+06
+Solution           :
+  Solutions found  :         85 (1 improvements)
+  First Solution   : +8.96640649152000e+06   (in run 0, after 0 nodes, 0.00 seconds, depth -1, found by <initial>)
+  Gap First Sol.   :   infinite
+  Gap Last Sol.    :   infinite
+  Primal Bound     : +8.96640649152000e+06   (in run 0, after 0 nodes, 0.00 seconds, depth -1, found by <initial>)
+  Dual Bound       : +8.96640649152000e+06
+  Gap              :       0.00 %
+Integrals          :      Total       Avg%
+  primal-dual      :      21.82       0.04
+  primal-ref       :          -          - (not evaluated)
+  dual-ref         :          -          - (not evaluated)

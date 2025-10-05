@@ -1,0 +1,1175 @@
+SCIP version 9.2.2 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: CPLEX 12.10.0.0] [GitHash: 416226a4f8]
+Copyright (c) 2002-2025 Zuse Institute Berlin (ZIB)
+
+reading parameter file </scratch/htc/yzhou/exp_scipmip/settings/allon_gendj.set>
+
+read problem </scratch/htc/yzhou/exp_scipmip/instances/additional/pk1.mps>
+============
+
+original problem has 86 variables (55 bin, 0 int, 0 impl, 31 cont) and 45 constraints
+     45 constraints of type <linear>
+Reading Time: 0.00
+solve problem
+=============
+LP Solver <CPLEX 12.10.0.0>: fastmip setting not available -- SCIP parameter has no effect
+LP Solver <CPLEX 12.10.0.0>: clock type cannot be set
+LP Solver <CPLEX 12.10.0.0>: row representation of the basis not available -- SCIP parameter lp/rowrepswitch has no effect
+LP Solver <CPLEX 12.10.0.0>: solution polishing not available -- SCIP parameter lp/solutionpolishing has no effect
+LP Solver <CPLEX 12.10.0.0>: refactorization interval not available -- SCIP parameter lp/refactorinterval has no effect
+transformed problem has 86 variables (55 bin, 0 int, 0 impl, 31 cont) and 45 constraints
+     45 constraints of type <linear>
+
+original problem has 915 active (23.6434%) nonzeros and 915 (23.6434%) check nonzeros
+
+presolving:
+   (0.0s) probing: 51/55 (92.7%) - 0 fixings, 0 aggregations, 0 implications, 0 bound changes
+   (0.0s) probing aborted: 50/50 successive totally useless probings
+   (0.0s) symmetry computation started: requiring (bin +, int +, cont +), (fixed: bin -, int -, cont -)
+   (0.0s) no symmetry present (symcode time: 0.00)
+clique table cleanup detected 0 bound changes
+
+presolved problem has 915 active (23.6434%) nonzeros and 915 (23.6434%) check nonzeros
+
+presolving (1 rounds: 1 fast, 1 medium, 1 exhaustive):
+ 0 deleted vars, 0 deleted constraints, 0 added constraints, 0 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques
+presolved problem has 86 variables (55 bin, 0 int, 0 impl, 31 cont) and 45 constraints
+     45 constraints of type <linear>
+Presolving Time: 0.01
+
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+p 0.0s|     1 |     0 |     0 |     - |   locks|   0 |  86 |  45 |  45 |   0 |  0 |   0 |   0 | 0.000000e+00 | 1.072000e+03 |    Inf | unknown
+  0.0s|     1 |     0 |    45 |     - |  3945k |   0 |  86 |  60 |  60 |   0 |  0 |   0 |   0 | 0.000000e+00 | 1.072000e+03 |    Inf | unknown
+r 0.0s|     1 |     0 |    45 |     - |shifting|   0 |  86 |  60 |  60 |   0 |  0 |   0 |   0 | 0.000000e+00 | 8.700000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |    65 |     - |  4049k |   0 |  86 |  60 |  62 |   2 |  1 |   0 |   0 | 0.000000e+00 | 8.700000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |    65 |     - |  4086k |   0 |  86 |  60 |  62 |   2 |  1 |   0 |   0 | 0.000000e+00 | 8.700000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |    70 |     - |  4186k |   0 |  86 |  60 |  65 |   5 |  2 |   0 |   0 | 0.000000e+00 | 8.700000e+01 |    Inf | unknown
+r 0.0s|     1 |     0 |    70 |     - |shifting|   0 |  86 |  60 |  65 |   5 |  2 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |    84 |     - |  4250k |   0 |  86 |  60 |  67 |   7 |  3 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |    84 |     - |  4251k |   0 |  86 |  60 |  67 |   7 |  3 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |    91 |     - |  4377k |   0 |  86 |  60 |  68 |   8 |  4 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |   110 |     - |  4399k |   0 |  86 |  60 |  71 |  11 |  5 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |   119 |     - |  4474k |   0 |  86 |  60 |  73 |  13 |  6 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |   125 |     - |  4551k |   0 |  86 |  60 |  75 |  15 |  7 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |   137 |     - |  4661k |   0 |  86 |  60 |  77 |  17 |  8 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.0s|     1 |     0 |   144 |     - |  4770k |   0 |  86 |  60 |  79 |  19 |  9 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+  0.1s|     1 |     0 |   154 |     - |  4898k |   0 |  86 |  60 |  82 |  22 | 10 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+  0.1s|     1 |     0 |   162 |     - |  4909k |   0 |  86 |  60 |  67 |  24 | 11 |   0 |   0 | 0.000000e+00 | 5.200000e+01 |    Inf | unknown
+r 0.1s|     1 |     0 |   162 |     - |shifting|   0 |  86 |  60 |  67 |  24 | 11 |   0 |   0 | 0.000000e+00 | 4.000000e+01 |    Inf | unknown
+Truncate separation round because of stalling (10 stall rounds).
+  0.1s|     1 |     0 |   162 |     - |  5410k |   0 |  86 | 106 |  87 |  24 | 11 |   0 |   0 | 0.000000e+00 | 4.000000e+01 |    Inf | unknown
+  0.1s|     1 |     0 |   169 |     - |  5422k |   0 |  86 | 106 |  88 |  25 | 12 |   0 |   0 | 0.000000e+00 | 4.000000e+01 |    Inf | unknown
+  0.1s|     1 |     0 |   170 |     - |  5464k |   0 |  86 | 106 |  89 |  26 | 13 |   0 |   0 | 0.000000e+00 | 4.000000e+01 |    Inf | unknown
+  0.1s|     1 |     0 |   172 |     - |  5474k |   0 |  86 | 106 |  90 |  27 | 14 |   0 |   0 | 0.000000e+00 | 4.000000e+01 |    Inf | unknown
+  0.1s|     1 |     0 |   173 |     - |  5483k |   0 |  86 | 106 |  91 |  28 | 15 |   0 |   0 | 0.000000e+00 | 4.000000e+01 |    Inf | unknown
+o 0.1s|     1 |     0 |   286 |     - |feaspump|   0 |  86 | 106 |  91 |  28 | 16 |   0 |   0 | 0.000000e+00 | 3.400000e+01 |    Inf | unknown
+L 0.3s|     1 |     0 |   286 |     - |    rens|   0 |  86 | 106 |  91 |  28 | 16 |   0 |   0 | 0.000000e+00 | 2.400000e+01 |    Inf | unknown
+  0.3s|     1 |     0 |   286 |     - |  6048k |   0 |  86 | 173 | 113 |  28 | 16 |   0 |   0 | 0.000000e+00 | 2.400000e+01 |    Inf | unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 1
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+General disjunction: No feasible solution found, use SCIP default branching rule
+  692s|     1 |     2 |   286 |     - |  6065k |   0 |  86 | 173 | 113 |  28 | 17 |   0 |  16 | 0.000000e+00 | 2.400000e+01 |    Inf | unknown
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 2
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1018.76s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 5
+LP objective value: 4.27288
+Node lower bound: 4.93725
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1368.96s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 6
+LP objective value: 5.46718
+Node lower bound: 6.12292
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1627.8s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 9
+LP objective value: 9.08732
+Node lower bound: 10.0899
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1228.35s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 10
+LP objective value: 9.79092
+Node lower bound: 10.1237
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1242.56s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 12
+LP objective value: 11.1325
+Node lower bound: 11.2284
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1329.35s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 15
+LP objective value: 14.6627
+Node lower bound: 14.994
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1538.29s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 17
+LP objective value: 17.6049
+Node lower bound: 18.372
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1166.41s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 18
+LP objective value: 19.2752
+Node lower bound: 19.394
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1119.13s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 20
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 20
+LP objective value: 21.702
+Node lower bound: 21.9188
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1004.44s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 22
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 22
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 22
+LP objective value: 23.723
+Node lower bound: 23.723
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+General disjunction: Infeasible disjunction
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 23
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 4
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1046.95s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 24
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1058.06s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 27
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1122.39s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 29
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1150.96s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 31
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1003.5s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 33
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1150.36s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 35
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1219.8s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 37
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1688.11s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 38
+LP objective value: 0.168423
+Node lower bound: 0.237521
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1067.62s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 40
+LP objective value: 0.719422
+Node lower bound: 1.09069
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1397.34s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 42
+LP objective value: 1.75164
+Node lower bound: 1.99346
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.06s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 45
+LP objective value: 1.90545
+Node lower bound: 2.34553
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1531.05s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 46
+LP objective value: 2.8094
+Node lower bound: 3.56358
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1121.73s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 48
+LP objective value: 5.66399
+Node lower bound: 5.99894
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1563.05s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 50
+LP objective value: 7.07858
+Node lower bound: 7.5924
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1009.69s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 53
+LP objective value: 7.53482
+Node lower bound: 7.77991
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1501.66s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 55
+LP objective value: 7.56227
+Node lower bound: 7.77991
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1114.68s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 57
+LP objective value: 9.5571
+Node lower bound: 9.8863
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1570.01s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 58
+LP objective value: 10.9534
+Node lower bound: 11.6437
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1053.77s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 61
+LP objective value: 17.1964
+Node lower bound: 18.6588
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1786.61s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 63
+LP objective value: 18.7956
+Node lower bound: 18.7956
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 64
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 64
+Relpscost reduced domain, skip general disjunction branching
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 64
+LP objective value: 21.4064
+Node lower bound: 21.4064
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1082.81s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 41
+LP objective value: 0.602084
+Node lower bound: 0.843168
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1000.29s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 68
+LP objective value: 1.20378
+Node lower bound: 1.69268
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1442.61s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 70
+LP objective value: 2.45002
+Node lower bound: 2.87684
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1398.71s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 72
+LP objective value: 2.69686
+Node lower bound: 3.007
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1392.98s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 75
+LP objective value: 3.007
+Node lower bound: 3.06774
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1295.97s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 77
+LP objective value: 7.75479
+Node lower bound: 7.7973
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1237.23s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 78
+LP objective value: 9.71029
+Node lower bound: 9.94871
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1100.29s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 80
+LP objective value: 11.6944
+Node lower bound: 12.0622
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1348.71s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 82
+LP objective value: 13.3762
+Node lower bound: 13.9195
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1227.22s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 85
+LP objective value: 14.3746
+Node lower bound: 14.3746
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1374.74s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 86
+LP objective value: 17.4786
+Node lower bound: 17.4786
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 88
+LP objective value: 18.7205
+Node lower bound: 18.7205
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1383.59s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 90
+LP objective value: 20.4994
+Node lower bound: 20.7128
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1076.1s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 90
+LP objective value: 20.5019
+Node lower bound: 20.9932
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1042.29s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 25
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1092.82s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 95
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1160.43s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 96
+LP objective value: 0
+Node lower bound: 0
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1104.55s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 99
+LP objective value: 0.11731
+Node lower bound: 0.670531
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1028.14s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 100
+LP objective value: 1.71586
+Node lower bound: 2.36887
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1072.36s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 103
+LP objective value: 3.02683
+Node lower bound: 3.53003
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1299.78s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 104
+LP objective value: 3.53003
+Node lower bound: 3.53003
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1002.25s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 106
+LP objective value: 5.85532
+Node lower bound: 6.01664
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1095.2s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 108
+LP objective value: 6.21443
+Node lower bound: 6.21443
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1072.36s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 111
+LP objective value: 7.27018
+Node lower bound: 7.27018
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1173.2s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 112
+LP objective value: 8.8096
+Node lower bound: 10.098
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1720.49s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 114
+LP objective value: 10.098
+Node lower bound: 10.098
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1584.05s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 117
+LP objective value: 10.1321
+Node lower bound: 10.1321
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1103.73s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 101
+LP objective value: 1.71906
+Node lower bound: 1.76291
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1404.66s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 120
+LP objective value: 2.85476
+Node lower bound: 3.13667
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1445.17s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 122
+LP objective value: 3.08659
+Node lower bound: 3.13667
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1529.31s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 124
+LP objective value: 4.19076
+Node lower bound: 4.19076
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1057.2s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 127
+LP objective value: 4.74018
+Node lower bound: 4.74018
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1087.38s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 129
+LP objective value: 5.11334
+Node lower bound: 5.11334
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1067.11s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 131
+LP objective value: 6.55527
+Node lower bound: 6.55527
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1788.04s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 132
+LP objective value: 7.91525
+Node lower bound: 7.91525
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1558.55s), stopping submodel solve loop
+General disjunction: No feasible solution found, use SCIP default branching rule
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 135
+LP objective value: 11.1449
+Node lower bound: 11.1696
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Time limit exceeded (1485.3s), stopping submodel solve loop
+General disjunction: Both Children are added
+_____________________________________
+Now starting branching with general disjunction
+Current branching Node number: 136
+LP objective value: 12.2676
+Node lower bound: 12.2676
+Node upper bound: 24
+gap to the primal bound: 1e+20
+Preck submodel is infeasible, continue branching
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+Error in probing left side: 6
+Error in probing right side: 6
+LP was not resolved to a sufficient status after probing
+General disjunction: Infeasible disjunction
+
+SCIP Status        : solving was interrupted [time limit reached]
+Solving Time (sec) : 86774.46
+Solving Nodes      : 71
+Primal Bound       : +2.40000000000000e+01 (8 solutions)
+Dual Bound         : +0.00000000000000e+00
+Gap                : infinite
+
+primal solution:
+================
+
+objective value:                                   24
+x55                                                 1 	(obj:0)
+x6                                                  1 	(obj:0)
+x10                                                 1 	(obj:0)
+x12                                                 1 	(obj:0)
+x14                                                 1 	(obj:0)
+x17                                                 1 	(obj:0)
+x18                                                 1 	(obj:0)
+x20                                                 1 	(obj:0)
+x21                                                 1 	(obj:0)
+x23                                                 1 	(obj:0)
+x24                                                 1 	(obj:0)
+x25                                                 1 	(obj:0)
+x29                                                 1 	(obj:0)
+x33                                                 1 	(obj:0)
+x35                                                 1 	(obj:0)
+x36                                                 1 	(obj:0)
+x37                                                 1 	(obj:0)
+x38                                                 1 	(obj:0)
+x39                                                 1 	(obj:0)
+x42                                                 1 	(obj:0)
+x44                                                 1 	(obj:0)
+x45                                                 1 	(obj:0)
+x47                                                 1 	(obj:0)
+x52                                                 1 	(obj:0)
+x1                                                 24 	(obj:1)
+x57                                                14 	(obj:0)
+x59                                  9.00000000000001 	(obj:0)
+x61                                                23 	(obj:0)
+x63                                                 7 	(obj:0)
+x66                                                24 	(obj:0)
+x67                                  3.08059701492536 	(obj:0)
+x68                                0.0805970149253739 	(obj:0)
+x69                                   3.3910447761194 	(obj:0)
+x70                                  12.3910447761194 	(obj:0)
+x71                                   2.1950248756219 	(obj:0)
+x72                                 0.195024875621897 	(obj:0)
+x73                                                17 	(obj:0)
+x75                                  9.00000000000001 	(obj:0)
+x77                                  6.99999999999997 	(obj:0)
+x79                                  3.22388059701495 	(obj:0)
+x80                                  9.22388059701493 	(obj:0)
+x81                                                20 	(obj:0)
+x83                                  6.96716417910449 	(obj:0)
+x84                                  20.9671641791045 	(obj:0)
+x85                                                19 	(obj:0)
+
+Statistics
+==========
+
+SCIP Status        : solving was interrupted [time limit reached]
+Total Time         :   86774.47
+  solving          :   86774.46
+  presolving       :       0.01 (included in solving)
+  reading          :       0.00
+  copying          :       0.01 (4 #copies) (minimal 0.00, maximal 0.01, average 0.00)
+Original Problem   :
+  Problem name     : pk1
+  Variables        : 86 (55 binary, 0 integer, 0 implicit integer, 31 continuous)
+  Constraints      : 45 initial, 45 maximal
+  Objective        : minimize, 1 non-zeros (abs.min = 1, abs.max = 1)
+Presolved Problem  :
+  Problem name     : t_pk1
+  Variables        : 86 (55 binary, 0 integer, 0 implicit integer, 31 continuous)
+  Constraints      : 45 initial, 174 maximal
+  Objective        : minimize, 1 non-zeros (abs.min = 1, abs.max = 1)
+  Nonzeros         : 915 constraint, 0 clique table
+Presolvers         :   ExecTime  SetupTime  Calls  FixedVars   AggrVars   ChgTypes  ChgBounds   AddHoles    DelCons    AddCons   ChgSides   ChgCoefs
+  boundshift       :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  convertinttobin  :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  domcol           :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  dualagg          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualcomp         :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  dualinfer        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualsparsify     :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  gateextraction   :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  implics          :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  inttobinary      :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  qpkktref         :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  redvub           :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  sparsify         :       0.01       0.00      1          0          0          0          0          0          0          0          0          0
+  stuffing         :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  trivial          :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  tworowbnd        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  dualfix          :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  genvbounds       :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  probing          :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  pseudoobj        :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  symmetry         :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  vbounds          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  linear           :       0.00       0.00      2          0          0          0          0          0          0          0          0          0
+  logicor          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  benders          :       0.00       0.00      0          0          0          0          0          0          0          0          0          0
+  components       :       0.00       0.00      1          0          0          0          0          0          0          0          0          0
+  root node        :          -          -      -          0          -          -         95          -          -          -          -          -
+Constraints        :     Number  MaxNumber  #Separate #Propagate    #EnfoLP    #EnfoRelax  #EnfoPS    #Check   #ResProp    Cutoffs    DomReds       Cuts    Applied      Conss   Children
+  benderslp        :          0          0          0          0         77          0          0         35          0          0          0          0          0          0          0
+  integral         :          0          0          0          0         77          0          0         35          0          2         10          0          0          2        136
+  linear           :         45+       182         17        988          0          0          0         33          0          0        116          0          0          0          0
+  logicor          :          0+         3          0          8          0          0          0          0          0          0          0          0          0          0          0
+  benders          :          0          0          0          0          0          0          0          9          0          0          0          0          0          0          0
+  fixedvar         :          0          0          0          0          0          0          0          9          0          0          0          0          0          0          0
+  countsols        :          0          0          0          0          0          0          0          9          0          0          0          0          0          0          0
+  components       :          0          0          0          0          0          0          0          0          0          0          0          0          0          0          0
+Constraint Timings :  TotalTime  SetupTime   Separate  Propagate     EnfoLP     EnfoPS     EnfoRelax   Check    ResProp    SB-Prop
+  benderslp        :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  integral         :   86773.97       0.00       0.00       0.00   86773.97       0.00       0.00       0.00       0.00       0.00
+  linear           :       0.02       0.00       0.00       0.01       0.00       0.00       0.00       0.00       0.00       0.00
+  logicor          :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  benders          :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  fixedvar         :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  countsols        :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+  components       :       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00       0.00
+Propagators        : #Propagate   #ResProp    Cutoffs    DomReds
+  dualfix          :          7          0          0          0
+  genvbounds       :          0          0          0          0
+  nlobbt           :          0          0          0          0
+  obbt             :          0          0          0          0
+  probing          :          0          0          0          0
+  pseudoobj        :        193          0          0          5
+  redcost          :        210          0          0          0
+  rootredcost      :          1          0          0          0
+  symmetry         :          0          0          0          0
+  vbounds          :          0          0          0          0
+Propagator Timings :  TotalTime  SetupTime   Presolve  Propagate    ResProp    SB-Prop
+  dualfix          :       0.00       0.00       0.00       0.00       0.00       0.00
+  genvbounds       :       0.00       0.00       0.00       0.00       0.00       0.00
+  nlobbt           :       0.00       0.00       0.00       0.00       0.00       0.00
+  obbt             :       0.00       0.00       0.00       0.00       0.00       0.00
+  probing          :       0.00       0.00       0.00       0.00       0.00       0.00
+  pseudoobj        :       0.00       0.00       0.00       0.00       0.00       0.00
+  redcost          :       0.00       0.00       0.00       0.00       0.00       0.00
+  rootredcost      :       0.00       0.00       0.00       0.00       0.00       0.00
+  symmetry         :       0.00       0.00       0.00       0.00       0.00       0.00
+  vbounds          :       0.00       0.00       0.00       0.00       0.00       0.00
+Symmetry           :
+  orbitopal red.   :          0 reductions applied,          0 cutoffs
+  orbital reduction:          0 reductions applied,          0 cutoffs
+  lexicographic red:          0 reductions applied,          0 cutoffs
+  shadow tree time :       0.00 s
+Conflict Analysis  :       Time      Calls    Success    DomReds  Conflicts   Literals    Reconvs ReconvLits   Dualrays   Nonzeros   LP Iters   (pool size: [10000,10000])
+  propagation      :       0.00          0          0          -          0        0.0          0        0.0          -          -          -
+  infeasible LP    :       0.00          0          0          -          0        0.0          0        0.0          0        0.0          0
+  bound exceed. LP :       0.00         29          3          -          3       12.7          0        0.0          0        0.0          9
+  strong branching :       0.00          0          0          -          0        0.0          0        0.0          -          -          0
+  pseudo solution  :       0.00          0          0          -          0        0.0          0        0.0          -          -          -
+  applied globally :       0.00          -          -          0          0        0.0          -          -          0          -          -
+  applied locally  :          -          -          -          0          3       12.7          -          -          0          -          -
+Separators         :   ExecTime  SetupTime      Calls  RootCalls    Cutoffs    DomReds  FoundCuts ViaPoolAdd  DirectAdd    Applied ViaPoolApp  DirectApp      Conss
+  cut pool         :       0.00          -        104         31          -          -        514        840          -          -          -          -          -    (maximal pool size:        514)
+  aggregation      :       0.14       0.00         56         17          0          0        148        206          0         27         27          0          0
+  > cmir           :          -          -          -          -          -          -          -        172          0         23         23          0          -
+  > flowcover      :          -          -          -          -          -          -          -         30          0          4          4          0          -
+  > knapsackcover  :          -          -          -          -          -          -          -          4          0          0          0          0          -
+  cgmip            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  clique           :       0.00       0.00          1          1          0          0          0          0          0          0          0          0          0
+  closecuts        :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  convexproj       :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  disjunctive      :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  eccuts           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  gauge            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  gomory           :       0.01       0.00         30         10          0          0        366        634          0         68         68          0          0
+  > gomorymi       :          -          -          -          -          -          -          -        634          0         68         68          0          -
+  > strongcg       :          -          -          -          -          -          -          -          0          0          0          0          0          -
+  impliedbounds    :       0.00       0.00         56         17          0          0          0          0          0          0          0          0          0
+  interminor       :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  intobj           :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  lagromory        :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  mcf              :       0.00       0.00          1          1          0          0          0          0          0          0          0          0          0
+  minor            :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  mixing           :       0.00       0.00         56         17          0          0          0          0          0          0          0          0          0
+  oddcycle         :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  rapidlearning    :       0.00       0.00          0          0          0          0          0          0          0          0          0          0          0
+  rlt              :       0.00       0.00         10         10          0          0          0          0          0          0          0          0          0
+  zerohalf         :       0.00       0.00         37         17          0          0          0          0          0          0          0          0          0
+Cutselectors       :   ExecTime  SetupTime      Calls  RootCalls   Selected     Forced   Filtered  RootSelec   RootForc   RootFilt 
+  hybrid           :       0.00       0.00         53         15         95          0        745         28          0        248
+  ensemble         :       0.00       0.00          0          0          0          0          0          0          0          0
+  dynamic          :       0.00       0.00          0          0          0          0          0          0          0          0
+Pricers            :   ExecTime  SetupTime      Calls       Vars
+  problem variables:       0.00          -          0          0
+Branching Rules    :   ExecTime  SetupTime   BranchLP  BranchExt   BranchPS    Cutoffs    DomReds       Cuts      Conss   Children
+  allfullstrong    :       0.00       0.00          0          0          0          0          0          0          0          0
+  cloud            :       0.00       0.00          0          0          0          0          0          0          0          0
+  distribution     :       0.00       0.00          0          0          0          0          0          0          0          0
+  fullstrong       :       0.00       0.00          0          0          0          0          0          0          0          0
+  general_disjuncti:   86773.93       0.00         77          0          0          2          9          0          2         52
+  GeneralDisjunction(extra): subMILPs=480 fairNodes of all MILPs=81564311 probingLPs=192
+  gomory           :       0.00       0.00          0          0          0          0          0          0          0          0
+  inference        :       0.00       0.00          0          0          0          0          0          0          0          0
+  leastinf         :       0.00       0.00          0          0          0          0          0          0          0          0
+  lookahead        :       0.00       0.00          0          0          0          0          0          0          0          0
+  mostinf          :       0.00       0.00          0          0          0          0          0          0          0          0
+  multaggr         :       0.00       0.00          0          0          0          0          0          0          0          0
+  nodereopt        :       0.00       0.00          0          0          0          0          0          0          0          0
+  pscost           :       0.00       0.00          0          0          0          0          0          0          0          0
+  random           :       0.00       0.00          0          0          0          0          0          0          0          0
+  relpscost        :       0.04       0.00         43          0          0          0          1          0          0         84
+  vanillafullstrong:       0.00       0.00          0          0          0          0          0          0          0          0
+Primal Heuristics  :   ExecTime  SetupTime      Calls      Found       Best
+  LP solutions     :       0.00          -          -          0          0
+  relax solutions  :       0.00          -          -          0          0
+  pseudo solutions :       0.00          -          -          0          0
+  strong branching :       0.00          -          -          0          0
+  actconsdiving    :       0.00       0.00          0          0          0
+  adaptivediving   :       0.00       0.00          0          0          0
+  alns             :       0.02       0.00          3          0          0
+  bound            :       0.00       0.00          0          0          0
+  clique           :       0.00       0.00          0          0          0
+  coefdiving       :       0.00       0.00          0          0          0
+  completesol      :       0.00       0.00          0          0          0
+  conflictdiving   :       0.00       0.00          1          0          0
+  crossover        :       0.00       0.00          0          0          0
+  dins             :       0.00       0.00          0          0          0
+  distributiondivin:       0.00       0.00          0          0          0
+  dps              :       0.00       0.00          0          0          0
+  dualval          :       0.00       0.00          0          0          0
+  farkasdiving     :       0.00       0.00          0          0          0
+  feaspump         :       0.00       0.00          1          1          1
+  fixandinfer      :       0.00       0.00          0          0          0
+  fracdiving       :       0.00       0.00          0          0          0
+  gins             :       0.00       0.00          0          0          0
+  guideddiving     :       0.00       0.00          0          0          0
+  indicator        :       0.00       0.00          0          0          0
+  indicatordiving  :       0.00       0.00          0          0          0
+  intdiving        :       0.00       0.00          0          0          0
+  intshifting      :       0.00       0.00          2          0          0
+  linesearchdiving :       0.00       0.00          0          0          0
+  localbranching   :       0.00       0.00          0          0          0
+  locks            :       0.00       0.00          1          1          1
+  lpface           :       0.00       0.00          0          0          0
+  mpec             :       0.00       0.00          0          0          0
+  multistart       :       0.00       0.00          0          0          0
+  mutation         :       0.00       0.00          0          0          0
+  nlpdiving        :       0.00       0.00          0          0          0
+  objpscostdiving  :       0.00       0.00          0          0          0
+  octane           :       0.00       0.00          0          0          0
+  ofins            :       0.00       0.00          0          0          0
+  oneopt           :       0.00       0.00          5          0          0
+  padm             :       0.00       0.00          0          0          0
+  proximity        :       0.00       0.00          0          0          0
+  pscostdiving     :       0.00       0.00          0          0          0
+  randrounding     :       0.00       0.00         19          0          0
+  rens             :       0.20       0.00          1          1          1
+  reoptsols        :       0.00       0.00          0          0          0
+  repair           :       0.00       0.00          0          0          0
+  rins             :       0.00       0.00          0          0          0
+  rootsoldiving    :       0.00       0.00          0          0          0
+  rounding         :       0.00       0.00        116          0          0
+  scheduler        :       0.00       0.00          0          0          0
+  shiftandpropagate:       0.00       0.00          0          0          0
+  shifting         :       0.01       0.00         62          5          3
+  simplerounding   :       0.00       0.00          0          0          0
+  subnlp           :       0.00       0.00          0          0          0
+  trivial          :       0.00       0.00          2          0          0
+  trivialnegation  :       0.00       0.00          0          0          0
+  trustregion      :       0.00       0.00          0          0          0
+  trysol           :       0.00       0.00          0          0          0
+  twoopt           :       0.00       0.00          0          0          0
+  undercover       :       0.00       0.00          0          0          0
+  vbounds          :       0.00       0.00          0          0          0
+  veclendiving     :       0.00       0.00          0          0          0
+  zeroobj          :       0.00       0.00          0          0          0
+  zirounding       :       0.00       0.00         68          0          0
+  other solutions  :          -          -          -          0          -
+LNS (Scheduler)    :      Calls  SetupTime  SolveTime SolveNodes       Sols       Best       Exp3    Exp3-IX  EpsGreedy        UCB TgtFixRate  Opt  Inf Node Stal  Sol  Usr Othr Actv
+  rens             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  rins             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  mutation         :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  localbranching   :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  crossover        :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  proximity        :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  zeroobjective    :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  dins             :          0       0.00       0.00          0          0          0    0.00000    0.12500   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    1
+  trustregion      :          0       0.00       0.00          0          0          0    0.00000    0.00000   -1.00000    1.00000      0.900    0    0    0    0    0    0    0    0
+LP                 :       Time      Calls Iterations  Iter/call   Iter/sec  Time-0-It Calls-0-It    ItLimit
+  primal LP        :       0.00          9          0       0.00          -       0.00          9
+  dual LP          :       0.04        135       1278       9.76   29097.04       0.00          4
+  lex dual LP      :       0.00          0          0       0.00          -
+  barrier LP       :       0.00          0          0       0.00          -       0.00          0
+  resolve instable :       0.00          0          0       0.00          -
+  diving/probing LP:       0.06        169       2096      12.40   33317.97
+  strong branching :       0.09        205       3623      17.67   38220.12          -          -          1
+    (at root node) :          -         16        307      19.19          -
+  conflict analysis:       0.00          1          9       9.00          -
+B&B Tree           :
+  number of runs   :          1
+  nodes            :         71 (68 internal, 3 leaves)
+  feasible leaves  :          0
+  infeas. leaves   :          2
+  objective leaves :          1
+  nodes (total)    :         71 (68 internal, 3 leaves)
+  nodes left       :         66
+  max depth        :         23
+  max depth (total):         23
+  backtracks       :          4 (5.6%)
+  early backtracks :          0 (0.0%)
+  nodes exc. ref.  :          0 (0.0%)
+  delayed cutoffs  :          0
+  repropagations   :          0 (0 domain reductions, 0 cutoffs)
+  avg switch length:       1.76
+  switching time   :       0.01
+Root Node          :
+  First LP value   : +0.00000000000000e+00
+  First LP Iters   :         45 (21047.71 Iter/sec)
+  First LP Time    :       0.00
+  Final Dual Bound : +0.00000000000000e+00
+  Final Root Iters :        173
+  Root LP Estimate : +4.14695293146325e+00
+Solution           :
+  Solutions found  :          8 (6 improvements)
+  First Solution   : +1.07200000000000e+03   (in run 1, after 1 nodes, 0.02 seconds, depth 56, found by <locks>)
+  Gap First Sol.   :   infinite
+  Gap Last Sol.    :   infinite
+  Primal Bound     : +2.40000000000000e+01   (in run 1, after 1 nodes, 0.27 seconds, depth 0, found by <rens>)
+  Dual Bound       : +0.00000000000000e+00
+  Gap              :   infinite
+Integrals          :      Total       Avg%
+  primal-dual      : 8677446.31     100.00
+  primal-ref       :          -          - (not evaluated)
+  dual-ref         :          -          - (not evaluated)

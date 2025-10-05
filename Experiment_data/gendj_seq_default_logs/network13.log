@@ -1,0 +1,46 @@
+SCIP version 9.2.2 [precision: 8 byte] [memory: block] [mode: optimized] [LP solver: CPLEX 12.10.0.0] [GitHash: 416226a4f8]
+Copyright (c) 2002-2025 Zuse Institute Berlin (ZIB)
+
+reading parameter file </scratch/htc/yzhou/exp_scipmip/settings/allon_gendj.set>
+
+read problem </scratch/htc/yzhou/qoblib/qoblib-quantum-optimization-benchmarking-library/08-network/models/integer_lp/additional/network13.lp>
+============
+
+original problem has 2029 variables (0 bin, 2029 int, 0 impl, 0 cont) and 2210 constraints
+   2210 constraints of type <linear>
+Reading Time: 0.03
+solve problem
+=============
+LP Solver <CPLEX 12.10.0.0>: fastmip setting not available -- SCIP parameter has no effect
+LP Solver <CPLEX 12.10.0.0>: clock type cannot be set
+LP Solver <CPLEX 12.10.0.0>: row representation of the basis not available -- SCIP parameter lp/rowrepswitch has no effect
+LP Solver <CPLEX 12.10.0.0>: solution polishing not available -- SCIP parameter lp/solutionpolishing has no effect
+LP Solver <CPLEX 12.10.0.0>: refactorization interval not available -- SCIP parameter lp/refactorinterval has no effect
+transformed problem has 2029 variables (156 bin, 1873 int, 0 impl, 0 cont) and 2210 constraints
+   2210 constraints of type <linear>
+
+original problem has 9672 active (0.215696%) nonzeros and 9672 (0.215696%) check nonzeros
+
+presolving:
+(round 1, exhaustive) 0 del vars, 0 del conss, 0 add conss, 0 chg bounds, 0 chg sides, 0 chg coeffs, 1872 upgd conss, 0 impls, 0 clqs
+   (0.0s) probing: 51/156 (32.7%) - 0 fixings, 0 aggregations, 0 implications, 0 bound changes
+   (0.0s) probing aborted: 50/50 successive totally useless probings
+   (0.0s) symmetry computation started: requiring (bin +, int +, cont +), (fixed: bin -, int -, cont -)
+   (0.0s) no symmetry present (symcode time: 0.00)
+clique table cleanup detected 0 bound changes
+
+presolved problem has 9672 active (0.215696%) nonzeros and 9672 (0.215696%) check nonzeros
+
+presolving (2 rounds: 2 fast, 2 medium, 2 exhaustive):
+ 0 deleted vars, 0 deleted constraints, 0 added constraints, 0 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 1872 implications, 0 cliques
+presolved problem has 2029 variables (156 bin, 1873 int, 0 impl, 0 cont) and 2210 constraints
+   1872 constraints of type <varbound>
+    338 constraints of type <linear>
+transformed objective value is always integral (scale: 1)
+Presolving Time: 0.04
+
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+p 0.1s|     1 |     0 |    73 |     - |   locks|   0 |2029 |2220 |2210 |   0 |  0 |  10 |   0 | 0.000000e+00 | 7.530000e+05 |    Inf | unknown
+  0.1s|     1 |     0 |   784 |     - |    22M |   0 |2029 |2220 |2210 |   0 |  0 |  10 |   0 | 3.341667e+04 | 7.530000e+05 |2153.37%| unknown
+  0.1s|     1 |     0 |   786 |     - |    22M |   0 |2029 |2220 |2210 |   0 |  0 |  10 |   0 | 3.341700e+04 | 7.530000e+05 |2153.34%| unknown
