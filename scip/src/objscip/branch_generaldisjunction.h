@@ -93,6 +93,11 @@ typedef struct {
     vector<SCIP_VAR*> pi_plus;
     vector<SCIP_VAR*> pi_minus;
     SCIP_VAR* pi0;
+    SCIP_VAR* delta_var;
+    vector<SCIP_VAR*> theta;
+    SCIP_VAR* theta0;
+    SCIP_VAR* norm_pi_theta;
+    SCIP_VAR* norm_pi0_theta0;
     // SCIP_VAR* y_L; // binary variable for left slack
     // SCIP_VAR* y_R; // binary variable for right slack
 } SubmodelVars;

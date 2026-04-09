@@ -512,6 +512,8 @@ ScipParaSolver::createSubproblem(
          SCIP_CALL_ABORT( SCIPsetIntParam(scip, "presolving/maxrestarts", 0 ) );
       }
       */
+      // DEBUG: Print orgMaxRestart value
+      std::cout << "Rank " << paraComm->getRank() << ": Setting maxrestarts to orgMaxRestart = " << getOriginalMaxRestart() << std::endl;
       SCIP_CALL_ABORT( SCIPsetIntParam(scip, "presolving/maxrestarts", getOriginalMaxRestart()) );
    }
 
@@ -2052,6 +2054,8 @@ ScipParaSolver::ScipParaSolver(
    /** set parameters for SCIP: this values are reseted before solving */
    scipDiffParamSet->setParametersInScip(scip);
    setOriginalMaxRestart();
+   // DEBUG: Print the saved orgMaxRestart value
+   std::cout << "Rank " << paraComm->getRank() << ": After reInit, saved orgMaxRestart = " << getOriginalMaxRestart() << std::endl;
    SCIP_Real epsilon;
    SCIP_CALL_ABORT( SCIPgetRealParam(scip, "numerics/epsilon", &epsilon));
    eps = epsilon;

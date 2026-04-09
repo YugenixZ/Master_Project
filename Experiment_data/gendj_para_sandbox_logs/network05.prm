@@ -47,7 +47,7 @@ TempFilePath = "/tmp/"
 TagTraceFileName = "std::cout"
 
 # Path to solving statuses log [Default: ./]
-LogSolvingStatusFilePath = "/scratch/htc/yzhou/exp_fscip/gendj_sandbox/"
+LogSolvingStatusFilePath = "/scratch/htc/yzhou/MasterProject/exp_fscip/gendj_sandbox/"
 
 # Path to tasks transfer log [Default: ./]
 LogTasksTransferFilePath = "./"

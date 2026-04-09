@@ -30,6 +30,7 @@
 /*--+----1----+----2----+----3----+----4----+----5----+----6----+----7----+----8----+----9----+----0----+----1----+----2*/
 
 #include <iostream>
+#include <cstdlib>
 #include "objscip/objscip.h"
 #include "objscip/objscipdefplugins.h"
 #include "objscip/branch_generaldisjunction.h"
@@ -63,47 +64,51 @@ SCIP_RETCODE readParams(
 /** starts SCIP */
 static
 SCIP_RETCODE fromCommandLine(
-        SCIP*                      scip,               /**< SCIP data structure */
-        const char*                probfilename,       /**< input problem file name */
-        const char*                solfilename         /**< input solution file name, or NULL */
-)
+   SCIP*                 scip,               /**< SCIP data structure */
+   const char*           filename,           /**< input file name */
+   const char*           settingsfile,       /**< settings file name or NULL */
+   const char*           solfilename,        /**< solution file name or NULL */
+   double                objlimit,           /**< objective limit, or SCIP_DEFAULT_INFINITY if not set */
+   int                   scipseed,           /**< SCIP seed */
+   int                   permuteseed         /**< permutation seed */
+   )
 {
    /********************
     * Problem Creation *
     ********************/
 
-   std::cout << std::endl << "read problem <" << probfilename << ">" << std::endl;
-   std::cout << "============" << std::endl << std::endl;
-   SCIP_CALL( SCIPreadProb(scip, probfilename, NULL) );
+   /* read problem */
+   SCIP_CALL( SCIPreadProb(scip, filename, NULL) );
+
+
+   /*********************************
+    * Load parameters and solution *
+    *********************************/
+
+   if( settingsfile != NULL )
+   {
+      SCIP_CALL( SCIPreadParams(scip, settingsfile) );
+   }
 
    if( solfilename != NULL )
    {
-      std::cout << std::endl << "read solution <" << solfilename << ">" << std::endl;
-      std::cout << "============" << std::endl << std::endl;
       SCIP_CALL( SCIPreadSol(scip, solfilename) );
    }
 
-   /*******************
-    * Problem Solving *
-    *******************/
+   if( objlimit < SCIP_DEFAULT_INFINITY )
+   {
+      SCIP_CALL( SCIPsetObjlimit(scip, objlimit) );
+   }
 
-   /* solve problem */
-   std::cout << "solve problem" << std::endl;
-   std::cout << "=============" << std::endl;
-   SCIP_CALL( SCIPsolve(scip) );
+   /* modify random seeds */
+   SCIP_CALL( SCIPsetIntParam(scip, "randomization/randomseedshift", scipseed) );
+   if( permuteseed >= 0 )
+   {
+      SCIP_CALL( SCIPsetIntParam(scip, "randomization/permutationseed", permuteseed) );
+      SCIP_CALL( SCIPsetIntParam(scip, "randomization/lpseed", permuteseed) );
+   }
 
-   std::cout << std::endl << "primal solution:" << std::endl;
-   std::cout << "================" << std::endl << std::endl;
-   SCIP_CALL( SCIPprintBestSol(scip, NULL, FALSE) );
-
-   /**************
-    * Statistics *
-    **************/
-
-   std::cout << std::endl << "Statistics" << std::endl;
-   std::cout << "==========" << std::endl << std::endl;
-
-   SCIP_CALL( SCIPprintStatistics(scip, NULL) );
+   std::cout << "SCIP seed set to: " << scipseed << ", Permutation seed set to: " << permuteseed << std::endl;
 
    return SCIP_OKAY;
 }
@@ -148,35 +153,59 @@ SCIP_RETCODE runSCIP(
    SCIP_CALL( SCIPincludeDefaultPlugins(scip) );
    SCIP_CALL( SCIPincludeBranchruleGeneralDisjunction(scip) );
 
+   /*******************
+    * Comand line arguments *
+    *******************/
+
+   if( argc < 3 )
+   {
+      SCIPinfoMessage(scip, NULL, "usage: %s <prob_file> <settings_file> [sol_file] [objlimit] [scip_seed] [permute_seed]\n", argv[0]);
+      SCIPinfoMessage(scip, NULL, "  (use 'none' for sol_file or a large number for objlimit if not needed)\n");
+      return SCIP_OKAY;
+   }
+
+   const char* solfilename = NULL;
+   double objlimit = SCIP_DEFAULT_INFINITY;
+   int scipseed = 0;
+   int permuteseed = 0;
+
+   if (argc >= 4 && strcmp(argv[3], "none") != 0)
+   {
+      solfilename = argv[3];
+   }
+
+   if (argc >= 5)
+   {
+      char* endptr;
+      objlimit = strtod(argv[4], &endptr);
+      if (*endptr != '\0' && *endptr != '\n')
+      {
+         /* if the full string was not consumed, it's not a valid number, so reset to default */
+         objlimit = SCIP_DEFAULT_INFINITY;
+      }
+   }
+
+   scipseed = (argc >= 6) ? std::atoi(argv[5]) : 0;
+   permuteseed = (argc >= 7) ? std::atoi(argv[6]) : -1;
+
+   SCIP_CALL( fromCommandLine(scip, argv[1], argv[2], solfilename, objlimit, scipseed, permuteseed) );
+
+   /*************
+    * Solving *
+    *************/
+
+   /* solve problem */
+   SCIP_CALL( SCIPsolve(scip) );
+
    /**************
-    * Parameters *
+    * Statistics *
     **************/
 
-   if( argc >= 3 )
-   {
-      SCIP_CALL( readParams(scip, argv[2]) );
-   }
-   else
-   {
-      SCIP_CALL( readParams(scip, NULL) );
-   }
-   /*CHECK_OKAY( SCIPwriteParams(scip, "scipmip.set", TRUE) );*/
+   /* print best solution */
+   SCIP_CALL( SCIPprintBestSol(scip, NULL, FALSE) );
 
-   /**************
-    * Start SCIP *
-    **************/
-
-   if( argc >= 2 )
-   {
-      const char* solfilename = (argc >= 4) ? argv[3] : NULL;
-      SCIP_CALL( fromCommandLine(scip, argv[1], solfilename) );
-   }
-   else
-   {
-      printf("\n");
-
-      SCIP_CALL( interactive(scip) );
-   }
+   /* print statistics */
+   SCIP_CALL( SCIPprintStatistics(scip, NULL) );
 
    /********************
     * Deinitialization *
